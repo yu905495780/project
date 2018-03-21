@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+body {
+    font-size: 0.2rem;
+    background-color: #F8F9FE;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.box-wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.box-wrap .money {
+    padding: 0 0.29rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    font-size: 0.18rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+    color: #B0B0B2;
+}
+
+.box-wrap .nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 0.7rem;
+    background: #fff;
+    margin-bottom: 0.05rem;
+}
+
+.box-wrap .nav li {
+    text-align: center;
+    font-size: 0.24rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+.box-wrap .nav li a {
+    color: #333;
+    line-height: 0.7rem;
+}
+
+.box-wrap .nav li p {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -0.15rem;
+}
+
+.box-wrap .nav .active a {
+    color: #333;
+    font-weight: 600;
+}
+
+.box-wrap .nav .active p {
+    width: 0.3rem;
+    height: 0.06rem;
+    background: #333;
+    border-radius: 0.3rem;
+}
+
+.box-wrap .explain {
+    height: auto;
+    background: #F7F9FF;
+    padding: 0.1rem;
+}
+
+.box-wrap .explain img {
+    width: 100%;
+    height: 100%;
+}
+
+.box-wrap .detailed {
+    padding: 0 0.23rem 1rem;
+    background: #fff;
+}
+
+.box-wrap .detailed .list {
+    border: 1px solid #fff;
+}
+
+.box-wrap .detailed .list .p-tit {
+    margin: 0.19rem 0.22rem 0.3rem;
+}
+
+.box-wrap .detailed .list .list-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-wrap .detailed .list .list-box .img-box {
+    width: 49%;
+    height: auto;
+}
+
+.box-wrap .detailed .list .list-box .img-box img {
+    width: 98%;
+}
+
+.box {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+}
+
+.box img {
+    width: 100%;
+}
+
+/*# sourceMappingURL=index.css.map */

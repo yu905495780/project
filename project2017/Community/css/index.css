@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+
+img {
+  vertical-align: middle; }
+
+body {
+  font-size: 20px;
+  background: #F7F9FF; }
+
+.header {
+  width: 100%;
+  height: 5rem; }
+  .header .head {
+    font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: #fff;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 1.8rem;
+    color: #000; }
+
+.content {
+  margin: 2rem 1rem;
+  background: #fff; }
+  .content .con-1 {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between; }
+    .content .con-1 .con1-left {
+      margin-left: 1.5rem;
+      display: flex;
+      justify-content: space-between; }
+      .content .con-1 .con1-left .portrait {
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        margin-right: 1.5rem; }
+      .content .con-1 .con1-left .con1-lc {
+        margin-top: 2.5rem; }
+        .content .con-1 .con1-left .con1-lc p:nth-of-type(1) {
+          font-size: 1.6rem;
+          color: #ff032d;
+          font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+          margin-bottom: 0.5rem; }
+        .content .con-1 .con1-left .con1-lc p:nth-of-type(2) img {
+          margin-right: 0.5rem; }
+    .content .con-1 .con1-right {
+      font-size: 1.2rem;
+      color: #999;
+      font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+      margin-top: 6rem;
+      margin-right: 2rem; }
+  .content .txt {
+    padding: 1rem 1.8rem; }
+    .content .txt p {
+      color: #000;
+      font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+      font-size: 1.6rem; }
+  .content .ul-list {
+    padding: 0 2.5rem; }
+    .content .ul-list li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem; }
+      .content .ul-list li img {
+        width: 16.35rem;
+        height: 16.35rem; }
+  .content .con-2 {
+    padding: 0 1.5rem; }
+    .content .con-2 .con-2c {
+      padding: 1.5rem 0;
+      border-top: 1px solid #DBDBDB;
+      display: flex;
+      justify-content: space-between;
+      color: #FF6512;
+      font-size: 1.5rem; }
+      .content .con-2 .con-2c .con2-left {
+        margin-left: 1rem; }
+        .content .con-2 .con-2c .con2-left img, .content .con-2 .con-2c .con2-left span {
+          margin-right: 0.5rem; }
+      .content .con-2 .con-2c .con2-right span {
+        margin-right: 0.5rem; }
+      .content .con-2 .con-2c .con2-right img {
+        margin-right: 1.6rem; }
+
+.like {
+  margin: 2rem 1rem 0;
+  padding: 1.5rem;
+  background: #fff; }
+  .like li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem; }
+    .like li img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%; }
+
+.comment {
+  margin: 2rem 1rem 0;
+  background: #fff; }
+  .comment .comment-list {
+    padding: 1.5rem 0;
+    margin: 0 1.5rem;
+    border-bottom: 1px solid #DBDBDB;
+    display: flex;
+    justify-content: space-between; }
+    .comment .comment-list .com-l {
+      display: flex;
+      justify-content: space-between; }
+      .comment .comment-list .com-l img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem; }
+      .comment .comment-list .com-l .reply p:nth-of-type(1) {
+        font-size: 1.4rem;
+        color: #000;
+        margin-bottom: 0.6rem;
+        font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif; }
+      .comment .comment-list .com-l .reply p:nth-of-type(2) {
+        font-size: 1.6rem;
+        font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif; }
+    .comment .comment-list .com-r {
+      font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+      color: #aaa; }
+
+.footer {
+  width: 100%;
+  height: 8rem; }
+  .footer .foot {
+    width: 100%;
+    padding: 1.5rem 0;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between; }
+    .footer .foot .foot-l {
+      margin-left: 2rem;
+      display: flex;
+      justify-content: space-between; }
+      .footer .foot .foot-l img {
+        width: 5rem;
+        height: 5rem;
+        margin-right: 1rem; }
+      .footer .foot .foot-l .footleft p:nth-of-type(1) {
+        margin-top: 0.6rem;
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+        font-size: 1.6rem;
+        color: #292929;
+        line-height: 1.6rem;
+        margin-bottom: 1rem; }
+      .footer .foot .foot-l .footleft p:nth-of-type(2) {
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        color: #777777;
+        line-height: 1.2rem; }
+    .footer .foot .foot-r {
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      margin-right: 2rem;
+      margin-top: 0.75rem;
+      border-radius: 0.4rem;
+      width: 8.5rem;
+      height: 3.5rem;
+      background: #ff6512;
+      font-size: 1.4rem;
+      color: #fff;
+      text-align: center;
+      line-height: 3.5rem; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+<canvas id="can1" width="500px" height="500px"></canvas>
+<script type="text/javascript">
+    /*
+    //时钟
+    var canvas=document.getElementById('can1');
+    var cxt=canvas.getContext('2d');
+    function drawClock(){
+        cxt.clearRect(0,0,500,500);
+        var date=new Date();
+        var m=date.getSeconds();
+        var j=date.getMinutes();
+        var k=date.getHours();
+        //表盘
+        cxt.beginPath();
+        cxt.strokeStyle="blue";
+        cxt.lineWidth="10";
+        cxt.arc(250,250,200,0,360,false);
+        cxt.stroke();
+        cxt.closePath();
+        //表心
+        cxt.beginPath();
+        cxt.strokeStyle="#AA1514";
+        cxt.lineWidth="1";
+        cxt.arc(250,250,10,0,360,false);
+        cxt.fill();
+        cxt.closePath();
+        //时刻度
+        for(var i=0;i<12;i++){
+            cxt.save();
+            cxt.strokeStyle="black";
+            cxt.lineWidth="7";
+            cxt.translate(250,250);
+            cxt.rotate(30*i*Math.PI/180);
+            cxt.beginPath();
+            cxt.moveTo(0,-170);
+            cxt.lineTo(0,-190);
+            cxt.closePath();
+            cxt.stroke();
+            cxt.restore();
+        }
+        //分刻度
+        for(var i=0;i<60;i++){
+            cxt.save();
+            cxt.strokeStyle="black";
+            cxt.lineWidth="5";
+            cxt.translate(250,250);
+            cxt.rotate(6*i*Math.PI/180);
+            cxt.beginPath();
+            cxt.moveTo(0,-180);
+            cxt.lineTo(0,-190);
+            cxt.closePath();
+            cxt.stroke();
+            cxt.restore();
+        }
+        //画秒针
+
+        cxt.save();
+        cxt.strokeStyle="black";
+        cxt.lineWidth="1";
+        cxt.translate(250,250);
+        cxt.rotate(6*m*Math.PI/180);
+        cxt.beginPath();
+        cxt.arc(0,-130,3,0,360,false);
+        cxt.fill();
+        cxt.closePath();
+        cxt.beginPath();
+        cxt.moveTo(0,12);
+        cxt.lineTo(0,-160);
+        cxt.closePath();
+        cxt.stroke();
+        cxt.restore();
+        //分针
+        cxt.save();
+        cxt.strokeStyle="black";
+        cxt.lineWidth="4";
+        cxt.translate(250,250);
+        cxt.rotate(6*j*Math.PI/180);
+        cxt.beginPath();
+        cxt.moveTo(0,10);
+        cxt.lineTo(0,-150);
+        cxt.closePath();
+        cxt.stroke();
+        cxt.restore();
+        //时针
+        cxt.save();
+        cxt.strokeStyle="black";
+        cxt.lineWidth="6";
+        cxt.translate(250,250);
+        cxt.rotate(30*k*Math.PI/180);
+        cxt.beginPath();
+        cxt.moveTo(0,8);
+        cxt.lineTo(0,-140);
+        cxt.closePath();
+        cxt.stroke();
+        cxt.restore();
+    }
+
+
+    setInterval("drawClock()",1000);*/
+
+
+    /*  //笑脸
+    function draw() {
+        var canvas = document.getElementById('can1');
+        if (canvas.getContext){
+            var ctx = canvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+            ctx.moveTo(110,75);
+            ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+            ctx.moveTo(65,65);
+            ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+            ctx.moveTo(95,65);
+            ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+            ctx.stroke();
+        }
+    }
+    draw();*/
+
+/*  //对话气泡
+    function draw() {
+        var canvas = document.getElementById('can1');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            // 二次贝尔赛曲线
+            ctx.beginPath();
+            ctx.moveTo(75,25);
+            ctx.quadraticCurveTo(25,25,25,62.5);
+            ctx.quadraticCurveTo(25,100,50,100);
+            ctx.quadraticCurveTo(50,120,30,125);
+            ctx.quadraticCurveTo(60,120,65,100);
+            ctx.quadraticCurveTo(125,100,125,62.5);
+            ctx.quadraticCurveTo(125,25,75,25);
+            ctx.stroke();
+        }
+    }
+    draw();*/
+
+    //♥
+    function draw() {
+        var canvas = document.getElementById('can1');
+        if (canvas.getContext){
+            var ctx = canvas.getContext('2d');
+            //三次贝塞尔曲线
+            ctx.beginPath();
+            ctx.moveTo(75,40);
+            ctx.bezierCurveTo(75,37,70,25,50,25);
+            ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+            ctx.bezierCurveTo(20,80,40,102,75,120);
+            ctx.bezierCurveTo(110,102,130,80,130,62.5);
+            ctx.bezierCurveTo(130,62.5,130,25,100,25);
+            ctx.bezierCurveTo(85,25,75,37,75,40);
+            ctx.stroke();
+        }
+    }
+    draw()
+
+</script>
+</body>
+</html>

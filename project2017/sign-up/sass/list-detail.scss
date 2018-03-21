@@ -1,0 +1,240 @@
+@charset "utf-8";
+
+*{
+  margin: 0;padding: 0;
+  list-style: none;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+i{
+  font-style: normal;
+}
+
+img{
+  vertical-align: middle;
+}
+
+body{
+  font-size: 0.2rem;
+  background-color: #2B0508;
+}
+.banner{
+  width:100%;
+  height:auto;
+  img{
+    width:100%;
+    height:auto;
+  }
+}
+/*.header{
+  width:100%;
+  height: 0.75rem;
+  margin-bottom: 0.15rem;
+  .head{
+    padding: 0 0.26rem;
+    height: 0.75rem;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    line-height: 0.75rem;
+    font-size: 0.27rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+    .head-left{
+      img{
+        width: 0.16rem;
+        height: 0.26rem;
+      }
+    }
+  }
+}*/
+
+
+
+.box{
+  margin-bottom: 0.3rem;
+  .detalis{
+    background: url("../img/background.png") no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    padding: 0.4rem 0.55rem;
+    position: relative;
+    .detalis-title{
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.26rem;
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      margin-bottom: 0.3rem;
+      line-height: 0.3rem;
+    }
+    .brief-introduction{
+      background: #601C22;
+      border-radius: 0.12rem;
+      margin-bottom: 0.3rem;
+      padding: 0.15rem;
+      .brief-tit{
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        font-size: 0.22rem;
+      }
+      .brief-txt{
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        font-size: 0.19rem;
+      }
+    }
+    .deta-num{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.11rem;
+      i:nth-of-type(1){
+        font-size: 0.24rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        line-height: 0.62rem;
+      }
+      i:nth-of-type(2){
+        font-size: 0.17rem;
+        line-height: 0.62rem;
+      }
+      .give-thumbs-up{
+        background: url("../img/add.png") no-repeat;
+        width: 0.95rem;
+        height: 0.62rem;
+        padding-top: 0.06rem;
+        background-size: 100% 100%;
+        text-align: center;
+        font-size: 0.16rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        .like{
+
+        }
+        .likenum{
+
+        }
+      }
+    }
+    .deta-ul{
+      padding: 0.19rem 0.15rem;
+      .deta-li{
+        background: #601C22;
+        border-radius: 0.12rem;
+        margin-bottom: 0.08rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.11rem 0.2rem;
+        line-height: 0.5rem;
+        .detali-l{
+          display: flex;
+          .avatar{
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 0.28rem;
+          }
+          .username{
+            font-size: 0.24rem;
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+          }
+          .captain{
+            font-size: 0.17rem;
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+            margin-left: 0.64rem;
+          }
+        }
+      }
+    }
+  }
+  .team-li{
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    background: url("../img/back.png") no-repeat;
+    background-size:  100% 100%;
+    color: #fff;
+    padding: 0.25rem 0.3rem;
+    .teamli-left{
+      width: 49%;
+      display: flex;
+      position: relative;
+      .avatar-box{
+        width: 0.68rem;
+        height: 0.68rem;
+        .avatar{
+          width: 0.68rem;
+          height: 0.68rem;
+          border-radius: 50%;
+        }
+        .server{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0.2rem;
+          height: 0.2rem;
+        }
+      }
+      .name{
+        margin-left: 0.27rem;
+        .team-name{
+          font-size: 0.24rem;
+          margin-bottom: 0.13rem;
+          font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        }
+        .captain{
+          font-size: 0.16rem;
+          font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        }
+      }
+    }
+    .teamli-right{
+      display: flex;
+      .num{
+        margin-top: 0.22rem;
+        font-size: 0.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        margin-right: 0.34rem;
+      }
+      .like{
+        width: 0.94rem;
+        height: 0.68rem;
+        background: url("../img/add.png") no-repeat;
+        background-size: 100% 100%;
+        text-align: center;
+        font-size: 0.16rem;
+        margin-right: 0.17rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        .zan{
+          margin-top: 0.06rem;
+        }
+      }
+    }
+  }
+}
+footer{
+  width:100%;
+  height: 0.5rem;
+  background: rgba(255,255,255,0.5);
+  position: fixed;
+  left:0;
+  bottom:0;
+}
+footer .tit{
+  padding: 0 0.05rem;
+  font-size: 0.25rem;
+  font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  line-height: 0.5rem;
+}
+footer .tit .tit-r{
+  font-size: 0.18rem;
+}
+.downsy{
+  text-decoration: none;
+  color: #000;
+}
+

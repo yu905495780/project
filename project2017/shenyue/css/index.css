@@ -1,0 +1,1094 @@
+/*公共样式*/
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+/*设置html,body的宽高*/
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+body{
+	font-size: 20px;
+}
+/**设置html,body的宽高**/
+
+/*去除a标签的默认样式*/
+a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/**去除a标签的默认样式**/
+
+/*设置img的垂直居中*/
+img{
+	vertical-align: middle;
+	border:none;
+}
+/**设置img的垂直居中**/
+
+/*标题的公共样式*/
+.con-title {
+	text-align: center;
+	font-size: 40px;
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	color: #333;
+}
+.con-stitle {
+	text-align: center;
+	font-size: 26px;
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	color: #999;
+}
+/**标题的公共样式**/
+
+/*清除浮动的样式*/
+.clearboth {
+	clear: both;
+}
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+/**清除浮动的样式**/
+
+/*绝对居中的样式*/
+.position-a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+/**绝对居中的样式**/
+
+/*鼠标的样式*/
+.cur-p {
+	cursor: pointer;
+}
+/**鼠标的样式**/
+/*附近人部分的动画*/
+.dot {
+	animation: sploosh 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.dot2 {
+	animation: sploosh2 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.dot3 {
+	animation: sploosh3 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.dot4 {
+	animation: sploosh4 2.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.dot, .dot2, .dot3, .dot4 {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	position: absolute;
+	z-index: 10;
+	animation-iteration-count: infinite;
+	background: transparent;
+}
+@keyframes sploosh {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+		background: rgba(255, 255, 255, 0.7);
+	}
+	100% {
+		box-shadow: 0 0 0 400px rgba(255, 255, 255, 0);
+		background: rgba(255, 255, 255, 0);
+	}
+}
+@keyframes sploosh2 {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+		background: rgba(255, 255, 255, 0.7);
+	}
+	100% {
+		box-shadow: 0 0 0 300px rgba(255, 255, 255, 0);
+		background: rgba(255, 255, 255, 0.3);
+	}
+}
+@keyframes sploosh3 {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+		background: rgba(255, 255, 255, 0.7);
+	}
+	100% {
+		box-shadow: 0 0 0 200px rgba(255, 255, 255, 0);
+		background: rgba(255, 255, 255, 0.7);
+	}
+}
+@keyframes sploosh4 {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+		background: rgba(255, 255, 255, 0.3);
+	}
+	100% {
+		box-shadow: 0 0 0 100px rgba(255, 255, 255, 0);
+		background: rgba(255, 255, 255, 0.3);
+	}
+}
+/**附近人部分的动画**/
+/**公共样式**/
+
+/*pc端*/
+/*banner的样式*/
+.contain .banner {
+	width: 1903px;
+	background: url(../img/banner-web.png) no-repeat;
+	background-size: cover;
+	padding-top: 45px;
+	padding-bottom: 155px;
+	border: none;
+}
+.banner .banner-nav {
+	width: 1103px;
+	margin: 0 auto;
+}
+.banner .banner-nav .logo {
+	float: left;
+}
+.banner .banner-nav .logo img {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.banner .banner-nav .logo span {
+	font-size: 18px;
+	color: #fff;
+	font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+}
+.banner .banner-ul {
+	float: right;
+	height: 42px;
+	line-height: 42px;
+}
+.banner  .banner-li {
+	float: left;
+	margin-left: 50px;
+	font-size: 14px;
+	font-family: "PingFangSC-Light", Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+}
+.banner .banner-con {
+	width: 1093px;
+	margin: 0 auto;
+	padding-top: 192px;
+}
+.banner .ban-title {
+	color: #ffffff;
+	font-size: 44px;
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+.banner .ban-txt {
+	margin-top: 53px;
+	color: #ffffff;
+	font-size: 23px;
+	line-height: 42px;
+	font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin-bottom: 60px;
+}
+.banner .banner-download{
+	width: 491px;
+	height: 55px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.banner .banner-download img {
+	width: 169px;
+	height: 55px;
+	margin-bottom: 26px;
+}
+/**banner的样式**/
+
+/*nav的样式*/
+.nav {
+	width: 1303px;
+	margin-top: 82px;
+	padding: 0 300px;
+	height: auto;
+}
+.nav-li {
+	width: 325.75px;
+	float: left;
+	text-align: center;
+}
+.nav-li img {
+	width: 104px;
+	height: 104px;
+	margin-bottom: 15px;
+}
+.nav-li .navli-title {
+	color: #333333;
+	font-size: 18px;
+	font-family: "PingFangSC-Light", Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+	margin-bottom: 5px;
+}
+.nav-li .navli-txt {
+	color: #999999;
+	font-size: 14px;
+	line-height: 26px;
+	font-family: "PingFangSC-Light", Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+}
+/**nav的样式**/
+
+/*神约用户部分的样式*/
+.con-two {
+	width: 1387px;
+	padding: 0 258px;
+}
+.con-two .cona-title {
+	margin: 140px 0 30px;
+}
+.con-two .cona-stitle {
+	margin-bottom: 90px;
+}
+.con-two .img-list {
+	margin-bottom: 163px;
+}
+.con-two .img-list .img-li {
+	position: relative;
+	width: 453px;
+	height: 387px;
+	float: left;
+	margin: 10px 14px 10px 0;
+	cursor: pointer;
+}
+.none-right {
+	position: relative;
+	width: 453px;
+	height: 387px;
+	float: left;
+	margin: 10px 0 10px 0;
+	cursor: pointer;
+}
+.none-right img {
+	width: 100%;
+	height: 100%;
+}
+.con-two .img-list .img-li img {
+	width: 100%;
+	height: 100%;
+}
+.img-list .content {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 415px;
+	height: auto;
+	background: rgba(239, 201, 102, 0.9);
+	padding: 19px;
+	display: none;
+}
+
+.img-list .content .content-left p {
+	color: #ffffff;
+	font-size: 14px;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+.img-list .content .content-left p:nth-of-type(1) {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+/**神约用户部分的样式**/
+
+/*附近人部分的样式*/
+.number {
+	width: 1903px;
+	height: 776px;
+	background: rgb(239, 202, 102);
+	position: relative;
+	overflow: hidden;
+}
+.number-box{
+	position: absolute;
+	left: 1200px;
+	top: 450px;
+	width: 750px;
+	height: 300px;
+}
+.number-box p:nth-of-type(1) {
+	color: #ffffff;
+	font-size: 40px;
+	font-family: "苹方-简", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+.number-box p:nth-of-type(2) {
+	color: #ffffff;
+	font-size: 40px;
+	font-family: "苹方-简", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin-bottom: 135px;
+}
+.number-box p:nth-of-type(2) span {
+	margin-right: 23px;
+	color: #ffffff;
+	font-size: 90px;
+	font-weight: bold;
+}
+.num-dot {
+	position: relative;
+	top: 200px;
+	left: 200px;
+}
+/**附近人部分的样式**/
+/*神约动态部分的样式*/
+.con-three {
+	margin: 0 400px;
+	width: 1103px;
+
+}
+.con-three .conb-title {
+	margin: 140px 0 90px;
+}
+.con-three .introduce {
+	background: rgb(236, 236, 236);
+	padding: 30px 0 36px;
+	margin-bottom: 30px;
+	border-radius: 20px;
+}
+.con-three .introduce .int-title {
+	margin: 0 0 12px 50px;
+	display: block;
+	color: #464646;
+	font-size: 18px;
+	font-family: "苹方", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.con-three .introduce .int-title a{
+	color: #464646;
+}
+.con-three .introduce .int-txt {
+	margin: 0 50px;
+	color: #8c8c8c;
+	font-size: 14px;
+	font-family: "苹方-简", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+/**神约动态部分的样式**/
+
+/*下载神约部分的样式*/
+.con-fore {
+	width: 1103px;
+	margin: 0 400px;
+}
+.con-fore .conc-title {
+	margin: 140px 0 90px;
+}
+.con-fore .confore-download {
+	margin-bottom: 172px;
+}
+.con-fore .confore-download .down {
+	width: 330px;
+	height: 330px;
+	border: 2px solid #dbdbdb;
+	float: left;
+	margin-right: 50px;
+	text-align: center;
+	color: #999999;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+}
+.down-A{
+	position: relative;
+}
+.abdCode-1{
+	position: absolute;
+	top:0;
+	left:0;
+}
+.con-fore .confore-download .jd {
+	width: 330px;
+	height: 330px;
+	border: 2px solid #dbdbdb;
+	float: left;
+	text-align: center;
+	color: #999;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+}
+.con-fore .confore-download .down .img1{
+	width: 46px;
+	height: 53px;
+	margin-top: 110px;
+	margin-bottom: 29px;
+}
+.con-fore .confore-download .jd img{
+	margin-top: 35px;
+}
+.abdCode-1{
+	width:70%;
+	margin: 11% 15%;
+	display: none;
+}
+.con-fore .confore-download .down a{
+	display: block;
+	width:100%;
+	height: 100%;
+	color: #8B8A8A;
+}
+.con-fore .confore-download .jd a{
+	display: block;
+	width:100%;
+	height: 100%;
+	color: #8B8A8A;
+}
+/**下载神约部分的样式**/
+
+/*pc端页脚部分的样式*/
+.footer {
+	padding: 25px;
+	width: 1853px;
+	height: auto;
+	background: rgb(241, 241, 241);
+	text-align: center;
+	line-height: 30px;
+}
+.footer .cop {
+	color: #666666;
+	font-size: 14px;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+/**pc端页脚部分的样式**/
+
+/*当屏幕最大为1600px的时候pc端的样式*/
+@media only screen and (max-width: 1600px) {
+	.contain .banner {
+		width: 1583px;
+		border: none;
+	}
+	.banner .banner-nav {
+		width: 1179px;
+	}
+	.banner .banner-con {
+		width: 1179px;
+		padding-top: 170px;
+	}
+
+	.nav {
+		width: 1143px;
+		margin-top: 82px;
+		padding: 0 220px;
+		height: auto;
+	}
+	.nav-li {
+		width: 285.75px;
+		float: left;
+		text-align: center;
+	}
+	.nav-li img {
+		width: 104px;
+		height: 104px;
+		margin-bottom: 15px;
+	}
+
+	.con-two {
+		width: 1227px;
+		padding: 0 178px;
+	}
+	.con-two .img-list .img-li {
+		width: 401px;
+		height: 344px;
+		margin: 10px 12px 10px 0;
+	}
+	.none-right {
+		width: 401px;
+		height: 344px;
+		margin: 10px 0 10px 0;
+	}
+	.img-list .content {
+		width: 365px;
+		height: auto;
+		padding: 18px;
+	}
+
+	.number {
+		width: 1583px;
+		height: 776px;
+	}
+	.number-box{
+		left: 1000px;top: 450px;
+		width: 750px;
+		height: 300px;
+	}
+
+	.con-three {
+		margin: 0 300px;
+		width: 983px;
+	}
+
+	.con-fore {
+		width: 983px;
+		margin: 0 300px;
+	}
+	.con-fore .confore-download {
+		margin-bottom: 172px;
+	}
+	.con-fore .confore-download .down {
+		width: 290px;
+		height: 290px;
+	}
+	.con-fore .confore-download .jd {
+		width: 290px;
+		height: 290px;
+	}
+	.con-fore .confore-download .down .img1{
+		margin-top: 100px;
+	}
+	.con-fore .confore-download .jd img{
+		width:80%;
+		margin-top: 30px;
+	}
+
+	.footer {
+		padding: 20px;
+		width: 1543px;
+		height: auto;
+	}
+}
+/**当屏幕最大为1600px的时候pc端的样式**/
+
+/*当屏幕最大为1366px的时候pc端的样式*/
+@media only screen and (max-width: 1366px) {
+	.contain .banner {
+		width: 1349px;
+	}
+	.banner .banner-nav {
+		width: 1069px;
+	}
+	.banner .banner-con {
+		width: 1069px;
+		padding-top: 150px;
+	}
+
+	.nav {
+		width: 1069px;
+		margin-top: 82px;
+		padding: 0 140px;
+		height: auto;
+	}
+	.nav-li {
+		width: 267.25px;
+		float: left;
+		text-align: center;
+	}
+	.nav-li img {
+		width: 84px;
+		height: 84px;
+		margin-bottom: 15px;
+	}
+
+	.con-two {
+		width: 1153px;
+		padding: 0 98px;
+	}
+	.con-two .img-list .img-li {
+		width: 377px;
+		height: 324px;
+		margin: 10px 10px 10px 0;
+	}
+	.none-right {
+		width: 377px;
+		height: 324px;
+	}
+	.img-list .content {
+		width: 347px;
+		height: auto;
+		padding: 15px;
+	}
+
+	.number {
+		width: 1349px;
+		height: 776px;
+		position: relative;
+		overflow: hidden;
+	}
+	.number-box{
+		position: absolute;
+		left: 850px;top: 450px;
+		width: 750px;
+		height: 300px;
+	}
+	.number-box p:nth-of-type(1) {
+		font-size: 35px;
+	}
+	.number-box p:nth-of-type(2) {
+		font-size: 35px;
+	}
+	.number-box p:nth-of-type(2) span {
+		font-size: 80px;
+	}
+
+	.con-three {
+		margin: 0 200px;
+		width: 949px;
+	}
+
+	.con-fore {
+		width: 949px;
+		margin: 0 200px;
+	}
+	.con-fore .confore-download {
+		margin-bottom: 150px;
+	}
+	.con-fore .confore-download .down {
+		width: 279px;
+		height: 279px;
+	}
+	.con-fore .confore-download .jd {
+		width: 279px;
+		height: 279px;
+	}
+	.con-fore .confore-download .down .img1{
+		margin-top: 95px;
+	}
+	.con-fore .confore-download .jd img{
+		width:80%;
+		margin-top: 15px;
+	}
+
+	.footer {
+		padding: 20px;
+		width: 1309px;
+		height: auto;
+	}
+}
+/**当屏幕最大为1366px的时候pc端的样式**/
+
+/*当屏幕最大为1280px的时候pc端的样式*/
+@media only screen and (max-width: 1280px) {
+	.contain .banner {
+		width: 1263px;
+	}
+	.banner .banner-nav {
+		width: 1003px;
+	}
+	.banner .banner-con {
+		width: 1003px;
+		padding-top: 150px;
+	}
+
+	.nav {
+		width: 1003px;
+		margin-top: 82px;
+		padding: 0 130px;
+		height: auto;
+	}
+	.nav-li {
+		width: 250.75px;
+		float: left;
+		text-align: center;
+	}
+	.nav-li img {
+		width: 84px;
+		height: 84px;
+		margin-bottom: 15px;
+	}
+
+	.con-two {
+		width: 1067px;
+		padding: 0 98px;
+	}
+	.con-two .img-list .img-li {
+		width: 349px;
+		height: 299px;
+		margin: 10px 10px 10px 0;
+	}
+	.none-right {
+		width: 349px;
+		height: 299px;
+	}
+	.img-list .content {
+		width: 319px;
+		height: auto;
+		padding: 15px;
+	}
+
+	.number {
+		width: 1263px;
+		height: 776px;
+		position: relative;
+		overflow: hidden;
+	}
+	.number-box{
+		position: absolute;
+		left: 800px;top: 450px;
+		width: 750px;
+		height: 300px;
+	}
+	.number-box p:nth-of-type(1) {
+		font-size: 35px;
+	}
+	.number-box p:nth-of-type(2) {
+		font-size: 35px;
+	}
+	.number-box p:nth-of-type(2) span {
+		font-size: 80px;
+	}
+
+	.con-three {
+		margin: 0 150px;
+		width: 963px;
+	}
+
+	.con-fore {
+		width: 963px;
+		margin: 0 150px;
+	}
+	.con-fore .confore-download {
+		margin-bottom: 150px;
+	}
+	.con-fore .confore-download .down {
+		width: 283px;
+		height: 283px;
+	}
+	.con-fore .confore-download .jd {
+		width: 283px;
+		height: 283px;
+	}
+	.con-fore .confore-download .down .img1{
+		margin-top: 90px;
+		/*margin-bottom: 19px;*/
+	}
+	.con-fore .confore-download .jd img{
+		width:80%;
+		margin-top: 15px;
+	}
+
+	.footer {
+		padding: 15px;
+		width: 1233px;
+		height: auto;
+	}
+}
+/**当屏幕最大为1280px的时候pc端的样式**/
+/**pc端**/
+
+/*移动端*/
+/*头部部分的样式*/
+#app .banner .header {
+	height: 0.53rem;
+	padding: 0.22rem 0.25rem;
+}
+#app .banner .header .head{
+	display: flex;
+	justify-content: space-between;
+}
+#app .banner .header .headb-l img {
+	width: 0.42rem;
+	height: 0.42rem;
+	margin-right: 0.29rem;
+}
+#app .banner .header .headb-l span{
+	color: #fff;
+	font-family: PingFang-SC-Medium;
+	font-size: 0.24rem;
+}
+#app .banner .header .headb-r {
+	width: 0.4rem;
+	text-align: center;
+}
+#app .banner .header .headb-r img {
+	width: 0.35rem;
+	height: auto;
+}
+#app .banner .header .headb-box {
+	background: url("../img/back.png") no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 0.74rem;
+	right: 0.08rem;
+	width: 2.32rem;
+	height: auto;
+	padding: 0.16rem 0 0;
+	display: none;
+}
+#app .banner .header .headb-box .bannerli a {
+	width:2.32rem;
+	display: block;
+	text-align: center;
+	line-height: 0.86rem;
+	font-size: 0.24rem;
+}
+/*#app .banner .header .headb-box .bannerli a:hover{
+	color: #e0c069;
+}*/
+#app .banner .header .headb-box .bannerli .head-list {
+	width:100%;
+	text-align: center;
+	color: #bfbdbd;
+}
+#app .banner .header .headb-box .bannerli .act {
+	width:100%;
+	text-align: center;
+	color: #e0c069;
+}
+/**头部部分的样式**/
+
+/*banner部分的样式*/
+#app .banner {
+	width: 100%;
+	height: auto;
+	background: url("../img/banner1.png") no-repeat;
+	background-size: 100% 100%;
+}
+#app .banner .banner-title {
+	text-align: center;
+	margin-top: 1.87rem;
+	font-size: 0.34rem;
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	color: #fff;
+	margin-bottom: 0.58rem;
+}
+#app .banner .banner-txt {
+	padding: 0 0.55rem;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	color: #fff;
+	line-height: 0.37rem;
+	font-size: 0.23rem;
+	margin-bottom: 0.71rem;
+}
+#app .banner .banner-img {
+	padding: 1.7rem 0.73rem 2.06rem;
+	display: flex;
+	justify-content: space-between;
+}
+#app .banner .banner-img a img {
+	width: 2.23rem;
+	height: 0.7rem;
+}
+/**banner部分的样式**/
+
+/*nav部分的样式*/
+#app .content {
+	padding: 1.1rem 0.17rem 0.4rem;
+	height: auto;
+}
+#app .content .content-ul {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+#app .content .content-ul .content-li {
+	width: 48%;
+	height: auto;
+	text-align: center;
+	margin-bottom: 0.78rem;
+}
+#app .content .content-ul .content-li img {
+	width: 1.14rem;
+	height: 1.14rem;
+	margin-bottom: 0.25rem;
+}
+#app .content .content-ul .content-li .li-title {
+	font-size: 0.24rem;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	color: #333;
+	margin-bottom: 0.22rem;
+}
+#app .content .content-ul .content-li .li-txt {
+	font-size: 0.2rem;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	color: #999;
+	line-height: 0.3rem;
+}
+/**nav部分的样式**/
+
+/*神约用户部分的样式*/
+#app .user-box {
+	margin-bottom: 0.32rem;
+}
+#app .user-box .user-title {
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	font-size: 0.31rem;
+	color: #333;
+	text-align: center;
+	margin-bottom: 0.2rem;
+}
+#app .user-box .user-txt {
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	font-size: 0.24rem;
+	color: #999;
+	text-align: center;
+	margin-bottom: 0.52rem;
+}
+#app .user-box .user-con {
+	padding: 0 0.34rem;
+}
+#app .user-box .user-con .user-ul {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+#app .user-box .user-con .user-ul .user-li {
+	width: 48%;
+	text-align: center;
+	margin-bottom: 0.425rem;
+}
+#app .user-box .user-con .user-ul .user-li img {
+	width: 2.78rem;
+	height: 2.38rem;
+}
+#app .user-box .user-con .user-ul .user-li .user-wrap {
+	width: 2.42rem;
+	padding: 0.18rem;
+	background: #EFC96D;
+	font-size: 0.2rem;
+	color: #fff;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	line-height: 0.35rem;
+	height: 1.18rem;
+}
+#app .user-box .user-con .user-ul .user-li .user-wrap .self {
+	text-align: left;
+}
+#app .user-box .user-con .user-ul .user-li .user-wrap .item {
+	text-align: left;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+#app .user-box .user-con .user-ul .user-li .user-wrap .price {
+	text-align: right;
+}
+/**神约用户部分的样式**/
+
+/*附近人部分的样式*/
+#app .number1 {
+	width: 100%;
+	height: 11.38rem;
+	background-color: #EFC96D;
+	position: relative;
+	overflow: hidden;
+	/*margin-bottom: 1.14rem;*/
+}
+#app .number1 .num-dot {
+	position: absolute;
+	top: 3.32rem;
+	left: 1.94rem;
+}
+#app .number1 .number1-box {
+	position: absolute;
+	bottom: 1.7rem;
+	left: 0.92rem;
+}
+#app .number1 .number1-box p {
+	font-size: 0.31rem;
+	color: #fff;
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+}
+#app .number1 .number1-box p span {
+	font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+	font-size: 0.49rem;
+	color: #fff;
+}
+/**附近人部分的样式**/
+
+/*神约动态部分的样式*/
+#app .dynamic {
+	width: 100%;
+	height: auto;
+	margin-bottom: 0.5rem;
+	margin-top: 1.14rem;
+}
+#app .dynamic .dyn-title {
+	font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+	font-size: 0.3rem;
+	color: #333;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+#app .dynamic .dyn-ul {
+	padding: 0 0.33rem;
+}
+#app .dynamic .dyn-ul .dyn-li {
+	border-radius: 0.15rem;
+	padding: 0.44rem 0.32rem;
+	background-color: #ECECEC;
+	box-shadow: 0 5px 5px #DDDDDD;
+	margin-bottom: 0.22rem;
+}
+#app .dynamic .dyn-ul .dyn-li a .dynp-tit {
+	font-size: 0.23rem;
+	font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+	color: #474747;
+	margin-bottom: 0.26rem;
+}
+#app .dynamic .dyn-ul .dyn-li a .dynp-txt {
+	font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+	font-size: 0.19rem;
+	color: #8c8c8c;
+	line-height: 0.31rem;
+}
+/**神约动态部分的样式**/
+
+/*下载神约*/
+#app .download{
+	padding: 1.1rem 0.76rem 0.85rem;
+	background: #F9F9F9;
+}
+#app .download .down-title {
+	font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+	font-size: 0.3rem;
+	color: #333;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+#app .download .down-box{
+	width:100%;
+	height:auto;
+	display: flex;
+	justify-content: space-between;
+}
+#app .download .down-box .downbox-a{
+	width:2.23rem;
+	border:1px solid #ccc;
+	height:2.23rem;
+	text-align: center;
+	background: white;
+	box-shadow:1px 4px 8px 0 rgba(0,0,0,0.08);
+}
+#app .download .down-box .downbox-a a{
+	display: block;
+	width:2.23rem;
+	height: 2.23rem;
+	color: #8B8A8A;
+	font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+	font-size: 0.23rem;
+}
+#app .download .down-box .downbox-a a img{
+	margin-top: 0.76rem;
+}
+
+/**下载神约**/
+
+/*移动端页脚的样式*/
+#app .foot {
+	padding: 5% 4%;
+	width:92%;
+	background: #1C1B20;
+	text-align: center;
+	height: auto;
+}
+#app .foot p {
+	color: #666666;
+	font-size: 0.17rem;
+	font-family: "PingFang-SC-Medlum", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+/**移动端页脚的样式**/
+/**移动端**/

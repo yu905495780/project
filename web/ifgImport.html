@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>公布运价政策</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/common/ifp.common.min.css?v=201611281935">
+    <link rel="stylesheet" type="text/css" href="./style/ifp/ifpImport.min.css?v=201611281935" />
+</head>
+<body ng-controller="ifgImportCtrl">
+
+<div class="container">
+    <h3 ng-class="'hidden'">
+        页面加载中...
+    </h3>
+    <div class="ifpImportContainer hidden" ng-class="'show'">
+
+        <div class="row">
+            <form name="fileUploader">
+                <div class="well">
+                    <div class="alert alert-danger" ng-if="ierrMsg.length > 0">{{ierrMsg[0].msg}}</div>
+
+                    <div>
+                        <div style="float:right;">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="btn_upload()" ng-disabled="isImport"><i>导入</i></button>
+                        </div>
+                        <input type="file" id="file1" accept="{{acceptType}}" ng-disabled="isImport" />
+                    </div>
+                    <div class="alert alert-success" ng-if="isFinished" style="margin-top:10px;">{{successMsg||"导入完成"}}</div>
+
+                    <div ng-repeat="file in files" class="file" style="margin-top: 20px;border-bottom-color: antiquewhite;border-bottom-style: double;">
+                        <div>
+                            <span>{{file.name}}</span><div style="float:right;"><span>{{file.humanSize}}</span><a ng-click="btn_remove(file)"><span class="glyphicon glyphicon-remove"></span></a></div>
+                        </div>
+                        <progress value="{{file.loaded}}" max="{{file.size}}"></progress>
+                    </div>
+                    <span class="small text-danger">上传附件最大不能超过5M</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade in showLoading hidden" ng-class="{'hidden':!showLoading}">
+        <div class="modal-backdrop fade in"></div>
+        <section class="loading"></section>
+    </div>
+
+    <script type="text/ng-template" id="ifgDialog.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="dialog-modal-title">提示</h4>
+        </div>
+        <div class="modal-body" id="dialog-modal-body" ng-bind-html="dialogContent | toTrustIFG">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ifgConfirm.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="confirmNoClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="confirm-modal-title">确认</h4>
+        </div>
+        <div class="modal-body" id="confirm-modal-body" ng-bind-html="confirmContent | toTrustIFG">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+            <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+        </div>
+    </script>
+    <script src="./script/lib/require.js"></script>
+    <script src="./policy/IFPUrlJs"></script>
+    <script type="text/javascript">
+        requirejs(["script/main.js?v=201704241126"], function () {
+            require(["controller/ifg/ifgImportCtrl"]);
+        });
+    </script>
+</div>
+</body>
+</html>

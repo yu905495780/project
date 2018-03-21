@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>神约</title>
+<!--–[if lte IE 7]-->
+<meta http-equiv="x-ua-compatible" content="ie=8">
+<!--[endif]–-->
+	<link rel="stylesheet" type="text/css" href="../../../../Public/css/common.css">
+	<link rel="stylesheet" type="text/css" href="../../../../Public/css/home.css">
+</head>
+<body>
+<div id="wrapper">
+	<div class="head">
+		<div class="head_cont">
+			 <ul>
+          <li class="logo"><a href="{:U('Index/index')}"><img src="__PUBLIC__/images/logo.jpg"></a></li>
+          <li><a href="{:U('Index/index')}">首页</a></li>
+          <li><a href="{:U('Index/singer')}">歌手</a></li>
+          <li><a href="{:U('Index/singerlist')}">排行榜</a></li>
+       </ul>
+       <ul class="right">
+          <li class="cur"><a href="{:U('Login/register')}">注册</a></li>
+          <li><a href="{:U('Login/login')}">登录</a></li>
+       </ul>							
+		</div>
+	</div>
+	<!-- 内容 -->
+	<div class="main">
+		<div class="main-model">
+            <div class="dengL">
+             <form method='post' id='form_data'>
+                <p><label>手机号</label><input type="text" name="mobile" id='m_tel' value="手机号" placeholder="手机号" maxlength="11" onfocus="if(this.value=='手机号'){this.value='';}" onblur="if(this.value==''){this.value='手机号';}checkSubmitMobil(this.value);" /><span id='e_mtel'></span></p>
+                <p class="buttonFree"><label></label><input type="button" onclick="send_sm()" value="免费获取安全码" /><span id='e_mtel1'></span></p>
+                <p><label>安全码</label><input type="text" id="verify_no" name="verify_no" placeholder="请输入安全码" /><span></span></p>
+                <p><label>真实姓名</label><input type="text" id="username" name="username" placeholder="请输入真实姓名" /></p>
+                <p><label>身份证号</label><input type="text" class="reg_txt" value="身份证号" placeholder="身份证号" titles="请输入您的身份证号！" name="card_id" id="userid" maxlength="18" onfocus="if(this.value=='身份证号'){this.value='';}" onblur="if(this.value==''){this.value='身份证号';}nunber(this.value);"><span id="span_username"></span></p>
+                <p><label>密码</label><input type="text" id="password" name="password" placeholder="6-30位数字，字母" /><span></span></p>
+                <p class="font"><input type="checkbox" checked="checked"/>我已阅读并同意<a href="{:U('Index/agreement')}">《用户协议》</a></p>
+                <p class="inputBtn"><input type="button" onclick="save()" value="注册" /><span id='e_mtel3'></span></p>
+                <p class="pwFont"><a href="">已有账号？</a><a href="{:U('Login/login')}" class="ljDl">立即登录</a></p>
+             </form>
+          </div>        
+		</div>
+	</div>
+  <div class="footer">
+     <div class="footer_cont">
+        <ul>
+           <li><a href="">服务条款</a><a href="">安全须知</a><a href="">“神约”用户协议</a><a href="">客服电话：4008 7288 83</a></li>
+           <li><a href="">备案/许可证编号为：京ICP备17025424</a></li>
+        </ul>
+     </div>
+  </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<script src="__PUBLIC__/js/home.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/sfz.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/mobil.js"></script>
+<script>
+var countdown=60;
+function send_sm(){
+	var m_tel = $('#m_tel').val();
+	if(m_tel == '手机号'){
+		$("#e_mtel").html('请填写手机号码！');
+		return false;
+	}
+
+	if(countdown == 60){
+        $.post("{:U(check_num)}",{mobile:m_tel},function(result){
+            $("#e_mtel").html(result.info);
+        });
+    }
+    
+    if (countdown ==  0) {
+        $('#e_mtel').html('');
+        $("#e_mtel1").html('');
+        countdown = 60;
+        $(".buttonFree input").removeAttr("disabled");
+		return;
+    } else {
+    	$("#e_mtel1").html("重新发送(" + countdown + ")");
+    	$(".buttonFree input").attr("disabled","disabled");
+        countdown--;
+	}
+    setTimeout(function() {
+        send_sm();
+    },1000)
+}
+
+function save(){
+	if($("#m_tel").val() == '手机号' || $("#m_tel").val() == ''){
+		$("#e_mtel").html('请填写手机号码！');
+		$("#m_tel").focus();
+		return false;
+	}
+	
+	if($("#verify_no").val() == ''){
+		$("#e_mtel3").html('请填写安全码！');
+		$("#verify_no").focus();
+		return false;
+	}
+	
+	if($("#username").val() == ''){
+		$("#e_mtel3").html('请填写真实姓名！');
+		$("#username").focus();
+		return false;
+	}
+	
+	if($("#userid").val() == ''){
+		$("#e_mtel3").html('请填写身份证号！');
+		$("#userid").focus();
+		return false;
+	}
+	
+	if($("#password").val() == ''){
+		$("#e_mtel3").html('请填写密码！');
+		$("#password").focus();
+		return false;
+	}
+	
+	
+	$.ajax({
+	    type: "POST",
+	    url: "{:U(register)}",
+	    data:$('#form_data').serialize(),
+	    dataType: 'json',
+	    success: function ($result) {
+	    	if($result.status){
+    	    	window.location.href="{:U('Login/login')}";
+	    	}else{
+	    		console.log($result.info);
+	    		$('#e_mtel3').html($result.info);
+	    	}
+	    },
+	});
+}
+</script>
+</body>
+</html>

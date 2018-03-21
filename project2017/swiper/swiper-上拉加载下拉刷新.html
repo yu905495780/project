@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>swiper-上拉加载 下拉刷新</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/swiper.jquery.min.js"></script>
+</head>
+<body>
+    <div class="a">标题</div>
+    <div class="tab">
+        <a href="javascript:;" class="active">tab1</a>
+        <a href="javascript:;" class="active">tab2</a>
+        <a href="javascript:;" class="active">tab3</a>
+    </div>
+    <div class="swiper-container">
+        <div class="refreshtip">下拉可以刷新</div>
+        <div class="swiper-wrapper w">
+            <div class="swiper-slide d">
+                <div class="init-loading list-group-item text-center" style="display: none">下拉可以刷新</div>
+                <div class="swiper-container2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide list-group">
+                            <div class="list-group-item">列表11111</div>
+                            <div class="list-group-item">列表11111</div>
+                            <div class="list-group-item">列表11111</div>
+                            <div class="list-group-item">列表11111</div>
+                            <div class="list-group-item">列表11111</div>
+                        </div>
+                        <div class="swiper-slide list-group">
+                            <div class="list-group-item">列表22222</div>
+                            <div class="list-group-item">列表22222</div>
+                            <div class="list-group-item">列表22222</div>
+                            <div class="list-group-item">列表22222</div>
+                            <div class="list-group-item">列表22222</div>
+                        </div>
+                        <div class="swiper-slide list-group">
+                            <div class="list-group-item">列表33333</div>
+                            <div class="list-group-item">列表33333</div>
+                            <div class="list-group-item">列表33333</div>
+                            <div class="list-group-item">列表33333</div>
+                            <div class="list-group-item">列表33333</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loadtip">上拉加载更多</div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+    <!--三种换行标签的使用
+    < br > HTML的写法 <br>
+    < br/ > XHTML1.1的写法 也是xml的写法 <br>
+    < br / > XHTML为兼容HTML的写法 也是xml的写法 <br>
+    因为和HTML5兼容XHTML写法 所以三种都可以使用，没有区别-->
+
+
+    <script type="text/javascript">
+        var loadFlag = true;
+        var oi = 0;
+        var mySwiper = new Swiper('.swiper-container',{
+            direction: 'vertical',
+            scrollbar: '.swiper-scrollbar',
+            slidesPerView: 'auto',
+            mousewheelControl: true,
+            freeMode: true,
+            onTouchMove: function (swiper){
+                var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+                var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+
+                if(mySwiper.translate < 50 && mySwiper.translate > 0){
+                    $(".init-loading").html('下拉刷新...').show();
+                }else if(mySwiper.translate > 50){
+                    $(".init-loading").html('释放刷新...').show();
+                }
+            },
+            onTouchEnd: function (swiper){
+                var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+                var _contentHeigth = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+
+                if(mySwiper.translate <= _viewHeight - _contentHeigth - 50 && mySwiper.translate < 0){
+                    if(loadFlag){
+                        $('.loadtip').html('正在加载...');
+                    }else{
+                        $('.loadtip').html('没有更多啦!');
+                    }
+                    
+                    setTimeout(function (){
+                        for(var i = 0; i < 5; i++){
+                            oi++;
+                            $('.list-group').eq(myswiper2.activeIndex).append('<li class="list-group-item">我是新加载出来的--'+oi+'</li>');
+                        }
+                        $('.loadtip').html('上拉加载更多...');
+                        mySwiper.update();
+                    },800)
+                }
+                if(mySwiper.translate >= 50){
+                    $('.init-loading').html('正在刷新...').show();
+                    $('.loadtip').html('上拉加载更多');
+                    loadFlag = true;
+
+                    setTimeout(function (){
+                        $('.refreshtip').show(0);
+                        $('.init-loading').html('刷新成功！');
+                        setTimeout(function (){
+                            $('.init-loading').html('').hide();
+                        },800);
+                        $('.loadtip').show(0);
+
+                        mySwiper.update();
+                    },1000)
+                }else if(mySwiper.translate >= 0 && mySwiper.translate < 50){
+                    $('.init-loading').html('').hide();
+                }
+                return false;
+            }
+        });
+        /*var myswiper2 = new Swiper('.swiper-container2',{
+            onTransitonEnd: function (swiper){
+                $('.w').css('transform','translate3d(0px,0px,0px)');
+                $('.swiper-container2 .swiper-slide-active').css('height','auto').siblings(".swiper-slide").css('height','0px');
+                mySwiper.update();
+                $('.tab a').eq(myswiper2.acviveIndex).addClass('active').siblings('a').removeClass('active');
+            }
+        });
+        $('.tab a').click(function (){
+            $(this).addClass('active').siblings('a').removeClass('active');
+            myswiper2.slideTo($(this).index(),500,false);
+            $('.w').css('transform','translate3d(0px,0px,0px)');
+            $('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+            mySwiper.update();
+        })*/
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+
+img {
+  vertical-align: middle; }
+
+body {
+  font-size: 0.2rem;
+  background-color: #F7F9FF; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+#pre-about {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: auto; }
+  #pre-about .head {
+    width: 100%;
+    height: 0.73rem; }
+    #pre-about .head .header {
+      width: 100%;
+      height: 0.73rem;
+      display: flex;
+      justify-content: space-between;
+      line-height: 0.73rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(90deg, #fa719a 1%, #fee141 100%); }
+      #pre-about .head .header .Sinlist {
+        color: #fff;
+        font-size: 0.26rem;
+        margin-left: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #pre-about .head .header .Prelist {
+        color: #fff;
+        font-size: 0.31rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        position: relative; }
+        #pre-about .head .header .Prelist p {
+          position: absolute;
+          left: 50%;
+          margin-left: -0.18rem;
+          bottom: 0;
+          width: 0.36rem;
+          height: 0.05rem;
+          background-color: #fff; }
+      #pre-about .head .header .Onelist {
+        color: #fff;
+        font-size: 0.26rem;
+        margin-right: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #pre-about .head .header .list {
+        width: 0.35rem;
+        height: auto; }
+        #pre-about .head .header .list img {
+          width: 100%;
+          height: auto; }
+  #pre-about #listData .list {
+    background-color: #fff;
+    margin-top: 0.18rem; }
+    #pre-about #listData .list img {
+      width: 6.4rem;
+      height: 6.4rem; }
+    #pre-about #listData .list .con {
+      padding: 0.3rem 0.26rem 0 0.26rem; }
+      #pre-about #listData .list .con .p1 {
+        height: 0.61rem;
+        line-height: 0.61rem;
+        position: relative; }
+        #pre-about #listData .list .con .p1 .name {
+          font-size: 0.22rem;
+          font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+          color: #333;
+          margin-right: 0.2rem;
+          vertical-align: middle; }
+        #pre-about #listData .list .con .p1 .sex1, #pre-about #listData .list .con .p1 .sex2, #pre-about #listData .list .con .p1 .real-name, #pre-about #listData .list .con .p1 .video, #pre-about #listData .list .con .p1 .vehicle {
+          font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif; }
+        #pre-about #listData .list .con .p1 .real-name img, #pre-about #listData .list .con .p1 .video img, #pre-about #listData .list .con .p1 .vehicle img, #pre-about #listData .list .con .p1 .vip img {
+          width: auto;
+          height: 0.3rem;
+          margin-right: 0.13rem; }
+        #pre-about #listData .list .con .p1 .sex1 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #FDC5F1;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #pre-about #listData .list .con .p1 .sex1 img {
+            height: 0.22rem;
+            width: auto;
+            vertical-align: middle; }
+          #pre-about #listData .list .con .p1 .sex1 .age {
+            font-size: 0.15rem;
+            display: inline-block; }
+        #pre-about #listData .list .con .p1 .sex2 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #b0e1ff;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #pre-about #listData .list .con .p1 .sex2 img {
+            height: 0.22rem;
+            width: auto;
+            vertical-align: middle; }
+          #pre-about #listData .list .con .p1 .sex2 .age {
+            font-size: 0.15rem;
+            display: inline-block; }
+        #pre-about #listData .list .con .p1 .about {
+          position: absolute;
+          right: 0;
+          width: 1.38rem;
+          height: 0.61rem;
+          background-color: #ffd200;
+          border-radius: 1rem;
+          color: #fff;
+          font-size: 0.26rem;
+          text-align: center;
+          font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #pre-about #listData .list .con .p2 {
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 0.26rem;
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif; }
+      #pre-about #listData .list .con .term {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #dbdbdb;
+        height: 0.69rem;
+        line-height: 0.69rem;
+        color: #aaa;
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+        font-size: 0.2rem; }
+        #pre-about #listData .list .con .term .tright {
+          color: #FF6B5D;
+          font-size: 0.18rem;
+          font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif; }
+          #pre-about #listData .list .con .term .tright span {
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+            font-size: 0.28rem;
+            font-weight: 600; }
+  #pre-about .addinv {
+    position: fixed;
+    right: 0.42rem;
+    bottom: 1.26rem;
+    width: 1.05rem;
+    height: 1.05rem; }
+  #pre-about .footer {
+    height: 0.7rem; }
+    #pre-about .footer .foot {
+      width: 5.1rem;
+      display: flex;
+      padding: 0.15rem 0.65rem 0.09rem;
+      justify-content: space-around;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: #fff;
+      box-shadow: 0 -1px 10px 0 #ccc; }
+      #pre-about .footer .foot .footli {
+        text-align: center; }
+        #pre-about .footer .foot .footli img {
+          height: 0.34rem; }
+        #pre-about .footer .foot .footli p {
+          font-size: 0.2rem;
+          color: #aaa;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+  #pre-about #pullDown, #pre-about #pullUp {
+    width: 100%;
+    text-align: center;
+    color: #aaa; }
+  #pre-about #pullUp {
+    margin-top: 0.2rem; }
+
+#pre-details {
+  position: absolute;
+  top: 0;
+  left: 0; }
+  #pre-details .header {
+    width: 6.4rem;
+    height: 0.75rem; }
+    #pre-details .header .head {
+      width: 5.88rem;
+      padding: 0 0.26rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      box-shadow: 0 0 0.2rem 0 #E8E8E8;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100; }
+      #pre-details .header .head .hleft {
+        width: 0.2rem;
+        height: 0.31rem; }
+        #pre-details .header .head .hleft img {
+          width: 100%;
+          height: auto; }
+      #pre-details .header .head .mid {
+        font-size: 0.31rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+      #pre-details .header .head .hright {
+        width: 0.35rem; }
+        #pre-details .header .head .hright img {
+          width: 100%;
+          height: auto; }
+  #pre-details .swiper-pagination-bullet-active {
+    background-color: #ffd200; }
+  #pre-details .banner {
+    width: 6.4rem;
+    height: 6.4rem; }
+    #pre-details .banner .swiper-slide img {
+      width: 100%;
+      height: 100%; }
+  #pre-details .contians1 {
+    width: 6.4rem; }
+    #pre-details .contians1 .con1 {
+      margin-bottom: 0.1rem;
+      padding: 0.5rem 0.25rem 0 0.25rem;
+      background-color: #fff; }
+      #pre-details .contians1 .con1 .personal {
+        display: flex;
+        position: relative; }
+        #pre-details .contians1 .con1 .personal .listimg {
+          width: 1.02rem;
+          height: 1.02rem;
+          border-radius: 50%;
+          margin: 0 0.3rem 0 0.08rem; }
+        #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) {
+          margin-top: 0.2rem;
+          margin-bottom: 0.2rem; }
+          #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .name {
+            font-size: 0.25rem;
+            font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+            margin-right: 0.18rem;
+            vertical-align: middle; }
+          #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .real-name img, #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .video img, #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .vehicle img, #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .vip img {
+            width: auto;
+            height: 0.3rem;
+            margin-right: 0.13rem; }
+          #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex1 {
+            display: inline-block;
+            padding: 0 0.07rem;
+            background-color: #FDC5F1;
+            border-radius: 0.05rem;
+            vertical-align: middle;
+            line-height: 0.26rem;
+            margin-right: 0.13rem;
+            color: #fff;
+            font-size: 0.14rem;
+            font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+            #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex1 img {
+              height: 0.22rem;
+              vertical-align: middle; }
+            #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex1 .age {
+              font-size: 0.15rem; }
+          #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex2 {
+            display: inline-block;
+            padding: 0 0.07rem;
+            background-color: #b0e1ff;
+            border-radius: 0.05rem;
+            vertical-align: middle;
+            line-height: 0.26rem;
+            margin-right: 0.13rem;
+            color: #fff;
+            font-size: 0.14rem;
+            font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+            #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex2 img {
+              height: 0.22rem;
+              vertical-align: middle; }
+            #pre-details .contians1 .con1 .personal .mid p:nth-of-type(1) .sex2 .age {
+              font-size: 0.15rem; }
+        #pre-details .contians1 .con1 .personal .mid p:nth-of-type(2) {
+          font-size: 0.2rem;
+          color: #aaa;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+          #pre-details .contians1 .con1 .personal .mid p:nth-of-type(2) .timer {
+            margin-right: 0.2rem; }
+        #pre-details .contians1 .con1 .personal .check {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          color: #FF6B5D;
+          font-size: 0.18rem;
+          font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif; }
+          #pre-details .contians1 .con1 .personal .check span {
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+            font-size: 0.28rem;
+            font-weight: 600; }
+      #pre-details .contians1 .con1 .meet {
+        margin-top: 0.26rem;
+        position: relative; }
+        #pre-details .contians1 .con1 .meet .cir {
+          width: 0.1rem;
+          height: 0.1rem;
+          background-color: #dbdbdb;
+          display: inline-block;
+          vertical-align: middle;
+          border-radius: 50%;
+          margin-right: 0.17rem; }
+        #pre-details .contians1 .con1 .meet .describe {
+          font-size: 0.29rem;
+          font-weight: 600;
+          color: #333;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem;
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis; }
+        #pre-details .contians1 .con1 .meet .yue, #pre-details .contians1 .con1 .meet .hour, #pre-details .contians1 .con1 .meet .remarks {
+          font-size: 0.23rem;
+          color: #666;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem;
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis; }
+        #pre-details .contians1 .con1 .meet .yue .yuesex, #pre-details .contians1 .con1 .meet .yue .project {
+          margin-right: 0.21rem; }
+        #pre-details .contians1 .con1 .meet .hour .date, #pre-details .contians1 .con1 .meet .hour .time-slot {
+          margin-right: 0.21rem; }
+        #pre-details .contians1 .con1 .meet .num {
+          font-size: 0.23rem;
+          color: #666;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem; }
+        #pre-details .contians1 .con1 .meet .remarks .firends, #pre-details .contians1 .con1 .meet .remarks .transfers, #pre-details .contians1 .con1 .meet .remarks .wine {
+          margin-right: 0.21rem; }
+        #pre-details .contians1 .con1 .meet .img1 .img-div {
+          height: 0.53rem;
+          margin-bottom: 0.29rem;
+          line-height: 0.53rem; }
+          #pre-details .contians1 .con1 .meet .img1 .img-div .vio {
+            width: 1.54rem;
+            height: 0.53rem;
+            background-color: #ffd200;
+            border-radius: 0.1rem;
+            display: inline-block; }
+            #pre-details .contians1 .con1 .meet .img1 .img-div .vio img {
+              width: 0.2rem;
+              height: 0.25rem;
+              margin-left: 0.21rem; }
+          #pre-details .contians1 .con1 .meet .img1 .img-div .second-num {
+            margin-left: 0.12rem;
+            font-size: 0.19rem;
+            color: #aaa;
+            font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+      #pre-details .contians1 .con1 .explain {
+        border-top: 1px solid #dbdbdb;
+        padding-top: 0.32rem;
+        height: 1.39rem;
+        font-size: 0.23rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        color: #aaa; }
+    #pre-details .contians1 .con3 {
+      padding: 0.35rem 0.25rem 0;
+      background-color: #fff; }
+      #pre-details .contians1 .con3 .impression .top-impre {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.24rem;
+        color: #aaa;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        margin-bottom: 0.45rem; }
+      #pre-details .contians1 .con3 .impression .btm-impre {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 0.26rem;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 0.18rem; }
+        #pre-details .contians1 .con3 .impression .btm-impre .impreli {
+          margin-right: 0.32rem;
+          width: 1.11rem;
+          height: 0.5rem;
+          text-align: center;
+          line-height: 0.5rem;
+          background-color: #ffd200;
+          margin-bottom: 0.17rem;
+          border-radius: 0.5rem;
+          color: #fff;
+          font-size: 0.21rem;
+          font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #pre-details .contians1 .con3 .comment .comli {
+        padding-top: 0.25rem;
+        border-bottom: 1px solid #ececec; }
+        #pre-details .contians1 .con3 .comment .comli .user {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.15rem; }
+          #pre-details .contians1 .con3 .comment .comli .user .userl {
+            display: flex; }
+            #pre-details .contians1 .con3 .comment .comli .user .userl .userimg {
+              width: 0.7rem;
+              height: 0.7rem;
+              border-radius: 50%;
+              margin-right: 0.18rem; }
+            #pre-details .contians1 .con3 .comment .comli .user .userl .userm {
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+              #pre-details .contians1 .con3 .comment .comli .user .userl .userm .name {
+                color: #aaa;
+                font-size: 0.21rem;
+                margin: 0.05rem 0 0.07rem; }
+              #pre-details .contians1 .con3 .comment .comli .user .userl .userm .timer {
+                font-size: 0.17rem;
+                color: #dbdbdb; }
+          #pre-details .contians1 .con3 .comment .comli .user .userr span {
+            display: inline-block;
+            width: 0.2rem;
+            height: 0.2rem; }
+            #pre-details .contians1 .con3 .comment .comli .user .userr span img {
+              width: 100%;
+              height: 100%; }
+        #pre-details .contians1 .con3 .comment .comli .comp {
+          font-size: 0.22rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+          color: #aaa;
+          line-height: 0.37rem;
+          margin-bottom: 0.24rem; }
+      #pre-details .contians1 .con3 .more {
+        height: auto; }
+        #pre-details .contians1 .con3 .more .yinxiang {
+          height: 0.85rem;
+          line-height: 0.85rem;
+          text-align: center;
+          color: #666;
+          opacity: 0.4;
+          font-size: 0.2rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+    #pre-details .contians1 .yaoyue {
+      width: 5.56rem;
+      height: 0.75rem;
+      background-color: #ffd200;
+      margin: 0.85rem auto 0.27rem;
+      text-align: center;
+      line-height: 0.75rem;
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      font-size: 0.26rem;
+      color: #fff;
+      border-radius: 0.5rem; }
+
+#wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  overflow: auto; }
+
+/*# sourceMappingURL=Precious-about.css.map */

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular-htmlDom</title>
+    <script src="//apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+    <div data-ng-app="" data-init="mySwitch=true">
+        <!-- ng-disabled指令
+            ng-disabled指令直接绑定应用程序数据到HTML的disabled属性 -->
+        <p>
+            <button data-ng-disabled="mySwitch">点我！</button>
+        </p>
+        <p>
+            <input type="checkbox" data-ng-model="mySwitch">按钮
+        </p>
+        <!-- ng-show 指令  隐藏或显示一个HTML元素 -->
+        <p data-ng-show="true">我是可见的。</p>
+        <p data-ng-show="false">我是不可见的。</p>
+
+    </div>
+
+</body>
+</html>

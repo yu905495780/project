@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="js/jquery.min.js"></script>
+<script>
+    //声明_czc对象:
+    var _czc = _czc || [];
+    $(function () {
+        //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+        _czc.push(["_setAccount", "1265104766"]);
+    });
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button onclick="_czc.push(['_trackEvent', '王者', '打分', '喜欢','5','dafen']);" class="btn1">喜欢</button>
+<button onclick="_czc.push(['_trackEvent', '王者', '打分', '不喜欢','5','dafen']);" class="btn2">不喜欢</button>
+
+<script>
+    $(".btn1").click(function () {
+        $(this).css("color","red");
+        alert("你已经投票了")
+    })
+</script>
+
+
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1265104766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1265104766%26online%3D1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>

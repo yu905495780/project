@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>Api调用接口</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" ng-href="./style/common/ifp.common.min.css?v=201612051044">
+    <link rel="stylesheet" type="text/css" ng-href="./style/ifp/ifpAdd.min.css?v=201612081538" />
+</head>
+<body ng-controller="ifpApiCtrl">
+
+<div class="container">
+    <h3 ng-class="'hidden'">
+        页面正载入中...
+    </h3>
+
+    <div class="ifpAddContainer hidden" ng-class="'show'">
+        <div class="page-header">
+            <h2></h2>
+        </div>
+        <form class="form-horizontal" role="form">
+            <div class="page-header">
+                <h3>
+                    <small>基本信息</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group mainFileGroupCodeLocation" >
+                        <label class="col-xs-2 control-label">返回格式<span class="text-danger"></span></label>
+                        <div class="col-xs-10">
+                          <label>Json</label>
+                        </div>
+                    </div>
+                    <div class="form-group externalIdLocation">
+                        <label class="col-xs-2 control-label">提交方式</label>
+                        <div class="col-xs-10">
+                            <label>  post</label>
+                        </div>
+                    </div>
+                    <div class="form-group productTypeLocation">
+                        <label class="col-xs-2 control-label">API名称 <span class="text-danger"></span></label>
+                        <div class="col-xs-10">
+                            <select class="form-control" id="sel"  ng-model="data.Type" ng-required="true"  ng-click="changeX(this)">
+                                <option value="1" selected="selected">新增单程</option>
+                                <option value="2">删除</option>
+                                <option value="3">修改</option>
+                                <option value="4">查询</option>
+                                <option value="5">批量修改状态</option>
+                                <option value="6">新增往返</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group airlineLocation" ng-class="{'has-error':!validate.ApiContent.valid}">
+                        <label class="col-xs-2 control-label">API请求参数<span class="text-danger">*</span></label>
+                        <div class="col-xs-10">
+                            <textarea type="text" id="requestvalue" class="form-control" placeholder="请输入API请求参数" ng-model="data.ApiContent" style="height: 300px"></textarea>
+                            <span ng-if="!validate.ApiContent.valid" class="help-block bg-danger">{{validate.ApiContent.reason}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group airlineLocation" >
+                        <label class="col-xs-2 control-label">API返回结果<span class="text-danger"></span></label>
+                        <div class="col-xs-10">
+                            <textarea type="text" class="form-control" id="ResultValue" style="height: 200px"></textarea>
+
+                        </div>
+                    </div>
+
+                  </fieldset>
+
+
+            <div class="center-block saveBtn">
+                <button type="button" class="btn btn-primary" ng-click="saveClick($ele)">测试</button>
+            </div>
+                </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="modal fade in showLoading" ng-class="{'hidden':!showLoading}">
+    <div class="modal-backdrop fade in"></div>
+    <section class="loading"></section>
+</div>
+
+<script type="text/ng-template" id="ifpDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="modal-title">提示</h4>
+    </div>
+    <div class="modal-body" id="modal-body" ng-bind-html="dialogContent | toTrust">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ifpConfirm.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="confrimNoClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="modal-title">确认</h4>
+    </div>
+    <div class="modal-body" id="modal-body" ng-bind-html="confirmContent | toTrust">
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+        <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+    </div>
+</script>
+<script src="./script/lib/require.js"></script>
+
+<script type="text/javascript">
+    requirejs(["script/main.js?v=201702131552"], function () {
+        require(["controller/ifpApiCtrl"]);
+    });
+</script>
+</body>
+</html>

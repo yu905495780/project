@@ -1,0 +1,582 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+
+img {
+  vertical-align: middle; }
+
+body {
+  font-size: 0.2rem;
+  background-color: #F7F9FF; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+#sin-agreement {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: auto; }
+  #sin-agreement .head {
+    width: 100%;
+    height: 0.73rem; }
+    #sin-agreement .head .header {
+      width: 100%;
+      height: 0.73rem;
+      display: flex;
+      justify-content: space-between;
+      line-height: 0.73rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      background: #FED12A; }
+      #sin-agreement .head .header .Sinlist {
+        color: #333;
+        font-size: 0.26rem;
+        margin-left: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        position: relative; }
+      #sin-agreement .head .header .Prelist {
+        color: #333;
+        font-size: 0.31rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+        #sin-agreement .head .header .Prelist p {
+          position: absolute;
+          left: 50%;
+          margin-left: -0.18rem;
+          bottom: 0;
+          width: 0.36rem;
+          height: 0.05rem;
+          background-color: #fff; }
+      #sin-agreement .head .header .Onelist {
+        color: #333;
+        font-size: 0.26rem;
+        margin-right: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #sin-agreement .head .header .list {
+        width: 0.35rem;
+        height: auto; }
+        #sin-agreement .head .header .list img {
+          width: 100%;
+          height: auto; }
+  #sin-agreement #listData .olli {
+    padding: 0.45rem 0.26rem 0.25rem 0.33rem;
+    margin-top: 0.16rem;
+    background-color: #fff; }
+    #sin-agreement #listData .olli .personal {
+      display: flex;
+      position: relative; }
+      #sin-agreement #listData .olli .personal .berson-img {
+        position: relative;
+        width: 1.02rem;
+        height: 1.02rem;
+        margin-right: 0.12rem; }
+        #sin-agreement #listData .olli .personal .berson-img .head-portrait {
+          width: 1.02rem;
+          height: 1.02rem;
+          border-radius: 50%; }
+        #sin-agreement #listData .olli .personal .berson-img .head-portrait1 {
+          width: 1.02rem;
+          height: 1.02rem;
+          box-sizing: border-box;
+          border-radius: 50%;
+          border: 2px solid #FEDE3D;
+          position: absolute;
+          z-index: 2; }
+        #sin-agreement #listData .olli .personal .berson-img .crown {
+          width: 0.7rem;
+          height: 0.58rem;
+          position: absolute;
+          left: -0.17rem;
+          top: -0.3rem;
+          z-index: 0; }
+      #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem; }
+        #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .name {
+          font-size: 0.25rem;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-right: 0.18rem;
+          vertical-align: middle; }
+        #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .real-name img, #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .video img, #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .vehicle img {
+          width: auto;
+          height: 0.3rem;
+          margin-right: 0.13rem; }
+        #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex1 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #FDC5F1;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex1 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex1 .age {
+            font-size: 0.15rem; }
+        #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex2 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #b0e1ff;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex2 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #sin-agreement #listData .olli .personal .mid p:nth-of-type(1) .sex2 .age {
+            font-size: 0.15rem; }
+      #sin-agreement #listData .olli .personal .mid p:nth-of-type(2) {
+        font-size: 0.2rem;
+        color: #aaa;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+        #sin-agreement #listData .olli .personal .mid p:nth-of-type(2) .timer {
+          margin-right: 0.2rem; }
+      #sin-agreement #listData .olli .personal .check {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 0.3rem;
+        font-family: "PingFang-SC-Medlum",Arial, Helvetica, sans-serif;
+        color: #FF6B5D; }
+    #sin-agreement #listData .olli .meet {
+      margin-top: 0.26rem;
+      position: relative; }
+      #sin-agreement #listData .olli .meet .cir {
+        width: 0.1rem;
+        height: 0.1rem;
+        background-color: #dbdbdb;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 50%;
+        margin-right: 0.17rem; }
+      #sin-agreement #listData .olli .meet .describe {
+        font-size: 0.25rem;
+        color: #333;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #sin-agreement #listData .olli .meet .yue, #sin-agreement #listData .olli .meet .hour {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #sin-agreement #listData .olli .meet .hour .date, #sin-agreement #listData .olli .meet .hour .time-slot {
+        margin-right: 0.21rem; }
+      #sin-agreement #listData .olli .meet .num {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+        #sin-agreement #listData .olli .meet .num .gender {
+          margin-right: 0.21rem; }
+      #sin-agreement #listData .olli .meet .img1 {
+        width: 1.2rem;
+        height: 1.2rem;
+        position: absolute;
+        right: 0;
+        bottom: 0; }
+        #sin-agreement #listData .olli .meet .img1 img {
+          width: 100%;
+          height: 100%; }
+  #sin-agreement .addinv {
+    position: fixed;
+    right: 0.42rem;
+    bottom: 1.26rem;
+    width: 1.05rem;
+    height: 1.05rem; }
+  #sin-agreement .footer {
+    height: 0.7rem; }
+    #sin-agreement .footer .foot {
+      width: 5.1rem;
+      display: flex;
+      padding: 0.15rem 0.65rem 0.09rem;
+      justify-content: space-around;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: #fff;
+      box-shadow: 0 -1px 10px 0 #ccc; }
+      #sin-agreement .footer .foot .footli {
+        text-align: center; }
+        #sin-agreement .footer .foot .footli img {
+          height: 0.34rem; }
+        #sin-agreement .footer .foot .footli p {
+          font-size: 0.2rem;
+          color: #aaa;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+  #sin-agreement #wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0.75rem;
+    bottom: 0.8rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px; }
+  #sin-agreement #scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    padding: 0; }
+  #sin-agreement #pullDown, #sin-agreement #pullUp {
+    width: 100%;
+    text-align: center;
+    color: #aaa; }
+  #sin-agreement #pullUp {
+    margin-top: 0.2rem; }
+
+#sin-details .header {
+  width: 6.4rem;
+  height: 0.75rem; }
+  #sin-details .header .head {
+    width: 5.88rem;
+    padding: 0 0.26rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 0 0.2rem 0 #E8E8E8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100; }
+    #sin-details .header .head .hleft {
+      width: 0.2rem;
+      height: 0.31rem; }
+      #sin-details .header .head .hleft img {
+        width: 100%;
+        height: auto; }
+    #sin-details .header .head .mid {
+      font-size: 0.31rem;
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+    #sin-details .header .head .hright {
+      width: 0.35rem; }
+      #sin-details .header .head .hright img {
+        width: 100%;
+        height: auto; }
+#sin-details .contians1 {
+  width: 100%; }
+  #sin-details .contians1 .con1 {
+    margin-bottom: 0.1rem;
+    padding: 0.5rem 0.25rem 0 0.25rem;
+    background-color: #fff; }
+    #sin-details .contians1 .con1 .personal {
+      display: flex;
+      position: relative; }
+      #sin-details .contians1 .con1 .personal .berson-img {
+        position: relative;
+        width: 1.02rem;
+        height: 1.02rem;
+        margin-right: 0.12rem; }
+        #sin-details .contians1 .con1 .personal .berson-img .head-portrait {
+          width: 1.02rem;
+          height: 1.02rem;
+          border-radius: 50%; }
+        #sin-details .contians1 .con1 .personal .berson-img .head-portrait1 {
+          width: 1.02rem;
+          height: 1.02rem;
+          box-sizing: border-box;
+          border-radius: 50%;
+          border: 2px solid #FEDE3D;
+          position: absolute;
+          z-index: 2; }
+        #sin-details .contians1 .con1 .personal .berson-img .crown {
+          width: 0.48rem;
+          height: 0.4rem;
+          position: absolute;
+          left: -0.05rem;
+          top: -0.18rem;
+          z-index: 0; }
+      #sin-details .contians1 .con1 .personal .mid p:nth-of-type(1) {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem; }
+        #sin-details .contians1 .con1 .personal .mid p:nth-of-type(1) .name {
+          font-size: 0.25rem;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-right: 0.18rem;
+          vertical-align: middle; }
+      #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) {
+        font-size: 0.2rem;
+        color: #aaa;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+        #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .real-name img, #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .video img, #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .vehicle img {
+          width: auto;
+          height: 0.3rem;
+          margin-right: 0.13rem; }
+        #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex1 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #FDC5F1;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex1 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex1 .age {
+            font-size: 0.15rem; }
+        #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex2 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #b0e1ff;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex2 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #sin-details .contians1 .con1 .personal .mid p:nth-of-type(2) .sex2 .age {
+            font-size: 0.15rem; }
+      #sin-details .contians1 .con1 .personal .check {
+        position: absolute;
+        right: 0;
+        top: 1.8rem;
+        font-size: 0.3rem;
+        font-family: "PingFang-SC-Medlum",Arial, Helvetica, sans-serif;
+        color: #FF6B5D; }
+      #sin-details .contians1 .con1 .personal .add-attention-to {
+        position: absolute;
+        top: 0.6rem;
+        right: 0;
+        width: 1.23rem;
+        height: 0.42rem; }
+        #sin-details .contians1 .con1 .personal .add-attention-to img {
+          width: 100%;
+          height: 100%; }
+    #sin-details .contians1 .con1 .meet {
+      margin-top: 0.26rem;
+      position: relative; }
+      #sin-details .contians1 .con1 .meet .cir {
+        width: 0.1rem;
+        height: 0.1rem;
+        background-color: #dbdbdb;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 50%;
+        margin-right: 0.17rem; }
+      #sin-details .contians1 .con1 .meet .describe {
+        font-size: 0.29rem;
+        font-weight: 600;
+        color: #333;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #sin-details .contians1 .con1 .meet .yue, #sin-details .contians1 .con1 .meet .hour, #sin-details .contians1 .con1 .meet .remarks {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #sin-details .contians1 .con1 .meet .hour .date, #sin-details .contians1 .con1 .meet .hour .time-slot {
+        margin-right: 0.21rem; }
+      #sin-details .contians1 .con1 .meet .num {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem; }
+        #sin-details .contians1 .con1 .meet .num .gender {
+          margin-right: 0.21rem; }
+      #sin-details .contians1 .con1 .meet .remarks .firends, #sin-details .contians1 .con1 .meet .remarks .transfers, #sin-details .contians1 .con1 .meet .remarks .wine {
+        margin-right: 0.21rem; }
+      #sin-details .contians1 .con1 .meet .img1 .ol1 {
+        display: flex;
+        flex-wrap: wrap; }
+        #sin-details .contians1 .con1 .meet .img1 .ol1 .img-li .img-div {
+          width: 1.38rem;
+          height: 1.38rem;
+          margin-bottom: 0.27rem;
+          border-radius: 0.1rem;
+          overflow: hidden;
+          margin-right: 0.09rem;
+          display: inline-block; }
+          #sin-details .contians1 .con1 .meet .img1 .ol1 .img-li .img-div .img1 {
+            width: 100%;
+            height: 100%; }
+        #sin-details .contians1 .con1 .meet .img1 .ol1 .img-li1 .img-div {
+          width: 1.38rem;
+          height: 1.38rem;
+          border-radius: 0.1rem;
+          border: 1px solid #dbdbdb;
+          margin-bottom: 0.27rem;
+          text-align: center; }
+          #sin-details .contians1 .con1 .meet .img1 .ol1 .img-li1 .img-div .img2 {
+            width: 0.27rem;
+            height: 0.31rem;
+            margin: 0.38rem 0 0.2rem; }
+          #sin-details .contians1 .con1 .meet .img1 .ol1 .img-li1 .img-div .second {
+            font-size: 0.17rem;
+            font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            color: #aaa; }
+      #sin-details .contians1 .con1 .meet .img1-li1 {
+        margin-bottom: 0.25rem; }
+        #sin-details .contians1 .con1 .meet .img1-li1 .timer {
+          font-size: 0.2rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+          color: #aaa; }
+        #sin-details .contians1 .con1 .meet .img1-li1 .distance {
+          font-size: 0.2rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+          color: #aaa; }
+    #sin-details .contians1 .con1 .explain {
+      border-top: 1px solid #dbdbdb;
+      padding-top: 0.32rem;
+      height: 1.39rem;
+      font-size: 0.23rem;
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      color: #aaa; }
+  #sin-details .contians1 .con2 .content2 {
+    padding: 0 0.25rem;
+    background-color: #fff;
+    height: 1.03rem;
+    line-height: 1.03rem;
+    margin-bottom: 0.1rem;
+    display: flex;
+    justify-content: space-between; }
+    #sin-details .contians1 .con2 .content2 .lgift {
+      font-size: 0.23rem;
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      color: #aaa; }
+    #sin-details .contians1 .con2 .content2 .rgift {
+      color: #666;
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      font-size: 0.22rem; }
+      #sin-details .contians1 .con2 .content2 .rgift .gift-img {
+        width: 0.6rem;
+        height: 0.6rem;
+        border: 1px solid #dbdbdb;
+        border-radius: 0.05rem;
+        margin-right: 0.27rem; }
+      #sin-details .contians1 .con2 .content2 .rgift .num {
+        margin: 0 0.25rem  0.21rem; }
+  #sin-details .contians1 .con3 {
+    border-top: 1px solid transparent;
+    background-color: #fff; }
+    #sin-details .contians1 .con3 .impression {
+      margin: 0.35rem 0.25rem 0; }
+      #sin-details .contians1 .con3 .impression .top-impre {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.24rem;
+        color: #aaa;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        margin-bottom: 0.45rem; }
+      #sin-details .contians1 .con3 .impression .btm-impre {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 0.26rem;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 0.18rem; }
+        #sin-details .contians1 .con3 .impression .btm-impre .impreli {
+          margin-right: 0.32rem;
+          width: 1.11rem;
+          height: 0.5rem;
+          text-align: center;
+          line-height: 0.5rem;
+          background-color: #ffd200;
+          margin-bottom: 0.17rem;
+          border-radius: 0.5rem;
+          color: #fff;
+          font-size: 0.21rem;
+          font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+    #sin-details .contians1 .con3 .comment {
+      margin: 0 0.25rem 0; }
+      #sin-details .contians1 .con3 .comment .comli {
+        padding-top: 0.25rem;
+        border-bottom: 1px solid #ececec; }
+        #sin-details .contians1 .con3 .comment .comli .user {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.15rem; }
+          #sin-details .contians1 .con3 .comment .comli .user .userl {
+            display: flex; }
+            #sin-details .contians1 .con3 .comment .comli .user .userl .userimg {
+              width: 0.7rem;
+              height: 0.7rem;
+              border-radius: 50%;
+              margin-right: 0.18rem; }
+            #sin-details .contians1 .con3 .comment .comli .user .userl .userm {
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+              #sin-details .contians1 .con3 .comment .comli .user .userl .userm .name {
+                color: #aaa;
+                font-size: 0.21rem;
+                margin: 0.05rem 0 0.07rem; }
+              #sin-details .contians1 .con3 .comment .comli .user .userl .userm .timer {
+                font-size: 0.17rem;
+                color: #dbdbdb; }
+          #sin-details .contians1 .con3 .comment .comli .user .userr span {
+            display: inline-block;
+            width: 0.2rem;
+            height: 0.2rem; }
+            #sin-details .contians1 .con3 .comment .comli .user .userr span img {
+              width: 100%;
+              height: 100%; }
+        #sin-details .contians1 .con3 .comment .comli .comp {
+          font-size: 0.22rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+          color: #aaa;
+          line-height: 0.37rem;
+          margin-bottom: 0.24rem; }
+    #sin-details .contians1 .con3 .more {
+      height: auto; }
+      #sin-details .contians1 .con3 .more .yinxiang {
+        height: 0.85rem;
+        line-height: 0.85rem;
+        text-align: center;
+        color: #666;
+        opacity: 0.4;
+        font-size: 0.2rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+  #sin-details .contians1 .yaoyue {
+    width: 5.56rem;
+    height: 0.75rem;
+    background-color: #ffd200;
+    margin: 0.85rem auto 0.27rem;
+    text-align: center;
+    line-height: 0.75rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+    font-size: 0.26rem;
+    color: #000;
+    border-radius: 0.5rem; }
+
+/*# sourceMappingURL=Sincere-agreement.css.map */

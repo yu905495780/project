@@ -1,0 +1,39 @@
+﻿.ifpAddContainer .help-block {
+  -ms-word-break: break-word;
+  word-break: break-word;
+}
+.ifpAddContainer .help-block.text-info {
+  color: #737373;
+  margin-bottom: 5px;
+}
+.ifpAddContainer .calendar .col-xs-3:first-of-type {
+  padding-left: 0;
+}
+.ifpAddContainer .calendar .clearfix {
+  clear: both;
+  margin-top: 10px;
+}
+.ifpAddContainer .passengerType .btn-primary.active,
+.ifpAddContainer .autoPublished .btn-primary.active {
+  opacity: 1;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  background-color: #398439;
+  border-color: #255625;
+}
+.ifpAddContainer .passengerType .btn-default.active,
+.ifpAddContainer .autoPublished .btn-default.active {
+  opacity: 1;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  background-color: #398439;
+  border-color: #255625;
+  color: white;
+}
+.ifpAddContainer .saveBtn {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.ifpAddContainer .saveBtn .btn-danger {
+  margin-left: 25px;
+}

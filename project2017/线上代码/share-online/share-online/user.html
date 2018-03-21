@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分享人</title>
+    <meta name="viewport"
+          content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <link rel="stylesheet" href="css/zhencheng.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+<div class="box-wrap">
+    <div class="box">
+        <div class="detalis">
+            <img id="avatar" src="img/aaa_03.png" alt="" class="banner">
+            <p class="title-1"><span class="name" id="nickname">像雾像雨又像风</span><span class="sex1" id="gender"><img src="img/boy2x.png" alt="" id="sex"><span class="age" id="age" style="display: none">15</span></span><span class="real-name" id="real" style="display: none"><img src="img/user.png" alt=""></span><span id="video" class="video" style="display: none"><img src="img/vedio.png" alt=""></span><span class="vehicle" id="car" style="display: none"><img src="img/car-brand-16.png" alt="" id="carId"></span><span class="vip" id="vip" style="display: none"><img src="img/vip-small.png" alt=""></span></p>
+            <p id="syid" class="ider">ID:238752</p>
+            <p id="tag" class="ider">标签：萌妹子、大长腿、歌神</p>
+            <p id="signature" class="txt">陪伴时最长情的告白！过文艺的一天</p>
+        </div>
+
+        <div class="icon clearfix">
+            <div class="i-box">
+                <p class="i-con">长按二维码，下载APP</p>
+                <p class="i-con1">神约·发现身边未知的精彩</p>
+            </div>
+            <div class="code"><img src="img/code.png" alt="" class="code-img"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function GetQueryString(name)
+    {
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if(r!=null)return decodeURIComponent(r[2]); return null;
+    }
+    
+    var avatar = document.getElementById("avatar");
+    avatar.src=GetQueryString("avatar");
+
+    var nickname = document.getElementById("nickname");
+    nickname.innerHTML=GetQueryString("nickname").replace(/\+/g, " ");
+
+    var syid = document.getElementById("syid");
+    syid.innerHTML="ID:" + GetQueryString("syid");
+    if(GetQueryString("vip") == "true") {
+        var vip = document.getElementById("vip");
+        vip.style.display = 'inline-block';
+    }
+
+    if(GetQueryString("real") == "1"){
+        var real = document.getElementById("real");
+        real.style.display = 'inline-block';
+    }
+
+    if(GetQueryString("gender") == "0"){
+        var gender = document.getElementById("gender");
+        gender.className = "sex";
+        var sex = document.getElementById("sex");
+        sex.src = "img/girl2x.png";
+    }else if(GetQueryString("gender") == "1"){
+        var gender = document.getElementById("gender");
+        gender.className = "sex1";
+        var sex = document.getElementById("sex");
+        sex.src = "img/boy2x.png";
+    }
+    if(GetQueryString("age") != null){
+        var age = document.getElementById("age");
+        age.style.display = 'inline-block';
+        age.innerHTML = GetQueryString("age");
+    }
+
+    if(GetQueryString("video") == "1"){
+        var video = document.getElementById("video");
+        video.style.display = 'inline-block';
+    }
+
+    if (null != GetQueryString("carId")) {
+        var car = document.getElementById("car");
+        car.style.display='inline-block';
+        var carId = document.getElementById("carId");
+        carId.src="img/car/car-brand-" + GetQueryString("carId") + ".png"
+    }
+
+    var tag = document.getElementById("tag");
+    tag.innerHTML=GetQueryString("tag");
+    var signature = document.getElementById("signature");
+    signature.innerHTML=GetQueryString("signature").replace(/\+/g, " ");
+
+</script>
+
+</body>
+</html>

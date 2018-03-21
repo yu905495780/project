@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模糊查询</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <style>
+        #myInput {
+            width: 100%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+        #myTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 18px;
+        }
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 12px;
+        }
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+<table id="myTable">
+    <tr class="header">
+        <th style="width:60%;">项目名称</th>
+        <th style="width:40%;">时间</th>
+    </tr>
+    <tr>
+        <td>redPackets</td>
+        <td>2017.2.6</td>
+    </tr>
+    <tr>
+        <td>traffic</td>
+        <td>2016.12.25</td>
+    </tr>
+    <tr>
+        <td>creditCard</td>
+        <td>2017.1.18</td>
+    </tr>
+    <tr>
+        <td>returnMoney</td>
+        <td>2016.11.25</td>
+    </tr>
+    <tr>
+        <td>哈哈哈</td>
+        <td>2016.11.25</td>
+    </tr>
+</table>
+<script>
+    function myFunction() {
+        // 声明变量
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        // 循环表格每一行，查找匹配项
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

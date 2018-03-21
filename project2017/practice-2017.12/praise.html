@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>praise</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .text-content{
+            min-width:700px;
+            border-bottom: 1px solid #e7e7e7;
+            border-top: 1px solid #e7e7e7;
+            background: #f4f4f4;
+        }
+        .text-content h1{
+            text-align:center;
+            font-size: 20px;
+            padding-top: 0px;
+            color: #EB4F38;
+        }
+        .text-content p{
+            padding: 10px 100px 40px 100px;
+            clear: both;
+            color: #333;
+            display: block;
+            font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 auto;
+            outline: medium none;
+            position: relative;
+            width: 900px;
+            word-wrap: break-word;
+        }
+        /*动态点赞开始*/
+        .praise{
+            width:40px;
+            height:40px;
+            margin: 50px auto;
+            cursor: pointer;
+            font-size: 12px;
+            text-align:center;
+            position: relative;
+        }
+        #praise{
+            display:block;
+            width:40px;
+            height:40px;
+            margin:0 auto;
+        }
+        #praise-txt{
+            height:25px;
+            line-height:25px;
+            display: block;
+        }
+        .praise img{
+            width:40px;
+            height:40px;
+            display:block;
+            margin: 0 auto;
+        }
+        .praise img.animation{
+            animation: myfirst 0.5s;
+            -moz-animation: myfirst 0.5s;	/* Firefox */
+            -webkit-animation: myfirst 0.5s;	/* Safari 和 Chrome */
+            -o-animation: myfirst 0.5s;	/* Opera */
+        }
+        #add-num{
+            display:none;
+        }
+        #add-num .add-animation{
+            color: #000;
+            position:absolute;
+            top:-15px;
+            left: 10px;
+            font-size: 15px;
+            opacity: 0;
+            filter: Alpha(opacity=0);
+            -moz-opacity:0;
+            animation: mypraise 0.5s ;
+            -moz-animation: mypraise 0.5s ;	/* Firefox */
+            -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+            -o-animation: mypraise 0.5s ;	/* Opera */
+            font-style:normal;
+        }
+        .praise .hover , #add-num .add-animation.hover , #praise-txt.hover{
+            color: #EB4F38;
+        }
+
+        /*点赞图标放大动画开始*/
+        @keyframes myfirst
+        {
+            0%{
+                width:40px;
+                height:40px;
+            }
+            50%{
+                width:50px;
+                height:50px;
+            }
+            100% {
+                width:40px;
+                height:40px;
+            }
+        }
+
+        @-moz-keyframes myfirst /* Firefox */
+        {
+            0%{
+                width:40px;
+                height:40px;
+            }
+            50%{
+                width:50px;
+                height:50px;
+            }
+            100% {
+                width:40px;
+                height:40px;
+            }
+        }
+
+        @-webkit-keyframes myfirst /* Safari 和 Chrome */
+        {
+            0%{
+                width:40px;
+                height:40px;
+            }
+            50%{
+                width:50px;
+                height:50px;
+            }
+            100% {
+                width:40px;
+                height:40px;
+            }
+        }
+
+        @-o-keyframes myfirst /* Opera */
+        {
+            0%{
+                width:40px;
+                height:40px;
+            }
+            50%{
+                width:50px;
+                height:50px;
+            }
+            100% {
+                width:40px;
+                height:40px;
+            }
+        }
+        /*点赞图标放大动画结束*/
+        /*点赞数量加减动画开始*/
+        @keyframes mypraise
+        {
+            0%{
+                top:-15px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+            25%{
+                top:-20px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            50%{
+                top:-25px;
+                opacity: 1;
+                filter: Alpha(opacity=100);
+                -moz-opacity:1;
+            }
+            75%{
+                top:-30px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            100% {
+                top:-35px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+        }
+
+        @-moz-keyframes mypraise /* Firefox */
+        {
+            0%{
+                top:-15px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+            25%{
+                top:-20px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            50%{
+                top:-25px;
+                opacity: 1;
+                filter: Alpha(opacity=100);
+                -moz-opacity:1;
+            }
+            75%{
+                top:-30px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            100% {
+                top:-35px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+        }
+
+        @-webkit-keyframes mypraise /* Safari 和 Chrome */
+        {
+            0%{
+                top:-15px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+            25%{
+                top:-20px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            50%{
+                top:-25px;
+                opacity: 1;
+                filter: Alpha(opacity=100);
+                -moz-opacity:1;
+            }
+            75%{
+                top:-30px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            100% {
+                top:-35px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+        }
+
+        @-o-keyframes mypraise /* Opera */
+        {
+            0%{
+                top:-15px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+            25%{
+                top:-20px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            50%{
+                top:-25px;
+                opacity: 1;
+                filter: Alpha(opacity=100);
+                -moz-opacity:1;
+            }
+            75%{
+                top:-30px;
+                opacity: 0.5;
+                filter: Alpha(opacity=50);
+                -moz-opacity:0.5;
+            }
+            100% {
+                top:-35px;
+                opacity: 0;
+                filter: Alpha(opacity=0);
+                -moz-opacity:0;
+            }
+        }
+    </style>
+    <script src="../Practice-2018.2/js/jquery.min.js"></script>
+</head>
+<body>
+<!--动态点赞开始-->
+<div class="text-content">
+    <h1>艾弗森、科比、詹姆斯，谁的得分能力更强？</h1>
+    <p>
+        科比、艾弗森、詹姆斯都是顶级的得分高手，科比进攻技巧多样、几乎没有攻击死角。艾弗森速度快如闪电、突破无解。詹姆斯身体素质惊人、碾压对手。<br>
+    </p>
+</div>
+<div class="praise">
+    <span id="praise"><img src="http://www.jq22.com/tp/0bf5aaed-99cb-4475-bfd2-7964d1343357.png" id="praise-img"></span>
+    <span id="praise-txt">1455</span>
+    <span id="add-num"><em>+1</em></span>
+</div>
+<!--动态点赞结束-->
+
+<script>
+    $(function() {
+        $("#praise").click(function() {
+            var praise_img = $("#praise-img");
+            var text_box = $("#add-num");
+            var praise_txt = $("#praise-txt");
+            var num = parseInt(praise_txt.text());
+            if (praise_img.attr("src") == ("")) {
+                $(this).html("<img src='http://www.jq22.com/tp/0bf5aaed-99cb-4475-bfd2-7964d1343357.png' id='praise-img' class='animation' />");
+                praise_txt.removeClass("hover");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -= 1;
+                praise_txt.text(num)
+            } else {
+                $(this).html("<img src='http://www.jq22.com/tp/0bf5aaed-99cb-4475-bfd2-7964d1343357.png' id='praise-img' class='animation' />");
+                praise_txt.addClass("hover");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num += 1;
+                praise_txt.text(num)
+            }
+        });
+    })
+</script>
+</body>
+</html>

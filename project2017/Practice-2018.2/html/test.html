@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<meta http-equiv="Access-Control-Allow-Origin" content="*">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.css">-->
+    <title>追梦流云</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script type="text/javascript" charset="utf-8" src="../js/iscroll.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/jquery.min.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.2.0.js"></script>-->
+    <script type="text/javascript">
+        var myScroll;
+        var pullDownEl;
+        var pullDownOffset;
+        var pullUpEl;
+        var pullUpOffset;
+        var count = 0;
+        function pullDownAction() {//上拉事件
+            setTimeout(function () {
+                var el, li, i;
+                el = document.getElementById('add');//在id为add的标签中加入3行
+                for (i = 0; i < 3; i++) {//增加3条li标签
+                    li = document.createElement('li');//增加li标签
+                    li.innerText = '追梦！！ 这是我第' + (++count) + "次追梦！";//增加内容
+                    el.insertBefore(li, el.childNodes[0]);//在id为add的子标签中加入li标签
+                }
+                myScroll.refresh(); // 刷新
+            }, 1000); //1秒
+        }
+        function pullUpAction() {//下拉事件
+            setTimeout(function () {
+                var el, li, i;
+                el = document.getElementById('add');
+
+                for (i = 0; i < 3; i++) {
+                    li = document.createElement('li');
+                    li.innerText = '追梦！！ 这是我第' + (++count) + "次追梦！";
+                    el.appendChild(li, el.childNodes[0]);
+                }
+                myScroll.refresh();
+            }, 1000);
+        }
+        function loaded() {//加载完成
+            pullDownEl = document.getElementById('pullDown');
+            pullDownOffset = pullDownEl.offsetHeight;
+            pullUpEl = document.getElementById('pullUp');
+            pullUpOffset = pullUpEl.offsetHeight;
+            myScroll = new iScroll(
+                    'wrapper',
+                    {
+                        useTransition: true,
+                        topOffset: pullDownOffset,
+                        onRefresh: function () {
+                            if (pullDownEl.className.match('loading')) {
+                                pullDownEl.className = '';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                            } else if (pullUpEl.className.match('loading')) {
+                                pullUpEl.className = '';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = '显示更多...';
+                            }
+                        },
+                        onScrollMove: function () {
+                            if (this.y > 5 && !pullDownEl.className.match('flip')) {
+                                pullDownEl.className = 'flip';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = '准备刷新...';
+                                this.minScrollY = 0;
+                            } else if (this.y < 5
+                                    && pullDownEl.className.match('flip')) {
+                                pullDownEl.className = '';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = '准备刷新...';
+                                this.minScrollY = -pullDownOffset;
+                            } else if (this.y < (this.maxScrollY - 5)
+                                    && !pullUpEl.className.match('flip')) {
+                                pullUpEl.className = 'flip';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = '准备刷新...';
+                                this.maxScrollY = this.maxScrollY;
+                            } else if (this.y > (this.maxScrollY + 5)
+                                    && pullUpEl.className.match('flip')) {
+                                pullUpEl.className = '';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉显示更多...';
+                                this.maxScrollY = pullUpOffset;
+                            }
+                        },
+                        onScrollEnd: function () {
+                            if (pullDownEl.className.match('flip')) {
+                                pullDownEl.className = 'loading';
+                                pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Loading...';
+                                pullDownAction(); // Execute custom function (ajax call?)
+                            } else if (pullUpEl.className.match('flip')) {
+                                pullUpEl.className = 'loading';
+                                pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';
+                                pullUpAction(); // Execute custom function (ajax call?)
+                            }
+                        }
+                    });
+
+
+        }
+
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(loaded, 200);
+        }, false);
+    </script>
+    <style type="text/css" media="all">
+        li, .list_style li {
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        #wrapper {
+            position: absolute;
+            z-index: 1;
+            top: 80px;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            padding: 0px;
+        }
+
+        #scroller {
+            position: absolute;
+            z-index: 1;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            width: 100%;
+            padding: 0;
+        }
+
+        #pullDown, #pullUp {
+            background: #fff;
+            height: 40px;
+            line-height: 40px;
+            padding: 5px 10px;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+            font-size: 14px;
+            color: #888;
+        }
+
+        #pullDown .pullDownIcon, #pullUp .pullUpIcon {
+            display: block;
+            float: left;
+            width: 40px;
+            height: 40px;
+            background: url(./img/pull-icon@2x.png) 0 0 no-repeat;
+            -webkit-background-size: 40px 80px;
+            background-size: 40px 80px;
+            -webkit-transition-property: -webkit-transform;
+            -webkit-transition-duration: 250ms;
+        }
+
+        #pullDown .pullDownIcon {
+            -webkit-transform: rotate(0deg) translateZ(0);
+        }
+
+        #pullUp .pullUpIcon {
+            -webkit-transform: rotate(-180deg) translateZ(0);
+        }
+
+        #pullDown.flip .pullDownIcon {
+            -webkit-transform: rotate(-180deg) translateZ(0);
+        }
+
+        #pullUp.flip .pullUpIcon {
+            -webkit-transform: rotate(0deg) translateZ(0);
+        }
+
+        #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+            background-position: 0 100%;
+            -webkit-transform: rotate(0deg) translateZ(0);
+            -webkit-transition-duration: 0ms;
+            -webkit-animation-name: loading;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: linear;
+        }
+
+        @-webkit-keyframes loading {
+            from {
+                -webkit-transform: rotate(0deg) translateZ(0);
+
+            }
+            to {
+                -webkit-transform: rotate(360deg) translateZ(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<div data-role="page" data-theme="b">
+    <div data-role="header" data-position="fixed">
+        <h3>追梦流云</h3>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#">追</a></li>
+                <li><a href="#">梦</a></li>
+                <li><a href="#">流</a></li>
+                <li><a href="#">云</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="wrapper" data-role="content">
+        <div id="scroller">
+            <div id="pullDown">
+                <span class="pullDownIcon"></span> <span class="pullDownLabel">准备刷新...</span>
+            </div>
+            <ul id="add" class="list_style" data-role="listview">
+                <li>我是天边的一片云，</li>
+                <li>流动的 是我，</li>
+                <li>在那遥远的天际，</li>
+                <li>那里是完美世界，</li>
+                <li>我要带上梦想的期冀，</li>
+                <li>我要迈出坚定的步伐</li>
+                <li>前去追梦！</li>
+                <li>————来自追梦流云</li>
+                <li>你想的越多，顾虑就越多，</li>
+                <li>什么都不想的时候反而能一往直前，</li>
+                <li>你害怕的越多，困难就越多，</li>
+                <li>什么都不怕的时候一切反而没那么难。</li>
+                <li>别害怕,别顾虑，想到就去做，</li>
+                <li>这世界就是这样:</li>
+                <li>当你不敢去实现梦想的时候,</li>
+                <li>梦想会离你越来越远，</li>
+                <li>当你勇敢地去追梦的时候</li>
+                <li>全世界都会来帮你.</li>
+                <li>谨此献给：</li>
+                <li>所有正在追梦的你</li>
+            </ul>
+            <div id="pullUp">
+                <span class="pullUpIcon"></span><span class="pullUpLabel">显示更多...</span>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar" style="height: 60px;">
+            <ul>
+                <li><a href="#" data-role="button" data-icon="gear">追梦</a></li>
+                <li><a href="#" data-role="button" data-icon="gear">流云</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

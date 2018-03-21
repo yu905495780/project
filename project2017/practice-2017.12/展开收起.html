@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文字的展开和收起</title>
+    <script src="../Practice-2018.2/js/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        .p1{
+            width:300px;
+            /*border:1px solid;*/
+            overflow: hidden;
+        }
+        .phh{
+            padding: 5px;
+            color:palevioletred;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p class="p1">文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起文字的展开和收起</p>
+
+    <script>
+        var sildeheight = 100;
+        var defheight = $(".p1").height();
+        if(defheight >= sildeheight){
+            $(".p1").css('height',sildeheight + 'px');
+            $("body").append("<a class='phh'>展开</a>");
+        }
+        $(".phh").click(function (){
+            var curheigth = $(".p1").height();
+            if(curheigth == sildeheight){
+                $(".p1").animate({
+                    height: defheight
+                },"normal");
+                $(".phh").html("收起")
+            }else{
+                $(".p1").animate({
+                    height: sildeheight
+                },"normal");
+                $(".phh").html("展开")
+            }
+            return false;
+        })
+    </script>
+</body>
+</html>

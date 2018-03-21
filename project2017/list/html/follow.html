@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圈子</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/follow.css">
+    <script src="../js/app.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/iscroll.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<div class="netbox">
+    <div class="header-wrap">
+        <div class="header-box">
+            <div class="head-top">
+                <span style="display: inline-block;width: 0.5rem;height: 0.75rem"></span><span>动态</span> <span class="mask"><img src="../img/1.icon_nav_screen@2x.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="pullDown">
+            <span class="pullDownLabel">
+                下拉刷新~~
+            </span>
+            </div>
+            <ul id="listData">
+
+            </ul>
+            <div id="pullUp">
+            <span class="pulluopLabel">
+                上拉加载~~
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mask-wrapper">
+        <ul class="mask-box">
+            <li class="mask-li1"><span><img src="../img/select-alls.png" alt=""></span><span style="color: #999;">全部动态</span></li>
+            <li class="mask-li2"><span><img src="../img/recomment-hy.png" alt=""></span><span style="color: #FED029;">热门推荐</span></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <ul class="foot">
+            <li class="footli">
+                <a href="Sincere-agreements.html">
+                    <img src="../img/1.but_down_nav_yue_nor@2x.png" alt="">
+                    <p>相约</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="network.html">
+                    <img src="../img/1.but_down_nav_circle_sel@2x.png" alt="">
+                    <p style="color: #333;font-weight: 600;">圈子</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+
+    $(".mask").click(function () {
+        $(".mask-wrapper").css("display","block")
+    });
+    $(".mask-li1").click(function () {
+        window.location.href='network.html'
+//        alert("111")
+    });
+    $(".mask-li2").click(function () {
+        window.location.href='follow.html'
+    });
+    $(".mask-wrapper").click(function () {
+        $(".mask-wrapper").css("display","none")
+    })
+
+    // dom加载完成之后执行
+    document.addEventListener("DOMContentLoaded",function(){
+        setTimeout(loaded,50);
+    },false);
+
+    // 阻止冒泡
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
+
+    function loaded(){
+        pullDownFl=document.getElementById("pullDown");
+        pullupFl=document.getElementById("pullUp");
+        puDownOffset=pullDownFl.offsetHeight;
+        puupOffset=pullupFl.offsetHeight;
+        myScroll=new iScroll("wrapper",{
+            userTransition:true,  //过度
+            topOffset:puDownOffset,
+            onScrollMove:function(){
+                if(this.y > 5 && !pullDownFl.className.match("flip")){
+                    pullDownFl.className="flip";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="释放刷新";
+                    this.minScrollY=0;
+                }else if(this.y < 5 && pullDownFl.className.match("flip")){
+                    pullDownFl.className=" ";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="Pull down to refresh…";
+                    this.minScrollY=-puDownOffset;
+                }else if(this.y < (this.maxScrollY - 5) && !pullupFl.className.match("flip")){
+                    pullupFl.className="flip";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="释放加载";
+                    this.maxScrollY = this.maxScrollY;
+                }else if(this.y > (this.maxScrollY + 5) && pullupFl.className.match("flip")){
+                    pullupFl.className=" ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="pull uo to load more…";
+                    this.maxScrollY=puupOffset;
+                }
+            },
+            onScrollEnd:function(){
+                if(pullDownFl.className.match("flip")){
+                    pullDownFl.className="loading";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="加载中";
+                    //刷新数据
+                    pullDownAction();
+                }else if(pullupFl.className.match("flip")){
+                    pullupFl.className="loading";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="加载中";
+                    //加载数据
+                    pullUpAction();
+                }
+            },
+            onRefresh:function(){
+                if(pullDownFl.className.match("loading")){
+                    pullDownFl.className=" ";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="下拉刷新";
+                }else if(pullupFl.className.match("loading")){
+                    pullupFl.className=" ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="上拉加载";
+                }
+            }
+        });
+        loadData();
+    }
+
+    // 判断性别年龄
+    function judgeSexAge(agender,aage,asex){
+        if(agender == "0") {
+            if(aage == null){
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }else if(agender == "1"){
+            if(aage == null){
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }
+        return asex;
+    }
+
+    //判断视频认证是否通过
+    function video(video,videohtml) {
+        var videohtml = "";
+        if(video == "1"){
+            videohtml = '<img src="../img/video-auth.png" alt="">'
+        }else{
+            videohtml = ''
+        }
+        return videohtml
+    }
+    //判断实名认证是否通过
+    function idprove(idprove,idprovehtml) {
+        var idprovehtml = "";
+        if(idprove == "1"){
+            idprovehtml = '<img src="../img/real-name.png" alt="">'
+        }else{
+            idprovehtml = ''
+        }
+        return idprovehtml;
+    }
+    // 判断用户是否是vip
+    function judgevip(vvip,vip1,abc) {
+        if(abc == null){
+            if(vvip == false){
+                vip1 = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="head-portrait">'
+            }else{
+                vip1 = '<img src="../img/vip.png" alt="" class="crown"><img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="head-portrait1">'
+            }
+        }else{
+            if(vvip == false){
+                vip1 = '<img src="'+avatarUrl+''+abc+'" alt="" class="head-portrait">'
+            }else{
+                vip1 = '<img src="../img/vip.png" alt="" class="crown"><img src="'+avatarUrl+''+abc+'" alt="" class="head-portrait1">'
+            }
+        }
+
+        return vip1
+    }
+
+    // 位置是否显示
+    function position(positions,positionhtml){
+        var positionhtml = "";
+        if(positions == null){
+            positionhtml = " ";
+        }else{
+            positionhtml = '<img src="../img/positions.png" alt=""> <span>'+positions+'</span>';
+        }
+        return positionhtml;
+    }
+
+    // 判断用户是否认证车辆
+    function judgeche(che,checon){
+        var checon = '';
+        if(che == null){
+            checon = '';
+        }else{
+            checon = '<img src="'+avatarUrl+''+che+'"/>';
+        }
+        return checon;
+    }
+
+    // 判断用户发表圈子的类型
+    function funtype(funtype,funhtml,vip,avatar,nickname,gender,age,car,timer,watchNum,praiseNum,rewardNum,positions,content,videoPic,id,idprove1,videoprove){
+        var funhtml = "";
+        funhtml = '<li class="mood-img" id="'+id+'"> <div class="person"> <div class="berson-img">'+judgevip(vip,$(".berson-img").innerHTML,avatar)+'</div> <div class="per-tit"> <p class="per-p1"><span class="name">'+nickname+'</span>'+judgeSexAge(gender,age,$(".sex").innerHTML)+'<span class="real-name">'+idprove(idprove1,$(".real-name").innerHTML)+'</span><span class="video">'+video(videoprove,$(".video").innerHTML)+'</span><span class="vehicle">'+judgeche(car,$(".vehicle").innerHTML)+'</span></p> <p class="per-p2"><span class="perp2-timer">'+timer+' </span> <span class="perp2-type">发布了心情</span></p> </div> </div> <div class="title"> <p class="title-txt">'+content+'</p> <a href="https://api.shenyuevip.com/resource/getDownloadUrl"><div class="title-videobox"> <div class="video-box"> <img src="'+avatarUrl+''+videoPic+'" alt="" class="title-img"> <img src="../img/video.png" alt="" class="suspend-btn"> </div> </div></a> <div class="positions">'+position(positions,$("positions").innerHTML)+'</div> <div class="fabulous"> <p class="fab-p1"><span class="fab-per">'+watchNum+'</span>人看过</p> <p class="fab-p2"> <a href="https://api.shenyuevip.com/resource/getDownloadUrl"><span class="zan-box"><span class="fabp2-num1">'+praiseNum+'</span> <img src="../img/zan.png" alt="" class="zan"></span><span class="ping-box"><span class="fabp2-num2">'+rewardNum+'</span> <img src="../img/ping.png" alt="" class="ping"></span></a>   </p> </div> </div> </li>';
+        return funhtml;
+    }
+
+    function like(like,likehtml){
+        var likehtml = "";
+        if(like != 0){
+            var li = '';
+            for(var i in like){
+                li += '<li class="giveup-li"><img src="'+avatarUrl+like[i].avatar+'" alt=""></li>';
+                likehtml = '<ol class="give-up">'+li+'</ol>'
+            }
+        }else{
+            likehtml = ' ';
+        }
+        return likehtml;
+    }
+
+    function comment(comment,commenthtml){
+        var commenthtml = "";
+        if(comment != 0){
+            var li = '';
+            var p = '';
+            for(var i in comment){
+                if(comment[i].toNickname == null){
+                    p = '<p class="titbox-down"><span class="tit-contains">'+comment[i].content+'</span></p>'
+                }else{
+                    p = '<p class="titbox-down">回复 <span class="tit-user">'+comment[i].toNickname+'</span> <span class="tit-contains">'+comment[i].content+'</span></p>'
+                }
+                li += '<li class="reply-box"> <div class="reply-left"> <div class="reavatar"><img src="'+avatarUrl+comment[i].avatar+'" alt="" class="user-img"></div> <div class="tit-box"> <p class="titbox-top">'+comment[i].nickname+'</p> '+p+' </div> </div> <div class="reply-right">'+comment[i].timeStr+' </div> </li>';
+                commenthtml = '<ul class="reply-wrap"> '+li+' </ul>'
+            }
+        }else{
+            commenthtml = ' ';
+        }
+        return commenthtml;
+    }
+
+    // 初始化数据
+    function loadData(){
+        $.ajax({
+            type: "get",
+            async:true,
+            url: apiUrl+"/community/n/getRecommendVideo?page=1&limit=20",
+            dataType: "json",
+            success: function(data){
+                var a = data.datas.communityList;
+                var li;
+                for(var i = 0; i < a.length; i++){
+                    li = document.createElement("li");
+                    li = funtype(a[i].communityType,$("li").innerHTML,a[i].userInfo.vip,a[i].userInfo.avatar,a[i].userInfo.nickname,a[i].userInfo.gender,a[i].userInfo.age,a[i].userInfo.carLogo,a[i].timeStr,a[i].watchNum,a[i].praiseNum,a[i].commentNum,a[i].address,a[i].content,a[i].videoPic,a[i].id,a[i].userInfo.idProve,a[i].userInfo.videoProve);
+                    $("#listData").append(li);
+                }
+                $("li").click(function (){
+                    for(var i = 0; i < a.length; i++){
+//                        console.log(this.id)
+                        if(this.id == a[i].id){
+                            $(".netbox").css("display","none");
+                            var div;
+                            div = $('<div class="rebox"><div class="header"> <div class="head"> <div class="hleft"><img src="../img/back1.png" alt="" class="back-left"></div> <div class="mid">详情</div> <div class="hright"></div> </div> </div>  '+funtype(a[i].communityType,$("li").innerHTML,a[i].userInfo.vip,a[i].userInfo.avatar,a[i].userInfo.nickname,a[i].userInfo.gender,a[i].userInfo.age,a[i].userInfo.carLogo,a[i].timeStr,a[i].watchNum,a[i].praiseNum,a[i].commentNum,a[i].address,a[i].content,a[i].videoPic,a[i].id,a[i].userInfo.idProve,a[i].userInfo.videoProve)+' '+like(a[i].communityPraiseList,$(".give-up").innerHTML)+' '+comment(a[i].communityCommentList,$(".reply-wrap").innerHTML)+' </div>');
+                            $("body").append(div);
+                            $(".back-left").click(function (){
+                                $(this).parents(".rebox").remove();
+                                $(".netbox").css("display","block");
+                            })
+                        }
+                    }
+                })
+            }
+        });
+        myScroll.refresh();
+    }
+
+    // 下拉刷新
+    function pullDownAction(){
+        setTimeout(function(){
+            myScroll.refresh();
+        },400)
+    }
+
+    n = 2;
+    // 上拉加载
+    function pullUpAction(){
+        setTimeout(function(){
+            $.ajax({
+                type: "get",
+                async:true,
+                url: apiUrl+"/community/n/getRecommendVideo?page="+n+++"&limit=20",
+                dataType: "json",
+                success: function(data){
+                    var a2 = data.datas.communityList;
+                    if(a2.length == 0){
+                        pullupFl.querySelector(".pulluopLabel").innerHTML="没有更多的数据";
+                    }else{
+                        var li;
+                        for(var i = 0; i < a2.length; i++){
+                            li = document.createElement("li");
+                            li = funtype(a2[i].communityType,$("li").innerHTML,a2[i].userInfo.vip,a2[i].userInfo.avatar,a2[i].userInfo.nickname,a2[i].userInfo.gender,a2[i].userInfo.age,a2[i].userInfo.carLogo,a2[i].timeStr,a2[i].watchNum,a2[i].praiseNum,a2[i].commentNum,a2[i].address,a2[i].content,a2[i].videoPic,a2[i].id,a2[i].userInfo.idProve,a2[i].userInfo.videoProve);
+                            $("#listData").append(li);
+                        }
+                    }
+                    $("li").click(function (){
+                        for(var  i = 0; i < a2.length; i++){
+                            if(this.id == a2[i].id){
+                                $(".netbox").css("display","none");
+                                var div;
+                                div = $('<div class="rebox"><div class="header"> <div class="head"> <div class="hleft"><img src="../img/back1.png" alt="" class="back-left"></div> <div class="mid">详情</div> <div class="hright"></div> </div> </div>  '+funtype(a2[i].communityType,$("li").innerHTML,a2[i].userInfo.vip,a2[i].userInfo.avatar,a2[i].userInfo.nickname,a2[i].userInfo.gender,a2[i].userInfo.age,a2[i].userInfo.carLogo,a2[i].timeStr,a2[i].watchNum,a2[i].praiseNum,a2[i].commentNum,a2[i].address,a2[i].content,a2[i].videoPic,a2[i].id,a2[i].userInfo.idProve,a2[i].userInfo.videoProve)+' '+like(a2[i].communityPraiseList,$(".give-up").innerHTML)+' '+comment(a2[i].communityCommentList,$(".reply-wrap").innerHTML)+' </div>');
+                                $("body").append(div);
+                                $(".back-left").click(function (){
+                                    $(this).parents(".rebox").remove();
+                                    $(".netbox").css("display","block");
+                                })
+                            }
+                        }
+                    })
+                }
+            });
+            myScroll.refresh();
+        },400);
+    }
+
+    /*$.ajax({
+        type: "get",
+        async:true,
+        url: apiUrl+"/community/n/getRecommendVideo?page=1&limit=20",
+        dataType: "json",
+        success: function(data){
+            var a = data.datas.communityList;
+            console.log(a);
+        }
+    })*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular-html事件</title>
+    <script src="//apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<div data-ng-app="myApp" data-ng-controller="myCtrl">
+    <!-- ng-click 指令定义了一个AngularJS 单机事件。 -->
+    <!--<button data-ng-click="count = count + 1">点我！</button>
+    <p>{{count}}</p>-->
+
+    <!-- 隐藏 HTML 元素
+        ng-hide 指令用于设置应用的一部分 不可见。
+        ng-hide="true" 让 HTML 元素 不可见。
+        ng-hide="false" 让元素可见。-->
+    <button data-ng-click="toggle()">隐藏/显示</button>
+    <p data-ng-hide="myVar">
+        姓: <input type="text" data-ng-model="person.firstName"><br>
+        名: <input type="text" data-ng-model="person.lastName"><br>
+        <br>
+        姓名：{{person.firstName + " " + person.lastName}}
+    </p>
+</div>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myCtrl',function ($scope) {
+
+//        $scope.count = 0;
+
+        $scope.firstName = "Jonh";
+        $scope.lastName = "Doe";
+        $scope.myVar = false;
+        $scope.toggle = function () {
+            $scope.myVar = !$scope.myVar
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js"></script>
+		<style>
+			#div1 {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="t1">
+
+		</ul>
+	</body>
+	<script type="text/javascript">
+		$.ajax({
+			type: "get",
+			url: "https://api.github.com/users",
+			async: true,
+			dataType: "JSON",
+			success: function(obj) {
+				console.log(obj);
+				for(let i = 0; i < obj.length; i++) {
+					var li;
+					var a = $("<li class='lis'>" + obj[i].login + "</li>");
+					$("#t1").append(a);
+				}
+				$(".lis").click(function() {
+					var b = $("<p class='p1'>返回</p><span>135465</span>");
+					var div1 = $("<div id='div1'></div>");
+					div1.append(div1);
+					$("body").append(div1)
+//					$("#div1").css("display", "block");
+					var i = $(".lis").index(this);
+					console.log(i);
+					$("#div1").append(b);
+					$("#t1").css("display", "none")
+					$(".p1").click(function() {
+						$(this).parent().remove();
+						$("#t1").css("display", "block")
+					})
+				})
+
+			}
+		})
+	</script>
+
+</html>

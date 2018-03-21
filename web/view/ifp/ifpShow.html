@@ -1,0 +1,484 @@
+﻿<div class="ifpShowContainer">
+    <link rel="stylesheet" type="text/css" ng-href="./style/ifp/ifpShow.css?v={{CssVersion}}" />
+    <div class="page-header">
+        <h2>{{isDouble?'往返':'单程'}}私有运价详情</h2>
+    </div>
+    <form class="form-horizontal">
+        <div class="page-header">
+            <h3>
+                <small>基本信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">运行状态</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static {{data.statusStyle}}">{{data.status}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">政策序号</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.id}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">文件编号</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.mainFileGroupCode}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">产品类型</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.productType}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">库存模式</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.stockType}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">定额剩余数量</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">20</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">是否允许1/2RT组合</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.bCanRt}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble && data.canGroupFileCode">
+                    <label class="col-xs-2 control-label">可组合文件编号</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canGroupFileCode}}</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>路线信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">开票航司</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.airline}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">录入方式</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.addressOption}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">出发地</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control city" readonly>{{ data.depCities}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">是否中转</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.isTransfer}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.transferCities">
+                    <label class="col-xs-2 control-label">中转点</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.transferCities}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">目的地</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control city" readonly rows="6">{{data.arrCities}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">适用舱位</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.cabin}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">舱位等级</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">经济舱</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">组合航司</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.segmentAirlines}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">可售航班</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.segmentFlightAllow}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">禁售航班</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.segmentFlightDeny}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程":""}}中途停留</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canDepStay}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">回程中途停留</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canRetStay}}</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>运价限制</small>
+            </h3>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">销售日期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.sale}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">旅行日期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.dateRestrictGo}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.dateRestrictGoForbid.length>0">
+                    <label class="col-xs-2 control-label">排除旅行日期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static" ng-repeat="item in data.dateRestrictGoForbid">{{item}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.advancedSaleDate">
+                    <label class="col-xs-2 control-label">提前出票天数</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.advancedSaleDate}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">最短停留天数</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.minStay}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">最长停留天数</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.maxStay}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程":""}}适用班期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.weekRestrictGo}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">{{isDouble?"回程":""}}适用班期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.weekRestrictReturn}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">适用航班起飞时间</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">周5 12:00至23:59</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">最小出行人数</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.minPeopleNum}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">最大出行人数</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.maxPeopleNum}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">适用旅客</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.passengerType}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">适用旅客国籍</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">无限制</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">排除旅客国籍</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">无限制</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">适用年龄</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">无限制</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">排除旅客年龄</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">无限制</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>价格信息管理</small>
+            </h3>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">成人销售票面</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.filePrice}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">学生销售票面</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">4500</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.filePriceChild">
+                    <label class="col-xs-2 control-label">儿童销售票面</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.filePriceChild}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">结算币种</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.currency}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">政策是否含税</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">是</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">成人税费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">4500</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">学生税费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">4500</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">儿童税费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">4500</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">返点</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.saleRetention}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">留钱</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.saleRebase}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">预订配置</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.reserveType}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.officeNo1">
+                    <label class="col-xs-2 control-label">需授权office1</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.officeNo1}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.officeNo2">
+                    <label class="col-xs-2 control-label">需授权office2</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.officeNo2}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">报销凭证</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canReimbursementVoucher}}</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>退改信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-if="data.canChange">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程":""}}是否允许改期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canChange}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.changeFeeDep">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程":""}}改期费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.changeFeeDep}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble && data.canChangeRet">
+                    <label class="col-xs-2 control-label">回程是否允许改期</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canChangeRet}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble && data.changeFeeRet">
+                    <label class="col-xs-2 control-label">回程改期费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.changeFeeRet}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.canRefund">
+                    <label class="col-xs-2 control-label">全部未使用可否退票</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canRefund}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.refundFeeAllUnused">
+                    <label class="col-xs-2 control-label">全部未使用退票费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.refundFeeAllUnused}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">部分使用是否允许退票</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canRefundPartUnused}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">部分使用退票费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.refundFeePartUnused}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="result.noShowRestrict">
+                    <label class="col-xs-2 control-label">是否允许NOSHOW</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.noShowRestrict}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.noShowFee">
+                    <label class="col-xs-2 control-label">NOSHOW费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.noShowFee}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.noShowFee">
+                    <label class="col-xs-2 control-label">NOSHOW说明</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.noShowRemark}}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.buyTicketNotice">
+                    <label class="col-xs-2 control-label">退改签备注说明</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.buyTicketNotice}}</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>其他信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">行李规格</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.luggageType}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">行李额</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.luggageWeightsBags}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">当日作废</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.canInvalid }}</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.invalidFee">
+                    <label class="col-xs-2 control-label">废票费</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.invalidFee}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">备注</label>
+                    <div class="col-xs-10">
+                        <p class="form-control-static">{{data.remark}}</p>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+
+    <div class="row" ng-if="data.logs.length && !isOrigin">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="4" class="text-center">操作记录</th>
+                </tr>
+                <tr class="active">
+                    <th class="col-xs-offset-2">操作时间</th>
+                    <th class="col-xs-offset-2">操作人</th>
+                    <th>操作内容</th>
+                    <th>修改后数据</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="log in data.logs">
+                    <td>{{log.timestamp}}</td>
+                    <td>{{log.operator}}</td>
+                    <td>{{log.desc}}</td>
+                    <td><a href="javascript:void(0)" ng-click="originShowClick(log)">查看</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

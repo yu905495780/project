@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下单就返 单单有好礼</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/app.css">
+    <script src="../js/app.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width:100%;
+            height:auto;
+        }
+        .box{
+            width:6.4rem;
+            height: 13.29rem;
+        }
+        .box img{
+            width:6.4rem;
+            height: auto;
+            vertical-align: middle;
+        }
+        .download{
+            width: 5.9rem;
+            padding: 0.3rem 0.25rem;
+            background: rgba(0,0,0,0.8);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        .download .left{
+            float: left;
+            color: #fff;
+        }
+        .download .left p:nth-of-type(1){
+            font-size: 0.28rem;
+            font-family: "PingFangSC-Semibold", Arial, Helvetica, sans-serif;
+            margin-bottom: 0.15rem;
+        }
+        .download .left p:nth-of-type(2){
+            font-size: 0.22rem;
+            font-family: "PingFangSC-Light", Arial, Helvetica, sans-serif;
+        }
+        .download .right{
+            float: right;
+            font-size: 0.24rem;
+            width: 1.71rem;
+            height: 0.78rem;
+            background: #FEBF3B;
+            border-radius: 0.5rem;
+            text-align: center;
+            line-height: 0.78rem;
+        }
+        .clearfix:after {
+            content:"";
+            display: block;
+            clear:both;
+        }
+        a{
+            display: block;
+            color: #333;
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../img/active-page-1.jpg" alt="">
+    </div>
+    <div class="download clearfix">
+        <div class="left">
+            <p>神约·让您的时间赚起来</p>
+            <p>点击下载APP</p>
+        </div>
+        <div class="right"><a href="https://api.shenyuevip.com/resource/getDownloadUrl">下载APP</a></div>
+    </div>
+</body>
+</html>

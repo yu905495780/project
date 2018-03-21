@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cloth</title>
+    <style>
+        body{
+            background:#fff;
+        }
+        *{box-sizing:border-box;}
+        .container{
+            height:400px;
+            width:500px;
+            margin:100px auto;
+            position:relative;
+        }
+        .bar1{
+            width:10px;
+            height:130px;
+            background:#d90000;
+            position:absolute;
+            -webkit-transform:rotate(-15deg);
+            margin:120px 200px;
+        }
+        .bar1:before{
+            content:"";
+            position:absolute;
+            width:10px;
+            height:120px;
+            background:#d90000;
+            margin:0 -50px;
+            -webkit-transform:rotate(55deg);
+        }
+        .bar1:after{
+            content:"";
+            position:absolute;
+            width:10px;
+            height:110px;
+            background:#d90000;
+            margin:55px -50px;
+            -webkit-transform:rotate(110deg);
+        }
+        .wheel1{
+            height:17px;
+            width:17px;
+            border-radius:50%;
+            background:#d90000;
+            position:absolute;
+            margin:229px 112px;
+        }
+        .wheel1:before{
+            content:"";
+            position:absolute;
+            height:110px;
+            width:110px;
+            border:12px solid #393939;
+            border-radius:50%;
+            margin:-60px;
+            z-index:-3;
+        }
+        .wheel1:after{
+            content:"";
+            position:absolute;
+            background:#b7b7b7;
+            height:30px;
+            width:30px;
+            border-radius:50%;
+            margin:-6.5px;
+            z-index:-3;
+        }
+        .bar2{
+            height:10px;
+            width:110px;
+            background:#d90000;
+            position:absolute;
+            margin:140px 190px;
+        }
+        .bar2:before{
+            content:"";
+            position:absolute;
+            height:10px;
+            width:115px;
+            background:#d90000;
+            margin:60px 20px;
+            -webkit-transform:rotate(-45deg);
+        }
+        .bar2:after{
+            content:"";
+            position:absolute;
+            height:10px;
+            width:90px;
+            background:#d90000;
+            margin:20px 73px;
+            -webkit-transform:rotate(-105deg);
+        }
+        .bar3{
+            position:absolute;
+            height:60px;
+            width:20px;
+            border-left:20px solid #d90000;
+            border-radius:50% 0 0 50%;
+            margin:190px 321.5px;
+            border-bottom:20px solid transparent;
+            border-top:-5px solid transparent;
+            -webkit-transform:rotate(-35deg);
+            z-index:-2;
+        }
+        .bar3:before{
+            content:"";
+            position:absolute;
+            height:55px;
+            width:18px;
+            border-left:20px solid #fff;
+            border-radius:50% 0 0 50%;
+            margin:-5px -9px;
+            border-bottom:20px solid transparent;
+            border-top:-5px solid transparent;
+            -webkit-transform:rotate(-7deg);
+            z-index:-5;
+
+        }
+        .gear{
+            height:40px;
+            width:40px;
+            border-radius:50%;
+            background:#393939;
+            position:absolute;
+            margin:222px 203px;
+        }
+        .gear:before{
+            content:"";
+            position:absolute;
+            width:40px;
+            height:8px;
+            background:#e7e7e7;
+            border-radius:20px 0 0 20px;
+            -webkit-transform:rotate(110deg);
+            margin:32px -5px;
+        }
+        .gear:after{
+            content:"";
+            position:absolute;
+            height:8px;
+            width:30px;
+            background:#c9c9c9;
+            margin:50px -5px;
+            -webkit-transform:rotate(10deg);
+        }
+        .pedal{
+            position:absolute;
+            width:7px;
+            height:40px;
+            background:#393939;
+            margin:202px 227px;
+            z-index:-5;
+            -webkit-transform:rotate(20deg);
+        }
+        .pedal:before{
+            content:"";
+            position:absolute;
+            height:8px;
+            width:30px;
+            background:#393939;
+            margin:0 -10px;
+            -webkit-transform:rotate(10deg);
+        }
+        .wheel2{
+            height:17px;
+            width:17px;
+            position:absolute;
+            border-radius:50%;
+            background:#d90000;
+            margin:229px 332px;
+        }
+        .wheel2:after{
+            content:"";
+            position:absolute;
+            background:#b7b7b7;
+            height:30px;
+            width:30px;
+            border-radius:50%;
+            margin:-7px;
+            z-index:-3;
+        }
+        .wheel2:before{
+            content:"";
+            position:absolute	;
+            height:110px;
+            width:110px;
+            border:12px solid #393939;
+            border-radius:50%;
+            margin:-60px;
+            z-index:-3;
+        }
+        .littlebar{
+            position:absolute;
+            background:#d90000;
+            width:10px;
+            height:20x;
+            margin:100px 400px;
+        }
+        .seat{
+            position:absolute;
+            height:15px;
+            width:55px;
+            background:#393939;
+            border-radius:15px 15px 50px 50px;
+            margin:115px 165px;
+        }.seat:before{
+             content:"";
+             position:absolute;
+             height:25px;
+             width:10px;
+             background:#d90000;
+             border-radius:10px;
+             transform:rotate(28deg);
+             -webkit-transform:rotate(28deg);
+             margin:-12px 130px;
+         }
+        .seat:after{
+            content:"";
+            position:absolute;
+            height:28px;
+            width:10px;
+            background:#d90000;
+            transform:rotate(-28deg);
+            -webkit-transform:rotate(-28deg);
+            border-radius:10px;
+            margin:-28.5px 129.5px;
+        }
+        .grip{
+            position:absolute;
+            background:#d90000;
+            height:10px;
+            width:25px;
+            margin:87.5px 274px;
+            border-radius:10px;
+        }
+        .grip:before{
+            height:17px;
+            width:17px;
+            border-radius:50%;
+            position:absolute;
+            content:"";
+            background:#393939;
+            margin:-3px 0px;
+        }
+        .grip:after{
+            position:absolute;
+            content:"";
+            height:10px;
+            width:25px;
+            border-radius:10px;
+            background:#393939;
+            margin:0px -12px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+    <div class="littlebar"></div>
+    <div class="wheel1"></div>
+    <div class="wheel2"></div>
+    <div class="seat"></div>
+    <div class="gear"></div>
+    <div class="pedal"></div>
+    <div class="grip"></div>
+</div>
+<script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+
+</body>
+</html>

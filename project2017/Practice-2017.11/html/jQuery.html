@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+</head>
+<body>
+jQuery 语法是通过选取HTML元素，并对选取的元素执行某些操作。<br>
+    基础语法：$(selector).action()<br>
+    ·美元符号定义jQuery <br>
+    ·选择符（selector）“查询”和“查找”HTML元素 <br>
+    ·jQuery的action()执行对元素的操作 <br>
+实例: <br>
+    $(this).hide() - 隐藏当前元素 <br>
+    $("p").hide() - 隐藏所有段落 <br>
+    $("p .test").hide() - 隐藏所有 class = "test" 的段落 <br>
+    $("#test").hide() - 隐藏所有 id = "test" 的元素 <br>
+
+您也许已经注意到在我们的实例中的所有jQuery函数位于一个 document ready 函数中：<br>
+这是为了防止文档在完全加载（就绪）之前运行jQuery代码。<br>
+如果在文档没有完全加载之前就运行函数，操作可能失败。下面是两个具体的例子：<br>
+·试图隐藏一个不存在的元素 <br>
+·获得未完全加载的图像的大小 <br>
+
+
+jQuery 选择器 <br>
+    jQuery选择器允许您对HTML元素组或单个元素进行操作。 <br>
+    jQuery选择器基于元素的id、类、类型、属性、属性值等“查找”（或选择）HTML元素。它基于已存在的css选择器，除此之外，他还有一些自定义的选择器。<br>
+    jQuery中所有的选择器都以美元符号开头：$()。<br>
+    元素选择器 <br>
+        jQuery元素选择器基于元素名选取元素。<br>
+        在页面中选取所有<p></p>元素：$("p")<br>
+    #id选择器 <br>
+        jQuery #id选择器通过HTML元素的id属性选取制定的元素 <br>
+        页面中元素的id应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器 <br>
+        通过 id 选取元素语法如下：$("#test") <br>
+    .class 选择器 <br>
+        jQuery 类选择器可以通过指定的 class 查找元素。<br>
+        语法如下：$(".test")<br>
+
+
+jQuery 事件 <br>
+jQuery 是为事件处理特别设计的。<br>
+什么是事件？<br>
+    页面对不同访问者的响应叫做事件。<br>
+    事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。<br>
+    实例：<br>
+    ·在元素上移动鼠标 <br>
+    ·选取单选按钮 <br>
+    ·点击元素 <br>
+在事件中经常使用术语“触发”（或“激发”）例如：“当您按下按键时触发keypress事件”。<br>
+常见DOM事件：<br>
+    鼠标事件：click dblclick mouseenter mouseleave <br>
+    键盘事件：keypress keydown keyup <br>
+    表单事件：submit change focus blur <br>
+    文档/窗口事件：load resize scroll unload <br>
+jQuery事件方法语法 <br>
+在jQuery中，大多数DOM事件都有一个等效的jQuery方法 <br>
+页面中制定的一个点击事件：$("p").click(function(){});<br>
+常用的jQuery事件方法 <br>
+    $(document).ready() 方法允许我们在文档完全加载完后执行函数。该事件方法在jQuery语法章节中已经提到过 <br>
+    click()方法是当按钮点击事件被触发时会调用一个函数。该函数在用户点击HTML元素时执行。<br>
+    dblclick()当双击元素时，会发生dblclick事件。<br>
+    mouseenter()当鼠标指针穿过元素时，会发生mouseenter事件。<br>
+    mousedown()当鼠标指针移动到元素上方，并按下鼠标按键时，会发生mousedown事件。<br>
+    mouseup()当在元素上松开鼠标按钮时，会发生mouseup事件。<br>
+    hover()方法用于模拟光标悬停事件{当鼠标移动到元素上时，会触发指定的第一个函数(mouseenter)；当鼠标移除这个元素时，会触发指定的第二个函数(mouseleave)}。<br>
+    focus()当元素获得焦点时，发生focus事件。当通过鼠标点击选中元素或通过tab键定位元素时，该元素就会获得焦点。<br>
+    blur()当元素失去焦点时，发生blur事件。<br>
+    bind()向元素添加事件处理程序
+    change()添加/触发change事件
+    delegate()向匹配元素的当前或未来的子元素添加处理程序
+    event.curuentTarget在事件冒泡阶段内的当前DOM元素
+    event.data包含当前执行的处理程序被绑定时传递到事件方法的可选数据
+    event.delegateTarget返回当前调用的jQuery事件处理程序所添加的元素
+    event.isDefaultPrevented()返回指定的event对象上是否调用了event.preventDefault()
+    event.isImmediatePropagationstopped()返回指定的event对象是否调用了event.stopImmediatePropagation()
+    event.PropagationStopped()返回指定的event对象上是否调用了event.stopPropagation()
+    event.namespace返回当事件被触发时指定的命名空间
+    event.pageX返回相对于文档左边缘的鼠标位置
+    event.pageY返回相对于文档上边缘的鼠标位置
+    event.preventDefault()阻止事件的默认行为
+    event.relatedTarfet返回当鼠标移动时哪个元素进入或退出
+    event.result包含由被指定事件触发的事件处理程序返回的最后一个值
+    event.stopImmediatePropagation()阻止其他事件处理程序被调用
+    event.stopPropagation()阻止事件向上冒泡到DOM树，阻止任何父处理程序被事件通知
+    event.target返回哪个DOM元素触发事件
+    event.timeStamp返回1970年1月1日到事件被触发时的毫秒数
+    event.type返回哪种事件类型被触发
+    event.which返回指定事件上哪个键盘键或鼠标按钮被按下
+
+
+jQuery效果<br>
+    隐藏显示<br>
+        hide（）隐藏<br>
+        show（）显示<br>
+        toggle（）切换<br>
+    淡入淡出<br>
+        fadeIn（）淡入已隐藏元素<br>
+        fadeOut（）淡出已隐藏元素<br>
+        fadeToggle（）切换<br>
+        fadeTo（）允许渐变为给定的不透明度<br>
+    滑动<br>
+        slideDown（）向下滑动<br>
+        slideUp（）向上滑动<br>
+        slideToggle（）切换<br>
+    动画<br>
+        animate（{属性}，时长，回调函数）创建自定义动画<br>
+    停止动画<br>
+        stop（）在动画或效果完成前对他们进行停止<br>
+
+
+jQuery HTML<br>
+    jQuery获取<br>
+        text（）设置或返回所选元素的文本内容<br>
+        html（）设置或返回所选元素的内容（包括 HTML 标记）<br>
+        val（）设置或返回表单字段的值<br>
+        attr（）获取属性值<br>
+    jQuery添加元素<br>
+        append（）- 在被选元素内部的结尾插入指定的内容<br>
+        prepend（）- 在被选元素内部的开头插入指定的内容<br>
+        after（）- 在被选元素之后插入内容<br>
+        before（）- 在被选元素之前插入内容<br>
+    jQuery删除元素<br>
+        remove（）- 删除被选元素（及其子元素）<br>
+        empty（） - 从被选元素中删除子元素<br>
+    jQuery css类<br>
+        addClass（）- 向被选元素添加一个或多个类<br>
+        removeClass（）- 从被选元素删除一个或多个类<br>
+        toggleClass（）- 对被选元素进行添加/删除类的切换操作<br>
+        css（）- 设置或返回样式属性<br>
+    jQuery的尺寸<br>
+        width（）方法设置或返回元素的宽度（不包含内边距、边框或外边距）。<br>
+        height（）方法设置或返回元素的高度（不包含内边距、边框或外边距）。<br>
+        innerWidth（）方法返回元素的宽度（包括内边距）。<br>
+        innerHeight（）方法返回元素的高度（包括内边距）。<br>
+        outerWidth（）方法返回元素的宽度（包括内边距和边框）。<br>
+        outerHeight（）方法返回元素的高度（包括内边距和边框）。<br>
+
+
+jQuery 遍历<br>
+    祖先：
+    ·parent（）返回被选元素的直接父元素，该方法只会向上一级对DOM树进行遍历
+    ·parents（）返回被选元素的所有祖先元素，它一路向上直到文档的根元素（HTML）
+    ·parentsUntil（）返回介于两个给定元素之间的所有祖先元素
+    后代：
+    ·children（）返回被选元素的所有直接子元素，该方法只会向下一级对DOM树进行遍历
+    ·find（）返回被选元素的后代元素，一路向下直到最后一个后代
+    同胞：
+    ·siblings（）返回被选元素的所有同胞元素
+    ·next（）返回被选元素的下一个同胞元素
+    ·nextAll（）返回被选元素的所有跟随的同胞元素
+    ·nextUntil（）返回介于两个给定参数之间的所有跟随的同胞元素
+    ·prev（）、prevAll（）、prevUntil（）返回前一个同胞元素、所有前面所有同胞元素、介于两个给定参数之间前面所有的同胞元素
+    过滤：
+    ·first（）返回被选元素的首个元素
+    ·last（）返回被选元素的最后一个元素
+    ·eq（）返回被选元素中带有指定索引号的元素
+    ·filter（）允许您规定的一个标准，不匹配这个标准的元素会被从集合中删除。匹配的元素会被返回
+    ·not（）返回不匹配标准的所有元素
+
+
+jQuery - AJAX
+    ajax = 异步JavaScript和XML（Asynchronous JavaScript and XML） 简短的说，在不重载整个网页的情况下AJAX通过后台加载数据，并在网页上进行显示。
+    load（）从服务器加载数据，并把返回的数据放入被选元素中。
+        $(selector).load(URL,data,callback);
+        必须的URL参数规定您希望加载的URL
+        可选的data参数规定与请求一同发送的查询字符串键/值对集合
+        可选的callback参数load（）方法完成后所执行的函数名称 回调函数可以设置不同的参数：
+        ·responseTxt - 包含调用成功时的结果内容
+        ·statusTXT - 包含调用的状态
+        ·xhr - 包含XMLHttpRequest对象
+    get（）和post（）方法
+        get（）方法通过HTTP GET请求从服务器上请求数据。$get(RUL,callback)
+        post（）方法通过HTTP POST请求从服务器上请求数据。$get(RUL,data,callback)
+    noConflict()方法
+        noConflict()方法会释放对$标识符的控制，这样其他脚本就可以用他了
+
+</body>
+</html>

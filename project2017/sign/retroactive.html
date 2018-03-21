@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获得补签卡</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/retroactive.css">
+    <script src="js/app.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+<div class="title"><img src="img/retroactive.png" alt=""></div>
+<div class="box">
+    <p class="p-img"><img src="img/help@2x.png" alt=""></p>
+    <p class="p-tit1">你注册成功</p>
+    <p class="p-tit">我就能免费获得一次补签机会</p>
+    <p class="p-tit">注册时输入我的ID：<span id="id"></span></p>
+    <p class="p-tit">即可获得 <span class="p-span">1000</span> 金币或超值优惠券奖励</p>
+</div>
+<div class="code"><img src="img/code.png" alt=""></div>
+<div class="foot">
+    <p>治愈昔日的无聊，共赴未知的精彩</p>
+    <p>神约等您加入</p>
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/retroactive.min.js"></script>
+
+<script type="text/javascript">
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return decodeURIComponent(r[2]); return null;
+    }
+    var id = document.getElementById("id");
+    id.innerHTML=GetQueryString("syid");
+
+</script>
+</body>
+</html>

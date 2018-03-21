@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>公布运价政策</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/common/ifp.common.min.css?v=201611281935">
+    <link rel="stylesheet" type="text/css" href="./style/ifp/ifpShow.min.css?v=201611281935"/>
+</head>
+<body ng-controller="ifgShowCtrl">
+<div class="container">
+    <h3 ng-class="'hidden'">
+        页面加载中...
+    </h3>
+    <div class="ifpShowContainer hidden" ng-class="'show'">
+
+        <div class="page-header">
+            <h2>公布运价政策详情</h2>
+        </div>
+        <form class="form-horizontal">
+            <div class="page-header">
+                <h3>
+                    <small>基本信息</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">政策序号</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.id">{{logData.id}} <span class="text-danger">修改为</span> </span>
+                                {{data.id}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">运行状态</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static {{data.statusStyle}}">
+                                <span ng-if="logData.status">{{logData.status}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.status}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">外部政策ID</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.externalId">{{logData.externalId}}
+                                    <span class="text-danger">修改为</span> </span>
+                                {{data.externalId}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">文件编号</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.mainFileGroupCode">{{logData.mainFileGroupCode}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.mainFileGroupCode}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">适用行程类型</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.travelType">{{logData.travelType}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.travelType}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="isDouble">
+                        <label class="col-xs-2 control-label">是否允许1/2RT组合</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.bCanRt">{{logData.bCanRt}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.bCanRt}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="isDouble && data.canGroupFileCode">
+                        <label class="col-xs-2 control-label">可组合文件编号</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.canGroupFileCode">{{logData.canGroupFileCode}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.canGroupFileCode}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="page-header">
+                <h3>
+                    <small>路线信息</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">开票航司</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.airline">{{logData.airline}} <span class="text-danger">修改为</span> </span>
+                                {{data.airline}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">出发地</label>
+                        <div class="col-xs-10">
+                            <span ng-if="logData.depCities">{{logData.depCities}} <span class="text-danger">修改为</span> </span>
+                            <textarea class="form-control city" readonly rows="6">{{ data.depCities}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">目的地</label>
+                        <div class="col-xs-10">
+                            <span ng-if="logData.arrCities">{{logData.arrCities}} <span class="text-danger">修改为</span> </span>
+                            <textarea class="form-control city" readonly rows="6">{{data.arrCities}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">排除出发地</label>
+                        <div class="col-xs-10">
+                            <span ng-if="logData.depCitiesExcept">{{logData.depCitiesExcept}} <span class="text-danger">修改为</span> </span>
+                            <textarea class="form-control city" readonly rows="6">{{ data.depCitiesExcept}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">排除目的地</label>
+                        <div class="col-xs-10">
+                            <span ng-if="logData.arrCitiesExcept">{{logData.arrCitiesExcept}} <span class="text-danger">修改为</span> </span>
+                            <textarea class="form-control city" readonly rows="6">{{ data.arrCitiesExcept}}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">适用舱位</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.cabin">{{logData.cabin}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.cabin}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">是否适用于联运</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.isCombine">{{logData.isCombine}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.isCombine}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.combineAirline">
+                        <label class="col-xs-2 control-label">适用联运航司</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.combineAirlines">{{logData.combineAirlines}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.combineAirlines}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.combineAirline">
+                        <label class="col-xs-2 control-label">排除联运航司</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.combineAirlinesForbid">{{logData.combineAirlinesForbid}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.combineAirlinesForbid}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">是否适用于共享航班</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.isShare">{{logData.isShare}} <span class="text-danger">修改为</span> </span>
+                                {{data.isShare}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">是否适用于中转</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.isTransfer">{{logData.isTransfer}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.isTransfer}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.transferCities">
+                        <label class="col-xs-2 control-label">中转点</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.transferCities">{{logData.transferCities}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.transferCities}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">可售航班</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.segmentFlightAllow">{{logData.segmentFlightAllow}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.segmentFlightAllow}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">禁售航班</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.segmentFlightDeny">{{logData.segmentFlightDeny}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.segmentFlightDeny}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="page-header">
+                <h3>
+                    <small>日期限制</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">销售日期</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.sale">{{logData.sale}} <span class="text-danger">修改为</span> </span>
+                                {{data.sale}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">{{isDouble?"去程":""}}旅行日期</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.dateRestrictGo">{{logData.dateRestrictGo}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.dateRestrictGo}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.dateRestrictGoForbid.length>0">
+                        <label class="col-xs-2 control-label">{{isDouble?"去程":""}}排除旅行日期</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static" ng-if="logData.dateRestrictGoForbid"
+                               ng-repeat="item in logData.dateRestrictGoForbid">{{item}}</p>
+                            <p class="text-danger" ng-if="logData.dateRestrictGoForbid">修改为</p>
+                            <p class="form-control-static" ng-repeat="item in data.dateRestrictGoForbid">{{item}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="isDouble">
+                        <label class="col-xs-2 control-label">回程旅行日期</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.dateRestrictReturn">{{logData.dateRestrictReturn}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.dateRestrictReturn}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.dateRestrictReturnForbid.length>0 && isDouble">
+                        <label class="col-xs-2 control-label">回程排除旅行日期</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static" ng-if="logData.dateRestrictReturnForbid"
+                               ng-repeat="item in logData.dateRestrictReturnForbid">{{item}}</p>
+                            <p class="text-danger" ng-if="logData.dateRestrictReturnForbid">修改为</p>
+                            <p class="form-control-static" ng-repeat="item in data.dateRestrictReturnForbid">
+                                {{item}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.advancedSaleDate">
+                        <label class="col-xs-2 control-label">提前出票天数</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.advancedSaleDate">{{logData.advancedSaleDate}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.advancedSaleDate}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">适用旅客</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.passengerType">{{logData.passengerType}} <span class="text-danger">修改为</span> </span>
+                                {{data.passengerType}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="page-header">
+                <h3>
+                    <small>价格信息管理</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">代理费</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.deputizeCost">{{logData.deputizeCost}} <span class="text-danger">修改为</span> </span>
+                                {{data.deputizeCost}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">成人返点</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.adultRetention">{{logData.adultRetention}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.adultRetention}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">成人留钱</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.adultRebase">{{logData.adultRebase}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.adultRebase}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.child">
+                        <label class="col-xs-2 control-label">儿童返点</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.childRetention">{{logData.childRetention}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.childRetention}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.child">
+                        <label class="col-xs-2 control-label">儿童留钱</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.childRebase">{{logData.childRebase}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.childRebase}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">是否转私有</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.privateFlag">{{{1:"是",0:"否"}[logData.privateFlag]}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{{1:"是",0:"否"}[data.privateFlag]}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.privateFlag == 1">
+                        <label class="col-xs-2 control-label">退改费用(百分比)</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.refundChangePercent">{{logData.refundChangePercent}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.refundChangePercent}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="isDouble&&data.bCanRt=='是'">
+                        <label class="col-xs-2 control-label">1/2RT佣金计算取严逻辑</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.rtCal">{{logData.rtCal}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.rtCal}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">开票费</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.ticketFee">{{logData.ticketFee}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.ticketFee}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="page-header">
+                <h3>
+                    <small>其他信息</small>
+                </h3>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">年龄限制</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.age">{{logData.age}} <span class="text-danger">修改为</span> </span>
+                                {{data.age}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">国籍限制</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.nationality">{{logData.nationality}} <span class="text-danger">修改为</span> </span>
+                                {{data.nationality}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">自动出票</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.autoTicketing">{{logData.autoTicketing}} <span class="text-danger">修改为</span> </span>
+                                {{data.autoTicketing}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">报销凭证</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.canReimbursementVoucher">{{logData.canReimbursementVoucher}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.canReimbursementVoucher}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">预订配置</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.reserveType">{{logData.reserveType}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.reserveType}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="data.officeNo">
+                        <label class="col-xs-2 control-label">授权office</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.officeNo">{{logData.officeNo}} <span class="text-danger">修改为</span> </span>
+                                {{data.officeNo}}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">备注</label>
+                        <div class="col-xs-10">
+                            <p class="form-control-static">
+                                <span ng-if="logData.remark">{{logData.remark}} <span
+                                        class="text-danger">修改为</span> </span>
+                                {{data.remark}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+
+        <div class="row" ng-if="data.logs.length && !isOrigin">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th colspan="4" class="text-center">操作记录</th>
+                </tr>
+                <tr class="active">
+                    <th class="col-xs-offset-2">操作时间</th>
+                    <th class="col-xs-offset-2">操作人</th>
+                    <th>操作内容</th>
+                    <th>修改后数据</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="log in data.logs">
+                    <td>{{log.timestamp}}</td>
+                    <td>{{log.operator}}</td>
+                    <td>{{log.desc}}</td>
+                    <td><a href="javascript:void(0)" ng-if="log.type==3 || log.type==1 || log.type==2"
+                           ng-click="originShowClick(log)">查看</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade in showLoading" ng-class="{'hidden':!showLoading}">
+    <div class="modal-backdrop fade in"></div>
+    <section class="loading"></section>
+</div>
+
+<script type="text/ng-template" id="ifgDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="dialog-modal-title">提示</h4>
+    </div>
+    <div class="modal-body" id="dialog-modal-body" ng-bind-html="dialogContent | toTrustIFG">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ifgConfirm.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="confirmNoClick()"><span aria-hidden="true">&times;</span><span
+                class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="confirm-modal-title">确认</h4>
+    </div>
+    <div class="modal-body" id="confirm-modal-body" ng-bind-html="confirmContent | toTrustIFG">
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+        <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+    </div>
+</script>
+<script src="./script/lib/require.js"></script>
+<script src="./policy/IFPUrlJs"></script>
+<script type="text/javascript">
+    requirejs(["script/main.js?v=201704241126"], function () {
+        require(["controller/ifg/ifgShowCtrl"]);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿body,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+.lead,
+table,
+label,
+button {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+.container {
+  min-width: 950px !important;
+}
+.container .show {
+  display: block !important;
+}
+.showLoading {
+  display: block;
+}
+.showLoading .loading {
+  position: absolute;
+  left: 50%;
+  top: 38.2%;
+  margin-top: -32px;
+  margin-left: -32px;
+  z-index: 1041;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  background: url(../../image/loading.gif) no-repeat center center;
+}

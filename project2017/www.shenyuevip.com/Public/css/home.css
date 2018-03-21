@@ -1,0 +1,147 @@
+.title{width: 100%; float: left; text-align: center; margin:0 auto; }
+.title img{width:405px; height: 64px; display: block;margin: 0 auto;}
+.cont{width: 100%; float: left; margin-top: 76px;}
+.cont-left{width:100%; float: left;}
+.cont-left h3,.cont-right h3{    width: 557px; font-size: 20px; float:left; margin-bottom: 30px; text-align: center; color: #626262}
+.cont-right{width: 557px; float: left; margin-left:86px;}
+.table{width: 100%; margin-top: 14px;table-layout:fixed}
+.table tr th{text-align: left;font-size:18px;color: #909090;padding-left:26px; line-height: 40px;}
+.table tr td{position:relative; text-align: left;font-size:16px;color: #4b4b4b;padding-left:26px; line-height: 40px;}
+.table tr td span{position:absolute; width: 36px;height: 36px; margin-top:2px; top:0px; display: block; border-radius: 50%;}
+.table tr td span img{width: 24px; height: 24px; display: inline-block; margin-top: -6px;margin-left: 6px; vertical-align: middle;}
+.table tr td audio{width: 100px; position:absolute; top:2px; z-index:99; z-index: 99;opacity: 0;}
+.table tr.even td{background: #f1f1f1}
+.table tr.odd td{background: #fff}
+.table tr.even td span{background: #fff}
+.table tr.odd td span{background:#f1f1f1 }
+.title2{margin-top: 100px;}
+.img{width: 100%; margin-top: 64px; float: left; }
+.img img{width: 100%;}
+/*登录*/
+.dengL{width: 1200px; margin:0 auto; background: red}
+.dengL form{width: 608px; margin:0 auto; }
+.dengL form p{width: 100%; float: left; height: 40px; line-height: 40px; color: #737373; font-size: 16px; margin-bottom: 21px;}
+.dengL form p input[type="text"],.dengL form p input[type="password"]{width: 310px; padding-left:20px; height: 38px; border:1px solid #a6a6a6; border-radius: 20px;}
+.dengL form p span{color: #ff4f01; display: inline-block; margin-left: 10px; font-size:13px;}
+.dengL form p label{width:90px; display: inline-block; font-size: 18px;}
+.dengL form p.font{color: #ff4f01; font-size: 14px;}
+.dengL form p.font input{margin-left:140px; width: 20px; height: 20px; margin-right:5px; vertical-align: middle; margin-top:-1px;}
+.dengL form p.font input[type="checkbox"]{-webkit-appearance:none; outline: none; background:url(../images/check-m.png) no-repeat;background-size: 100% 100%;}
+.dengL form p.font input[type="checkbox"]:checked{background: url(../images/checkc.png); background-size: 100% 100%;}
+.dengL form p.inputBtn input{margin-left:90px; width: 330px; height: 45px; background: #000; color: #fff; border-radius: 24px; border:none; font-size: 18px;}
+.dengL form p.pwFont{margin-left:90px;}
+.dengL form p.pwFont a{color: #000; font-size: 14px; margin-left: 60px;}
+/*找回密码*/
+.headTitle{width: 100%;float: left;}
+.headTitle h2{width: 100%; padding-left:64px; border-bottom: 1px solid #e2e2e2; color: #000; padding-top:20px; padding-bottom:20px; font-size: 18px; margin-top:5px; float: left;}
+.headTitle p{padding-left:120px; margin-bottom: 82px;width: 100%; float: left; border-bottom: 1px solid #e2e2e2;color: #000; padding-top:20px; padding-bottom:20px; font-size: 16px;}
+.headTitle p span{display: inline-block;}
+.headTitle p span img{display: inline-block; vertical-align: middle; margin-top:-1px; margin-left:16px; margin-right:5px;}
+.headTitle p span.spanCur{color: #ff4f01}
+.dengL form p.inputBtn2{margin-top:20px;}
+.dengL form p.sucess{width: 100%; height: 129px; color: #ff4f01; font-size: 36px;}
+.dengL form p.sucess img{width: 100px; height: 100px; margin-right:10px; margin-top:-2px; display: inline-block; vertical-align: middle;}
+.black{width: 100%; float: left;}
+.black p{text-align: center; margin-top:30px;}
+.black p a{ font-size: 16px; color: #ff4f01; margin-right:100px; font-weight: bold;}
+.dengL form p.buttonFree{position:relative;}
+.dengL form p.buttonFree span{position:absolute;left: 330px;}
+.dengL form p.buttonFree input{ width: 332px; color: #757575; text-align: left;text-align:center;height: 41px; border:1px solid #a6a6a6; border-radius: 20px;}
+.dengL form p a.ljDl{color: #ff4f01}
+.dengL form p.inputBtn a{margin-left:90px; width: 330px; display: block; text-align: center; line-height: 45px; height: 45px; background: #000; color: #fff; border-radius: 24px; border:none; font-size: 18px;}
+/*歌手*/
+.singerCont{width: 1200px; margin:0 auto;overflow: hidden;margin-top: 114px;}
+.singerName,.tableCont{width: 100%; float: left;}
+.singerName dt{width: 160px; height: 160px; background: #ccc; border-radius: 50%; float: left; overflow: hidden;}
+.singerName dt img{width: 100%; height: 100%;}
+.singerName dd{float: left; height: 160px; margin-left:30px;}
+.singerName dd h3{font-size: 30px; float: left; color: #000; width: 100%; margin-top:50px;}
+.singerName dd span{font-size: 20px; color: #000; width: 100%;  margin-top: 18px;float: left; }
+.tableCont h4{width: 100%; padding-left:48px; float: left; font-size: 26px; color: #686868; margin-top: 72px; margin-bottom: 37px;}
+.table2 tr.even td,.table2 tr.odd td{font-size: 22px; line-height: 45px;}
+.table2 tr td span{width: 40px;height: 40px; margin-top: 4px;top:0px;}
+.table2 tr td span img{width: 30px; height: 30px; margin-left:5px; margin-top: -9px;}
+.fPage{width: 100%; float: left; margin-top:30px;}
+.fPage ul{width: 250px; margin: 0 auto;}
+.fPage ul li{float: left; width: 50px;height: 50px;}
+.fPage ul li a{display: block; line-height: 50px; text-align: center; font-size: 16px;}
+.fPage ul li.liCur a,.fPage ul li a:hover{color: #fff;background: #000; }
+.footer2{position: fixed; bottom: 0px;}
+.fPage2{margin-top: 120px;}
+.abc{width: 100%; float: left;margin-bottom:40px;}
+.abc li{float: left; font-size: 15px;width: 32px; height: 45px; text-align: center;}
+.abc li a{display: block; line-height: 45px;margin-top:2px;}
+.abc li a:hover,.abc li.seaCur a{background: #000; color: #fff}
+.abc li.rM{width: 70px; height: 50px; background: #000;}
+.abc li.rM a{ color: #fff; display: block; text-align: center; line-height: 50px;}
+.singerNameUl{width: 1200px; float: left;}
+.singerNameUl li{width: 20%; float: left; line-height: 40px; font-size: 16px;}
+/*用户协议*/
+.singerCont h5{font-size: 18px; color: #000; width: 100%; text-align: center; float: left; margin-bottom:30px;}
+.singerCont p{font-size: 14px;color: #000; width: 100%; float: left; line-height: 20px;}
+.ulConts{height: 400px; float: left; width: 100%; overflow: hidden;}
+.ulConts ul{width: 100%; height: 400px; display: block; float: left;}
+.ulConts ul li{text-align: center;}
+
+.scb{background:url(../images/eb.png) no-repeat; background-size: 33px 33px;}
+.mu-content li{border-bottom:1px solid #edeaea;cursor:pointer;font-size:14px;height:45px; line-height: 45px; overflow:hidden;padding-left:10px;zoom:1;}
+.mu-l{width:25px;float:left;}
+.picStyle{height:25px;width:25px;}
+.textBox{color:#1E1E1E;float:left;width:500px;text-align:center;}
+.singer{color:#787878;width:210px;white-space:nowrap;margin-left:10px;text-align:center;float:left;}
+.frp-box{width: 36px;height: 36px;text-align:center;float:right;margin-top:5px;margin-right:20px;}
+.play-btn{width: 36px;height: 36px;border-radius: 50%;display:inline-block; }
+.play-btn img{width: 24px; height: 24px; display: inline-block;margin-left: 2px;margin-top: -10px; vertical-align: middle;}
+.mu-content li:nth-child(odd){background: #f1f1f1}
+.mu-content li:nth-child(odd) .play-btn{background: #fff}
+.mu-content li:nth-child(even){background: #fff}
+.mu-content li:nth-child(even) .play-btn{background: #f1f1f1}
+
+.frmLoad{width:16px;height:16px;display:inline-block;background-position:-635px -2px;border:1px solid #d8d8d8;}
+.frmLoad:hover{border-color:#388bff;}
+.frmPlay{background-position:-653px -1px;}
+.frmPlay:hover{background-position:-677px -1px;}
+.frmPause{background-position:-701px -1px;}
+.frmPause:hover{background-position:-725px -1px;}
+
+.scb {
+    background: url(../images/school-bg.png) no-repeat;
+}
+.mu-playwrap{width:100%;height:35px;display:none; float: left; margin:0px auto 15px;font-family:monospace;background-color:#404040;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #444), color-stop(0.5, #555), color-stop(0.51, #444), color-stop(1, #444));background-image:-moz-linear-gradient(center top, #444 0%, #555 50%, #444 51%, #444 100%);box-shadow:1px 1px 8px rgba(0, 0, 0, 0.3);color:#fff;text-align:center;}
+.mu-playcontent{height:35px;width:100%;}
+.mu-scrubber{position:relative;float:left;width:370px;background-color:#5a5a5a;height:14px;margin:10px;border-top:1px solid #3f3f3f;overflow:hidden;}
+.mu-progresswrap{position:absolute;top:0px;left:0px;cursor:pointer;height:14px;width:368px;background:#000;background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#222),color-stop(0.5,#333),color-stop(0.51,#222),color-stop(1,#222));background-image:-moz-linear-gradient(center top,#222 0%,#333 50%,#222 51%,#222 100%);}
+.mu-progress{position:absolute;top:0px;left:0px;height:14px;width:0px;background:#ccc;z-index:1;background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#ccc),color-stop(0.5,#ddd),color-stop(0.51,#ccc),color-stop(1,#ccc));background-image:-moz-linear-gradient(center top,#ccc 0%,#ddd 50%,#ccc 51%,#ccc 100%);}
+.mu-img{box-shadow:0px 0px 5px #333;float:left;height:25px;width:25px;margin-top:4px;}
+.mu-img img{border:1px solid #fafafa;cursor:pointer;height:25px;width:25px;}
+.mu-info{float:left;width:240px;}
+.mu-m{text-align:center;line-height:45px;cursor:pointer;}
+.mu-control{margin: 2px 0 0;text-align: left;}
+.audioControl{width:184px;height:31px;float:left;padding:4px 10px 0px 10px;border-right:1px solid #000;}
+.audioControl a{display:inline-block;height:26px;margin-left:8px;width:30px;}
+.audioControl a.last{background-position: -644px -56px;}
+.audioControl a.pause{background-position: -641px -32px;}
+.audioControl a.play {background-position: -642px -84px;}
+.audioControl a.next {background-position: -645px -114px;}
+.audioControl a.modeButton{width:35px;}
+.audioControl a.default {background-position: -640px -203px;}
+.audioControl a.random {background-position: -642px -137px;}
+.audioControl a.single {background-position: -643px -181px;}
+.mu-songname {color: #FFFFFF;float: left;background:red;margin: 4px 0 0 12px;overflow:hidden;text-align: left;text-overflow: ellipsis;white-space: nowrap;width: 220px;}
+.mu-timeshow {float:left;height:35px;line-height:35px;border-left:1px solid #000;padding-left:10px;color:#ddd;text-shadow:1px 1px 0px rgba(0,0,0,0.5);}
+.mu-musicTitle{float:left;height:35px;line-height:35px;text-align:left;color:#FFF;padding:0px 10px;float:left;width:135px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mu-oWindow{position:fixed;display:none;z-index:2000;top:50%;left:50%;background: -moz-linear-gradient(left center , #69A3D4 0%, #4888BE 100%) repeat scroll 0 0 transparent;background: -webkit-linear-gradient(left, #69A3D4 0%, #4888BE 100%);background:#4888BE;color:#fff;padding:13px 20px;font-size:16px;}
+
+.tableHead{border-bottom:1px solid #edeaea}
+.tableHead,.tableHead ul{width:557px; float:left;cursor: pointer;}
+.tableHead ul li{float:left;font-size: 16px;height: 45px;line-height: 45px;overflow: hidden;}
+.tableHead ul li.firstLi{padding-left: 10px;}
+
+.mu-content2 li:nth-child(odd){background: #fff;}
+.mu-content2 li:nth-child(odd) .play-btn{background: #f1f1f1}
+.mu-content2 li:nth-child(even){background: #fff;margin-left:55px;}
+.mu-content2 li:nth-child(even) .play-btn{background: #f1f1f1}
+
+.titleHead{width: 100%; float: left;}
+.titleHead ul,.titleHead ul li{float: left; height: 46px; line-height: 46px; font-size: 18px; color: #1E1E1E}
+.titleHead ul li.mu-l{padding-left: 10px;}

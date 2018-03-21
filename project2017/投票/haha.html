@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .chk_div label{
+            background: url("images/QQash.png") no-repeat;
+            width: 100px;
+            height: 100px;
+            display: block;
+            padding-left: 35px;
+            padding-top: 5px;
+            background-size: 100% 100%;
+        }
+        .chk_div input[type=radio]:checked+label{
+            background: url("images/QQ@2x.png") no-repeat;
+            background-size: 100% 100%;
+        }
+        .chk_div1 label{
+            background: url("images/weChatash.png") no-repeat;
+            width: 100px;
+            height: 100px;
+            display: block;
+            padding-left: 35px;
+            padding-top: 5px;
+            background-size: 100% 100%;
+        }
+        .chk_div1 input[type=radio]:checked+label{
+            background: url("images/weChat@2x.png") no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="chk_div">
+    <input type="radio" value="dd" name="aaa" id="checkforbox" style="display: none;">
+    <label for="checkforbox"></label>
+</div>
+<div class="chk_div1">
+    <input type="radio" value="dd" name="aaa" id="checkforbox1" style="display: none;">
+    <label for="checkforbox1"></label>
+</div>
+</body>
+</html>

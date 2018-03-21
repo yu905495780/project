@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5的新特性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        figure {
+            width: 100px;
+            text-align: center;
+        }
+        .box{
+            position: relative;
+            display: inline-block;
+        }
+
+        .div1{
+            width:100px;
+            height:100px;
+            background: pink;
+            display: none;
+        }
+        .box:hover .div1{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<figure>
+    <img src="img/iphone.png" alt="About image"/>
+    <figcaption>
+        <p>首页</p>
+    </figcaption>
+</figure>
+<small>圈子-记录发布精彩一刻</small>
+<p>圈子-记录发布精彩一刻</p>
+<big>圈子-记录发布精彩一刻</big>
+<br><br><br><br><br><br><br>
+
+
+<div class="box">
+    <p class="p1">鼠标移上去时</p>
+    <div class="div1"></div>
+</div>
+
+
+</body>
+</html>

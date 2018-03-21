@@ -1,0 +1,30 @@
+html{}
+body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead, table, label, button {
+    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+
+.container {
+    min-width: 950px !important;
+
+    .show {
+        display: block !important;
+    }
+}
+
+.showLoading {
+    display: block;
+    @loadingWidth: 64px;
+
+    .loading {
+        position: absolute;
+        left: 50%;
+        top: 38.2%;
+        margin-top: -@loadingWidth/2;
+        margin-left: -@loadingWidth/2;
+        z-index: 1041;
+        width: @loadingWidth;
+        height: @loadingWidth;
+        border-radius: 100%;
+        background: url(../../image/loading.gif) no-repeat center center;
+    }
+}

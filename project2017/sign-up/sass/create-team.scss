@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+*{
+  margin: 0;padding: 0;
+  list-style: none;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  vertical-align: middle;
+}
+
+body{
+  font-size: 0.2rem;
+  background-color: #2B0508;
+}
+.header{
+  width:100%;
+  height: 0.75rem;
+  .head{
+    padding: 0 0.26rem;
+    //width:100%;
+    height: 0.75rem;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    line-height: 0.75rem;
+    font-size: 0.27rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+    .head-left{
+      img{
+        width: 0.16rem;
+        height: 0.26rem;
+      }
+    }
+  }
+}
+.createteam{
+  margin-top: 0.14rem;
+  width: 100%;
+  height: 0.66rem;
+  background: url("../img/borderR.png") no-repeat;
+  background-size: 100% 100%;
+  ::-webkit-input-placeholder{
+    color: #c7c7c7;
+    font-size: 0.15rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  }
+  :-ms-input-placeholder{
+    color: #c7c7c7;
+    font-size: 0.15rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  }
+  input{
+    line-height: 0.66rem;
+    margin-left: 0.44rem;
+    width: 85%;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #c7c7c7;
+    font-size: 0.15rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  }
+}
+.choose{
+  height: 1.8rem;
+  background: url("../img/borderR1.png") no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.97rem;
+  .choosetit{
+    margin-left: 0.44rem;
+    line-height: 1.8rem;
+    color: #fff;
+    font-size: 0.22rem;
+    font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  }
+  .choosebox{
+    display: flex;
+    .chk_div,.chk_div1{
+      margin-top: 0.3rem;
+    }
+    .chk_div{
+      margin-right: 0.86rem;
+    }
+    .chk_div1{
+      margin-right: 0.54rem;
+    }
+    .chk_div label{
+      background: url("../img/QQash.png") no-repeat;
+      width: 0.75rem;
+      height: 0.75rem;
+      display: block;
+      background-size: 100% 100%;
+    }
+    .chk_div input[type=radio]:checked+label{
+      background: url("../img/QQ@2x.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    .chk_div1 label{
+      background: url("../img/weChatash.png") no-repeat;
+      width: 0.75rem;
+      height: 0.75rem;
+      display: block;
+      background-size: 100% 100%;
+    }
+    .chk_div1 input[type=radio]:checked+label{
+      background: url("../img/weChat@2x.png") no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+.createbtn{
+  width: 95%;
+  height: 0.77rem;
+  margin: 0 auto;
+  background: url("../img/join.png") no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 0.77rem;
+  font-size: 0.3rem;
+  font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  margin-bottom: 2.94rem;
+}
+.rules{
+  color: #fff;
+  margin-left: 0.5rem;
+  line-height: 0.35rem;
+  font-size: 0.18rem;
+  font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  margin-bottom: 0.5rem;
+}
+.success-box{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  .success{
+    width: 75%;
+    height: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background: #3A0A0E;
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 0.1rem;
+    .success-tit{
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      font-size: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
+    .success-txt{
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      font-size: 0.22rem;
+      margin-bottom: 0.2rem;
+      text-align: center;
+      line-height: 0.4rem;
+    }
+    .success-btn{
+      color: #d7734d;
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      font-size: 0.18rem;
+      width: 0.7rem;
+      height: 0.4rem;
+      background: #782E14;
+      border-radius: 0.05rem;
+      text-align: center;
+      line-height: 0.4rem;
+      margin: 0.4rem auto 0;
+    }
+  }
+}

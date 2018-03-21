@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何赚钱</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/app.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+</head>
+<body>
+<div class="box-wrap">
+    <p class="money">如何玩转神约？？？赚钱小技巧！！！</p>
+    <ul class="nav maple-tab">
+        <li class="active">
+            <a>邀约</a>
+            <p></p>
+        </li>
+        <li>
+            <a>收礼</a>
+            <p></p>
+        </li>
+        <li>
+            <a>精选照片</a>
+            <p></p>
+        </li>
+        <li>
+            <a>签到</a>
+            <p></p>
+        </li>
+    </ul>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide tab-content-1">
+                <div class="explain">
+                    <img src="img/release-skills.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide tab-content-2">
+                <div class="explain">
+                    <img src="img/gift.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide tab-content-3">
+                <div class="explain">
+                    <img src="img/photo.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide tab-content-4">
+                <div class="explain">
+                    <img src="img/sign.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        onSlideChangeEnd: function (swiper){
+            var j=mySwiper.activeIndex;
+            $('.maple-tab li').removeClass('active').eq(j).addClass('active');
+        }
+    });
+    /*列表切换*/
+    $('.maple-tab li').on('click', function (e) {
+        e.preventDefault();
+        //得到当前索引
+        var i=$(this).index();
+        $('.maple-tab li').removeClass('active').eq(i).addClass('active');
+        mySwiper.slideTo(i,200,false);
+    });
+</script>
+<script>
+    var _mtac = {};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500571884");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+</script>
+</body>
+</html>

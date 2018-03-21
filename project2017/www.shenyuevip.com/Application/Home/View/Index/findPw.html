@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>神约ICP找回密码</title>
+<!--–[if lte IE 7]-->
+<meta http-equiv="x-ua-compatible" content="ie=9">
+<!--[endif]–-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home.css">
+</head>
+<body>
+<div id="wrapper">
+    <div class="head">
+        <div class="head_cont">
+            <ul>
+                <li class="logo"><a href="{:U('Index/index')}"><img src="__PUBLIC__/images/logo.jpg"></a></li>
+                <li class="cur"><a href="{:U('Index/index')}">首页</a></li>
+                <li><a href="{:U('Index/singer2')}">歌手</a></li>
+                <li><a href="{:U('Index/singerIist')}">排行榜</a></li>
+            </ul>
+            <ul class="right">
+                <li><a href="{:U('Login/register')}">注册</a></li>
+                <li class=""><a href="{:U('Login/login')}">登录</a></li>
+            </ul>							
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class="main">
+        <div class="main-model" style="margin-top:0px;">
+            <div class="dengL">
+                <div class="headTitle">
+                    <h2>找回密码</h2>
+                    <p><span class="spanCur">确认密码<img src="__PUBLIC__/images/jt.png"></span><span>验证安全设置<img src="__PUBLIC__/images/jt.png"></span><span>重置密码<img src="__PUBLIC__/images/jt.png"></span><span>完成</span></p>
+                </div>
+                <form>
+                    <p><label>手机号</label><input type="text" name="mobile" id='m_tel' value="手机号" placeholder="手机号" maxlength="11" onfocus="if(this.value=='手机号'){this.value='';}" onblur="if(this.value==''){this.value='手机号';}checkSubmitMobil(this.value);" /><span id='e_mtel'></span></p></p>           
+                    <p class="inputBtn inputBtn2"><input type="button" onclick="send_sm()" value="找回密码" /></p>
+                </form>
+            </div>        
+		</div>
+	</div>
+    <div class="footer">
+        <div class="footer_cont">
+            <ul>
+                <li><a href="">服务条款</a><a href="">安全须知</a><a href="">“神约”用户协议</a><a href="">客服电话：4008 7288 83</a></li>
+                <li><a href="">备案/许可证编号为：京ICP备17025424</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<script src="__PUBLIC__/js/home.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/mobil.js"></script>
+<script>
+var countdown=60;
+function send_sm(){
+	if(!checkSubmitMobil($("#m_tel").val())){
+		return false;
+	}else{
+		if(countdown == 60){
+    		var m_tel = $("#m_tel").val();
+    		$.post("{:U('Login/check_num')}",{mobile:m_tel},function($result){
+    			if($result.status){
+    				window.location.href="{:U('Index/findPwSet')}";
+    			}else{
+                    $("#e_mtel").html($result.info);
+    				return false;
+    			}
+            });
+		}
+		
+		if (countdown ==  0) {
+	        $('#e_mtel').html('');
+	        countdown = 60;
+	        $(".inputBtn input").removeAttr("disabled");
+			return;
+	    } else {
+	    	$(".inputBtn input").attr("disabled","disabled");
+	        countdown--;
+		}
+	    setTimeout(function() {
+	        send_sm();
+	    },1000)
+	}
+}
+</script>
+</body>
+</html>

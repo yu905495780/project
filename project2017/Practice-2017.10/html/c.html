@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1>我的 web 页面</h1>
+<h2>我的 web 页面</h2>
+<h3>我的 web 页面</h3>
+<h4>我的 web 页面</h4>
+<h5>我的 web 页面</h5>
+<h6>我的 web 页面</h6>
+<p id="demo">一个段落</p>
+
+<button type="button" onclick="myfunction('xiaoru','girl')">尝试一下</button>
+<p id="demo1"></p>
+<script>
+    function myfunction(name,sex) {
+        document.getElementById("demo").innerHTML = "my name is:"+name+",sex："+sex;
+    }
+//    alert(5+6)
+    setInterval(function () {
+        var data = new Date();
+        document.getElementById("demo1").innerHTML = data;
+    },1000);
+
+
+    /*var time = new Date().getHours()
+     if(time < 10) {
+     x="Good morning";
+     }else if (time >= 10 && time < 20) {
+     x="Good day";
+     }else{
+     x="Good evening"
+     }
+     alert(x)*/
+
+
+    /*constructor 属性返回所有 JavaScript 变量的构造函数
+    *alert(function () {}.constructor)*/
+
+
+</script>
+</body>
+</html>

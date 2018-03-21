@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>神约ICP歌手</title>
+<!--–[if lte IE 7]-->
+<meta http-equiv="x-ua-compatible" content="ie=9">
+<!--[endif]–-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/common.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/home.css">
+</head>
+<body>
+<div id="wrapper">
+	<div class="head">
+		<div class="head_cont">
+			 <ul>
+                <li class="logo"><a href="{:U('Index/index')}"><img src="__PUBLIC__/images/logo.jpg"></a></li>
+                <li><a href="{:U('Index/index')}">首页</a></li>
+                <li class="cur"><a href="{:U('Index/singer')}">歌手</a></li>
+                <li><a href="{:U('Index/singerlist')}">排行榜</a></li>
+             </ul>
+             <ul class="right">
+                 <li><a href="{:U('Login/register')}">注册</a></li>
+                 <li class=""><a href="{:U('Login/login')}">登录</a></li>
+             </ul>							
+        </div>
+    </div>
+    <!-- 内容 -->
+    <div class="main">		
+        <div class="singerCont">
+            <dl class="singerName">
+                <dt><img src="__PUBLIC__/images/cb.jpg"></dt>
+                <dd>
+                    <h3>程璧</h3>
+                    <span>单曲1首</span>
+                </dd>
+            </dl>
+            <div class="tableCont">
+                <h4>歌曲</h4>
+                  <div id="playwrap" class="mu-playwrap">
+                    <div id="playContent" class="mu-playcontent">
+                      <span>
+                        <audio id="myMusic"></audio>
+                      </span>
+                      <div class="audioControl">
+                        <a id="prevButton" class="last scb" title="上一首" onClick="myControl.prev()" href="javascript:;"></a>
+                        <a id="playButton" class="play scb" title="播放" onClick="myControl.mainControl()" href="javascript:;"></a>
+                        <a id="nextButton" class="next scb" title="下一首" onClick="myControl.next()" href="javascript:;"></a>              
+                      </div>
+                      <div class="mu-scrubber" title="点击选择播放进度">
+                        <div onClick="myControl.selectTime(event)" id="progressWrap" class="mu-progresswrap"></div>
+                        <div id="progress" class="mu-progress"></div>
+                      </div>
+                      <div id="timeshow" class="mu-timeshow">
+                        <span id="currentTime">00:00</span>
+                        <span>/</span>
+                        <span id="totleTime">00:00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="clear:both"></div>
+                  <div id="content" class="mu-content"></div> 
+                <!-- <div class="fPage">
+                    <ul>
+                        <li class="liCur"><a href="javascript:void(0);">1</a></li>
+                        <li><a href="javascript:void(0);">2</a></li>
+                        <li><a href="javascript:void(0);">3</a></li>
+                        <li><a href="javascript:void(0);">......</a></li>
+                        <li><a href="javascript:void(0);">10</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="footer footer2">
+        <div class="footer_cont">
+            <ul>
+                <li><a href="">服务条款</a><a href="">安全须知</a><a href="">“神约”用户协议</a><a href="">客服电话：4008 7288 83</a></li>
+                <li><a href="">备案/许可证编号为：京ICP备17025424</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.9.1.min.js"></script>
+<script src="__PUBLIC__/js/home.js"></script>
+<script>
+    var url = "__PUBLIC__";//定义js中的url路径
+</script>
+<script src="__PUBLIC__/js/musiccb.js"></script>
+</body>
+</html>

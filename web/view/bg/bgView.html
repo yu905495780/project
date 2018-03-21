@@ -1,0 +1,206 @@
+﻿<div class="bgViewContainer">
+    <link rel="stylesheet" type="text/css" href="./style/bg/bgView.css" />
+    <div class="row condition">
+        <form class="form-horizontal" role="form">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">政策序号</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入政策序号" ng-model="search.id" digital-only>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">运行状态</label>
+                        <div class="col-sm-8">
+                            <select type="text" class="form-control" ng-model="search.status">
+                                <option value="-1">请选择</option>
+                                <option value="1">投放中</option>
+                                <option value="0">已挂起</option>
+                                <option value="2">已删除</option>
+                                <option value="3">已失效</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">行程类型</label>
+                        <div class="col-sm-8">
+                            <select type="text" class="form-control" ng-model="search.travelType">
+                                <option value="-1">请选择</option>
+                                <option value="1">单程</option>
+                                <option value="2">往返</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">产品类型</label>
+                        <div class="col-sm-8">
+                            <select type="text" class="form-control" ng-model="search.productType">
+                                <option value="-1">请选择</option>
+                                <option value="0">库存</option>
+                                <option value="2">特惠</option>
+                                <option value="1">清舱产品</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">开票航司</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入开票航司" ng-model="search.airline" english-digital max-length="2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">出发地</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入出发地" ng-model="search.depCity" english-comma>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">目的地</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入目的地" ng-model="search.arrCity" english-comma>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">舱位</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入舱位" ng-model="search.cabin" english-comma>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">文件编号</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入文件编号" chinese-restrict ng-model="search.fileCode">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">供应商ID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="请输入供应商ID" ng-model="search.agentID">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4">创建时间</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="开始日期" ng-model="gmtCreate.start" is-open="gmtCreate.startOpen" uib-datepicker-popup="yyyy-MM-dd" clear-text="清除" current-text="今天" close-text="关闭"
+                                       readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="gmtCreateStartOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label col-xs-4"> - </label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="结束日期" ng-model="gmtCreate.end" is-open="gmtCreate.endOpen" uib-datepicker-popup="yyyy-MM-dd" clear-text="清除" current-text="今天" close-text="关闭" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="gmtCreateEndOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row queryBtnGroup">
+        <span class="pull-right">
+            <button class="btn btn-primary" ng-click="searchClick()">搜索</button>
+            <button class="btn btn-success" ng-click="exportClick()">导出</button>
+            <button class="btn btn-danger" ng-click="resetClick()">重置</button>
+        </span>
+    </div>
+    <div class="row queryResult">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>运价编号</th>
+                    <th>开票航司</th>
+                    <th>出发地</th>
+                    <th>目的地</th>
+                    <th>去程旅行日期</th>
+                    <th>舱位</th>
+                    <th>行程类型</th>
+                    <th>销售价</th>
+                    <th>返点</th>
+                    <th>留钱</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>供应商ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in list">
+                    <td><a href="javascript:void(0)" ng-click="detailClick(item)">{{item.id}}</a></td>
+                    <td>{{item.airline}}</td>
+                    <td>{{item.depCities}}</td>
+                    <td>{{item.arrCities}}</td>
+                    <td>{{item.dateRestrictGo}}</td>
+                    <td>{{item.cabin}}</td>
+                    <td>{{ {"1":"单程","2":"往返"}[item.travelType] }}</td>
+                    <td>{{item.filePrice}}</td>
+                    <td>{{item.saleRetention}}</td>
+                    <td>{{item.saleRebase}}</td>
+                    <td>{{item.gmtCreateShow}}</td>
+                    <td class="{{ { "0": "text-primary", "1": "text-success", "2": "text-danger", "3": "text-muted" }[item.status] }}">{{ { "0": "已挂起", "1": "投放中", "2": "已删除", "3": "已失效" }[item.status] }}</td>
+                    <td>{{item.agent}}</td>
+                </tr>
+            </tbody>
+            <tfoot ng-if="pagination.pages">
+                <tr>
+                    <td colspan="13" class="form-inline paginationCustom">
+                        <div class="pull-left pageHint form-group">
+                            <p class="form-control-static">共查询到<strong class="text-danger">{{pagination.total}}</strong>条数据　每页展示<strong class="text-danger">{{pagination.perPage}}</strong>条，共<strong class="text-danger">{{pagination.pages}}</strong>页</p>
+                        </div>
+                        <div class="pull-right ">
+                            <ul uib-pagination total-items="pagination.total"
+                                ng-change="paginationChange()"
+                                items-per-page="pagination.perPage"
+                                ng-model="pagination.page"
+                                max-size="pagination.maxSize"
+                                class="pagination-sm pull-left"
+                                boundary-link-numbers="true"
+                                previous-text="上一页"
+                                next-text="下一页"
+                                rotate="false"></ul>
+                            <span class="form-group paginationInput pull-left">
+                                <input type="text" class="form-control input-sm text-center" value="{{pagination.page}}" digital-only ng-blur="pageBlur($event)"> <label>页</label>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

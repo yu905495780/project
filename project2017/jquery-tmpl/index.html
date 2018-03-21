@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <style>
+        *{
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<!--demo  ${}等同于{{= }}是输出变量${}里面还可以放表达式（=和变量之间一定要有空格，否则无效）-->
+<!--<ul id="div_demo">
+</ul>
+<script id="demo" type="text/x-jquery-tmpl">
+    <li style="margin-bottom:10px;">
+    　　<span class='span1'>${userInfo.nickname}</span>
+    </li>
+</script>
+<script type="text/javascript">
+    $.ajax({
+        dataType: 'json',
+        url: 'http://api-dev.shenyuevip.com/community/n/v2/getCommunityList?page=1&limit=20',
+        success: showGoods
+    });
+    function showGoods(data) {
+        var a = data.datas.communityList;
+        console.log(a);
+        $("#demo").tmpl(a).appendTo('#div_demo');
+        $(".span1").each(function () {
+            $(this).click(function () {
+                console.log($(".span1").index(this))
+            })
+        })
+    }
+</script>-->
+
+<!--{{each}}  提供循环逻辑，$value访问迭代变量 也可以自定义迭代变量（i,value）-->
+<!--<div id="div_each">
+</div>
+<script id="each" type="text/x-jquery-tmpl">
+    <h3>users</h3>
+    {{each(i,user) users}}
+        <div>${i+1}:{{= user.name}}</div>
+        {{if i==0}}
+            <h4>group</h4>
+            {{each(j,group) groups}}
+                <div>${group.name}</div>
+            {{/each}}
+        {{/if}}
+    {{/each}}
+    <h3>depart</h3>
+    {{each departs}}
+        <div>{{= $value.name}}</div>
+    {{/each}}
+</script>
+
+<script type="text/javascript">
+    var eachData = { users: [{ name: 'jerry' }, { name: 'john'}], groups: [{ name: 'mingdao' }, { name: 'meihua' }, { name: 'test'}], departs: [{ name: 'IT'}] };
+    $("#each").tmpl(eachData).appendTo('#div_each');
+</script>-->
+
+<!--{{ if}}{{else}}  提供了分支逻辑{{else}} 相当于 else if-->
+<!--
+<div id="div_ifelse"></div>
+<script id="ifelse" type="text/x-jquery-tmpl">
+    <div style="margin-bottom:10px;"><span>${ID}</span><span style="margin-left:10px;">{{= Name}}</span>
+        {{if Status}}
+            <span>Status${Status}</span>
+        {{else App}}
+            <span>App${App}</span>
+        {{else}}
+            <span>None</span>
+        {{/if}}
+    </div>
+</script>
+<script type="text/javascript">
+    var users = [{ ID: 'think8848', Name: 'Joseph Chan', Status: 1, App: 0 }, { ID: 'aCloud', Name: 'Mary Cheung', App: 1 }, { ID: 'bMingdao', Name: 'Jerry Jin'}];
+    $("#ifelse").tmpl(users).appendTo('#div_ifelse');
+</script>
+-->
+
+<!--{{html}}  输出变量html 但是没有html编码 适合输出html代码-->
+<!--<div id="div_html"></div>
+<script id="html" type="text/x-jquery-tmpl">
+    <div style="margin-bottom:10px;">
+　　　　<span>${ID}</span>
+　　　　<span style="margin-left:10px;">{{= Name}}</span>
+    　　${html}  &lt;!&ndash;不识别标签&ndash;&gt;
+    　　{{html html}}  &lt;!&ndash;识别标签&ndash;&gt;
+    </div>
+</script>
+<script type="text/javascript">
+    var user = { ID: 'think8848', Name: 'Joseph Chan', html: '<button>html</button>' };
+    $("#html").tmpl(user).appendTo('#div_html');
+</script>-->
+
+<!--{{tmpl}}  嵌套模板-->
+<!--
+<div id="tmpl"></div>
+<script id="tmpl1" type="text/x-jquery-tmpl">
+    <div style="margin-bottom:10px;">
+    　　<span>${ID}</span>
+    　　<span style="margin-left:10px;">{{tmpl($data) '#tmpl2'}}</span>
+    </div>
+</script>
+<script id="tmpl2" type="type/x-jquery-tmpl">
+    {{each Name}}${$value}  {{/each}}
+</script>
+<script type="text/javascript">
+    var users = [{ ID: 'think8848', Name: ['Joseph', 'Chan'] }, { ID: 'aCloud', Name: ['Mary', 'Cheung']}];
+    $("#tmpl1").tmpl(users).appendTo('#tmpl');
+</script>-->
+
+<!--{{wrap}}  包装器-->
+<!--<div id="wrapDemo">
+</div>
+<script id="myTmpl" type="text/x-jquery-tmpl">
+    The following wraps and reorders some HTML content:
+    {{wrap "#tableWrapper"}}
+        <h3>One</h3>
+        <div>
+            First <b>content</b>
+        </div>
+        <h3>Two</h3>
+        <div>
+            And <em>more</em> <b>content</b>...
+        </div>
+        <h3>Three</h3>
+        <div>
+            <em>more</em> And <em>more</em> <b>content</b>...
+        </div>
+    {{/wrap}}
+</script>
+<script id="tableWrapper" type="text/x-jquery-tmpl">
+    <table cellspacing="0" cellpadding="3" border="1"><tbody>
+        <tr>
+            {{each $item.html("h3", true)}}
+                <td>
+                    ${$value}
+                </td>
+            {{/each}}
+        </tr>
+        <tr>
+            {{each $item.html("div")}}
+                <td>
+                    {{html $value}}
+                </td>
+            {{/each}}
+        </tr>
+    </tbody></table>
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#myTmpl').tmpl().appendTo('#wrapDemo');
+    });
+</script>-->
+
+<!--$data $item  $item代表当前的模板； $data代表当前的数据-->
+<!--<div id="div_item_data"></div>
+<script id="item_data" type="text/x-jquery-tmpl">
+     <div style="margin-bottom:10px;">
+　　　　<span>${$data.ID}</span>
+　　　　<span style="margin-left:10px;">${$item.getName(" ")}</span>
+　　　</div>
+</script>
+<script type="text/javascript">
+    var users = [{ ID: 'think8848', Name: ['Joseph', 'Chan'] }, { ID: 'aCloud', Name: ['Mary', 'Cheung']}];
+    $("#item_data").tmpl(users,
+            {
+                getName: function (spr) {
+                    return this.data.Name.join(spr);
+                }
+            }).appendTo('#div_item_data');
+</script>-->
+
+<!--$.tmplItem()方法 使用这个方法，可以获取从render出来的元素上重新获取$item-->
+<!--<script type="text/javascript">
+    $('#demo').delegate('div', 'click', function () {
+        var item = $.tmplItem(this);
+        alert(item.data.Name);
+    });
+</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    &lt;!&ndash;<meta name="author" content="http://www.softwhy.com/" />&ndash;&gt;
+    <title>蚂蚁部落</title>
+    <style>
+        ul li{
+            width:900px;
+            list-style-type:none;
+            font-size:12px;
+            line-height:30px;
+            height:30px;
+            cursor:pointer;
+        }
+        ul li span{
+            float:right;
+        }
+
+    </style>
+    <script>
+        window.onload=function(){
+            var obox=document.getElementById("box");
+            var lis=obox.getElementsByTagName("li");
+            var odiv=document.getElementById("show");
+            for(var index=0;index<lis.length;index++){
+                lis[index].onclick=(function(index){
+                    return function(){
+                        odiv.innerHTML=index;
+                    }
+                })(index)
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="box">
+    <li>蚂蚁部落欢迎您，只有努力奋斗才会有美好的未来。</li>
+    <li>本站的地址是softwhy.com欢迎访问，提供有益的建议本站的地址是softwhy.com欢迎访问，提供有益的建议</li>
+    <li>没有人一开始就是高手，必须要努力奋斗才行。</li>
+    <li>本站创建于2012年，目的是为用户提供免费的详实的教本站的地址是softwhy.com欢迎访问，提供有益的建议</li>
+    <li>每一天都是新的，所以必须要好好珍惜，不能够浪费。</li>
+</ul>
+<div id="show"></div>
+</body>
+</html>-->

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addTables</title>
+    <style>
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    1: <input type="text" value="" class="one"><br>
+    2: <input type="text" value="" class="two"><br>
+    3: <input type="text" value="" class="three"><br>
+    <input type="button" value="add" class="addb">
+    <br><br>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th style="width: 70px;"><input type="checkbox" class="qx"></th>
+            <th style="width: 70px;">1</th>
+            <th style="width: 130px;">2</th>
+            <th style="width: 130px;">3</th>
+            <th style="width: 130px;">4</th>
+            <th style="width: 70px;">5</th>
+        </tr>
+    </table>
+
+    <script>
+        var one = document.getElementsByClassName("one")[0];
+        var two= document.getElementsByClassName("two")[0];
+        var three = document.getElementsByClassName("three")[0];
+        var addb = document.getElementsByClassName("addb")[0];
+        var table = document.getElementsByTagName("table")[0];
+
+        var n = 1;
+
+        addb.onclick = function () {
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<td><input type='checkbox' class='dx'></td><td>"+ n++ +"</td><td>"+one.value+"</td><td>"+two.value+"</td><td>"+three.value+"</td><td><input type='button' class='del' value='" +
+                    "删除'></td>";
+            table.appendChild(tr);
+
+
+
+        }
+    </script>
+
+
+</body>
+</html>

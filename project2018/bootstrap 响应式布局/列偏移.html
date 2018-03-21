@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap 实例 - 偏移列</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hello, world!</h1>
+    <div class="row" >
+        <div class="col-xs-6 col-md-offset-3" style="background-color: #dedef8;box-shadow:  inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+</div>
+
+<!--栅格参数
+·栅格参数：是否不希望在小屏幕设备上所有列都堆叠在一起   那是使用针对超小屏幕和中等屏幕设备所定义的类吧，即 .col-xs- 和 .col-md- 。请看下面的实例，研究一下这些是如何工作的。
+    当屏幕尺寸
+        小于 768px 的时候，用 col-xs-12 类对应的样式；
+        在 768px 到 992px 之间的时候，用 col-sm-9 类对应的样式；
+        在 992px 到 1200px 之间的时候，用 col-md-6 类对应的样式；
+        大于 1200px 的时候，用 col-lg-3 类对应的样式；
+        注意：所有“列(column)”必须放在".row"内。
+
+·流式布局容器：将最外面的布局 .container 修改为 .container-fluid，就可以将固定宽度的栅格布局转换为 100% 宽度的布局。
+
+·多余的列（column）将另起一行排列
+
+·响应式列重置：即使有上面给出的四组栅格class，你也不免会碰到一些问题，例如，在某些阈值是某些列可能会出现比别的列高的情况。为了克服这一问题，建议联合使用 .clearfix 和 响应式工具类。
+
+·列偏移、列排序：使用  .col-md-offset-  类可以将列向右侧偏移。这些类实际是通过使用 * 选择器为当前元素增加了左侧的边距（margin）。例如，.col-md-offset-4 类将 .col-md-4 元素向右侧偏移了4个列（column）的宽度。
+-->
+
+</body>
+</html>

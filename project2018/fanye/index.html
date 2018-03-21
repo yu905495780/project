@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="上一页" class="p_btn">
+<input type="button" value="下一页" class="n_btn">
+
+<script>
+
+    $.get("./data.json?limit=5",function (data) {
+        var a = data.newDate;
+        n = 6;
+        console.log(this)
+        console.log(a)
+        /*for(var i = 0; i < a.length; i++){
+            if(a[i].id < n){
+                var li = $('<ul><li>'+a[i].id+'___'+a[i].age+'</li></ul>');
+                $("body").append(li);
+            }
+        }*/
+    })
+    $(".p_btn").click(function () {
+        n = n - 5;
+        for(var i = 0; i < a.length; i++){
+            if(a[i].id < 0){
+
+            }else if(a[i].id < n){
+                var li = $('<ul><li>'+a[i].id+'___'+a[i].age+'</li></ul>');
+                $("body").append(li);
+            }
+        }
+    });
+    $(".n_btn").click(function () {
+        n = n + 5;
+        for(var i = 0; i < a.length; i++){
+            if(a[i].id == 0){
+
+            }else if(a[i].id > 20){
+
+            }else if(a[i].id < n){
+                var li = $('<ul><li>'+a[i].id+'___'+a[i].age+'</li></ul>');
+                $("body").append(li);
+            }
+        }
+    })
+    
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        #imgmenu {
+            width: 600px;
+            height: 350px;
+            border: 10px solid #D2691E;
+            margin: auto;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        #imgmenu #content {
+            width: 800px;
+            float: left;
+        }
+
+        #imgmenu #content div {
+            float: left;
+            overflow: hidden;
+            width: 40px;
+            height: 350px;
+        }
+
+        #imgmenu #content div img {
+            /*border-left: 5px solid #DEB887;*/
+        }
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $.fn.mAccordion = function () {
+                var _this = this;
+                var num = 1;
+                var auto;
+
+                $.each(_this.find("div"), function (k, v) {
+                    $(this).mouseover(function () {
+                        num = k;
+                        _this.find("div").not(_this.find("div").eq(num)).animate({"width": "40px"}, 100);
+                        _this.find("div").eq(num).animate({"width": "400px"}, 100);
+                    });
+                });
+
+                function autoPlay() {
+                    auto = setInterval(function () {
+                        if (num > 5) {
+                            num = 0;
+                        }
+                        _this.find("div").not(_this.find("div").eq(num)).animate({"width": "40px"}, 100);
+                        _this.find("div").eq(num).animate({"width": "400px"}, 100);
+                        num++;
+                    }, 3000);
+                }
+
+                function init() {
+                    autoPlay();
+                }
+
+                _this.hover(function () {
+                    clearInterval(auto);
+                }, function () {
+                    autoPlay();
+                });
+
+                return init();
+            }
+        })(jQuery)
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#content").mAccordion();
+        });
+    </script>
+</head>
+<body>
+<div id="imgmenu">
+    <div id="content">
+        <div style="width: 400px; background: papayawhip">
+            <!--<img alt="" src="../img/1.jpg"/>-->
+        </div>
+        <div style="background: pink">
+            <!--<img alt="" src="../img/2.jpg"/>-->
+        </div>
+        <div style="background: palegoldenrod">
+            <!--<img alt="" src="../img/3.jpg"/>-->
+        </div>
+        <div style="background: paleturquoise">
+            <!--<img alt="" src="../img/4.jpg"/>-->
+        </div>
+        <div style="background: peachpuff">
+            <!--<img alt="" src="../img/5.jpg"/>-->
+        </div>
+        <div style="background: plum">
+            <!--<img alt="" src="../img/6.jpg"/>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

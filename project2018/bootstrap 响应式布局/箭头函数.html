@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+
+<!--箭头函数就是个简写形式的函数表达式，并且它拥有语法作用域的this值（即不会新产生自己作用域下的this，anguments，super和new.target等对象）。此外，箭头函数总是匿名的。
+ 如果只有一个参数，圆括号是可选的；
+ 无参数的函数需要使用圆括号；
+ 返回对象字面量是应当用圆括号将其包起来；
+ 箭头函数的引入有两个方面的影响：一是更简短的函数书写，二是对this的词法解析。
+
+ 不绑定this
+
+ 在箭头函数出现之前，每个新定义的函数都有其自己的this值（例如，构造函数的this指向了一个新的对象；严格模式下的函数的this值为undefined；如果函数是作为对象的方法被调用的，则其this指向了那个调用他的对象）。在面向对象风格的编程中，这被证明是非常恼人的事情。-->
+<!--<script>
+    function Person() {
+        //构造函数 Person()定义的‘this’就是新实例对象自己
+        this.age = 0;
+        setInterval(function growUp() {
+            //在非严格模式下，gorwUp()函数定义了其内部的‘this’
+            //为全局对象，不同于构造函数 Person()的定义的‘this’
+            this.age++;
+        },1000);
+    }
+    var p = new Person();
+</script>-->
+<!--在ECMAScript 3/5 中 这个问题可以通过新增一个变量来指向期望的this对象 然后将该变量放到闭包中来解决。-->
+<!--<script>
+    function Person() {
+        var self = this;  //也有人选择使用‘that’而而非‘self’
+                           //只要保证一致就好了
+        self.age = 0;
+        setInterval(function growUp() {
+            //回调里面的‘self’变量就指向了期望的那个对象了
+            self.age++;
+        },1000)
+    }
+</script>-->
+<!--除此之外，还可以使用bind函数，把期望的this值传递给growUp（）函数。
+    箭头函数则会捕获其所在上下文的this值，作为自己的this值，因此下面的代码将如期运行-->
+<script type="text/ecmascript-6">
+    function Person() {
+        this.age = 0;
+        setInterval(() => {
+            this.age++;
+        },1000);
+    }
+    var p = new Person();
+    console.log(p);
+</script>
+
+<!--与strict mode的关系
+    考虑到this是词法层面上的，严格模式中与this相关的规则都将被忽略。-->
+<script type="text/ecmascript-6">
+     var f = () => {'use strict';return this};
+    f() === window;
+</script>
+</body>
+</html>

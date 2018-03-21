@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>广场</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/Sincere-agreements.css">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <script src="../js/app.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/iscroll.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/jquery.tap.js"></script>
+</head>
+<body>
+<div id="pre-about">
+    <div class="head">
+        <div class="header">
+            <a class="Sinlist" href="Sincere-agreements.html">广场</a>
+            <a class="Prelist" href="Precious-about.html">友趣</a>
+            <a class="Onelist" href="One-touch-is-about.html">抢单</a>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="listData">
+
+            </div>
+            <div id="pullUp">
+                  <span class="pulluopLabel">
+                      上拉加载~~
+                  </span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <ul class="foot">
+            <li class="footli">
+                <a href="Sincere-agreements.html">
+                    <img src="../img/1.but_down_nav_yue_sel@2x.png" alt="">
+                    <p style="color: #333;font-weight: 600;">相约</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="network.html">
+                    <img src="../img/1.but_down_nav_circle_nor@2x.png" alt="">
+                    <p>圈子</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    function loaded(){
+        pullupFl = document.getElementById("pullUp");
+        puupOffset = pullupFl.offsetHeight;
+        myScroll = new iScroll("wrapper",{
+            userTransition:true,  //过度
+            onScrollMove:function(){
+                if(this.y < (this.maxScrollY - 5) && !pullupFl.className.match("flip")){
+                    pullupFl.className = "flip";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML = "释放立即加载";
+                    this.maxScrollY = this.maxScrollY;
+                }else if(this.y > (this.maxScrollY + 5) && pullupFl.className.match("flip")){
+                    pullupFl.className = " ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML = "上拉加载~~";
+                    this.maxScrollY = puupOffset;
+                }
+            },
+            onScrollEnd:function(){
+                if(pullupFl.className.match("flip")){
+                    pullupFl.className = "loading";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML = "正在加载";
+                    //加载数据
+                    pullUpAction();
+                }
+            },
+            onRefresh:function(){
+                if(pullupFl.className.match("loading")){
+                    pullupFl.className = " ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML = "上拉加载~~";
+                }
+            }
+        });
+        loadData();
+    }
+
+    // 阻止冒泡
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
+
+    // dom加载完成之后执行
+    document.addEventListener("DOMContentLoaded",function(){
+        setTimeout(loaded,0);
+    },false);
+
+    // 判断用户是否是vip
+    function judgevip(vvip,vip1,abc) {
+        var vip1 = '';
+        if(abc == null){
+            if(vvip == false){
+                vip1 = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="avatar">'
+            }else{
+                vip1 = '<img src="../img/1.vip_iOS@2x.png" alt="" class="vip"><img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="avatar">'
+            }
+        }else{
+            if(vvip == false){
+                vip1 = '<img src="'+avatarUrl+''+abc+'" alt="" class="avatar">'
+            }else{
+                vip1 = '<img src="../img/1.vip_iOS@2x.png" alt="" class="vip"><img src="'+avatarUrl+''+abc+'" alt="" class="avatar">'
+            }
+        }
+        return vip1
+    }
+
+    // 判断是否是vip
+    function judgevip1(vvip,vip1) {
+        var vip1 = '';
+        if(vvip == false){
+            vip1 = ""
+        }else{
+            vip1 = '<img src="../img/vip-small.png"/>'
+        }
+        return vip1
+    }
+
+    // 判断最新列表的技能列表
+    function project1(projectList,projectListhtml) {
+        var projectListhtml = '';
+        for(var j = 0; j < projectList.length; j++){
+            projectListhtml += projectList[j].projectName+'&nbsp;&nbsp;';
+        }
+        return projectListhtml;
+    }
+
+    // 判断性别
+    function judgeSex(agender,asex) {
+        var asex = '';
+        if(agender == "0") {
+            asex = '<img src="../img/1girl.@2x.png" alt="">';
+        }else if(agender == "1") {
+            asex = '<img src="../img/1.boy@2x.png" alt="">';
+        }
+        return asex;
+    }
+
+    // 判断邀约说明是否存在
+    function judgedescr(descrt,descrhtml) {
+        var descrhtml = '';
+        if(descrt == ""){
+            descrhtml = 'ta在发布的时候没有填写邀约说明！'
+        }else{
+            descrhtml = ''+descrt+''
+        }
+        return descrhtml;
+    }
+
+    // 星评价
+    function stars(starsnum,starshtml) {
+        var starshtml = "";
+        for(var i = 0; i < starsnum; i++){
+            starshtml += '<span><img src="../img/star-yellow.png" alt=""></span>';
+        }
+        return starshtml
+    }
+
+    // 邀约项目
+    function pro(pro,prohtml) {
+        var prohtml = "";
+        var a = '';
+        for(var i = 0; i<pro.length; i++){
+            if(pro[i].projectName == null){
+                prohtml = ''
+            }else{
+                a += pro[i].projectName+'&nbsp;&nbsp;'
+                prohtml = '<li class="num"><span class="cir"></span>'+a+'</li>'
+            }
+        }
+        return prohtml;
+    }
+
+    //公告的邀约项目
+    function pro1(pro,prohtml) {
+        var prohtml = '';
+        for(var i = 0; i<pro.length; i++){
+            if(pro[i].projectName == null){
+                prohtml = ''
+            }else{
+                prohtml += pro[i].projectName+'&nbsp;&nbsp;'
+            }
+        }
+        return prohtml;
+    }
+
+    // 判断语音是否存在
+    function isvedio(vedio,imgli1) {
+        var imgli1 = '';
+        if(vedio == null){
+            imgli1 = "";
+        }else{
+            imgli1 = '<div class="img-div"><span class="cir"></span><span class="vio"><img src="../img/vio.png" alt=""></span><span class="second-num">'+vedio+'″</span></div>';
+        }
+        return imgli1;
+    }
+
+    //判断视频认证是否通过
+    function video(video,videohtml) {
+        var videohtml = "";
+        if(video == "1"){
+            videohtml = '<img src="../img/video-auth.png" alt="">'
+        }else{
+            videohtml = ''
+        }
+        return videohtml
+    }
+    //判断实名认证是否通过
+    function idprove(idprove,idprovehtml) {
+        var idprovehtml = "";
+        if(idprove == "1"){
+            idprovehtml = '<img src="../img/real-name.png" alt="">'
+        }else{
+            idprovehtml = ''
+        }
+        return idprovehtml;
+    }
+
+    // 判断城市
+    function city(city,citys) {
+        var citys = '';
+        var a = '';
+        if(city.length == 0){
+            citys = '';
+        }else{
+            for(var i = 0; i <city.length; i++){
+                a += city[i]+'&nbsp;&nbsp;';
+            }
+            citys = '<li class="hour"><span class="cir"></span><span class="time-slot"><span class="area1">'+a+'</span></span></li>';
+        }
+        return citys;
+    }
+
+    // 判断性别
+    function judgeSex1(aaa,bbb) {
+        var bbb = "";
+        if(aaa == "0") {
+            bbb = "仅限女性";
+        }else if(aaa == "1") {
+            bbb = "仅限男性";
+        }else if(aaa == "2") {
+            bbb = "不限男女";
+        }
+        return bbb;
+    }
+
+    // 判断是否为线上
+    function funonline(online,onlinehtml) {
+        var onlinehtml = "";
+        if(online == "1"){
+            onlinehtml = '<div class="on-line">线上</div>';
+        }else if(online == "0"){
+            onlinehtml = '';
+        }
+        return onlinehtml;
+    }
+
+    // 判断用户头像是否存在
+    function avatar(avatar,avatarhtml) {
+        var avatarhtml = '';
+        if(avatar == null){
+            avatarhtml = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="">'
+        }else{
+            avatarhtml = '<img src="'+avatarUrl+avatar+'" alt="">'
+        }
+        return avatarhtml;
+    }
+    function avatar1(avatar,avatarhtml) {
+        var avatarhtml = "";
+        if(avatar == null){
+            avatarhtml = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="listimg">'
+        }else{
+            avatarhtml = '<img src="'+avatarUrl+''+avatar+'" alt="" class="listimg">'
+        }
+        return avatarhtml;
+    }
+
+    // 判断用户是否认证车辆
+    function judgeche(che,checon) {
+        var checon = "";
+        if(che == null){
+            checon = '';
+        }else{
+            checon = '<img src="'+avatarUrl+''+che+'"/>';
+        }
+        return checon;
+    }
+
+    // 判断日期
+    function datetype(datetype,datetypehtml) {
+        var datetypehtml = "";
+        if(datetype == "1"){
+            datetypehtml = "工作日";
+        }else if(datetype == "2"){
+            datetypehtml = "周末假日";
+        }else if(datetype == "3"){
+            datetypehtml = "随时可约";
+        }
+        return datetypehtml;
+    }
+
+    // 判断性别年龄
+    function judgeSexAge(agender,aage,asex) {
+        var asex = "";
+        if(agender == "0") {
+            if(aage == null){
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }else if(agender == "1") {
+            if(aage == null){
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }
+        return asex;
+    }
+
+    // 最新列表
+    function funnewest(funnewesthtml,newest,newestlist){
+        var funnewesthtml = '';
+        var aaa = '';
+        if(newest.length == 0){
+            funnewesthtml = ''
+        }else{
+            for(var i = 0; i < newest.length; i++){
+                aaa += '<div class="swiper-slide" id="'+newest[i].id+'"> <div class="avatar"><img src="'+avatarUrl+newest[i].userInfo.avatar+'" alt=""></div> <div class="nickname">'+newest[i].userInfo.nickname+'</div> '+project(newest[i].projectList,$(".container").innerHTML,newest[i].price)+' </div>'
+            }
+            funnewesthtml = '<div class="newest"> <div class="title">最新&nbsp;&nbsp;<i><img src="../img/1.icon_new@2x.png" alt=""></i></div> <div class="swiper-container swiper1"> <div class="swiper-wrapper">'+aaa+'</div> </div>'+newlist(newestlist,$(".noticetxt").innerHTML)+'</div>'
+        }
+        return funnewesthtml;
+    }
+    
+    function newlist(newlist,newlisthtml){
+        var newlisthtml = "";
+        var newlistshtml = "";
+        if(newlist.length == 0){
+            newlisthtml = "";
+        }else{
+            for(var i = 0; i < newlist.length; i++){
+                newlistshtml += "<div class='swiper-slide'> "+newlist[i]+"</div>";
+            }
+            newlisthtml = '<div class="notice"><div class="noticeimg"><img src="../img/1.icon_newins@2x.png" alt=""></div><div class="noticeline">|</div><div class="noticetxt swiper-container swipernotice"><div class="swiper-wrapper">'+newlistshtml+'</div></div></div>';
+        }
+        return newlisthtml;
+    }
+
+    // 判断最新列表的技能列表
+    function project(projectList,projectListhtml,price) {
+        var projectListhtml = '';
+        var ss = '';
+        for(var j = 0; j < projectList.length; j++){
+            if(projectList[j].projectName == null){
+                projectListhtml = '';
+            }else{
+                ss += '<span class="invitations">'+projectList[j].projectName+'&nbsp;&nbsp;'+'</span>';
+                projectListhtml = '<div class="container"> '+ss+' <span class="price">￥'+price+'</span> </div>';
+            }
+        }
+        return projectListhtml;
+    }
+
+    // 推荐列表
+    function funrecommend(recommendhtml,recommend) {
+        var recommendhtml = '';
+        var recomm = '';
+        if(recommend.length == 0){
+            recommendhtml = '';
+        }else{
+            for(var i = 0; i < recommend.length; i++){
+                recomm += '<div class="list"  id="'+recommend[i].id+'"> <div class="avatar-box"> '+judgevip(recommend[i].userInfo.vip,$(".avatar-box").innerHTML,recommend[i].userInfo.avatar)+' </div> <div class="container"><p class="skill">'+project1(recommend[i].projectList,$(".skill").innerHTML)+'</p><p class="price">'+recommend[i].priceStr+'</p></div> <div class="user"> <p class="u-left"> <span class="nickname">'+recommend[i].userInfo.nickname+'</span> '+judgeSex(recommend[i].userInfo.gender,$(".nickname").innerHTML)+idprove(recommend[i].userInfo.idProve,$(".u-left").innerHTML)+' </p> <p class="u-right"><img src="../img/1.yueta_but@2x.png" alt=""></p> </div> <div class="online-box">'+funonline(recommend[i].online,$(".online-box").innerHTML)+'</div> </div>'
+            }
+            recommendhtml = '<div class="recommend"> <div class="title">推荐&nbsp;&nbsp;<i><img src="../img/1.icon_recommend@2x.png" alt=""></i></div> <div class="list-box">'+recomm+'</div> </div>'
+        }
+       return recommendhtml;
+    }
+
+    // 用户列表
+    function funrecommend1(recommendhtml,recommend) {
+        var recommendhtml = '';
+        var recomm = '';
+        if(recommend.length == 0){
+            recommendhtml = ''
+        }else{
+            for(var i = 0; i < recommend.length; i++){
+                recomm += '<div class="list1" id="'+recommend[i].id+'"> <div class="avatar-box"> '+judgevip(recommend[i].userInfo.vip,$(".avatar-box").innerHTML,recommend[i].userInfo.avatar)+' </div> <div class="container"><p class="skill">'+project1(recommend[i].projectList,$(".skill").innerHTML)+'</p><p class="price">'+recommend[i].priceStr+'</p></div> <div class="user"> <p class="u-left"> <span class="nickname">'+recommend[i].userInfo.nickname+'</span> '+judgeSex(recommend[i].userInfo.gender,$(".nickname").innerHTML)+idprove(recommend[i].userInfo.idProve,$(".u-left").innerHTML)+' </p> <p class="u-right"><img src="../img/1.yueta_but@2x.png" alt=""></p> </div> <div class="online-box">'+funonline(recommend[i].online,$(".online-box").innerHTML)+'</div> </div>'
+            }
+            recommendhtml = '<div class="userlist"><div class="list-box">'+recomm+'</div></div>'
+        }
+        return recommendhtml;
+    }
+
+    // 详情
+    function fun(aaa,id) {
+        for(var i = 0; i < aaa.length; i++){
+            if(id == aaa[i].id){
+                var a = $('<div id="pre-details"><div class="header"><div class="head"><div class="hleft"><img src="../img/back.png" alt="" class="back-left"></div><div class="mid">技能详情</div><div class="hright"></div></div></div><div class="swiper-container banner"><div class="swiper-wrapper"><div class="swiper-slide">'+avatar(aaa[i].userInfo.avatar,$('.swiper-slide').innerHTML)+'</div></div><div class="swiper-pagination"></div></div><div class="contians1"><div class="con1"><div class="personal">'+avatar1(aaa[i].userInfo.avatar,$('.personal').innerHTML)+'<div class="mid"><p><span class="name">'+aaa[i].userInfo.nickname+'</span></p><p>'+judgeSexAge(aaa[i].userInfo.gender,aaa[i].userInfo.age,$(".sex").innerHTML)+'<span class="real-name">'+idprove(aaa[i].userInfo.idProve,$(".real-name").innerHTML)+'</span><span class="video">'+video(aaa[i].userInfo.videoProve,$(".video").innerHTML)+'</span><span class="vehicle">'+judgeche(aaa[i].userInfo.carLogo,$(".vehicle").innerHTML)+'</span><span class="vip">'+judgevip1(aaa[i].userInfo.vip,$(".vip").innerHTML) +'</span></p></div><div class="check"><span>'+aaa[i].price+'</span> 元/小时</div> <div class="add-sttention-to"><a href="https://api.shenyuevip.com/resource/getDownloadUrl"><img src="../img/4.about@2x.png" alt=""></a></div></div><ul class="meet"><li class="describe">'+aaa[i].subject+'</li><li class="yue"><span class="cir"></span><span class="yuesex">'+judgeSex1(aaa[i].genderRequirements,$(".yuesex").innerHTML)+'</span><span class="project">'+datetype(aaa[i].dateType,$(".project").innerHTML)+'</span><span class="place">'+aaa[i].minTime+'-'+aaa[i].maxTime+'小时</span></li>'+city(aaa[i].areaList,$(".meet").innerHTML)+''+pro(aaa[i].projectList,$(".meet").innerHTML)+'<li class="img1">'+isvedio(aaa[i].voiceDuration,$(".img1").innerHTML)+'</li></ul><div class="explain">'+judgedescr(aaa[i].descr,$(".explain").innerHTML)+'</div></div><div class="con3"><div class="impression"><div class="top-impre"><p class="imprel">Ta的印象</p><p class="imprer">违约记录<span class="">&nbsp;&nbsp;0</span>/<span>30</span></p></div><ul class="btm-impre"></ul></div><ul class="comment"></ul><a href="https://api.shenyuevip.com/resource/getDownloadUrl"><div class="more"><p class="yinxiang">更多印象</p></div></a></div><a href="https://api.shenyuevip.com/resource/getDownloadUrl"><div class="yaoyue">下单</div></a></div></div>');
+
+                listid = aaa[i].uid;
+                btmimpre = $(".btm-impre");
+                comment = $(".comment");
+                $.ajax({
+                    type: "get",
+                    async: true,
+                    url: apiUrl+"/order/n/getEvaluate?toUid="+listid+"&type=1&page=1&limit=20",
+                    dataType: "json",
+                    success: function(data,btmimpre,comment){
+                        var bu = data.datas.userTagList;
+                        var be = data.datas.evaluateList;
+                        if(bu.length != 0){
+                            for(var n = 0; n < bu.length; n++){
+                                if(bu[n].tagName != null){
+                                    var bua = $('<li class="impreli">'+bu[n].tagName+'</li>');
+                                    $(".btm-impre").append(bua);
+                                }
+                            }
+                        }
+                        if(be.length == 0){
+                            $(".more").html("");
+                        }
+                        if(be.length != 0){
+                            for(var m = 0; m < be.length; m++){
+                                var bea = $('<li class="comli"><div class="user"><div class="userl"><img src="'+avatarUrl+''+be[m].avatar+'" alt="" class="userimg"><div class="userm"><p class="name">'+be[m].nickname+'</p><p class="timer">'+be[m].createTime+'</p></div></div><div class="userr">'+stars(be[m].number,$(".userr").innerHTML)+'</div></div><p class="comp">'+be[m].content+'</p></li>');
+                                $(".comment").append(bea);
+                            }
+                        }
+                    }
+                });
+                $("body").append(a);
+                $("#pre-about").css("display","none");
+                $(".back-left").click(function (){
+                    $(this).parents("#pre-details").remove();
+                    $("#pre-about").css("display","block");
+                })
+            }
+        }
+    }
+
+    // 初始化数据
+    function loadData(){
+        $.ajax({
+            type: "post",
+            async: true,
+            url: apiUrl+"/valuable/n/getIndexDataForH5?limit=10",
+            dataType: "json",
+            success: function(data){
+                var b = data.datas;
+                n = data.datas.newestList;
+                re = data.datas.recommendList;
+                s = data.datas.screenList;
+                var div;
+                div = $(' '+funnewest($(".swiper-wrapper").innerHTML,b.newestList,b.newestTitleList)+funrecommend($(".list-box").innerHTML,b.recommendList)+'<div class="banner"><div class="swiper-container swiper2"><div class="swiper-wrapper wrapper"> </div><div class="swiper-pagination"></div></div></div>  '+funrecommend1($(".list-box").innerHTML,b.screenList));
+                $("#listData").append(div);
+                var mySwiper = new Swiper('.swiper1',{
+                    slidesPerView : 3.5
+                });
+                //轮播图
+                $.get(apiUrl+"/resource/getResourceCarouselList",function (data) {
+                    var b = data.datas.carouselList;
+                    var div = '';
+                    for(var i = 0; i < b.length; i++){
+                        div += '<div class="swiper-slide"><img src="'+avatarUrl+b[i].image+'" alt="" class="ban"></div>'
+                    }
+                    $(".wrapper").append(div);
+                    var mySwiper1 = new Swiper('.swiper2',{
+                        autoplay : 5000,
+                        speed:500,
+                        loop : true,
+                        pagination : '.swiper-pagination',
+                        autoplayDisableOnInteraction : false
+                    });
+                });
+
+                var swipers = new Swiper('.swipernotice',{
+                    autoplay : 3000,
+                    speed:500,
+                    direction : 'vertical',
+                    loop : true,
+                    autoplayDisableOnInteraction : false
+                })
+
+                //当屏幕滚动时 不触发点击事件
+                var isClick = true;
+                var list = $('.list,.list1');
+                list.on('touchstart', function(e){
+                    isClick = true;
+                });
+                list.on('touchmove', function(e){
+                    isClick = false;
+                });
+
+                //最新列表的详情
+                $(".swiper-slide").on('tap',function () {
+                   fun(n,this.id);
+                });
+
+                //推荐列表的详情
+                $(".list").click(function () {
+                    fun(re,this.id);
+                });
+
+                //用户列表的详情
+                $(".list1").click(function () {
+                    fun(s,this.id);
+                });
+
+                var lastobj = '';
+                for(var i in s){
+                    lastobj = s[i];
+                }
+                lasttime = lastobj.createTime;
+            }
+        });
+        myScroll.refresh();
+    }
+
+
+    // 上拉加载
+    function pullUpAction(){
+        var timer = setTimeout(function(){
+            $.post(apiUrl+"/valuable/n/getIndexDataForH5?createTime="+lasttime+"&limit=10",function (data){
+                var b = data.datas;
+                var s2 = data.datas.screenList;
+                var div;
+                if(s2.length == 0){
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="没有更多的数据";
+                }else{
+                    div = funrecommend1($(".list-box").innerHTML,b.screenList);
+                    $("#listData").append(div);
+
+                    //当屏幕滚动时 不出发点击事件
+                    var isClick = true;
+                    var list = $('.list,.list1');
+                    list.on('touchstart', function(e){
+                        isClick = true;
+                    });
+                    list.on('touchmove', function(e){
+                        isClick = false;
+                    });
+
+                    //用户列表的详情
+                    $(".list1").click(function () {
+                        fun(s2,this.id);
+                    });
+
+                    var lastobj = '';
+                    for(var i in s2){
+                        lastobj = s2[i];
+                    }
+                    lasttime = lastobj.createTime;
+                }
+            });
+            myScroll.refresh();
+        },400);
+    }
+
+
+    $.ajax({
+         type: "post",
+         async:true,
+         url: apiUrl+"/valuable/n/getIndexDataForH5?limit=20",
+         dataType: "json",
+         success: function(data){
+             var b = data.datas;
+             console.log(b);
+         }
+     });
+</script>
+
+</body>
+</html>

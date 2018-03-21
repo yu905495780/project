@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>点击div随机数字</title>
+      <style>
+          .random{
+              background: pink;
+              width:150px;
+              height:50px;
+              text-align: center;
+              line-height: 50px;
+              cursor: pointer;
+              display: none;
+          }
+      </style>
+  </head>
+  <body>
+      <span class="cilck-to-get">点击获取验证码</span>
+      <span class="random">4546</span>
+      <script>
+          var cilcktoget = document.getElementsByClassName("cilck-to-get")[0];
+          var random = document.getElementsByClassName("random")[0];
+          cilcktoget.onclick = function () {
+              random.style.display = "block";
+          };
+          random.onclick = function () {
+              random.innerHTML = ran(1000,9999)
+          };
+          function ran(min,max) {
+              return Math.floor(Math.random()*(max-min+1)+min)
+          }
+      </script>
+
+      <script src="fangwenliang.js"></script>
+  </body>
+</html>
+

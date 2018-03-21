@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>swiper</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="swiper.min.css">
+    <script src="swiper.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <style>
+        /*列表切换*/
+        .maple-tab {
+            background-color: #fff;
+            width: 100%;
+        }
+        .maple-tab ul {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .maple-tab ul li {
+            list-style-type: none;
+            float: left;
+            width: 50%;
+            text-align: center;
+            color: #333;
+            font-size: 1.6rem;
+            padding: 4% 0;
+            border-bottom: 2px solid #dedede;
+            cursor: pointer;
+        }
+
+        .m-border-right {
+            border-right: 1px solid #dedede;
+        }
+
+        /*tab活动状态样式*/
+        .maple-tab .active {
+            color: #f76755;
+            border-bottom: 2px solid #f76755;
+        }
+
+
+        .tab-content-1,.tab-content-2{
+            width: 100%;
+            height: 10rem;
+            padding: 4% 0;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .tab-content-1{
+            color: #f76755;
+        }
+        .tab-content-2{
+            color: mediumslateblue;
+        }
+    </style>
+</head>
+<body>
+<!--列表切换选项卡-->
+<div class="maple-tab clearFix">
+    <ul>
+        <li class="active"><p class="m-border-right">订单状态</p></li>
+        <li><p>订单详情</p></li>
+    </ul>
+</div>
+
+<!--列表内容-->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide tab-content-1">列表1内容</div>
+        <div class="swiper-slide tab-content-2">列表2内容</div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            onSlideChangeEnd: function (swiper) {
+                var j=mySwiper.activeIndex;
+                $('.maple-tab li').removeClass('active').eq(j).addClass('active');
+            }
+        })
+        /*列表切换*/
+        $('.maple-tab li').on('click', function (e) {
+            e.preventDefault();
+            //得到当前索引
+            var i=$(this).index();
+            $('.maple-tab li').removeClass('active').eq(i).addClass('active');
+            mySwiper.slideTo(i,1000,false);
+        });
+    });
+</script>
+</body>
+</html>

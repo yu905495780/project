@@ -1,0 +1,15 @@
+﻿.container {
+  min-width: 100px !important;
+}
+.ifpImportContainer .btnUpload {
+  padding: 10px 0 0 0;
+}
+.ifpImportContainer .file progress {
+  width: 100%;
+}
+.ifpImportContainer .text-danger {
+  margin-top: 10px;
+}
+.ifpImportContainer .well {
+  margin-bottom: 0;
+}

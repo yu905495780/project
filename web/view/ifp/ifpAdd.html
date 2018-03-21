@@ -1,0 +1,702 @@
+<div class="ifpAddContainer">
+    <link rel="stylesheet" type="text/css" ng-href="./style/ifp/ifpAdd.css?v={{CssVersion}}" />
+    <div class="page-header">
+        <h2>{{isDouble?"往返":"单程"}}私有运价录入</h2>
+    </div>
+    <form class="form-horizontal" role="form">
+        <div class="page-header">
+            <h3>
+                <small>基本信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-class="{'has-error':!validate.mainFileGroupCode.valid}">
+                    <label class="col-xs-2 control-label">文件编号 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入文件编号" ng-model="data.mainFileGroupCode" chinese-restrict ng-required="true">
+                        <span ng-if="!validate.mainFileGroupCode.valid" class="help-block bg-danger">{{validate.mainFileGroupCode.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.productType.valid}">
+                    <label class="col-xs-2 control-label">产品类型 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.productType" ng-required="true">
+                            <option value="-1">请选择产品类型</option>
+                            <option value="0">直销</option>
+                            <option value="2">特惠</option>
+                            <option value="1">清舱产品</option>
+                        </select>
+                        <span ng-if="!validate.productType.valid" class="help-block bg-danger">{{validate.productType.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.stockType.valid}">
+                    <label class="col-xs-2 control-label">库存模式 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.stockType" ng-required="true">
+                            <option value="-1">请选择库存模式</option>
+                            <option value="0">见舱</option>
+                        </select>
+                        <span ng-if="!validate.stockType.valid" class="help-block bg-danger">{{validate.stockType.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.bCanRt.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">是否允许1/2RT组合 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.bCanRt" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                        <span ng-if="!validate.bCanRt.valid" class="help-block bg-danger">{{validate.bCanRt.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canGroupFileCode.valid}" ng-if="data.bCanRt == 1" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">可组合文件编号 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入可组合文件编号" ng-model="data.canGroupFileCode" chinese-restrict ng-required="true">
+                        <span ng-if="!validate.canGroupFileCode.valid" class="help-block bg-danger">{{validate.canGroupFileCode.reason}}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <fieldset>
+                <h3>
+                    <small>路线信息</small>
+                </h3>
+                <div class="form-group" ng-class="{'has-error':!validate.airline.valid}">
+                    <label class="col-xs-2 control-label">开票航司 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入开票航司" ng-model="data.airline" maxlength="2" english-digital ng-required="true" ng-blur="handleAirlineCombine()">
+                        <span ng-if="!validate.airline.valid" class="help-block bg-danger">{{validate.airline.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.addressOption.valid}">
+                    <label class="col-xs-2 control-label">录入方式 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.addressOption" ng-required="true">
+                            <option value="-1">请选择录入方式</option>
+                            <option value="1">机场</option>
+                            <option value="2">城市</option>
+                        </select>
+                        <span ng-if="!validate.airline.valid" class="help-block bg-danger">{{validate.addressOption.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.depCities.valid}">
+                    <label class="col-xs-2 control-label">出发地 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入出发地" ng-model="data.depCities" english-comma ng-required="true">
+                        <span class="help-block text-info">多个出发地请用英文逗号(,)隔开</span>
+                        <span ng-if="!validate.depCities.valid" class="help-block bg-danger">{{validate.depCities.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.isTransfer.valid}">
+                    <label class="col-xs-2 control-label">是否中转 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.isTransfer" ng-required="true" ng-change="handleAirlineCombine()">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                        <span ng-if="!validate.isTransfer.valid" class="help-block bg-danger">{{validate.isTransfer.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.isTransfer==1" ng-class="{'has-error':!validate.transferCities.valid}">
+                    <label class="col-xs-2 control-label">中转点 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入中转点" ng-model="data.transferCities" english-comma ng-required="true">
+                        <span class="help-block text-info">多个中转点请用英文逗号(,)隔开</span>
+                        <span ng-if="!validate.transferCities.valid" class="help-block bg-danger">{{validate.transferCities.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.arrCities.valid}">
+                    <label class="col-xs-2 control-label">目的地 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入目的地" ng-model="data.arrCities" english-comma ng-required="true">
+                        <span class="help-block text-info">多个目的地请用英文逗号(,)隔开</span>
+                        <span class="help-block bg-danger" ng-if="!validate.arrCities.valid">{{validate.arrCities.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.cabin.valid}">
+                    <label class="col-xs-2 control-label">适用舱位 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入适用舱位" ng-model="data.cabin" english-comma ng-required="true">
+                        <span class="help-block text-info">每航段只能录1个舱位，转机行程舱位用英文逗号(,)隔开，如Y,B</span>
+                        <span class="help-block bg-danger" ng-if="!validate.cabin.valid">{{validate.cabin.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.grade.valid}" ng-if="false">
+                    <label class="col-xs-2 control-label">舱位等级 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.grade" ng-required="true">
+                            <option value="-1">请选择舱位等级</option>
+                            <option value="1">经济</option>
+                            <option value="2">超值经济</option>
+                            <option value="3">公务</option>
+                            <option value="4">头等</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.grade.valid">{{validate.grade.reason}}</span>
+                    </div>
+                </div>
+                <!-- TODO -->
+                <div class="form-group" ng-class="{'has-error':!validate.segmentAirlines.valid}">
+                    <label class="col-xs-2 control-label">航司组合</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入航司组合" ng-model="data.segmentAirlines" maxlength="100" english-digital-comma-slash>
+                        <span class="help-block text-info">多家航司用斜线隔开，如CA/LH,多个航段用逗号隔开，如CA,LH或为空</span>
+                        <span class="help-block bg-danger" ng-if="!validate.segmentAirlines.valid">{{validate.segmentAirlines.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.segmentFlightAllow.valid}">
+                    <label class="col-xs-2 control-label">可售航班</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入可售航班" ng-model="data.segmentFlightAllow" ng-required="true">
+                        <span class="help-block text-info">CA123或CA001-999或CA001-999，CA3000-3999或CA(HU\CZ)或CA(*)或为空</span>
+                        <span class="help-block bg-danger" ng-if="!validate.segmentFlightAllow.valid">{{validate.segmentFlightAllow.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.segmentFlightDeny.valid}">
+                    <label class="col-xs-2 control-label">禁售航班</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入禁售航班" ng-model="data.segmentFlightDeny" ng-required="true">
+                        <span class="help-block text-info">CA123或CA001-999或CA001-999，CA3000-3999或CA(HU\CZ)或CA(*)或为空</span>
+                        <span class="help-block bg-danger" ng-if="!validate.segmentFlightDeny.valid">{{validate.segmentFlightDeny.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canDepStay.valid}">
+                    <label class="col-xs-2 control-label">{{isDouble?"允许去程中途停留":"中途停留"}} <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canDepStay" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block text-info">为"允许"只支持免费停留</span>
+                        <span class="help-block bg-danger" ng-if="!validate.canDepStay.valid">{{validate.canDepStay.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canRetStay.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">允许回程中途停留 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canRetStay" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block text-info">为"允许"只支持免费停留</span>
+                        <span class="help-block bg-danger" ng-if="!validate.canRetStay.valid">{{validate.canRetStay.reason}}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>运价限制</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-class="{'has-error':!validate.sale.valid}">
+                    <label class="col-xs-2 control-label">销售日期 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10 calendar">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="saleValue.start" is-open="saleStartCalOpen" uib-datepicker-popup="yyyy-MM-dd" datepicker-options="saleOption.start" clear-text="清除" current-text="今天" close-text="关闭" ng-change="saleStartChange()" ng-required="true"
+                                       readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="saleStartOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            -
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="saleValue.end" is-open="saleEndCalOpen" uib-datepicker-popup="yyyy-MM-dd" datepicker-options="saleOption.end" ng-required="true" clear-text="清除" current-text="今天" close-text="关闭" ng-required="true" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="saleEndOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="help-block bg-danger clearfix" ng-if="!validate.sale.valid">{{validate.sale.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.dateRestrictGo.valid}">
+                    <label class="col-xs-2 control-label">旅行日期 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10 calendar">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="dateRestrictGoValue.start" is-open="dateRestrictGoStartCalOpen" uib-datepicker-popup="yyyy-MM-dd" datepicker-options="dateRestrictGoOption.start" clear-text="清除" current-text="今天" close-text="关闭" ng-change="dateRestrictGoStartChange()"
+                                       ng-required="true" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="dateRestrictGoStartOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            -
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       ng-model="dateRestrictGoValue.end"
+                                       is-open="dateRestrictGoEndCalOpen"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       datepicker-options="dateRestrictGoOption.end"
+                                       clear-text="清除" current-text="今天" close-text="关闭"
+                                       ng-required="true" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="dateRestrictGoEndOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="help-block bg-danger clearfix" ng-if="!validate.dateRestrictGo.valid">{{validate.dateRestrictGo.reason}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-repeat="item in restrictGoForbidValue" ng-class="{'has-error':!validate.dateRestrictGoForbid.valid}">
+                    <label class="col-xs-2 control-label" ng-bind="$index == 0?'排除旅行日期':''"></label>
+                    <div class="col-xs-10 calendar">
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       ng-model="item.start" is-open="item.startOpen"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       clear-text="清除" current-text="今天" close-text="关闭"
+                                       ng-change="dateRestrictGoForbidStartChange(item)"
+                                       ng-required="true" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="dateRestrictGoForbidStartOpenClick(item)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            -
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       ng-model="item.end"
+                                       is-open="item.endOpen"
+                                       uib-datepicker-popup="yyyy-MM-dd"
+                                       datepicker-options="{'minDate':item.endMinDate}"
+                                       clear-text="清除" current-text="今天" close-text="关闭"
+                                       ng-change="dateRestrictGoForbidEndChange(item)"
+                                       ng-required="true" readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="dateRestrictGoForbidStartEndClick(item)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" ng-disabled="restrictGoForbidValue.length>=4" ng-click="restrictGoForbidAddClick($index)"><span class="glyphicon glyphicon-plus"></span></button>
+                                <button type="button" class="btn btn-danger" ng-disabled="restrictGoForbidValue.length<=1" ng-click="restrictGoForbidPlusClick($index)"><span class="glyphicon glyphicon-minus"></span></button>
+                            </div>
+                        </div>
+                        <span class="help-block bg-danger clearfix" ng-if="restrictGoForbidValue.length-1 == $index && !validate.RestrictGoForbid.valid">{{validate.dateRestrictGoForbid.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.advancedSaleDate.valid}">
+                    <label class="col-xs-2 control-label">提前出票天数</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入提前出票天数" ng-model="data.advancedSaleDate" digital-only>
+                        <span class="help-block bg-danger" ng-if="!validate.advancedSaleDate.valid">{{validate.advancedSaleDate.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.minStay.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">最短停留天数 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入最短停留天数" ng-model="data.minStay" chinese-restrict>
+                        <span class="help-block bg-danger" ng-if="!validate.minStay.valid">{{validate.minStay.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.maxStay.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">最长停留天数 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入最长停留天数" ng-model="data.maxStay" chinese-restrict>
+                        <span class="help-block bg-danger" ng-if="!validate.maxStay.valid">{{validate.maxStay.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.weekRestrictGo.valid}">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程适用班期":"适用班期"}} <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <!--<div class="btn-group">
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Mon" uib-btn-checkbox>周一</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Tue" uib-btn-checkbox>周二</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Wed" uib-btn-checkbox>周三</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Thu" uib-btn-checkbox>周四</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Fri" uib-btn-checkbox>周五</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Sat" uib-btn-checkbox>周六</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Sun" uib-btn-checkbox>周日</label>
+                        </div>
+                        {{data.weekRestrictGo}}-->
+                        <input type="text" class="form-control" placeholder="请输入{{isDouble?'去程适用班期':'适用班期'}}" ng-model="data.weekRestrictGo" />
+                        <span class="help-block bg-danger" ng-if="!validate.weekRestrictGo.valid">{{validate.weekRestrictGo.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.weekRestrictReturn.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">回程适用班期 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <!--<div class="btn-group">
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Mon" uib-btn-checkbox>周一</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Tue" uib-btn-checkbox>周二</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Wed" uib-btn-checkbox>周三</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Thu" uib-btn-checkbox>周四</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Fri" uib-btn-checkbox>周五</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Sat" uib-btn-checkbox>周六</label>
+                            <label class="btn btn-primary" ng-model="weekRestrictGoObj.Sun" uib-btn-checkbox>周日</label>
+                        </div>
+                        {{data.weekRestrictGo}}-->
+                        <input type="text" class="form-control" placeholder="请输入回程适用班期" ng-model="data.weekRestrictReturn" />
+                        <span class="help-block bg-danger" ng-if="!validate.weekRestrictReturn.valid">{{validate.weekRestrictReturn.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.minPeopleNum.valid}">
+                    <label class="col-xs-2 control-label">最小出行人数</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入最小出行人数" ng-model="data.minPeopleNum" maxlength="1" digital-only>
+                        <span class="help-block bg-danger" ng-if="!validate.minPeopleNum.valid">{{validate.minPeopleNum.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.maxPeopleNum.valid}">
+                    <label class="col-xs-2 control-label">最大出行人数</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入最大出行人数" ng-model="data.maxPeopleNum" maxlength="1" zero-restrict>
+                        <span class="help-block bg-danger" ng-if="!validate.maxPeopleNum.valid">{{validate.maxPeopleNum.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.passengerType.valid}">
+                    <label class="col-xs-2 control-label">适用旅客 <span class="text-danger">*</span></label>
+                    <!--passengerType-->
+                    <div class="col-xs-10">
+                        <div class="btn-group passengerType">
+                            <label class="btn btn-primary" ng-model="passengerTypeObj.adult" uib-btn-checkbox ng-disabled="true">普通成人</label>
+                            <label class="btn btn-primary" ng-model="passengerTypeObj.student" ng-disabled="true" ng-if="false" uib-btn-checkbox uncheckable>学生</label>
+                            <label class="btn btn-primary" ng-model="passengerTypeObj.child" uib-btn-checkbox>儿童</label>
+                        </div>
+                        <span class="help-block bg-danger" ng-if="!validate.passengerType.valid">{{validate.passengerType.reason}}</span>
+                    </div>
+                </div>
+                <fieldset disabled ng-if="false">
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">适用旅客国际</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" placeholder="请输入适用旅客国际">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">排除旅客国际</label>
+                        <div class="col-xs-10">
+                            <input type="text" class="form-control" placeholder="请输入排除旅客国际">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">适用年龄</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入开始年龄">
+                        </div>
+                        <div class="col-xs-1">
+                            -
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入结束年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">排除旅客年</label>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入开始年龄">
+                        </div>
+                        <div class="col-xs-1">
+                            -
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="请输入结束年龄">
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>价格信息管理</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-class="{'has-error':!validate.filePrice.valid}" ng-if="passengerTypeObj.adult">
+                    <label class="col-xs-2 control-label">成人销售票面 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入成人销售票面" ng-model="data.filePrice" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.filePrice.valid">{{validate.filePrice.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.filePriceChild.valid}" ng-if="passengerTypeObj.child">
+                    <label class="col-xs-2 control-label">儿童销售票面 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入儿童销售票面" ng-model="data.filePriceChild" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.filePriceChild.valid">{{validate.filePriceChild.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.currency.valid}">
+                    <label class="col-xs-2 control-label">结算币种 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.currency" ng-required="true">
+                            <option value="-1">请选择结算币种</option>
+                            <option value="1">人民币</option>
+                        </select>
+                        <span class="help-block text-info">只支持CNY</span>
+                        <span class="help-block bg-danger" ng-if="!validate.currency.valid">{{validate.currency.reason}}</span>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">成人税费</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入成人税费" disabled>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="false">
+                    <label class="col-xs-2 control-label">儿童税费</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入儿童税费" disabled>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.saleRetention.valid}">
+                    <label class="col-xs-2 control-label">返点 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="请输入返点" ng-model="data.saleRetention" chinese-restrict>
+                            <span class="input-group-addon">%</span>
+                        </div>
+                        <span class="help-block bg-danger" ng-if="!validate.saleRetention.valid">{{validate.saleRetention.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.saleRebase.valid}">
+                    <label class="col-xs-2 control-label">留钱</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入留钱" ng-model="data.saleRebase" chinese-restrict>
+                        <span class="help-block bg-danger" ng-if="!validate.saleRebase.valid">{{validate.saleRebase.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.reserveType.valid}">
+                    <label class="col-xs-2 control-label">预订配置 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.reserveType" ng-required="true">
+                            <option value="-1">请选择预订配置</option>
+                            <option value="1">同程预订</option>
+                            <option value="2">已绑定配置预订</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.reserveType.valid">{{validate.reserveType.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.reserveType==1" ng-class="{'has-error':!validate.officeNo1.valid}">
+                    <label class="col-xs-2 control-label">授权office1 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入授权office号" ng-model="officeNos[0]" english-digital ng-required="true" maxlength="6">
+                        <span class="help-block bg-danger" ng-if="!validate.officeNo1.valid">{{validate.officeNo1.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="data.reserveType==1" ng-class="{'has-error':!validate.officeNo2.valid}">
+                    <label class="col-xs-2 control-label">授权office2</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入授权office号" ng-model="officeNos[1]" english-digital ng-required="true" maxlength="6">
+                        <span class="help-block bg-danger" ng-if="!validate.officeNo2.valid">{{validate.officeNo2.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canReimbursementVoucher.valid}">
+                    <label class="col-xs-2 control-label">报销凭证 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canReimbursementVoucher" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="1">发票</option>
+                            <option value="0">行程单</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canReimbursementVoucher.valid">{{validate.canReimbursementVoucher.reason}}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>退改信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-class="{'has-error':!validate.canChange.valid}">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程是否允许改期":"是否允许改期"}} <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canChange" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canChange.valid">{{validate.canChange.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.changeFeeDep.valid}" ng-if="data.canChange==1">
+                    <label class="col-xs-2 control-label">{{isDouble?"去程改期费":"改期费"}} <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="{{isDouble?'请输入去程改期费':'请输入改期费'}}" ng-model="data.changeFeeDep" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.changeFeeDep.valid">{{validate.changeFeeDep.reason}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':!validate.canChangeRet.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">回程是否允许改期 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canChangeRet" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canChangeRet.valid">{{validate.canChangeRet.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.changeFeeRet.valid}" ng-if="isDouble && data.canChangeRet==1">
+                    <label class="col-xs-2 control-label">回程改期费 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入回程改期费" ng-model="data.changeFeeRet" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.changeFeeRet.valid">{{validate.changeFeeRet.reason}}</span>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canRefund.valid}">
+                    <label class="col-xs-2 control-label">全部未使用可否退票 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canRefund" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canRefund.valid">{{validate.canRefund.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.refundFeeAllUnused.valid}" ng-if="data.canRefund==1">
+                    <label class="col-xs-2 control-label">全部未使用退票费 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入全部未使用退票费" ng-model="data.refundFeeAllUnused" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.refundFeeAllUnused.valid">{{validate.refundFeeAllUnused.reason}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':!validate.canRefundPartUnused.valid}" ng-if="isDouble">
+                    <label class="col-xs-2 control-label">部分使用是否允许退票<span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canRefundPartUnused" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canRefundPartUnused.valid">{{validate.canRefundPartUnused.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.refundFeePartUnused.valid}" ng-if="isDouble && data.canRefundPartUnused==1">
+                    <label class="col-xs-2 control-label">部分使用退票费 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入部分使用退票费" ng-model="data.refundFeePartUnused" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.refundFeePartUnused.valid">{{validate.refundFeePartUnused.reason}}</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':!validate.noShowRestrict.valid}">
+                    <label class="col-xs-2 control-label">是否允许NOSHOW <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.noShowRestrict" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="0">不允许</option>
+                            <option value="1">允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.noShowRestrict.valid">{{validate.noShowRestrict.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.noShowFee.valid}" ng-if="data.noShowRestrict==1">
+                    <label class="col-xs-2 control-label">NOSHOW费 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入NOSHOW费" ng-model="data.noShowFee" ng-required="true" digital-only>
+                        <span class="help-block bg-danger" ng-if="!validate.noShowFee.valid">{{validate.noShowFee.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.noShowRemark.valid}" ng-if="data.noShowRestrict==1">
+                    <label class="col-xs-2 control-label">NOSHOW说明</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入NOSHOW说明" ng-model="data.noShowRemark">
+                        <span class="help-block bg-danger" ng-if="!validate.noShowRemark.valid">{{validate.noShowRemark.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.buyTicketNotice.valid}">
+                    <label class="col-xs-2 control-label">购票须知</label>
+                    <div class="col-xs-10">
+                        <textarea type="text" class="form-control" placeholder="请输入购票须知" ng-model="data.buyTicketNotice"></textarea>
+                        <span class="help-block bg-danger" ng-if="!validate.buyTicketNotice.valid">{{validate.buyTicketNotice.reason}}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="page-header">
+            <h3>
+                <small>其他信息</small>
+            </h3>
+            <fieldset>
+                <div class="form-group" ng-class="{'has-error':!validate.luggageType.valid}">
+                    <label class="col-xs-2 control-label">行李规格 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.luggageType" ng-required="true">
+                            <option value="-1">请选择行李规格</option>
+                            <option value="1">KG/公斤</option>
+                            <option value="2">PC/件数</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.luggageType.valid">{{validate.luggageType.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.luggageWeightsBags.valid}">
+                    <label class="col-xs-2 control-label">行李额 <span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入行李额" ng-model="data.luggageWeightsBags" ng-required="true" digital-only maxlength="2">
+                        <span class="help-block bg-danger" ng-if="!validate.luggageWeightsBags.valid">{{validate.luggageWeightsBags.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.canInvalid.valid}">
+                    <label class="col-xs-2 control-label">当日作废（不展示）<span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <select class="form-control" ng-model="data.canInvalid" ng-required="true">
+                            <option value="-1">请选择</option>
+                            <option value="1">允许</option>
+                            <option value="0">不允许</option>
+                        </select>
+                        <span class="help-block bg-danger" ng-if="!validate.canInvalid.valid">{{validate.canInvalid.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.invalidFee.valid}" ng-if="data.canInvalid==1">
+                    <label class="col-xs-2 control-label">废票费（不展示）<span class="text-danger">*</span></label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" placeholder="请输入废票费" ng-model="data.invalidFee" digital-only ng-required="true">
+                        <span class="help-block bg-danger" ng-if="!validate.invalidFee.valid">{{validate.invalidFee.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.remark.valid}">
+                    <label class="col-xs-2 control-label">备注（不展示给客户）</label>
+                    <div class="col-xs-10">
+                        <textarea type="text" class="form-control" placeholder="请输入备注" ng-model="data.remark" maxlength="1000"></textarea>
+                        <span class="help-block bg-danger" ng-if="!validate.remark.valid">{{validate.remark.reason}}</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error':!validate.status.valid}">
+                    <label class="col-xs-2 control-label"></label>
+                    <div class="col-xs-10">
+                        <div class="btn-group autoPublished">
+                            <label class="btn btn-primary" ng-model="data.status" uib-btn-radio="'1'" uncheckable>保存后直接投放</label>
+                            <label class="btn btn-primary" ng-model="data.status" uib-btn-radio="'0'" uncheckable>保存后政策挂起</label>
+                        </div>
+                        <span class="help-block bg-danger" ng-if="!validate.status.valid">{{validate.status.reason}}</span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <input type="hidden" ng-model="data.travelType" />
+        <input type="hidden" ng-model="data.agentId" />
+        <input type="hidden" ng-model="data.operator" />
+        <input type="hidden" ng-model="data.operateSource" />
+
+        <div class="center-block saveBtn">
+            <button type="button" class="btn btn-primary" ng-click="saveClick($ele)">保存</button>
+            <button type="button" class="btn btn-danger" ng-click="closeClick($ele)">关闭</button>
+        </div>
+    </form>
+</div>

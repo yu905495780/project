@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="js/jquery.min.js"></script>
+<style>
+    #cnzz_stat_icon_1265104766>a{
+        display: none;
+    }
+</style>
+<script>
+    //声明_czc对象:
+    var _czc = _czc || [];
+    $(function (){
+        //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+        _czc.push(["_setAccount", "1265104766"]);
+    });
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>统计</title>
+</head>
+<body>
+<button onclick="_czc.push(['_trackEvent', '王者', '打分', '喜欢','5','dafen']);" class="btn1">喜欢 <span class="btn1span">265</span></button>
+<button onclick="_czc.push(['_trackEvent', '王者', '打分', '不喜欢','5','dafen']);" class="btn2">不喜欢 <span class="btn2span">69</span></button>
+
+<script>
+    var n1 =Number($(".btn1span").text());
+    var n2 =Number($(".btn2span").text());
+    $(".btn1").click(function (){
+        $(this).css("color","red");
+        $(this).removeAttr("onclick");
+        var na1 = n1+1;
+        $(".btn1span").html(na1);
+    });
+    $(".btn2").click(function (){
+        $(this).css("color","red");
+        $(this).removeAttr("onclick");
+        var na2 = n2+1;
+        $(".btn2span").html(na2);
+    });
+</script>
+
+<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1265104766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1265104766%26online%3D1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

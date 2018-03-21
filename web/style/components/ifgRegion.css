@@ -1,0 +1,112 @@
+/*
+* @Author: dll35372
+* @Date:   2017-08-30 10:18:58
+* @Last Modified by:   dll35372
+* @Last Modified time: 2017-08-30 10:18:58
+*/
+
+.bg_wrap {
+    margin: 0 auto;
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #666;
+    z-index: 99;
+    opacity: 0.5;
+}
+
+.ifg-rg-header {
+    /*padding: 10px 0px 1px 20px;;*/
+    padding: 15px 0px 1px 20px;
+    /*background:aliceblue;*/
+    background-color: #F9FAFC;
+}
+
+.ifg-rg-header p {
+    /* color:#475669;
+     font-size: 14px;*/
+    font-size: 16px;
+    color: rgb(31, 45, 61);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ifg-rg-content {
+    background-color: #F9FAFC;
+    border-bottom: 1px solid #ececec;
+    border-top: 1px solid #ececec;
+}
+
+.region-wrap {
+    z-index: 101;
+    position: absolute;
+    top: 44%;
+    left: 47%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    margin-bottom: 50px;
+    min-width: 400px;
+}
+
+.region-wrap .ztree {
+    width: 100%;
+    margin-top: 20px;
+    border: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    background-color: #F9FAFC;
+    box-sizing: border-box;
+    height: 360px;
+}
+
+.ifg-rg-footer {
+    padding: 10px;
+    text-align: center;
+    background-color: #F9FAFC;
+}
+
+.ifg-rg-btn {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #bfcbd9;
+    border-color: #c4c4c4;
+    color: #1f2d3d;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.ifg-rg-btn.primary {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+}
+
+.ifg-rg-btn:focus, .ifp-rg-btn:hover {
+    color: #20a0ff;
+    border-color: #20a0ff;
+}
+
+.ifg-rg-btn.primary:focus, .ifp-rg-btn.primary:hover {
+    background: rgb(77, 179, 255);
+    border-color: rgb(77, 179, 255);
+    color: #fff;
+}

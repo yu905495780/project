@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh" data-ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS入门学习</title>
+    <script type="text/javascript" src="angular/js/angular1.5.3.min.js"></script>
+</head>
+<body>
+<div ng-controller='MainController'>
+    父亲:{{name}}<input ng-model="name" />
+    <div my-directive></div>
+</div>
+</body>
+<script type="text/javascript">
+    var app = angular.module('myApp', []);
+    app.controller('MainController', function ($scope) {
+        $scope.name = '林炳文';
+    });
+    app.directive('myDirective', function () {
+        return {
+            restrict: 'EA',
+            scope:{},
+            template: '<div>儿子:{{ name }}<input ng-model="name"/></div>'
+        };
+    });
+</script>
+</html>

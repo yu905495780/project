@@ -1,0 +1,460 @@
+<!--
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>友趣</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/Precious-about.css">
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/iscroll.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<div id="pre-about">
+    <div class="head">
+        <div class="header">
+            <a class="Sinlist" href="Sincere-agreement.html">广场</a>
+            <a class="Prelist" href="Precious-about.html">友趣
+                <p></p>
+            </a>
+            <a class="Onelist" href="One-touch-is-about.html">抢单</a>
+            &lt;!&ndash;<div class="list"><img src="../img/list.png" alt=""></div>&ndash;&gt;
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="pullDown">
+                <span class="pullDownLabel">
+                    下拉刷新~~
+                </span>
+            </div>
+            <ul id="listData">
+
+            </ul>
+            <div id="pullUp">
+                <span class="pulluopLabel">
+                    上拉加载~~
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <ul class="foot">
+            <li class="footli">
+                <a href="Sincere-agreement.html">
+                    <img src="../img/heart.png" alt="">
+                    <p style="color: #F86E99;">相约</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="#">
+                    <img src="../img/meet.png" alt="">
+                    <p>遇见</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="network.html">
+                    <img src="../img/circle.png" alt="">
+                    <p>圈子</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="#">
+                    <img src="../img/news.png" alt="">
+                    <p>消息</p>
+                </a>
+            </li>
+            <li class="footli">
+                <a href="#">
+                    <img src="../img/mine.png" alt="">
+                    <p>我的</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+
+    function loaded(){
+        pullDownFl=document.getElementById("pullDown");
+        pullupFl=document.getElementById("pullUp");
+        puDownOffset=pullDownFl.offsetHeight;
+        puupOffset=pullupFl.offsetHeight;
+
+        myScroll=new iScroll("wrapper",{
+
+            userTransition:true,  //过度
+            topOffset:puDownOffset,
+
+//		console.log(puDownOffset);
+
+            onScrollMove:function(){
+                if(this.y > 5 && !pullDownFl.className.match("flip")){
+                    pullDownFl.className="flip";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="释放立即刷新";
+                    this.minScrollY=0;
+                }else if(this.y < 5 && pullDownFl.className.match("flip")){
+                    pullDownFl.className=" ";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="Pull down to refresh…";
+                    this.minScrollY=-puDownOffset;
+                }else if(this.y < (this.maxScrollY - 5) && !pullupFl.className.match("flip")){
+                    pullupFl.className="flip";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="释放立即加载";
+                    this.maxScrollY = this.maxScrollY;
+                }else if(this.y > (this.maxScrollY + 5) && pullupFl.className.match("flip")){
+                    pullupFl.className=" ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="pull uo to load more…";
+                    this.maxScrollY=puupOffset;
+                }
+            },
+            onScrollEnd:function(){
+                if(pullDownFl.className.match("flip")){
+                    pullDownFl.className="loading";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="刷新中...";
+                    //刷新数据
+                    pullDownAction();
+                }else if(pullupFl.className.match("flip")){
+                    pullupFl.className="loading";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="加载中...";
+                    //加载数据
+                    pullUpAction();
+                }
+            },
+            onRefresh:function(){
+                if(pullDownFl.className.match("loading")){
+                    pullDownFl.className=" ";
+                    pullDownFl.querySelector(".pullDownLabel").innerHTML="下拉刷新";
+                }else if(pullupFl.className.match("loading")){
+                    pullupFl.className=" ";
+                    pullupFl.querySelector(".pulluopLabel").innerHTML="上拉加载";
+                }
+            }
+        });
+        loadData();
+    }
+    // 判断性别年龄
+    function judgeSexAge(agender,aage,asex) {
+        if(agender == "0") {
+            if(aage == null){
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex1"><img src="../img/girl2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }else if(agender == "1") {
+            if(aage == null){
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age"></span></span>';
+            }else{
+                asex = '<span class="sex2"><img src="../img/boy2x.png" alt=""><span class="age">'+aage+'</span></span>';
+            }
+        }
+        return asex;
+    }
+    // 判断是否是vip
+    function judgevip(vvip,vip1) {
+        if(vvip == false){
+            vip1 = ""
+        }else{
+            vip1 = '<img src="../img/vip-small.png"/>'
+        }
+        return vip1
+    }
+    // 判断用户是否认证车辆
+    function judgeche(che,checon) {
+        if(che == null){
+            checon = '';
+        }else{
+            checon = '<img src="'+avatarUrl+''+che+'"/>';
+        }
+        return checon;
+    }
+    // 判断性别
+    function judgeSex(aaa,bbb) {
+        if(aaa == "0") {
+            bbb = "女";
+        }else if(aaa == "1") {
+            bbb = "男";
+        }else if(aaa == "2") {
+            bbb = "不限";
+        }
+        return bbb;
+    }
+    // 判断邀约说明是否存在
+    function judgedescr(descrt,descrhtml) {
+        if(descrt == ""){
+            descrhtml = 'ta在发布的时候没有填写邀约说明！'
+        }else{
+            descrhtml = ''+descrt+''
+        }
+        return descrhtml;
+    }
+    // 星评价
+    function stars(starsnum,starshtml) {
+        var starshtml = "";
+        for(var i = 0; i < starsnum; i++){
+            starshtml += '<span><img src="../img/star-yellow.png" alt=""></span>';
+        }
+        return starshtml
+    }
+    function isdrick(drick,drickhtml) {
+        if(drick == null){
+            drickhtml = '不接受礼仪性饮酒';
+        }else {
+            drickhtml = '接受礼仪性饮酒';
+        }
+        return drickhtml;
+    }
+    // 邀约项目
+    function pro(pro,prohtml) {
+        prohtml = "";
+        for(var i = 0; i<pro.length; i++){
+            prohtml += pro[i].projectName+'&nbsp;&nbsp;'
+        }
+        return prohtml;
+    }
+    // 判断语音是否存在
+    function isvedio(vedio,imgli1) {
+        if(vedio == null){
+            imgli1 = "";
+        }else{
+            imgli1 = '<div class="img-div"><span class="cir"></span><span class="vio"><img src="../img/vio.png" alt=""></span><span class="second-num">'+vedio+'″</span></div>';
+        }
+        return imgli1;
+    }
+    //判断城市
+    function city(city,cityhtml) {
+        var cityhtml = '';
+        for(var i = 0; i <city.length; i++){
+            cityhtml += city[i]+'&nbsp;&nbsp;'
+        }
+        return cityhtml;
+    }
+    //判断日期
+    function datetype(datetype,datetypehtml) {
+        if(datetype == "1"){
+            datetypehtml = "工作日";
+        }else if(datetype == "2"){
+            datetypehtml = "周末假日";
+        }else if(datetype == "3"){
+            datetypehtml = "随时可约";
+        }
+        return datetypehtml;
+    }
+
+    //判断用户头像是否存在
+    function avatar(avatar,avatarhtml) {
+        if(avatar == null){
+            avatarhtml = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="">'
+        }else{
+            avatarhtml = '<img src="'+avatarUrl+''+avatar+'" alt="">'
+        }
+        return avatarhtml;
+    }
+
+    function avatar1(avatar,avatarhtml) {
+        if(avatar == null){
+            avatarhtml = '<img src="'+avatarUrl+'resource/sy_default_avatar_1.5.png" alt="" class="listimg">'
+        }else{
+            avatarhtml = '<img src="'+avatarUrl+''+avatar+'" alt="" class="listimg">'
+        }
+        return avatarhtml;
+    }
+
+    //初始化数据
+    function loadData(){
+        $.ajax({
+            type: "post",
+            async: true,
+            url: apiUrl+"/valuable/n/getDefaultTaskList?page=1&limit=20",
+            dataType: "json",
+            success: function(data){
+                var c = data.datas.engagementValuableTaskList;
+                var li;
+                for(var i = 0; i < c.length; i++){
+                    li=$('<li class="list" id="'+c[i].id+'">'+avatar(c[i].userInfo.avatar,$('.list').innerHTML)+'<div class="con"><p class="p1"><span class="name">'+c[i].userInfo.nickname+'</span>'+judgeSexAge(c[i].userInfo.gender,c[i].userInfo.age,$(".sex").innerHTML)+'<span class="real-name"><img src="../img/real-name.png"/></span><span class="video"><img src="../img/video-auth.png"/></span><span class="vehicle">'+judgeche(c[i].userInfo.carLogo,$(".vehicle").innerHTML)+'</span><span class="vip">'+judgevip(c[i].userInfo.vip,$(".vip").innerHTML) +'</span><span class="about">约Ta</span></p><p class="p2">'+c[i].subject+'</p><div class="term"><p class="tleft">'+pro(c[i].projectList,$(".tleft").innerHTML)+'</p><p class="tright"><span>'+c[i].price+'</span> 元/小时</p></div></div></li>');
+                    $("#listData").append(li);
+                }
+
+                $(".list").click(function () {
+                    for(var i = 0; i < c.length; i++){
+                        if(this.id == c[i].id){
+                            var a = $('<div id="pre-details"><div class="header"><div class="head"><div class="hleft"><img src="../img/back.png" alt="" class="back-left"></div><div class="mid">详情</div><div class="hright"></div></div></div><div class="swiper-container banner"><div class="swiper-wrapper"><div class="swiper-slide">'+avatar(c[i].userInfo.avatar,$('.swiper-slide').innerHTML)+'</div></div><div class="swiper-pagination"></div></div><div class="contians1"><div class="con1"><div class="personal">'+avatar1(c[i].userInfo.avatar,$('.personal').innerHTML)+'<div class="mid"><p><span class="name">'+c[i].userInfo.nickname+'</span>'+judgeSexAge(c[i].userInfo.gender,c[i].userInfo.age,$(".sex").innerHTML)+'<span class="real-name"><img src="../img/real-name.png"/></span><span class="video"><img src="../img/video-auth.png"/></span><span class="vehicle">'+judgeche(c[i].userInfo.carLogo,$(".vehicle").innerHTML)+'</span><span class="vip">'+judgevip(c[i].userInfo.vip,$(".vip").innerHTML) +'</span></p></div><div class="check"><span>'+c[i].price+'</span> 元/小时</div></div><ul class="meet"><li class="describe">'+c[i].subject+'</li><li class="yue"><span class="cir"></span><span class="yuesex">'+judgeSex(c[i].genderRequirements,$(".yuesex").innerHTML)+'</span><span class="project">'+datetype(c[i].dateType,$(".project").innerHTML)+'</span><span class="place">'+c[i].minTime+'-'+c[i].maxTime+'小时</span></li><li class="hour"><span class="cir"></span>&lt;!&ndash;<span class="date">北京市</span>&ndash;&gt;<span class="time-slot"><span class="area1">'+city(c[i].areaList,$(".area1").innerHTML)+'</span></span></li><li class="num"><span class="cir"></span>'+pro(c[i].projectList,$(".num").innerHTML)+'</li><li class="remarks"><span class="cir"></span>'+isdrick(c[i].isDrink,$(".remarks").innerHTML)+'</li><li class="img1">'+isvedio(c[i].voiceDuration,$(".img1").innerHTML)+'</li></ul><div class="explain">'+judgedescr(c[i].descr,$(".explain").innerHTML)+'</div></div><div class="con3"><div class="impression"><div class="top-impre"><p class="imprel">Ta的印象</p><p class="imprer">违约记录<span class="">&nbsp;&nbsp;0</span>/<span>30</span></p></div><ul class="btm-impre"></ul></div><ul class="comment"></ul><div class="more"><p class="yinxiang">更多印象</p></div></div><div class="yaoyue">我来约Ta</div></div></div>');
+
+                            listid = c[i].uid;
+                            btmimpre = $(".btm-impre");
+                            comment = $(".comment");
+                            $.ajax({
+                                type: "get",
+                                async: true,
+                                url: apiUrl+"/order/n/getEvaluate?toUid="+listid+"&type=1&page=1&limit=20",
+                                dataType: "json",
+                                success: function(data,btmimpre,comment){
+                                    var bu = data.datas.userTagList;
+                                    var be = data.datas.evaluateList;
+                                    /*console.log(bu);
+                                     console.log(be);*/
+                                    if(bu.length != 0){
+                                        for(var n = 0; n < bu.length; n++){
+                                            if(bu[n].tagName != null){
+                                                var bua = $('<li class="impreli">'+bu[n].tagName+'</li>');
+                                                $(".btm-impre").append(bua);
+                                            }
+                                        }
+                                    }
+                                    if(be.length == 0){
+                                        $(".more").html("");
+                                    }
+                                    if(be.length != 0){
+                                        for(var m = 0; m < be.length; m++){
+                                            var bea = $('<li class="comli"><div class="user"><div class="userl"><img src="'+avatarUrl+''+be[m].avatar+'" alt="" class="userimg"><div class="userm"><p class="name">'+be[m].nickname+'</p><p class="timer">'+be[m].createTime+'</p></div></div><div class="userr">'+stars(be[m].number,$(".userr").innerHTML)+'</div></div><p class="comp">'+be[m].content+'</p></li>');
+                                            $(".comment").append(bea);
+                                        }
+                                    }
+                                }
+                            });
+                            $("body").append(a);
+                            $("#pre-about").css("display","none");
+                            $(".back-left").click(function () {
+                                $(this).parents("#pre-details").remove();
+                                $("#pre-about").css("display","block");
+                            })
+                        }
+                    }
+
+                });
+            }
+        });
+        myScroll.refresh();
+    }
+
+//    function one(one){
+//        one.click(function (){
+//            alert("123");
+//        });
+//    }
+//    one($(".list"));
+
+    //下拉刷新
+    function pullDownAction(){
+        setTimeout(function(){
+            myScroll.refresh();
+        },400)
+    }
+
+    n = 2;
+
+    //上拉加载
+    function pullUpAction(){
+        setTimeout(function(){
+            $.ajax({
+                type: "post",
+                async:true,
+                url: apiUrl+"/valuable/n/getDefaultTaskList?page="+n+++"&limit=20",
+                dataType: "json",
+                success: function(data){
+                    var c2 = data.datas.engagementValuableTaskList;
+                    if(c2.length == 0){
+                        pullupFl.querySelector(".pulluopLabel").innerHTML="没有更多的数据";
+                    }else{
+                        var li;
+                        for(var i = 0; i < c2.length; i++){
+                            li=$('<li class="list"  id="'+c2[i].id+'"><img src="'+avatarUrl+''+c2[i].userInfo.avatar+'" alt=""><div class="con"><p class="p1"><span class="name">'+c2[i].userInfo.nickname+'</span>'+judgeSexAge(c2[i].userInfo.gender,c2[i].userInfo.age,$(".sex").innerHTML)+'<span class="real-name"><img src="../img/real-name.png"/></span><span class="video"><img src="../img/video-auth.png"/></span><span class="vehicle">'+judgeche(c2[i].userInfo.carLogo,$(".vehicle").innerHTML)+'</span><span class="vip">'+judgevip(c2[i].userInfo.vip,$(".vip").innerHTML) +'</span><span class="about">约Ta</span></p><p class="p2">'+c2[i].subject+'</p><div class="term"><p class="tleft">'+c2[i].projectList+'</p><p class="tright"><span>'+c2[i].price+'</span> 元/小时</p></div></div></li>');
+                            $("#listData").append(li);
+                        }
+                        $(".list").click(function () {
+                            for(var i = 0; i < c2.length; i++){
+                                if(this.id == c2[i].id){
+                                    var a = $('<div id="pre-details"><div class="header"><div class="head"><div class="hleft"><img src="../img/back.png" alt="" class="back-left"></div><div class="mid">详情</div><div class="hright"></div></div></div><div class="swiper-container banner"><div class="swiper-wrapper"><div class="swiper-slide"><img src="'+avatarUrl+''+c2[i].userInfo.avatar+'" alt=""></div></div><div class="swiper-pagination"></div></div><div class="contians1"><div class="con1"><div class="personal"><img src="'+avatarUrl+''+c2[i].userInfo.avatar+'" alt="" class="listimg"><div class="mid"><p><span class="name">'+c2[i].userInfo.nickname+'</span>'+judgeSexAge(c2[i].userInfo.gender,c2[i].userInfo.age,$(".sex").innerHTML)+'<span class="real-name"><img src="../img/real-name.png"/></span><span class="video"><img src="../img/video-auth.png"/></span><span class="vehicle">'+judgeche(c2[i].userInfo.carLogo,$(".vehicle").innerHTML)+'</span><span class="vip">'+judgevip(c2[i].userInfo.vip,$(".vip").innerHTML) +'</span></p></div><div class="check"><span>'+c2[i].price+'</span> 元/小时</div></div><ul class="meet"><li class="describe">'+c2[i].subject+'</li><li class="yue"><span class="cir"></span><span class="yuesex">'+judgeSex(c2[i].genderRequirements,$(".yuesex").innerHTML)+'</span><span class="project ">'+datetype(c2[i].dateType,$(".project").innerHTML)+'</span><span class="place">'+c2[i].minTime+'-'+c2[i].maxTime+'小时</span></li><li class="hour"><span class="cir"></span>&lt;!&ndash;<span class="date">北京市</span>&ndash;&gt;<span class="time-slot">'+city(c2[i].areaList,$(".area1").innerHTML)+'</span></li><li class="num"><span class="cir"></span>'+pro(c2[i].projectList,$(".num").innerHTML)+'</li><li class="remarks"><span class="cir"></span>'+isdrick(c2[i].isDrink,$(".remarks").innerHTML)+'</li><li class="img1"><span class="cir"></span><span class="vio"><img src="../img/vio.png" alt=""></span><span class="second-num">'+c2[i].voiceDuration+'″</span></li></ul><div class="explain">'+judgedescr(c2[i].descr,$(".explain").innerHTML)+'</div></div><div class="con3"><div class="impression"><div class="top-impre"><p class="imprel">Ta的印象</p><p class="imprer">违约记录<span class="">&nbsp;&nbsp;0</span>/<span>30</span></p></div><ul class="btm-impre"></ul></div><ul class="comment"></ul><div class="more"><p class="yinxiang">更多印象</p></div></div><div class="yaoyue">我来约Ta</div></div></div>');
+
+                                    listid = c2[i].uid;
+                                    btmimpre = $(".btm-impre");
+                                    comment = $(".comment");
+                                    $.ajax({
+                                        type: "get",
+                                        async: true,
+                                        url: apiUrl+"/order/n/getEvaluate?toUid="+listid+"&type=1&page=1&limit=20",
+                                        dataType: "json",
+                                        success: function(data,btmimpre,comment){
+                                            var bu = data.datas.userTagList;
+                                            var be = data.datas.evaluateList;
+                                            /*                                      console.log(bu);
+                                             console.log(be);*/
+                                            if(bu.length != 0){
+                                                for(var n = 0; n < bu.length; n++){
+                                                    if(bu[n].tagName != null){
+                                                        var bua = $('<li class="impreli">'+bu[n].tagName+'</li>');
+                                                        $(".btm-impre").append(bua);
+                                                    }
+                                                }
+                                            }
+                                            if(be.length == 0){
+                                                $(".more").html("");
+                                            }
+                                            if(be.length != 0){
+                                                for(var m = 0; m < be.length; m++){
+                                                    var bea = $('<li class="comli"><div class="user"><div class="userl"><img src="'+avatarUrl+''+be[m].avatar+'" alt="" class="userimg"><div class="userm"><p class="name">'+be[m].nickname+'</p><p class="timer">'+be[m].createTime+'</p></div></div><div class="userr">'+stars(be[m].number,$(".userr").innerHTML)+'</div></div><p class="comp">'+be[m].content+'</p></li>');
+                                                    $(".comment").append(bea);
+                                                }
+                                            }
+                                        }
+                                    });
+
+                                    $("body").append(a);
+                                    $("#pre-about").css("display","none");
+                                    $(".back-left").click(function () {
+                                        $(this).parents("#pre-details").remove();
+                                        $("#pre-about").css("display","block");
+                                    })
+                                }
+                            }
+
+                        });
+                    }
+                }
+            });
+            myScroll.refresh();
+        },400);
+    }
+    //dom加载完成之后执行
+    document.addEventListener("DOMContentLoaded",loaded, false);
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
+
+
+    /*    $.ajax({
+     type: "post",
+     async:true,
+     url: apiUrl+"/valuable/n/getDefaultTaskList?page=1&limit=20",
+     dataType: "json",
+     success: function(data){
+     var c = data.datas.engagementValuableTaskList;
+     console.log(c);
+     }
+     });
+
+
+     var mySwiper = new Swiper ('.swiper-container', {
+     direction: 'horizontal',
+     autoplay : 3000,
+     speed:2000,
+     loop: true,
+     pagination: '.swiper-pagination'
+
+     })*/
+
+
+
+</script>
+</body>
+</html>
+-->

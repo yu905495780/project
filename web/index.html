@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>私有运价</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" data-ng-href="./style/common/ifp.common.css?v=201611251838">
+</head>
+<body>
+    <div ui-view class="container">
+        正在加载...
+    </div>
+    <div class="modal fade in showLoading hidden" ng-class="{'hidden':!showLoading}">
+        <div class="modal-backdrop fade in"></div>
+        <section class="loading"></section>
+    </div>
+
+    <script type="text/ng-template" id="ifpDialog.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-title">提示</h4>
+        </div>
+        <div class="modal-body" id="modal-body" ng-bind-html="dialogContent | toTrust">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ifpConfirm.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="confrimNoClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-title">确认</h4>
+        </div>
+        <div class="modal-body" id="modal-body" ng-bind-html="confirmContent | toTrust">
+            
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+            <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+        </div>
+    </script>
+
+    <script src="./script/lib/require.js" data-main="./script/main.js?v=201702131552"></script>
+</body>
+</html>

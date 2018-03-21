@@ -1,0 +1,245 @@
+﻿<div class="ifpQueryContainer" ng-controller="ifpQueryCtrl">
+    <link rel="stylesheet" type="text/css" ng-href="./style/ifp/ifpQuery.css?v={{CssVersion}}" />
+    <div class="row condition">
+        <form role="form">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">政策序号</label>
+                        <input type="text" class="form-control" placeholder="请输入政策序号" ng-model="search.id" digital-only>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class=" control-label">
+                            运行状态
+                        </label>
+                        <select type="text" class="form-control" ng-model="search.status">
+                            <option value="-1">请选择</option>
+                            <option value="1">投放中</option>
+                            <option value="0">已挂起</option>
+                            <option value="2">已删除</option>
+                            <option value="3">已失效</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class=" control-label">
+                            产品类型
+                        </label>
+                        <select type="text" class="form-control" ng-model="search.productType">
+                            <option value="-1">请选择产品类型</option>
+                            <option value="0">直销</option>
+                            <option value="2">特惠</option>
+                            <option value="1">清舱产品</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">开票航司</label>
+                        <input type="text" class="form-control  text-uppercase" placeholder="请输入开票航司" ng-model="search.airline" maxlength="2" english-digital>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">出发地</label>
+                        <input type="text" class="form-control text-uppercase" placeholder="请输入出发地" ng-model="search.depCity" english-comma>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">目的地</label>
+                        <input type="text" class="form-control  text-uppercase" placeholder="请输入目的地" ng-model="search.arrCity" english-comma>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">文件编号</label>
+                        <input type="text" class="form-control" placeholder="请输入文件编号" ng-model="search.fileCode">
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">舱位</label>
+                        <input type="text" class="form-control" placeholder="请输入舱位" ng-model="search.cabin" english-comma>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">录入人</label>
+                        <input type="text" class="form-control" placeholder="请输入录入人" ng-model="search.agent">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label class="control-label">销售日期 <span class="text-danger">*</span></label>
+                        <div class="calendar">
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="开始日期" ng-model="saleValue.start" is-open="saleValue.startOpen" uib-datepicker-popup="yyyy-MM-dd" clear-text="清除" current-text="今天" close-text="关闭"
+                                           readonly />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="saleStartOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <!--<div class="liner"> - </div>-->
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="结束日期" ng-model="saleValue.end" is-open="saleValue.endOpen" uib-datepicker-popup="yyyy-MM-dd" clear-text="清除" current-text="今天" close-text="关闭" readonly />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="saleEndOpenClick()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="queryBtnGroup">
+                <span class="searchReset">
+                    <button type="button" class="btn btn-primary queryBtn" ng-click="searchClick($ele)">搜索</button>
+                    <button type="button" class="btn btn-danger resetBtn" ng-click="resetClick($ele)">重置</button>
+                </span>
+                <span class="pull-right btn-group">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="goClick(isDouble?'#/ifpAddDouble':'#/ifpAdd')"><span class="glyphicon glyphicon-plus-sign"></span> 新增</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="importDialogConfig.show=true" id="importBtn"><span class="glyphicon glyphicon-import"></span> 导入</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="goClick(isDouble?'#/ifpOpRecordDouble':'#/ifpOpRecord')"><span class="glyphicon glyphicon-dashboard"></span>批量操作记录</button>
+                    <button type="button" class="btn btn-info btn-xs" ng-click="goClick('http://www.ly.com/iflight/')"><span class="glyphicon glyphicon-download"></span> 下载模版</button>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <table class="table queryResult">
+
+            <thead>
+                <tr>
+                    <td></td>
+                    <td colspan="12">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="suspendSelectClick()">挂起</button>
+                        <button type="button" class="btn btn-sm" ng-click="resumeSelectClick()">解挂</button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteSelectClick()">删除</button>
+                        <button type="button" class="btn btn-info btn-sm editBtn" ng-click="editSelectClick()">编辑</button>
+                        <button type="button" class="btn btn-primary btn-sm exportBtn" ng-click="exportClick()">导出</button>
+                    </td>
+                </tr>
+                <tr class="resultTitle">
+                    <th><input type="checkbox" ng-checked="selectAll" ng-click="checkAllClick($event)" /></th>
+                    <th>政策序号</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">开票航司</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">出发地</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">目的地</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">去程旅行日期</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">舱位</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">销售价</th>
+                    <th class="sortAbel" ng-click="sortClick('airline')">返点</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">留钱</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">修改时间</th>
+                    <th class="sortAble" ng-click="sortClick('airline')">状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="item in list">
+                    <td><input type="checkbox" ng-checked="item.checked" ng-click="item.checked = !item.checked;checkClick($event, item);" /></td>
+                    <td><a href="javascript:void(0)" ng-click="detailClick(item)">{{item.id}}</a></td>
+                    <td><div class="airline">{{item.airline}}</div></td>
+                    <td><div title="{{item.depCities}}" class="city">{{item.depCitiesShow}}</div></td>
+                    <td><div title="{{item.arrCities}}" class="city">{{item.arrCitiesShow}}</div></td>
+                    <td>{{item.dateRestrictGo.replace(">"," 至 ")}}</td>
+                    <td>{{item.cabin}}</td>
+                    <td>{{item.filePrice}}</td>
+                    <td>{{item.saleRetention}}</td>
+                    <td>{{item.saleRebase}}</td>
+                    <td>{{item.gmtModified}}</td>
+                    <td class='{{ { "0": "text-primary", "1": "text-success", "2": "text-danger", "3": "text-muted" }[item.status] }}'>{{ { "0": "已挂起", "1": "投放中", "2": "已删除", "3": "已失效" }[item.status] }}</td>
+                    <td>
+                        <a href="javascript:void(0)" ng-click="detailClick(item)">详情</a>
+                        <a href="javascript:void(0)" ng-click="deleteClick(item)" ng-if="item.status == 1 || item.status == 0">删除</a>
+                        <a href="javascript:void(0)" ng-click="editClick(item)" ng-if="item.status == 0">修改</a>
+                        <a href="javascript:void(0)" ng-click="suspendClick(item)" ng-if="item.status == 1">挂起</a>
+                        <a href="javascript:void(0)" ng-click="resumeClick(item)" ng-if="item.status == 0">投放</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot ng-if="pagination.pages>=1">
+                <tr>
+                    <td colspan="13" class="form-inline paginationCustom">
+                        <div class="pull-left pageHint form-group">
+                            <p class="form-control-static">共查询到<strong class="text-danger">{{pagination.total}}</strong>条数据　每页展示<strong class="text-danger">{{pagination.perPage}}</strong>条，共<strong class="text-danger">{{pagination.pages}}</strong>页</p>
+                        </div>
+                        <div class="pull-right ">
+                            <ul uib-pagination total-items="pagination.total"
+                                ng-change="paginationChange()"
+                                items-per-page="pagination.perPage"
+                                ng-model="pagination.page"
+                                max-size="pagination.maxSize"
+                                class="pagination-sm pull-left"
+                                direction-links="false"
+                                next-batch-text="后10页"
+                                previous-batch-text="前10页"
+                                rotate="false"></ul>
+                            <span class="form-group paginationInput pull-left">
+                                <input type="text" class="form-control input-sm text-center" value="{{pagination.page}}" digital-only ng-keyup="pageBlur($event)"> <label>页</label>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script type="text/ng-template" id="ifpSelectedEdit.html">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="batchCloseClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-title">批量修改</h4>
+        </div>
+        <div class="modal-body selectedEditDialog">
+            <form class="form-inline">
+                <div class="row">批量修改只支持政策状态修改。</div>
+                <div class="form-group">
+                    <span>
+                        将所有
+                        <select class="form-control input-sm" ng-model="stageChange.beforState" ng-change="beforStateChange()">
+                            <option value="-1">请选择</option>
+                            <option value="1">投放中</option>
+                            <option value="0">已挂起</option>
+                        </select>
+                    </span>
+                    <span>
+                        批量修改为
+                        <select class="form-control input-sm" ng-model="stageChange.afterState">
+                            <option value="-1">请选择</option>
+                            <option value="1" ng-if="stageChange.beforState==0">投放中</option>
+                            <option value="2" ng-if="stageChange.beforState==0">已删除</option>
+                            <option value="0" ng-if="stageChange.beforState==1">已挂起</option>
+                        </select>
+                    </span>
+                    <div ng-if="!stageChange.valid" class="help-block bg-danger">{{stageChange.reason}}</div>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="batchOkClick()">提交</button>
+                <button class="btn btn-danger" type="button" ng-click="batchCloseClick()">关闭</button>
+            </div>
+        </div>
+    </script>
+    <dialog align="top" ng-if="importDialogConfig.show" class="importDialog" for="importBtn" align="left" close="importDialogConfig.show=false">
+        <div dialog-title>{{importDialogConfig.title}}</div>
+        <div dialog-content>
+            <iframe ng-src="{{importDialogConfig.src}}" frameborder="0"></iframe>
+        </div>
+    </dialog>
+</div>

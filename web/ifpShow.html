@@ -1,0 +1,950 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>私有运价</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/common/ifp.common.min.css?v=201611281935">
+    <link rel="stylesheet" type="text/css" href="./style/ifp/ifpShow.min.css?v=201611281935" />
+</head>
+<body ng-controller="ifpShowCtrl">
+    <div class="container">
+        <h3 ng-class="'hidden'">
+            页面加载中...
+        </h3>
+        <div class="ifpShowContainer hidden" ng-class="'show'">
+
+            <div class="page-header">
+                <h2>{{isDouble?'往返':'单程'}}私有运价详情</h2>
+            </div>
+            <form class="form-horizontal">
+                <div class="page-header">
+                    <h3>
+                        <small>基本信息</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">运行状态</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static {{data.statusStyle}}">{{data.status}}</p>
+                            </div>
+                            <div ng-if="data._diffs.status" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.status }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">政策序号</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.id}}</p>
+                            </div>
+                            <div ng-if="data._diffs.id" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.id }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">外部政策ID</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.externalId}}</p>
+                            </div>
+                            <div ng-if="data._diffs.externalId" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.externalId }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">文件编号</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.mainFileGroupCode}}</p>
+                            </div>
+                            <div ng-if="data._diffs.mainFileGroupCode" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.mainFileGroupCode }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">产品类型</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.productType}}</p>
+                            </div>
+                            <div ng-if="data._diffs.productType" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.productType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">库存模式</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.stockType}}</p>
+                            </div>
+                            <div ng-if="data._diffs.stockType" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.stockType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">定额剩余数量</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">20</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">是否允许1/2RT组合</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.bCanRt}}</p>
+                            </div>
+                            <div ng-if="data._diffs.bCanRt" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.bCanRt }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble && data._new.canGroupFileCode">
+                            <label class="col-xs-2 control-label">可组合文件编号</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canGroupFileCode}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canGroupFileCode" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canGroupFileCode }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="page-header">
+                    <h3>
+                        <small>路线信息</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">开票航司</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.airline}}</p>
+                            </div>
+                            <div ng-if="data._diffs.airline" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.airline }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">录入方式</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.addressOption}}</p>
+                            </div>
+                            <div ng-if="data._diffs.addressOption" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.addressOption }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">出发地</label>
+                            <div class="col-xs-10">
+                                <textarea class="form-control city" readonly>{{ data.depCities}}</textarea>
+                            </div>
+                            <div ng-if="data._diffs.depCities" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.depCities }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">是否中转</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.isTransfer}}</p>
+                            </div>
+                            <div ng-if="data._diffs.isTransfer" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.isTransfer }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.transferCities && data._new.isTransfer">
+                            <label class="col-xs-2 control-label">中转点</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.transferCities}}</p>
+                            </div>
+                            <div ng-if="data._diffs.transferCities" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.transferCities }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">目的地</label>
+                            <div class="col-xs-10">
+                                <textarea class="form-control city" readonly rows="6">{{data.arrCities}}</textarea>
+                            </div>
+                            <div ng-if="data._diffs.arrCities" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <textarea class="form-control city" readonly rows="6">{{data._new.arrCities}}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">适用舱位</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.cabin}}</p>
+                            </div>
+                            <div ng-if="data._diffs.cabin" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.cabin }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">舱位等级</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">经济舱</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">航司组合</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.segmentAirlines}}</p>
+                            </div>
+                            <div ng-if="data._diffs.segmentAirlines" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.segmentAirlines }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">可售航班</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.segmentFlightAllow}}</p>
+                            </div>
+                            <div ng-if="data._diffs.segmentFlightAllow" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.segmentFlightAllow }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">禁售航班</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.segmentFlightDeny}}</p>
+                            </div>
+                            <div ng-if="data._diffs.segmentFlightDeny" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.segmentFlightDeny }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}中途停留</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canDepStay}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canDepStay" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canDepStay }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">回程中途停留</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canRetStay}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canRetStay" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canRetStay }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="page-header">
+                    <h3>
+                        <small>运价限制</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">销售日期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.sale}}</p>
+                            </div>
+                            <div ng-if="data._diffs.sale" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.sale }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}旅行日期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.dateRestrictGo}}</p>
+                            </div>
+                            <div ng-if="data._diffs.dateRestrictGo" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.dateRestrictGo }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.dateRestrictGoForbid.length>0">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}排除旅行日期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static" ng-repeat="item in data.dateRestrictGoForbid">{{item}}</p>
+                            </div>
+                            <div ng-if="data._diffs.dateRestrictGoForbid" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static" ng-repeat="item in data._new.dateRestrictGoForbid">{{item}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">回程旅行日期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.dateRestrictReturn}}</p>
+                            </div>
+                            <div ng-if="data._diffs.dateRestrictReturn" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.dateRestrictReturn }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.dateRestrictReturnForbid.length>0 && isDouble">
+                            <label class="col-xs-2 control-label">回程排除旅行日期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static" ng-repeat="item in data.dateRestrictReturnForbid">{{item}}</p>
+                            </div>
+                            <div ng-if="data._diffs.dateRestrictReturnForbid" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static" ng-repeat="item in data._new.dateRestrictReturnForbid">{{item}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.advancedSaleDate">
+                            <label class="col-xs-2 control-label">提前出票天数</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.advancedSaleDate}}</p>
+                            </div>
+                            <div ng-if="data._diffs.advancedSaleDate" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.advancedSaleDate }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">出票时长<span class="text-danger">（不生效）</span></label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.timeLimitType}} <span class="text-danger">{{data.limitTime}}</span> 小时出票</p>
+                            </div>
+                            <div ng-if="data._diffs.timeLimitType || data._diffs.limitTime" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{data._new.timeLimitType}} <span class="text-danger">{{data._new.limitTime}}</span> 小时出票</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">最短停留天数</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.minStay}}</p>
+                            </div>
+                            <div ng-if="data._diffs.minStay" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.minStay }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">最长停留天数</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.maxStay}}</p>
+                            </div>
+                            <div ng-if="data._diffs.maxStay" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.maxStay }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}适用班期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.weekRestrictGo}}</p>
+                            </div>
+                            <div ng-if="data._diffs.weekRestrictGo" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.weekRestrictGo }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">{{isDouble?"回程":""}}适用班期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.weekRestrictReturn}}</p>
+                            </div>
+                            <div ng-if="data._diffs.weekRestrictReturn" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.weekRestrictReturn }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">适用航班起飞时间</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">周5 12:00至23:59</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">最小出行人数</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.minPeopleNum}}</p>
+                            </div>
+                            <div ng-if="data._diffs.minPeopleNum" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.minPeopleNum }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">最大出行人数</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.maxPeopleNum}}</p>
+                            </div>
+                            <div ng-if="data._diffs.maxPeopleNum" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.maxPeopleNum }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">适用旅客</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.passengerType}}</p>
+                            </div>
+                            <div ng-if="data._diffs.passengerType" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.passengerType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">适用旅客国籍</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">无限制</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">排除旅客国籍</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">无限制</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">适用年龄</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">无限制</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">排除旅客年龄</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">无限制</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="page-header">
+                    <h3>
+                        <small>价格信息管理</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">成人销售票面</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.filePrice}}</p>
+                            </div>
+                            <div ng-if="data._diffs.filePrice" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.filePrice }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">学生销售票面</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">4500</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.filePriceChild">
+                            <label class="col-xs-2 control-label">儿童销售票面</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.filePriceChild}}</p>
+                            </div>
+                            <div ng-if="data._diffs.filePriceChild" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.filePriceChild }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">结算币种</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.currency}}</p>
+                            </div>
+                            <div ng-if="data._diffs.currency" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.currency }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">政策是否含税</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">是</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">成人税费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">4500</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">学生税费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">4500</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false">
+                            <label class="col-xs-2 control-label">儿童税费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">4500</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">返点</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.saleRetention}}</p>
+                            </div>
+                            <div ng-if="data._diffs.saleRetention" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.saleRetention }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">留钱</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.saleRebase}}</p>
+                            </div>
+                            <div ng-if="data._diffs.saleRebase" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.saleRebase }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">预订配置</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.reserveType}}</p>
+                            </div>
+                            <div ng-if="data._diffs.reserveType" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.reserveType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.officeNo && data._new.reserveTypeId != 2">
+                            <label class="col-xs-2 control-label">授权office</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.officeNo}}</p>
+                            </div>
+                            <div ng-if="data._diffs.officeNo" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.officeNo }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false && data.officeNo1">
+                            <label class="col-xs-2 control-label">需授权office1</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.officeNo1}}</p>
+                            </div>
+                            <div ng-if="data._diffs.officeNo1" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.officeNo1 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="false && data.officeNo2">
+                            <label class="col-xs-2 control-label">需授权office2</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.officeNo2}}</p>
+                            </div>
+                            <div ng-if="data._diffs.officeNo2" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.officeNo2 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">报销凭证</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canReimbursementVoucher}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canReimbursementVoucher" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canReimbursementVoucher }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="page-header">
+                    <h3>
+                        <small>退改信息</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group" ng-if="data.canChange">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}是否允许改期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canChange}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canChange" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canChange }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.changeFeeDep && data._new.canChange">
+                            <label class="col-xs-2 control-label">{{isDouble?"去程":""}}改期费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.changeFeeDep}}</p>
+                            </div>
+                            <div ng-if="data._diffs.changeFeeDep" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.changeFeeDep }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble && data.canChangeRet">
+                            <label class="col-xs-2 control-label">回程是否允许改期</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canChangeRet}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canChangeRet" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canChangeRet }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble && data._new.changeFeeRet">
+                            <label class="col-xs-2 control-label">回程改期费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.changeFeeRet}}</p>
+                            </div>
+                            <div ng-if="data._diffs.changeFeeRet" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.changeFeeRet }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.canRefund">
+                            <label class="col-xs-2 control-label">全部未使用可否退票</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canRefund}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canRefund" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canRefund }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.refundFeeAllUnused && data._new.canRefund">
+                            <label class="col-xs-2 control-label">全部未使用退票费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.refundFeeAllUnused}}</p>
+                            </div>
+                            <div ng-if="data._diffs.refundFeeAllUnused" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.refundFeeAllUnused }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble">
+                            <label class="col-xs-2 control-label">部分使用是否允许退票</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canRefundPartUnused}}</p>
+                            </div>
+                            <div ng-if="data._diffs.canRefundPartUnused" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canRefundPartUnused }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="isDouble && data._new.refundFeePartUnused && data._new.canRefundPartUnused">
+                            <label class="col-xs-2 control-label">部分使用退票费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.refundFeePartUnused}}</p>
+                            </div>
+                            <div ng-if="data._diffs.refundFeePartUnused" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.refundFeePartUnused }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.noShowRestrict">
+                            <label class="col-xs-2 control-label">是否允许NOSHOW</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.noShowRestrict}}</p>
+                            </div>
+                            <div ng-if="data._diffs.noShowRestrict" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.noShowRestrict }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.noShowFee && data._new.noShowRestrict">
+                            <label class="col-xs-2 control-label">NOSHOW费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.noShowFee}}</p>
+                            </div>
+                            <div ng-if="data._diffs.noShowFee" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.noShowFee }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.noShowFee && data._new.noShowRestrict">
+                            <label class="col-xs-2 control-label">NOSHOW说明</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.noShowRemark}}</p>
+                            </div>
+                            <div ng-if="data._diffs.noShowRemark" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.noShowRemark }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data.buyTicketNotice">
+                            <label class="col-xs-2 control-label">购票须知</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.buyTicketNotice}}</p>
+                            </div>
+                            <div ng-if="data._diffs.buyTicketNotice" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.buyTicketNotice }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="page-header">
+                    <h3>
+                        <small>其他信息</small>
+                    </h3>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">行李规格</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.luggageType}}</p>
+                            </div>
+                            <div ng-if="data._diffs.luggageType" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.luggageType }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">行李额</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.luggageWeightsBags}}</p>
+                            </div>
+                            <div ng-if="data._diffs.luggageWeightsBags" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.luggageWeightsBags }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.luggageType=='PC/件数'">
+                            <label class="col-xs-2 control-label">单件限重</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.singleLuggageWeight=='null'?23:data.singleLuggageWeight}}</p>
+                            </div>
+                            <div ng-if="data._diffs.singleLuggageWeight" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.singleLuggageWeight }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">当日作废</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.canInvalid }}</p>
+                            </div>
+                            <div ng-if="data._diffs.canInvalid" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.canInvalid }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-if="data._new.invalidFee && data._new.canInvalid">
+                            <label class="col-xs-2 control-label">废票费</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.invalidFee}}</p>
+                            </div>
+                            <div ng-if="data._diffs.invalidFee" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.invalidFee }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label">备注</label>
+                            <div class="col-xs-10">
+                                <p class="form-control-static">{{data.remark}}</p>
+                            </div>
+                            <div ng-if="data._diffs.remark" class="modified"><!--modified-->
+                                <label class="col-xs-2 control-label">修改后</label>
+                                <div class="col-xs-10">
+                                    <p class="form-control-static">{{ data._new.remark }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+
+            <div class="row" ng-if="data.logs.length && !isOrigin">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="text-center">操作记录</th>
+                        </tr>
+                        <tr class="active">
+                            <th class="col-xs-offset-2">操作时间</th>
+                            <th class="col-xs-offset-2">操作人</th>
+                            <th>操作内容</th>
+                            <th>修改后数据</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="log in data.logs">
+                            <td>{{log.timestamp}}</td>
+                            <td>{{log.operator}}</td>
+                            <td>{{log.desc}}</td>
+                            <td><a href="javascript:void(0)"
+                                   ng-if="log.type==3 || log.type==1 || log.type==2 || log.type==13"
+                                   ng-click="originShowClick(log)">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade in showLoading" ng-class="{'hidden':!showLoading}">
+        <div class="modal-backdrop fade in"></div>
+        <section class="loading"></section>
+    </div>
+
+    <script type="text/ng-template" id="ifpDialog.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-title">提示</h4>
+        </div>
+        <div class="modal-body" id="modal-body" ng-bind-html="dialogContent | toTrust">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="ifpConfirm.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="confrimNoClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="modal-title">确认</h4>
+        </div>
+        <div class="modal-body" id="modal-body" ng-bind-html="confirmContent | toTrust">
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+            <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+        </div>
+    </script>
+    <script src="./script/lib/require.js"></script>
+    <script src="./policy/IFPUrlJs"></script>
+    <script type="text/javascript">
+        requirejs(["script/main.js?v=201702131552"], function () {
+            require(["controller/ifpShowCtrl"]);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,677 @@
+/*公共样式*/
+@charset "utf-8";
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	font-family: "苹方", Arial, Helvetica, sans-serif;
+	min-width: 1200px;
+}
+
+input,
+textarea,
+select,
+option {
+	font-family: "苹方", Arial, Helvetica, sans-serif;
+}
+
+div {
+	text-align: left;
+}
+
+a {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+img {
+	border: 0;
+}
+
+:focus {
+	OUTLINE-STYLE: none;
+	OUTLINE-COLOR: invert;
+	OUTLINE-WIDTH: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	border: 0;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	margin: 0;
+	padding: 0;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+object,
+embed,
+a,
+input {
+	/*bblr: expression_r(this.onFocus=this.blur());*/
+	outline: none;
+}
+
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: '';
+}
+/* *公共样式* */
+/*pc端*/
+/*centmain的样式*/
+.CentMain {
+	width: 1903px;
+	min-height: 200px;
+	_height: 200px;
+	overflow: hidden;
+	padding: 30px 0;
+}
+
+.DtiasBt {
+	height: 105px;
+	clear: both;
+	text-align: center;
+}
+
+.DtiasNvmbs {
+	width: 1130px;
+	margin: 0 auto;
+	height: 35px;
+	line-height: 35px;
+	clear: both;
+	text-align: right;
+	font-size: 12px;
+}
+
+.DtiasNvmbs a {
+	color: #838282;
+}
+
+.DtiasNvmbs a:hover {
+	color: #be0e29;
+}
+
+.Dtiasul {
+	margin: 0 auto;
+	min-height: 200px;
+	_height: 200px;
+	overflow: hidden;
+	*overflow: visible;
+	width: 1200px;
+}
+
+.Dtiasul li {
+	background: #f2f2f2;
+	overflow: hidden;
+	width: 369px;
+	height: 402px;
+	float: left;
+	margin-right: 31px;
+	margin-bottom: 29px;
+}
+
+.Dtiasul li img {
+	width: 100%;
+}
+
+.act-img {
+	height: 204.882px;
+}
+
+.LIBtom {
+	padding: 0 6.6%;
+}
+
+.LIBtom h2 {
+	font-weight: normal;
+	overflow: hidden;
+	height: 35px;
+	line-height: 35px;
+	padding-top: 0;
+	font-size: 17px;
+}
+
+.LIBtom h2 a {
+	color: #000000;
+}
+
+.LIBtom .xinx {
+	min-height: 30px;
+	_height: 30px;
+	overflow: hidden;
+	*overflow: visible;
+	line-height: 30px;
+	font-size: 13px;
+	color: #b6b4b4;
+}
+
+.LIBtom .xinx span {
+	margin-right: 20px;
+}
+
+.LIBtom .xinx img {
+	width: 20px;
+	height: 20px;
+	margin-bottom: -5px;
+	margin-right: 5px;
+}
+
+.LIBtom p {
+	color: #636363;
+	margin: 0;
+	padding: 0;
+	clear: both;
+	font-size: 13px;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+
+.LIBtom .Mores {
+	display: block;
+	background: #000000;
+	color: #fff;
+	font-size: 12px;
+	padding: 0 15px;
+	border-radius: 26px;
+	height: 26px;
+	line-height: 26px;
+	float: left;
+}
+
+.LIBtom .Mores:hover {
+	text-decoration: underline;
+}
+
+.DongtNRxqy {
+	width: 1142px;
+	margin: 0 auto;
+	min-height: 200px;
+	_height: 200px;
+	overflow: hidden;
+	*overflow: visible;
+}
+
+.DongtNRxqyL {
+	min-height: 200px;
+	_height: 200px;
+	overflow: hidden;
+	*overflow: visible;
+	float: left;
+	background: #fff;
+	width: 628px;
+	padding: 30px 60px;
+}
+
+.Hbiaoti {
+	clear: both;
+	min-height: 20px;
+	_height: 20px;
+	overflow: hidden;
+	*overflow: visible;
+	padding: 15px 0;
+	border-bottom: 1px solid #dddbdb;
+	margin-bottom: 15px;
+}
+
+.Hbiaoti h2 {
+	font-size: 24px;
+	color: #333;
+	font-weight: normal;
+	clear: both;
+	margin-bottom: 10px;
+}
+
+.Hbiaoti span {
+	float: left;
+	color: #b6b4b4;
+	font-size: 13px;
+	margin-right: 10px;
+	padding-top: 5px;
+}
+
+.Hbiaoti a span {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+.Hbiaoti span img {
+	margin-bottom: -5px;
+	margin-right: 5px;
+}
+
+.Hbiaoti span.fx {
+	color: #333;
+}
+
+.Hbiaoti span.fx img {
+	margin-left: 10px;
+}
+
+.Hbiaoti font {
+	float: right;
+}
+
+.Hbiaoti font img {
+	margin: 0 5px 0 7px;
+}
+
+.DongtaXQneR {
+	min-height: 300px;
+	_height: 300px;
+	overflow: hidden;
+	*overflow: visible;
+	clear: both;
+	font-size: 16px;
+	color: #333;
+	line-height: 32px;
+	margin-bottom: 30px;
+}
+
+.DongtaXQneR img {
+	max-width: 100%;
+	width: 100%;
+}
+
+.HbiaotibordTp {
+	border: 0;
+	border-top: 1px solid #dddbdb;
+}
+
+.DongtNRxqyR {
+	width: 360px;
+	background: #fff;
+	float: right;
+}
+
+.DongtNRxqyR1 {
+	display: block;
+	height: 85px;
+	line-height: 85px;
+	font-size: 24px;
+	color: #fff;
+	background: #be0e29;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.DongtNRxqyR1 img {
+	margin-bottom: -5px;
+	margin-right: 13px;
+}
+
+.DongtNRxqyRul2 {
+	padding-top: 20px;
+}
+
+.DongtNRxqyRul2 li {
+	width: 360px;
+	height: 320px;
+	clear: both;
+}
+
+.DongtNRxqyRul2 li img {
+	width: 360px;
+	height: 201px;
+	display: block;
+}
+
+.DongtNRxqyRul2 li h2 {
+	height: 35px;
+	font-size: 17px;
+	padding-top: 10px;
+	text-align: center;
+	line-height: 35px;
+	font-weight: normal;
+}
+
+.DongtNRxqyRul2 li h2 a {
+	color: #000;
+}
+
+.DongtNRxqyRul2 li h2 a:hover {
+	color: #be0e29;
+}
+
+.DongtNRxqyRul2 li p {
+	margin: 0 10px;
+	padding: 0;
+	font-size: 13px;
+	color: #636363;
+	line-height: 23px;
+}
+
+.Dtiasul li {
+	transition: all 0.25s linear 0s;
+}
+
+.Dtiasul li img {
+	transition: all 0.3s linear 0s;
+}
+
+.Dtiasul li:hover {
+	background: #fff;
+}
+
+.Dtiasul li:hover>a>img {
+	transform: scale(1.05);
+}
+
+.Dtiasul li .Mores {
+	transition: all 0.1s linear 0s;
+	position: relative;
+}
+
+.Dtiasul li:hover .Mores {
+	transform: scale(1.1);
+	background: #c00;
+}
+
+.Dtiasul li:hover .LIBtom h2 a {
+	color: #be0e29;
+}
+
+.DongtNRxqyR1:hover {
+	background: #cd233d;
+}
+
+.DongtNRxqyR1 img {
+	transition: all 0.25s linear 0s;
+}
+
+.DongtNRxqyR1:hover img {
+	margin-right: 20px;
+}
+
+.DongtNRxqyR2:hover {
+	background: #212121;
+}
+
+.DongtNRxqyRul2 li img {
+	transition: all 0.1s linear 0s;
+}
+
+.DongtNRxqyRul2 li:hover img {
+	transform: scale(1.02);
+	opacity: 0.9;
+}
+
+.DongtNRxqyRul2 li:hover a {
+	color: #c00;
+}
+
+.Hbiaoti font img {
+	position: relative;
+	-moz-transition: all 0.2s linear 0s;
+	-ms-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	-webkit-transition: all 0.2s linear 0s;
+}
+
+.Hbiaoti font img:hover {
+	-moz-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+/* *centmain的样式* */
+/*footer的样式*/
+.footer {
+	padding-top: 25px;
+	width: 1903px;
+	height: 65px;
+	background: rgb(241, 241, 241);
+	text-align: center;
+}
+
+.footer .about-us {
+	margin: 0;
+	color: #666666;
+	font-size: 14px;
+	font-family: "苹方-简", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.footer .cop {
+	margin: 0;
+	color: #666666;
+	font-size: 14px;
+	font-family: "苹方-简", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+/* *footer的样式* */
+/*屏幕最大为1600px时pc端的样式*/
+@media only screen and (max-width: 1600px) {
+
+	.CentMain {
+		width: 1583px;
+	}
+	.DtiasBt {
+		height: 90px;
+	}
+	.DtiasNvmbs {
+		width: 930px;
+		margin: 0 auto;
+		height: 35px;
+		line-height: 35px;
+		font-size: 12px;
+	}
+	.Dtiasul {
+		width: 1000px;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.Dtiasul li {
+		width: 302px;
+		height: 375px;
+	}
+	.act-img {
+		height: 168px;
+	}
+	.DongtNRxqy {
+		width: 1000px;
+		margin: 0 auto;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.DongtNRxqyL {
+		min-height: 200px;
+		_height: 200px;
+		width: 553px;
+		padding: 30px 60px;
+	}
+
+	.DongtaXQneR {
+		min-height: 300px;
+		_height: 300px;
+	}
+	.DongtNRxqyR {
+		width: 326px;
+		background: #fff;
+		float: right;
+	}
+	.DongtNRxqyRul2 li {
+		width: 326px;
+		height: 320px;
+	}
+	.DongtNRxqyRul2 li img {
+		width: 326px;
+		height: 182px;
+	}
+	
+	.footer {
+		width: 1583px;
+		height: 65px;
+	}
+}
+/* *屏幕最大为1600px时pc端的样式* */
+/*屏幕最大为1366px时pc端的样式*/
+@media only screen and (max-width: 1366px) {
+	.CentMain {
+		width: 1348px;
+	}
+	.DtiasBt {
+		height: 75px;
+	}
+	.DtiasNvmbs {
+		width: 930px;
+		margin: 0 auto;
+		height: 35px;
+		line-height: 35px;
+		font-size: 12px;
+	}
+	.Dtiasul {
+		width: 996px;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.Dtiasul li {
+		width: 301px;
+		height: 375px;
+	}
+	.act-img {
+		height: 168px;
+	}
+	.DongtNRxqy {
+		width: 996px;
+		margin: 0 auto;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.DongtNRxqyL {
+		min-height: 200px;
+		_height: 200px;
+		width: 549px;
+		padding: 30px 60px;
+	}
+
+	.DongtaXQneR {
+		min-height: 300px;
+		_height: 300px;
+	}
+	.DongtNRxqyR {
+		width: 326px;
+		background: #fff;
+		float: right;
+	}
+	.DongtNRxqyRul2 li {
+		width: 326px;
+		height: 320px;
+	}
+	.DongtNRxqyRul2 li img {
+		width: 326px;
+		height: 182px;
+	}
+	
+	.footer {
+		width: 1348px;
+		height: 65px;
+	}
+}
+/* *屏幕最大为1366px时pc端的样式* */
+/*屏幕最大为1280px时pc端的样式*/
+@media only screen and (max-width: 1280px) {
+	.CentMain {
+		width: 1366px;
+	}
+	.DtiasBt {
+		height: 75px;
+	}
+	.DtiasNvmbs {
+		width: 930px;
+		margin: 0 auto;
+		height: 35px;
+		line-height: 35px;
+		font-size: 12px;
+	}
+	.Dtiasul {
+		width: 996px;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.Dtiasul li {
+		width: 301px;
+		height: 375px;
+	}
+	.act-img {
+		height: 168px;
+	}
+	.DongtNRxqy {
+		width: 996px;
+		margin: 0 auto;
+		min-height: 200px;
+		_height: 200px;
+	}
+	.DongtNRxqyL {
+		min-height: 200px;
+		_height: 200px;
+		width: 549px;
+		padding: 30px 60px;
+	}
+
+	.DongtaXQneR {
+		min-height: 300px;
+		_height: 300px;
+	}
+	.DongtNRxqyR {
+		width: 326px;
+		background: #fff;
+		float: right;
+	}
+	.DongtNRxqyRul2 li {
+		width: 326px;
+		height: 320px;
+	}
+	.DongtNRxqyRul2 li img {
+		width: 326px;
+		height: 182px;
+	}
+
+	.footer {
+		width: 1366px;
+		height: 65px;
+	}
+}
+/* *屏幕最大为1280px时pc端的样式* */
+/* *pc端* */

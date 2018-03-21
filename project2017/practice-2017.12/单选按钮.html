@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="../Practice-2018.2/js/jquery.min.js"></script>
+</head>
+<body>
+<form action="">
+    <input type="radio" name="aa" value="QQ">
+    <input type="radio" name="aa" value="微信">
+</form>
+<script>
+    $("input").each(function () {
+        $(this).click(function () {
+            console.log($(this).val())
+        })
+    })
+</script>
+</body>
+</html>

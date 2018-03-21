@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生AJAX读取xml文件、json数据</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        td,th{
+            width: 150px;
+            height: 45px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--json比xml解析更快 快10倍 更轻量 冗余少-->
+<h2>Retrieve data from XML file</h2>
+<p><b>Status : </b><span id="a1"></span></p>
+<p><b>readyState : </b><span id="a4"></span></p>
+<p><b>Status text : </b><span id="a2"></span></p>
+<p><b>Response : </b><span id="a3"></span></p>
+<p><b>Little man God : </b><span id="a5"></span></p>
+<button onclick="loadXMLDoc('../xml/e.xml')">Get XML data</button>
+<script>
+    function loadXMLDoc(url) {
+        var http;
+        if (window.XMLHttpRequest) {
+            http = new XMLHttpRequest();
+        } else {
+            http = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        http.open("GET", url, true);
+        http.send();
+        http.onreadystatechange = function () {
+            if (http.readyState == 4 && http.status == 200) {
+                document.getElementById('a1').innerHTML = http.status;
+                document.getElementById('a4').innerHTML = http.readyState;
+                document.getElementById('a2').innerHTML = http.statusText;
+                document.getElementById('a3').innerHTML = http.responseText;
+                document.getElementById("a5").innerHTML = "azq";
+            }
+        }
+    }
+</script>
+
+
+<!--<p id="aaa"></p>
+<p id="bbb"></p>
+<script>
+    var http;
+    if(window.XMLHttpRequest){
+        http = new XMLHttpRequest();
+    }else{
+        http = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    http.open("GET", "../json/t.json", true);
+    http.send();
+    http.onreadystatechange = function () {
+        if(http.readyState == 4 && http.status == 200){
+            var obj = JSON.parse(http.responseText);
+            console.log(obj);
+            console.log(obj.authors);
+            var data = obj.authors;
+            for(var i in data){
+                document.write(data[i].genre+" / "+data[i].lastName+" / "+data[i].firstName);
+                document.write("<br>");
+            }
+            var data1 = obj.programmers;
+            for(var j in data1){
+                document.write(data1[j].firstName+" / "+data1[j].lastName+" / "+data1[j].email);
+                document.write("<br>");
+            }
+            var data2 = obj.musicians;
+            for(var n in data2){
+                document.write(data2[n].firstName+" / "+data2[n].lastName+" / "+data2[n].email);
+                document.write("<br>");
+            }
+        }
+    }
+</script>-->
+
+
+<!--<script>
+    if (window.XMLHttpRequest){
+        xmlhttp=new XMLHttpRequest();
+    }else{
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET","t.xml",false);
+    xmlhttp.send();
+    xmlDoc=xmlhttp.responseXML;
+
+    document.write("<table border='1' cellspacing='0'>");
+    document.write("<tr><th>");
+    document.write("标题");
+    document.write("</th><th>");
+    document.write("艺术家");
+    document.write("</th><th>");
+    document.write("国家");
+    document.write("</th><th>");
+    document.write("公司");
+    document.write("</th><th>");
+    document.write("价钱");
+    document.write("</th><th>");
+    document.write("年份");
+    document.write("</th></tr>");
+
+    var x=xmlDoc.getElementsByTagName("cd");
+    for (var i=0;i<x.length;i++){
+
+        document.write("<tr><td>");
+        document.write(x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue);
+        document.write("</td><td>");
+        document.write(x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue);
+        document.write("</td><td>");
+        document.write(x[i].getElementsByTagName("country")[0].childNodes[0].nodeValue);
+        document.write("</td><td>");
+        document.write(x[i].getElementsByTagName("company")[0].childNodes[0].nodeValue);
+        document.write("</td><td>");
+        document.write(x[i].getElementsByTagName("price")[0].childNodes[0].nodeValue);
+        document.write("</td><td>");
+        document.write(x[i].getElementsByTagName("year")[0].childNodes[0].nodeValue);
+        document.write("</td></tr>");
+
+    }
+
+    document.write("</table>");
+</script>-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>随机颜色</title>
+    <style>
+        .box-color{
+            width:100px;
+            height:100px;
+            background: paleturquoise;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-color"></div>
+
+    <script>
+        var boxColor = document.getElementsByClassName("box-color")[0];
+        boxColor.onclick=function () {
+            boxColor.style.background = color();
+        }
+        function color() {
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return "rgb("+r+","+g+","+b+")";
+        }
+    </script>
+</body>
+</html>

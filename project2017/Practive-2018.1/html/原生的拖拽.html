@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生拖拽</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #f5f7fa;
+        }
+
+        table td, table th {
+            border: 1px solid #ebeef5;
+            text-align: center;
+            height: 2em;
+        }
+
+        table td:not(:first-child) {
+            cursor: move;
+        }
+
+        .canDrog {
+            display: inline-block;
+        }
+
+        .canDrog li {
+
+            padding: 7px 2em;
+            font-size: 12px;
+            border-radius: 4px;
+            display: inline-block;
+            line-height: 1;
+            white-space: nowrap;
+            cursor: move;
+            box-sizing: border-box;
+            margin: 0 5px;
+        }
+
+        .canDrog li:nth-child(1), .optimal {
+            background-color: #F56C6C;
+            color: #fff;
+        }
+
+        .canDrog li:nth-child(2), .good {
+            background-color: #E6A23C;
+            color: #fff;
+        }
+
+        .canDrog li:nth-child(3), .medium {
+            background-color: #409EFF;
+            color: #fff;
+        }
+
+        .canDrog li:nth-child(4), .badly {
+            background-color: #67C23A;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="canDrog">
+        <li draggable="true" data-text="optimal">优</li>
+        <li draggable="true" data-text="good">良</li>
+        <li draggable="true" data-text="medium">中</li>
+        <li draggable="true" data-text="badly">差</li>
+    </ul>
+
+    <table class="dataTbl">
+        <thead>
+        <tr>
+            <th style="width: auto">节次/星期</th>
+            <th style="width: 16%">周一</th>
+            <th style="width: 16%">周二</th>
+            <th style="width: 16%">周三</th>
+            <th style="width: 16%">周四</th>
+            <th style="width: 16%">周五</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>第一节</td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+        </tr>
+        <tr>
+            <td>第二节</td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+        </tr>
+        <tr>
+            <td>第三节</td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+        </tr>
+        <tr>
+            <td>第四节</td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+        </tr>
+        <tr>
+            <td>第五节</td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+            <td draggable="true"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(function () {
+
+        //解决火狐弹出新选项卡的问题
+        $(".container").bind('drop', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        var li = $('.canDrog > li')
+        //拖拽开始时将被拖拽元素透明度设置为50%
+        li.bind('dragstart', function (event) {
+            var event5 = event.originalEvent;
+            event5.target.style.opacity = .5;
+            var dataText = $(event5.target).attr('data-text');
+            //firefox 必须添加
+            +event5.dataTransfer.setData("text", dataText);
+        });
+
+        //拖拽过程不执行任何操作。将会被持续触发
+        li.bind('drag', function (event) {
+        });
+
+        //拖拽之后恢复被拖拽元素的透明度
+        li.bind('dragend', function (event) {
+            var event4 = event.originalEvent;
+            event4.target.style.opacity = 1;
+        });
+
+
+        var tab = $('.dataTbl')
+        //将元素拖入当前元素
+        tab.bind('dragenter', 'td', function (event) {
+            var event3 = event.originalEvent;
+            event3.target.style.backgroundColor = '#fdfdfd';
+        });
+        //google chrome,opera需要添加
+        tab.bind("dragover", 'td', function (e) {
+            e.originalEvent.preventDefault();
+        });
+        //将元素拖离当前元素
+        tab.bind('dragleave', 'td', function (event) {
+            var event2 = event.originalEvent;
+            event2.target.style.backgroundColor = '';
+        });
+
+        //将元素释放到当前元素中
+        tab.bind('drop', 'td', function (event) {
+            var event1 = event.originalEvent;
+            var text = event1.dataTransfer.getData("text");
+            //重置背景色
+            event1.target.style.backgroundColor = '';
+            //添加拖拽元素的类型
+            $(event1.target).removeClass();
+            $(event1.target).addClass(text);
+            $(event1.target).text(text);
+
+            event1.preventDefault();
+            event1.stopPropagation();
+        });
+    })
+
+
+</script>
+<script>
+
+</script>
+</body>
+</html>

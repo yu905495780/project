@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery文本段落展开和折叠效果</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        /*html{font: 1em Arial, Helvetica, sans-serif;color: #444;}*/
+        a{color: #000;text-decoration: none;}
+        p{margin-bottom: 5px;}
+        #container{width: 600px;}
+        #container h2{font-size: 20px;color: #0087f1;}
+        .title-txt2{overflow: hidden;}
+        .img{
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/javascript" src="../Practice-2018.2/js/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="container">
+    <div class="title-txt2">
+        或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或
+    </div>
+    <div class="title-txt1"></div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var slideHeight = 60; // px
+        var defHeight = $('.title-txt2').height();
+        if(defHeight >= slideHeight){
+            $('.title-txt2').css('height' , slideHeight + 'px');
+            $('.title-txt1').append('<a href="#">展开</a> <img src="img/down-arrow.png" alt="" class="img">');
+            $('.title-txt1 a').click(function(){
+                var curHeight = $('.title-txt2').height();
+                if(curHeight == slideHeight){
+                    $('.title-txt2').animate({
+                        height: defHeight
+                    }, "normal");
+                    $('.title-txt1 a').html('收起');
+                    $(".img").css("transform","rotate(180deg)");
+                }else{
+                    $('.title-txt2').animate({
+                        height: slideHeight
+                    }, "normal");
+                    $('.title-txt1 a').html('展开');
+                    $(".img").css("transform","rotate(360deg)");
+                }
+                return false;
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

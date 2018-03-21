@@ -1,0 +1,208 @@
+﻿
+<!DOCTYPE html>
+<html manifest="offline.appcache">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+<img src='photo.jpg' />
+</div>
+<title>神约-滑雪送金币</title>
+<meta name="keywords" content="神约滑雪挑战,滑雪挑战游戏" />
+<meta name="description" content="游戏得分截图分享到神约APP圈子中，可以获得相应金币，金币就是钱哦" />
+<link rel="apple-touch-icon" href="icon.png" />
+<link rel="shortcut icon" href="icon.png" />
+<link rel="icon" href="icon.png" />
+<link rel="manifest" href="appmanifest.json" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="mobile-web-app-capable" content="yes" />
+<script>
+  	var _mtac = {};
+  	(function() {
+  		var mta = document.createElement("script");
+  		mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+  		mta.setAttribute("name", "MTAH5");
+  		mta.setAttribute("sid", "500549810");
+  		mta.setAttribute("cid", "500549814");
+  		var s = document.getElementsByTagName("script")[0];
+  		s.parentNode.insertBefore(mta, s);
+  	})();
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<!--开始 -->
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxf54623aae3cde798',
+        timestamp: '72c03c5823ce215958d5faac8a438139',
+        nonceStr: 'KzxYyW8neH58VZv5nz999w9ZX33XwDvH',
+        signature: 'TkSYV35xDNeXVn7SEhxVSA66d9dey7YewZ92dZ3SvV6',
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'checkJsApi',
+            'openLocation',
+            'getLocation',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage'
+          ]
+    });
+
+		wx.onMenuShareAppMessage({
+          title: '神约APP滑雪送金币',
+          desc: '游戏得分截图分享到神约APP圈子中，可以获得相应金币，金币就是钱哦',
+          link: 'http://www.shenyueapp.com/games/hxdtz/index.html?ADTAG=wx',
+          imgUrl: 'http://www.shenyueapp.com/games/hxdtz/photo.jpg',
+          trigger: function (res) {
+            // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+            // alert('用户点击发送给朋友');
+          },
+          success: function (res) {
+            // alert('已分享');
+          },
+          cancel: function (res) {
+            // alert('已取消');
+          },
+          fail: function (res) {
+            // alert(JSON.stringify(res));
+          }
+        });
+
+        wx.onMenuShareTimeline({
+          title: '神约APP滑雪送金币',    
+          link: 'http://www.shenyueapp.com/games/hxdtz/index.html?ADTAG=wx',
+          imgUrl: 'http://www.shenyueapp.com/games/hxdtz/photo.jpg',
+          trigger: function (res) {
+            // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+            // alert('用户点击分享到朋友圈');
+          },
+          success: function (res) {
+            // alert('已分享');
+          },
+          cancel: function (res) {
+            // alert('已取消');
+          },
+          fail: function (res) {
+            // alert(JSON.stringify(res));
+          }
+        });
+</script>
+	<!--结束 -->
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/app.js"></script>
+<style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html, body {
+        background: #000;
+        color: #fff;
+        overflow: hidden;
+        touch-action: none;
+        -ms-touch-action: none;
+    }
+    canvas {
+        touch-action-delay: none;
+        touch-action: none;
+        -ms-touch-action: none;
+    }
+    footer{
+        width:100%;
+        height: 0.5rem;
+        background: rgba(255,255,255,0.5);
+        position: fixed;
+        left:0;
+        bottom:0;
+    }
+    footer .tit{
+        padding: 0 0.05rem;
+        font-size: 0.25rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: space-between;
+        line-height: 0.5rem;
+    }
+    footer .tit .tit-r{
+        font-size: 0.18rem;
+    }
+    .downsy{
+        text-decoration: none;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+// Issue a warning if trying to preview an exported project on disk.
+(function(){
+// Check for running exported on file protocol
+if (window.location.protocol.substr(0, 4) === "file")
+{
+alert("Exported games won't work until you upload them. (When running on the file:/// protocol, browsers block many features from working for security reasons.)");
+}
+})();
+</script>
+<div id="c2canvasdiv">
+<canvas id="c2canvas" width="590" height="1003">
+<h1>Your browser does not appear to support HTML5. Try upgrading your browser to the latest version. <a href="http://www.whatbrowser.org">What is a browser?</a>
+<br/><br/><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Microsoft Internet Explorer</a><br/>
+<a href="http://www.mozilla.com/firefox/">Mozilla Firefox</a><br/>
+<a href="http://www.google.com/chrome/">Google Chrome</a><br/>
+<a href="http://www.apple.com/safari/download/">Apple Safari</a><br/>
+<a href="http://www.google.com/chromeframe">Google Chrome Frame for Internet Explorer</a><br/></h1>
+</canvas>
+</div>
+
+<!--页脚-->
+<footer>
+    <p class="tit"><span class="tit-l">游戏得分可以兑换神约金币</span><a class="downsy" href="#">下载神约</a><span class="tit-r">关闭</span></p>
+</footer>
+<script>
+    $(".tit-r").click(function () {
+        $("footer").css("display","none");
+    })
+
+</script>
+
+<script src="jquery-2.1.1.min.js"></script>
+<script src="c2runtime.js"></script>
+
+<script>
+// Size the canvas to fill the browser viewport.
+jQuery(window).resize(function() {
+cr_sizeCanvas(jQuery(window).width(), jQuery(window).height());
+});
+// Start the Construct 2 project running on window load.
+jQuery(document).ready(function ()
+{			
+// Create new runtime using the c2canvas
+cr_createRuntime("c2canvas");
+});
+// Pause and resume on page becoming visible/invisible
+function onVisibilityChanged() {
+if (document.hidden || document.mozHidden || document.webkitHidden || document.msHidden)
+cr_setSuspended(true);
+else
+cr_setSuspended(false);
+}
+document.addEventListener("visibilitychange", onVisibilityChanged, false);
+document.addEventListener("mozvisibilitychange", onVisibilityChanged, false);
+document.addEventListener("webkitvisibilitychange", onVisibilityChanged, false);
+document.addEventListener("msvisibilitychange", onVisibilityChanged, false);
+if (navigator.serviceWorker && navigator.serviceWorker.register)
+{
+// Register an empty service worker to trigger web app install banners.
+navigator.serviceWorker.register("sw.js", { scope: "./" });
+}
+</script>
+<script src="../js/stat.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/plug-in.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+
+img {
+  vertical-align: middle; }
+
+body {
+  font-size: 0.2rem;
+  background-color: #2B0508;
+  color: #ccc; }
+
+.banner {
+  width: 100%;
+  height: auto; }
+  .banner img {
+    width: 100%;
+    height: auto; }
+
+.con {
+  padding: 0.2rem;
+  font-size: 0.24rem;
+  font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+  line-height: 0.4rem; }
+  .con p {
+    margin-bottom: 0.15rem; }
+  .con h3 {
+    text-align: center;
+    margin: 0.2rem auto; }
+  .con .list {
+    margin-left: 0.3rem; }

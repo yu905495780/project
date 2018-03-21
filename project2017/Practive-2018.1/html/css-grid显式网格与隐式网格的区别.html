@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css-grid显式网格与隐式网格的区别</title>
+    <style>
+        /*显式网格*/
+        .grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 100px 100px;
+            grid-gap: 20px;
+        }
+        .item{
+            background-color: #f2f2f2;
+            border-radius: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        /*重复轨道*/
+        .grid1{
+            display: grid;
+            grid-template-columns: repeat(2, 120px 10% 200px);
+            grid-template-rows: 100px 100px;
+            grid-gap: 20px;
+        }
+
+        /*自动重复轨道*/
+        .grid2{
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            grid-gap: 20px;
+        }
+
+        /*auto-fill*/
+        .grid3{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 200px);
+            grid-gap: 20px;
+        }
+
+        /*auto-fit*/
+        /*.grid4{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 100px);
+            grid-gap: 20px;
+        }*/
+        .grid4{
+            display: grid;
+            grid-template-columns: repeat(4, 200px);
+            grid-gap: 20px;
+        }
+        /*.grid4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 100px);
+            grid-template-rows: repeat(auto-fill, 100px);
+            grid-gap: 20px;
+            height: 100%;
+        }
+        body {
+            padding: 20px;
+        }
+        html, body {
+            height: 100%;
+        }*/
+
+        /*隐式网格*/
+        .grid5 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 100px 100px;
+            grid-gap: 20px;
+            max-width: 800px;
+        }
+        .item1 {
+            grid-column-start: -1;
+        }
+        .item2 {
+            grid-row-start: 4;
+        }
+
+        /*隐式轨道尺寸*/
+        .grid6 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 100px 100px;
+            grid-gap: 20px;
+            grid-auto-columns: 200px;
+            grid-auto-rows: 60px;
+            max-width: 800px;
+        }
+    </style>
+</head>
+<body>
+<h3>显式的网格</h3>
+<section class="grid">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+</section>
+<h3>重复轨道</h3>
+<section class="grid1">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+    <div class="item">item5</div>
+    <div class="item">item6</div>
+    <div class="item">item7</div>
+    <div class="item">item8</div>
+</section>
+
+<h3>自动重复轨道</h3>
+<section class="grid2">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+</section>
+
+<h3>auto-fill</h3>
+<section class="grid3">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+</section>
+
+<h3>auto-fit</h3>
+<section class="grid4">
+    <div class="item">item1</div>
+    <div class="item">item2</div>
+    <div class="item">item3</div>
+    <div class="item">item4</div>
+    <div class="item">item5</div>
+</section>
+
+<h3>隐式网格</h3>
+<section class="grid5">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+</section>
+
+<h3>隐式轨道尺寸</h3>
+<section class="grid6">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+</section>
+
+<h3>将网格扩展到开始</h3>
+</body>
+</html>

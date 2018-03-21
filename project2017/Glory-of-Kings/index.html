@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/app.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        #cnzz_stat_icon_1265104766>a{
+            display: none;
+        }
+        .box{
+            width: 6.4rem;
+            height: 100%;
+            position: relative;
+            overflow-y: hidden;
+        }
+        .img-1{
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .btn1,.btn2{
+            width: 1.51rem;
+            height:0.62rem;
+            background: #E4B600;
+            margin-top: 0.7rem;
+            border-radius: 0.1rem;
+            border:none;
+            color: #fff;
+            font-size: 0.25rem;
+            outline: none;
+        }
+        .btn1{
+            margin-left: 1.5rem;
+        }
+        .btn2{
+            margin-right: 1.5rem;
+        }
+        .btn-box{
+            background: url("img/bg.jpg");
+            width: 100%;
+            height: 2.12rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .box-3{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 200;
+            transition: height 2s;
+            display: none;
+        }
+        .box3-wraper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background: #fff;
+        }
+        .close{
+            width: 100%;
+            text-align: center;
+            font-size: 0.3rem;
+            height: 0.7rem;
+            line-height: 0.7rem;
+            position: absolute;
+            bottom:0;
+            border-top:0.1rem solid #F7F9FF;
+        }
+        .box3-tit{
+            width: 100%;
+            text-align: center;
+            font-size: 0.3rem;
+            height: 0.7rem;
+            line-height: 0.7rem;
+            position: absolute;
+            top: 7.6rem;
+            z-index: 2000;
+        }
+        .box3-back{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,0.3);
+            height: 7.5rem;
+            width: 100%;
+        }
+    </style>
+    <script>
+        //声明_czc对象:
+        var _czc = _czc || [];
+        $(function (){
+            //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+            _czc.push(["_setAccount", "1265104766"]);
+        });
+    </script>
+</head>
+<body>
+<div class="box">
+    <img src="img/up.jpg" alt="" class="img-1">
+    <div class="btn-box">
+        <button onclick="_czc.push(['_trackEvent', '王者荣耀', '赞', '报名','5','dafen']);" class="btn1">我想报名</button>
+        <button onclick="_czc.push(['_trackEvent', '王者荣耀', '赞', '不感兴趣','5','dafen']);" class="btn2">不感兴趣</button>
+    </div>
+    <img src="img/down.jpg" alt="" class="img-1">
+    <div class="box-3">
+        <div class="box3-back"></div>
+        <p class="box3-tit">兴趣统计</p>
+        <div class="box3-wraper">
+            <div id="main" style="width: 5.8rem;height:3.5rem;"></div>
+        </div>
+        <p class="close">关闭</p>
+    </div>
+</div>
+
+<script>
+    $(".btn1").click(function (){
+        $(this).removeAttr("onclick");
+        $(".box-3").css("display","block");
+        $(".box3-wraper").css("height","4rem")
+    });
+    $(".btn2").click(function (){
+        $(this).removeAttr("onclick");
+        $(".box-3").css("display","block");
+        $(".box3-wraper").css("height","4rem")
+    });
+    $(".txt").click(function () {
+        $(".box-2").css("display","block");
+        $(".box2-wraper").css("height","4rem")
+    });
+    $(".box2-txt").click(function () {
+        $(".box-2").css("display","none");
+        $(".box2-wraper").css("height","0")
+    });
+    $(".close").click(function () {
+        $(".box-3").css("display","none");
+        $(".box3-wraper").css("height","0")
+    });
+    $(".box3-back").click(function () {
+        $(".box-3").css("display","none");
+        $(".box3-wraper").css("height","0")
+    })
+</script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var weatherIcons = {
+
+    };
+    var seriesLabel = {
+        normal: {
+            show: true,
+            textBorderColor: '#333',
+            textBorderWidth: 2
+        }
+    };
+    option = {
+        tooltip: {
+
+        },
+        grid: {
+            left: 80
+        },
+        xAxis: {
+            labels:{
+                style:{ // 此处可设置样式
+                    fontFamily:'"PingFang-SC-Medium", Arial, Helvetica, sans-serif',
+                    fontColor:"red"
+                }
+            }
+        },
+        yAxis: {
+            type: 'category',
+            inverse: true,
+            data: ['感兴趣', '不感兴趣'],
+            axisLabel: {
+                rich: {
+                }
+            }
+        },
+        series: [
+            {
+                name: '感兴趣',
+                type: 'bar',
+                data: [436],
+                label: seriesLabel
+            },
+            {
+                name: '不感兴趣',
+                type: 'bar',
+                label: seriesLabel,
+                data: [,78]
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1265104766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1265104766%26online%3D1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

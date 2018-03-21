@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+
+			 * ajax ------Async js and xml
+			 *
+			 *
+			 * */
+			 //创建一个XMLHttprequest
+			 //需要做一个兼容：兼容至ie5
+			 var xhr = "";
+			 if(window.XMLHttpRequest){
+			 	  //w3c标准下的XMLHttpRequest
+			 	  xhr = new XMLHttpRequest();
+			 }else if(window.ActiveXObject){
+			 	  //非w3c标准
+			 	  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			 }
+
+			 /*
+
+			  * 该事件由服务器触发，服务器会通知客户端当前的通信状态（readystate）
+			  *
+			  * 每一次readystate属性的改变，都会触发这个事件
+			  *
+			  * readystate是由客户端请求的状态
+			  * status是服务器响应的状态
+			  *
+			  * */
+			xhr.onreadystatechange = function(){
+				//在服务器向客户端作出响应时执行此事件，
+				//在这个函数里面作出响应后的操作
+				if(xhr.readyState==4&&xhr.status==200){
+					 console.log(xhr.responseText);
+				}
+			}
+			/*
+
+			 * xhr.open(method,url,Async);
+			 *   method   请求的方式
+			 *   url      请求的路径
+			 *   Async    是否异步  默认是true（异步）
+			 *
+			 * */
+			xhr.open("get","data.json",true);
+			xhr.send(null);
+
+		</script>
+	</body>
+</html>

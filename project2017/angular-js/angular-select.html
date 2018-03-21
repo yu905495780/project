@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择框</title>
+    <script src="https://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<div data-ng-app="myApp" data-ng-controller="myCtrl">
+    <select data-ng-model="selectedName">
+        <option value="" data-ng-repeat="x in names">{{x}}</option>
+    </select>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope){
+        $scope.names = ["Google", "W3Cschool", "Taobao"];
+    });
+</script>
+</body>
+</html>

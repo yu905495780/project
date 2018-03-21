@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>王者荣耀免海选，求赞</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/list-detail.css">
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500575494");
+
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+    <script src="../js/app.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<!--<div id='wx_pic' style='margin:0 auto;display:none;'>
+    <img src='../img/King.jpg' />
+</div>
+<div class="banner">
+    <img src="../img/banner1.png" alt="">
+</div>
+<div class="box">
+
+</div>
+<footer>
+    <p class="tit"><span class="tit-l">下载神约报名王者荣耀线上赛</span><a class="downsy">点击下载</a><span class="tit-r">关闭</span></p>
+</footer>-->
+</body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="../js/wx.min.js"></script>
+
+<script>
+    $(".downsy").attr("href",apiUrl+"/resource/getDownloadUrl")
+    $(".tit-r").click(function () {
+        $("footer").css("display","none");
+    })
+
+    //   判断头像是否存在
+    function avatar1(avatar, avatarhtml) {
+
+        if (avatar == null) {
+            avatarhtml = '<img src= "' + avatarUrl + 'resource/sy_default_avatar_1.5.png" alt="" class="avatar">';
+        } else {
+            avatarhtml = '<img src="' + avatarUrl + '' + avatar + '" alt="" class="avatar">';
+        }
+        return avatarhtml;
+    }
+
+
+    function teammen(teammen, teammenhtml) {
+        var teammenhtml = "";
+        if (teammen.length != 0) {
+            for (var n = 0; n < teammen.length; n++) {
+                teammenhtml += '<li class="deta-li tetali-box" id="' + teammen[n].id + '"> <div class="detali-l"> <p class="avatar">' + avatar1(teammen[n].avatar, $(".avatar").innerHTML) + '</p> <p class="username">' + teammen[n].nickname + '</p> </div></li>';
+            }
+        }
+        return teammenhtml
+    }
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return decodeURIComponent(r[2]);
+        return null;
+    }
+    function funServer1(funServer,funServerhtml) {
+        var funServerhtml = "";
+        if(funServer == "1"){
+            funServerhtml = '(微信战队)';
+        }else if(funServer == "2"){
+            funServerhtml = '(QQ战队)';
+        }
+        return funServerhtml;
+    }
+
+    //   判断服务器是微信还是QQ
+    function funServer(funServer,funServerhtml) {
+        var funServerhtml = "";
+        if(funServer == "1"){
+            funServerhtml = '<img src="../img/weChat@2x.png" alt="" class="server">';
+        }else if(funServer == "2"){
+            funServerhtml = '<img src="../img/QQ@2x.png" alt="" class="server">';
+        }
+        return funServerhtml;
+    }
+
+    uid = GetQueryString("uid");
+    $.get(apiUrl + "/activity/n/gloryOfKings/getUidJoinTeamDetails?uid=" + uid, function (data) {
+        console.log(data);
+        var deta = data.datas.gloryOfKingsTeamDetails;
+
+        if (deta != null) {
+            div = $('<div class="detail-box"> <div class="detalis"> <div class="detalis-title"> <div class="deta-left"></div> <div class="deta-mid">' + deta.name + ' <span style="font-size: 0.18rem">'+funServer1(deta.platform,$(".deta-mid").innerHTML)+'</span></div> <div class="deta-right">' + deta.memberNum + '</div> </div> <div class="brief-introduction"> <p class="brief-tit">战队简介 :</p> <p class="brief-txt">' + deta.summary + '</p> </div> <div class="deta-num"> <i>点赞排名：<span>' + deta.praiseIndex + '</span></i> <i>超过前一名还需要<span>' + deta.praiseDifference + '</span>个赞</i> <div class="give-thumbs-up" onclick="like(this,' + deta.id + ')"> <p class="like">' + getPraiseString(deta.id) + '</p> <p class="likenum"><span class="praisenum">' + deta.praiseNum + '</span>赞</p> </div> </div> <ul class="deta-ul"> <li class="deta-li" id="' + deta.teamLeader.id + '"> <div class="detali-l"> <p class="avatar">' + avatar1(deta.teamLeader.avatar, $('.avatar-box').innerHTML) + '</p> <p class="username">' + deta.teamLeader.nickname + '</p> <p class="captain">队长</p> </div>  </li> ' + teammen(deta.teamMember, $(".deta-ul").innerHTML) + ' </ul> </div> <ul class="informations"></ul> </div>')
+            $(".box").append(div);
+//            点赞
+        } else {
+            $.get(apiUrl + "/activity/n/gloryOfKings/getTeamList?page=1&limit=1000&uid=" + uid, function (data) {
+                var a = data.datas.gloryOfKingsTeamList;
+                console.log(a)
+                var li;
+                for (var i = 0; i < a.length; i++) {
+                    li = $('<li class="team-li" id="' + a[i].id + '"> <div class="teamli-left"> <div class="avatar-box"> ' + avatar1(a[i].teamLeader.avatar, $('.avatar-box').innerHTML) + ' '+funServer(a[i].platform,$("avatar-box").innerHTML)+'   </div> <div class="name"> <p class="team-name">' + a[i].name + '</p> <p class="captain">队长：<span>' + a[i].teamLeader.nickname + '</span></p> </div> </div> <div class="teamli-right"> <div class="num">' + a[i].memberNum + '</div> <div class="like" onclick="like(this,' + a[i].id + ')"><p class="zan">' + getPraiseString(a[i].id) + '</p> <p><span class="praisenum"> ' + a[i].praiseNum + '</span>赞</p> </div> </div> </li>');
+                    $(".box").append(li);
+                }
+            })
+        }
+    })
+
+
+    function like(t, id) {
+        var ids = getCookie();
+//        console.log(ids);
+        var idStr = '(' + id + ')';
+
+        if (ids == null || ids == '') {
+            document.cookie = 'ids=' + idStr;
+        } else if (ids.indexOf(idStr) < 0) {
+            document.cookie = 'ids=' + ids + idStr;
+        }else{
+            return;
+        }
+        $(t).find("p:nth-of-type(1)").html("已点赞");
+        $.get(apiUrl + "/activity/n/gloryOfKings/setPraise?uid=0&teamId="+id,function (data) {
+            console.log(data);
+            var num = parseInt($(t).find(".praisenum").html());
+            $(t).find(".praisenum").html(num + 1);
+        })
+    }
+
+    function getPraiseString(id) {
+        var ids = getCookie();
+        var idStr = '(' + id + ')';
+        if (ids != null && ids.indexOf(idStr) >= 0) {
+            return "已点赞";
+        } else {
+            return "点赞";
+        }
+    }
+    function getCookie() {
+        var c_name = "ids";
+        // 先查询cookie是否为空，为空就return
+        if (document.cookie.length > 0) {
+            // 通过String对象的indexOf()来检查这个cookie是否存在，不存在就为 -1
+            c_start = document.cookie.indexOf(c_name + "=");
+            if (c_start !== -1) {
+                //最后这个+1其实就是表示"="号啦，这样就获取到了cookie值的开始位置
+                c_start = c_start + c_name.length + 1;
+                // 其实我刚看见indexOf()第二个参数的时候猛然有点晕，后来想起来表示指定的开始索引的位置...这句是为了得到值的结束位置。因为需要考虑是否是最后一项，所以通过";"号是否存在来判断
+                c_end = document.cookie.indexOf(";", c_start);
+                if (c_end === -1) {
+                    c_end = document.cookie.length;
+                }
+                // 通过substring()得到了值。想了解unescape()得先知道escape()是做什么的，都是很重要的基础，想了解的可以搜索下，在文章结尾处也会进行讲解cookie编码细节
+                return unescape(document.cookie.substring(c_start, c_end));
+            }
+            return "";
+        }
+    }
+</script>
+
+
+</html>

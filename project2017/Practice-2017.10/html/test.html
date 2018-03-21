@@ -1,0 +1,85 @@
+<html>
+<body>
+
+<span id="counter" class="share-counter">0</span>
+<!--<span id="abc">1</span>-->
+<p></p>
+
+<script type="text/javascript">
+    /*var o=document.getElementById('abc');
+    window.setInterval('o.innerHTML=parseInt(o.innerHTML)+76;',1000);*/
+     !function(t) {
+         function e(r) {
+             if(n[r]) return n[r].exports;
+             var o = n[r] = {
+                 exports: {},
+                 id: r,
+                 loaded: !1
+             };
+             return t[r].call(o.exports, o, o.exports, e), o.loaded = !0, o.exports
+         }
+         var n = {};
+         return e.m = t, e.c = n, e.p = "", e(0)
+     }([function(t, e, n) {
+         var r = n(1),
+         o = n(2);
+         t.exports = function() {
+             function t(e) {
+                 var n = r(new Date);
+                 e(n.toString()), setTimeout(function() {
+                     return t(e)
+                 }, 1e3)
+             }
+             var e = r(new Date),
+             n = document.getElementById("counter");
+             o(n, e, t);
+             for(var i = 650, u = 234, a = 100, c = (screen.width - i) / 2, s = document.querySelectorAll(".js-share"), f = 0; f < s.length; ++f) s[f].onclick = function(t) {
+                 t.preventDefault(), open(t.target.href, t.target.title, "width=" + i + ", height=" + u + ", left=" + c + ", top=" + a)
+             }
+         }()
+     }, function(t, e) {
+         t.exports = function(t) {
+             var e = new Date("Tue May 5 2005 08:54:58 GMT+0800 (CST)"),
+             n = 6e7,
+             r = Math.floor((t - e) / 1e3),
+             o = 8;
+             return n + Math.floor(r * o)
+         }
+     }, function(t, e, n) {
+         function r(t, e, n) {
+             function r(e) {
+                 var n = e.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                 t.textContent ? t.textContent = n : t.innerText = n
+             }
+             function u() {
+                return l >= f ? void(n && n(r)) : (i(u), r(s[l].toString()), void l++)
+             }
+             var a = 0,
+             c = 1e4,
+             s = o(a, e, c, 3),
+             f = s.length,
+             l = 0;
+             u()
+         }
+         var o = n(3),
+         i = n(4);
+         t.exports = r
+     }, function(t, e) {
+         function n(t, e, n, r, o) {
+             return -n * ((t = t / r - 1) * Math.pow(t, o) - 1) + e
+         }
+         var r = 1e3 / 60;
+         t.exports = function(t, e, o) {
+             for(var i = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : 1, u = [], a = 0; a <= o; a += r) u.push(Math.floor(n(a, t, e, o, i)));
+             return u
+         }
+     }, function(t, e) {
+         t.exports = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(t) {
+             setTimeout(t, 1e3 / 60)
+         }
+     }]);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+@charset "utf-8";
+*{
+  margin: 0;padding: 0;
+  list-style: none;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+a{
+  text-decoration: none;
+}
+img{
+  vertical-align: middle;
+}
+body{
+  font-size: 0.2rem;
+  background-color: #F7F9FF;
+}
+::-webkit-scrollbar {display:none;}
+#pre-about{
+  width: 100%;
+  height:100%;
+  position: fixed;
+  overflow-y: auto;
+  .head{
+    width: 100%;
+    height: 0.73rem;
+    .header{
+      width: 100%;
+      height: 0.73rem;
+      display: flex;
+      justify-content: space-between;
+      line-height: 0.73rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      //background:linear-gradient(90deg, #fa719a 1%, #fee141 100%);
+      background: #FED12A;
+      .Sinlist{
+        color: #333;
+        font-size: 0.31rem;
+        margin-left: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        position: relative;
+        p{
+          position: absolute;
+          left: 50%;
+          margin-left: -0.18rem;
+          bottom: 0;
+          width: 0.36rem;
+          height: 0.05rem;
+          background-color: #333;
+        }
+      }
+      .Prelist{
+        color: #333;
+        font-size: 0.26rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      }
+      .Onelist{
+        color: #333;
+        font-size: 0.26rem;
+        margin-right: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      }
+    }
+  }
+  #wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0.75rem;
+    bottom: 0.8rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  #scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    padding: 0;
+  }
+
+  #pullDown,#pullUp{
+    width:100%;
+    text-align: center;
+    color: #aaa;
+  }
+  #pullUp{
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  #listData{
+    .newest{
+      background: #fff;
+      margin-bottom: 0.1rem;
+      .title{
+        padding: 0 0.25rem;
+        height: 0.87rem;
+        line-height: 0.87rem;
+        font-size: 0.27rem;
+        //border-bottom: 1px solid #ececec;
+        color: #333;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        /*span{
+          width: 0.05rem;
+          height: 0.18rem;
+          background: #FED12A;
+          display: inline-block;
+          margin-right: 0.11rem;
+        }*/
+        i{
+          width: 0.31rem;
+          height: auto;
+          img{
+            width: 0.31rem;
+            height: auto;
+          }
+        }
+      }
+      .swiper1{
+        padding: 0.1rem 0.25rem 0.27rem;
+        border-bottom: 1px solid #ececec;
+        .swiper-wrapper{
+          .swiper-slide{
+            .avatar{
+              text-align: center;
+              margin-bottom: 0.18rem;
+              width: 1.4rem;
+              height: 1.4rem;
+              border-radius: 50%;
+              overflow: hidden;
+              img{
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .nickname{
+              text-align: center;
+              font-size: 0.23rem;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+              color: #333;
+              margin-bottom: 0.21rem;
+            }
+            .container{
+              text-align: center;
+              font-size: 0.19rem;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+              color: #aaa;
+            }
+          }
+        }
+      }
+      .notice{
+        padding: 0 0.25rem;
+        height: 0.66rem;
+        line-height: 0.66rem;
+        display: flex;
+        .noticeimg{
+          width: 0.23rem;
+          height: 0.23rem;
+          margin-right: 0.19rem;
+          img{
+            width: 0.23rem;
+            height: 0.23rem;
+          }
+        }
+        .noticeline{
+          margin-right: 0.19rem;
+          font-size: 0.20rem;
+          color: #ececec;
+        }
+        .noticetxt{
+          font-size: 0.20rem;
+          color: #666;
+          .swipernotice{
+            .swiper-slide{
+              width: 100%;
+            }
+          }
+
+        }
+      }
+    }
+    .recommend{
+      background: #fff;
+      padding-bottom: 0.09rem;
+      .title{
+        padding: 0 0.25rem;
+        height: 0.7rem;
+        line-height: 0.7rem;
+        font-size: 0.27rem;
+        //border-bottom: 1px solid #ececec;
+        color: #333;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        /*span{
+          width: 0.05rem;
+          height: 0.18rem;
+          background: #FED12A;
+          display: inline-block;
+          margin-right: 0.11rem;
+        }*/
+        i{
+          width: 0.31rem;
+          height: auto;
+          img{
+            width: 0.31rem;
+            height: auto;
+          }
+        }
+      }
+      .list-box{
+        padding: 0 0.08rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .list{
+          width: 49%;
+          position: relative;
+          margin-bottom: 0.17rem;
+          .avatar-box{
+            width: 3.08rem;
+            height: 3.34rem;
+            border-radius: 0.1rem;
+            overflow: hidden;
+            position: relative;
+            .vip{
+              position: absolute;
+              top:0;
+              left:0;
+              width:0.58rem;
+              height: 0.58rem;
+            }
+            .avatar{
+              width: 3.08rem;
+              height: 3.34rem;
+            }
+          }
+          .container{
+            display: flex;
+            justify-content: space-between;
+            height: 0.58rem;
+            line-height: 0.58rem;
+            padding: 0 0.2rem 0 0.1rem;
+            .skill{
+              width: 1.8rem;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font-size: 0.24rem;
+              color: #333;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+            .price{
+              font-size: 0.2rem;
+              color: #666;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+          }
+          .user{
+            display: flex;
+            justify-content: space-between;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            padding: 0 0.2rem 0 0.1rem;
+            .u-left{
+              .nickname{
+                font-size: 0.2rem;
+                color: #aaa;
+                font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+              }
+              img{
+                width: 0.2rem;
+                height: 0.2rem;
+                vertical-align: middle;
+                margin-left: 0.08rem;
+              }
+            }
+            .u-right{
+              height: 0.44rem;
+              img{
+                height: 0.44rem;
+              }
+            }
+          }
+          .online-box{
+            position: absolute;
+            right: -0.02rem;
+            bottom: 1.02rem;
+            width: 0.65rem;
+            height: 0.31rem;
+            color: #fff;
+            font-size: 0.17rem;
+            text-align: center;
+            line-height: 0.31rem;
+            .on-line{
+              background: rgba(0,0,0,0.5);
+              border-bottom-right-radius: 0.1rem;
+              border-top-left-radius: 0.1rem;
+            }
+          }
+        }
+      }
+    }
+    .banner{
+      width: 100%;
+      background: #fff;
+      .swiper-pagination{
+        text-align: right;
+      }
+      .ban{
+        width: 100%;
+      }
+    }
+    .userlist{
+      background: #fff;
+      .list-box{
+        padding: 0.27rem 0.08rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .list1{
+          width: 49%;
+          position: relative;
+          margin-bottom: 0.17rem;
+          .avatar-box{
+            width: 3.08rem;
+            height: 3.34rem;
+            border-radius: 0.1rem;
+            overflow: hidden;
+            position: relative;
+            .vip{
+              position: absolute;
+              top:0;
+              left:0;
+              width:0.58rem;
+              height: 0.58rem;
+            }
+            .avatar{
+              width: 3.08rem;
+              height: 3.34rem;
+            }
+          }
+          .container{
+            display: flex;
+            justify-content: space-between;
+            height: 0.58rem;
+            line-height: 0.58rem;
+            padding: 0 0.2rem 0 0.1rem;
+            .skill{
+              width: 1.8rem;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              font-size: 0.24rem;
+              color: #333;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+            .price{
+              font-size: 0.2rem;
+              color: #666;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+          }
+          .user{
+            display: flex;
+            justify-content: space-between;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            padding: 0 0.2rem 0 0.1rem;
+            .u-left{
+              .nickname{
+                font-size: 0.2rem;
+                color: #aaa;
+                font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+              }
+              img{
+                width: 0.2rem;
+                height: 0.2rem;
+                vertical-align: middle;
+                margin-left: 0.08rem;
+              }
+            }
+            .u-right{
+              height: 0.44rem;
+              img{
+                height: 0.44rem;
+              }
+            }
+          }
+          .online-box{
+            position: absolute;
+            right: -0.02rem;
+            bottom: 1.02rem;
+            width: 0.65rem;
+            height: 0.31rem;
+            color: #fff;
+            font-size: 0.17rem;
+            text-align: center;
+            line-height: 0.31rem;
+            .on-line{
+              background: rgba(0,0,0,0.5);
+              border-bottom-right-radius: 0.1rem;
+              border-top-left-radius: 0.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .footer{
+    height: 0.7rem;
+    .foot{
+      width: 5.1rem;
+      display: flex;
+      padding: 0.15rem 0.65rem 0.09rem;
+      justify-content: space-around;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: #fff;
+      box-shadow: 0 -1px 10px 0 #ccc;
+      .footli{
+        text-align: center;
+        img{
+          height: 0.34rem;
+        }
+        p{
+          font-size: 0.2rem;
+          color: #aaa;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        }
+      }
+    }
+  }
+}
+
+
+
+#pre-details{
+  position: absolute;
+  top: 0;
+  left: 0;
+  .header{
+    width: 6.4rem;
+    height: 0.75rem;
+    .head{
+      width: 5.88rem;
+      padding: 0 0.26rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      box-shadow: 0 0 0.2rem 0 #E8E8E8;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      .hleft{
+        width: 0.2rem;
+        height: 0.31rem;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+      .mid{
+        font-size: 0.31rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      }
+      .hright{
+        width: 0.35rem;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #ffd200;
+  }
+  .banner{
+    width: 6.4rem;
+    height: 6.4rem;
+    .swiper-slide{
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .contians1{
+    width: 6.4rem;
+    //height:auto;
+    .con1{
+      margin-bottom: 0.1rem;
+      padding: 0.27rem 0.34rem 0 0.25rem;
+      background-color: #fff;
+      .personal{
+        display: flex;
+        position: relative;
+        .listimg{
+          width: 1.02rem;
+          height: 1.02rem;
+          border-radius: 50%;
+          margin: 0 0.3rem 0 0.08rem;
+        }
+        .mid{
+          p:nth-of-type(1){
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            .name{
+              font-size: 0.25rem;
+              font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+              margin-right: 0.18rem;
+              vertical-align: middle;
+            }
+
+          }
+          p:nth-of-type(2){
+            .sex1,.sex2,.real-name,.video,.vehicle,.vip{
+
+            }
+            .real-name,.video,.vehicle,.vip{
+              img{
+                width: auto;
+                height: 0.3rem;
+                margin-right: 0.13rem;
+              }
+            }
+            .sex1{
+              display: inline-block;
+              padding: 0 0.07rem;
+              background-color: #FDC5F1;
+              border-radius: 0.05rem;
+              vertical-align: middle;
+              line-height: 0.26rem;
+              margin-right: 0.13rem;
+              img{
+                height: 0.22rem;
+                vertical-align: middle;
+              }
+              .age{
+                font-size: 0.15rem;
+              }
+              color: #fff;
+              font-size: 0.14rem;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+            .sex2{
+              display: inline-block;
+              padding: 0 0.07rem;
+              background-color: #b0e1ff;
+              border-radius: 0.05rem;
+              vertical-align: middle;
+              line-height: 0.26rem;
+              margin-right: 0.13rem;
+              img{
+                height: 0.22rem;
+                vertical-align: middle;
+              }
+              .age{
+                font-size: 0.15rem;
+              }
+              color: #fff;
+              font-size: 0.14rem;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+          }
+        }
+        .check{
+          position: absolute;
+          right: 0;
+          bottom: -1.3rem;
+          color: #FF6B5D;
+          font-size: 0.18rem;
+          font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+          span{
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+            font-size: 0.28rem;
+            font-weight: 600;
+          }
+        }
+        .add-sttention-to{
+          position: absolute;
+          right: 0;
+          top: 0.35rem;
+          width: 1.22rem;
+          height: 0.44rem;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .meet{
+        margin-top: 0.26rem;
+        position: relative;
+        .cir {
+          width: 0.1rem;
+          height: 0.1rem;
+          background-color: #dbdbdb;
+          display: inline-block;
+          vertical-align: middle;
+          border-radius: 50%;
+          margin-right: 0.17rem;
+
+        }
+        .describe{
+          font-size: 0.29rem;
+          font-weight: 600;
+          color: #333;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem;
+          width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+        }
+        .yue,.hour,.remarks{
+          font-size: 0.23rem;
+          color: #666;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem;
+          width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+        }
+        .yue{
+          .yuesex,.project{
+            margin-right: 0.21rem;
+          }
+        }
+        .hour{
+          .date,.time-slot{
+            margin-right: 0.21rem;
+          }
+        }
+        .num{
+          font-size: 0.23rem;
+          color: #666;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-bottom: 0.29rem;
+        }
+        .remarks{
+          .firends,.transfers,.wine{
+            margin-right: 0.21rem;
+          }
+        }
+        .img1{
+          .img-div{
+            height: 0.53rem;
+            margin-bottom: 0.29rem;
+            line-height: 0.53rem;
+            .vio{
+              width: 1.54rem;
+              height: 0.53rem;
+              background-color: #ffd200;
+              border-radius: 0.1rem;
+              display: inline-block;
+              img{
+                width:0.2rem;
+                height:0.25rem;
+                margin-left: 0.21rem;
+              }
+            }
+            .second-num{
+              margin-left: 0.12rem;
+              font-size: 0.19rem;
+              color: #aaa;
+              font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            }
+          }
+        }
+      }
+      .explain{
+        border-top: 1px solid #dbdbdb;
+        padding-top: 0.32rem;
+        height: 1.39rem;
+        font-size: 0.23rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        color: #aaa;
+      }
+    }
+    .con3{
+      padding: 0.35rem 0.25rem 0;
+      background-color: #fff;
+      .impression{
+        .top-impre{
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.24rem;
+          color: #aaa;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+          margin-bottom: 0.45rem;
+          .imprel{
+          }
+          .imprer{
+          }
+        }
+        .btm-impre{
+          display: flex;
+          flex-wrap: wrap;
+          padding-bottom: 0.26rem;
+          border-bottom: 1px solid #ececec;
+          margin-bottom: 0.18rem;
+          .impreli{
+            margin-right: 0.32rem;
+            width: 1.11rem;
+            height: 0.5rem;
+            text-align: center;
+            line-height: 0.5rem;
+            background-color: #ffd200;
+            margin-bottom: 0.17rem;
+            border-radius: 0.5rem;
+            color: #fff;
+            font-size: 0.21rem;
+            font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+          }
+        }
+      }
+      .comment{
+        .comli{
+          padding-top: 0.25rem;
+          border-bottom: 1px solid #ececec;
+          .user{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.15rem;
+            .userl{
+              display: flex;
+              .userimg{
+                width: 0.7rem;
+                height: 0.7rem;
+                border-radius: 50%;
+                margin-right: 0.18rem;
+              }
+              .userm{
+                font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+                .name{
+                  color: #aaa;
+                  font-size: 0.21rem;
+                  margin: 0.05rem 0 0.07rem;
+                }
+                .timer{
+                  font-size: 0.17rem;
+                  color: #dbdbdb;
+                }
+              }
+            }
+            .userr{
+              span{
+                display: inline-block;
+                width:0.2rem;
+                height:0.2rem;
+                img{
+                  width:100%;
+                  height:100%;
+                }
+              }
+            }
+          }
+          .comp{
+            font-size: 0.22rem;
+            font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+            color: #aaa;
+            line-height: 0.37rem;
+            margin-bottom: 0.24rem;
+          }
+        }
+      }
+      .more{
+        height: auto;
+        .yinxiang{
+          height: 0.85rem;
+          line-height: 0.85rem;
+          text-align: center;
+          color: #666;
+          opacity: 0.4;
+          font-size: 0.2rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+        }
+      }
+    }
+    .yaoyue{
+      width: 5.56rem;
+      height: 0.75rem;
+      background-color: #ffd200;
+      margin: 0.85rem auto 0.27rem;
+      text-align: center;
+      line-height: 0.75rem;
+      font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+      font-size: 0.26rem;
+      color: #333;
+      border-radius: 0.5rem;
+    }
+  }
+}
+

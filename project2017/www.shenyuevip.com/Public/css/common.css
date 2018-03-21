@@ -1,0 +1,57 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+body{ font-size:12px; background: #fff}
+a{text-decoration:none;color:#333;font-family:"Microsoft YaHei"}
+img{display:block;}
+input{outline: none;font-family:"Microsoft YaHei";}
+span,label{font-family:"Microsoft YaHei";}
+h2{font-family:"Microsoft YaHei";}
+p{font-family:"Microsoft YaHei";}
+i{font-family:"Microsoft YaHei";}
+b{font-family:"Microsoft YaHei"; font-weight: normal;}
+dd{font-family:"Microsoft YaHei";}
+div{font-family:"Microsoft YaHei";}
+img{border:none;}
+
+/*======页首=======*/
+#wrapper{width: 100%; min-width: 1200px;height: 100%; overflow: hidden;}
+.head{width: 100%; height:100px; background: #ffffff; border-bottom:1px solid #cacaca;}
+.head_cont{min-width:1200px; width: 1200px; height: 100px; margin: 0 auto; background: #ffffff}
+.head_cont ul,.head_cont ul li{float: left;}
+.head_cont ul li{height: 100px; line-height: 100px; margin-right: 17px;}
+.head_cont ul li a{display: block;height: 100%;padding-left: 25px; padding-right: 25px; font-weight: bold; color: #fff; font-size: 15px; font-family: "微软雅黑"; color: #000000}
+.head_cont ul li a:hover{background: #000; color: #fff}
+.head_cont ul li.logo{margin-right:130px;}
+.head_cont ul li.logo a{padding-left: 0px; padding-right: 0px;}
+.head_cont ul li.cur a{background: #000; color: #fff}
+.head_cont ul.right{float: right;}
+/*====内容====*/
+.main{width: 100%;margin:0 auto;}
+.main-model{width: 1200px; margin: 0 auto;margin-top: 134px; min-height: 600px; overflow: hidden;}
+
+
+.footer{width: 100%; margin: 0 auto; border-top:1px solid #000;margin-top:80px; background:#fff;}
+.footer div{width: 1200px; margin: 0 auto; }
+.footer_cont ul{float: left; width: 760px;margin-left: 220px; margin-top:10px; margin-bottom:10px;}
+.footer_cont ul li{float: left;line-height: 26px; text-align: center;width: 100%;}
+.footer_cont ul li a{color: #000; font-size: 14px; padding-right:30px; font-family: "微软雅黑"; letter-spacing: 2px;}

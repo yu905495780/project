@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery-font.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.active01{width:20rem;height: 30rem;background: url(../准备动效/准备动效_00000.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active02{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00001.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active03{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00002.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active04{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00003.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active05{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00004.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active06{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00005.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active07{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00006.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active08{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00007.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active09{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00008.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active10{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00009.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active11{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00010.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active12{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00011.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active13{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00012.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active14{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00013.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active15{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00014.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active16{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00015.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active17{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00016.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active18{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00017.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active19{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00018.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active20{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00019.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active21{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00020.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active22{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00021.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active23{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00022.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active24{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00023.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active30{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00024.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active26{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00025.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active27{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00026.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active28{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00027.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active29{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00028.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active30{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00029.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active31{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00030.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active32{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00031.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active33{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00032.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active34{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00033.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			.active35{display: none;width:20rem;height: 30rem;background: url(../准备动效/准备动效_00034.png) no-repeat top center/100%;margin-top: 1rem;overflow: hidden;line-height: 2rem;}
+			#div{
+				width: 100px;height: 100px;
+				background: red;
+			}
+			#box{
+				display: none;
+				
+			}
+			#hhh{
+				width: 400px;height: 100px;
+				margin: 0 auto;
+				background: skyblue;
+				display: none;
+			}
+			#yin{
+				width: 400px;height: 100px;
+				background: cyan;
+				margin: 0 auto;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<div id="box">
+			<div class="active01"></div>
+			<div class="active02"></div>
+			<div class="active03"></div>
+			<div class="active04"></div>
+			<div class="active05"></div>
+			<div class="active06"></div>
+			<div class="active07"></div>
+			<div class="active08"></div>
+			<div class="active09"></div>
+			<div class="active10"></div>
+			<div class="active11"></div>
+			<div class="active12"></div>
+			<div class="active13"></div>
+			<div class="active14"></div>
+			<div class="active15"></div>
+			<div class="active16"></div>
+			<div class="active17"></div>
+			<div class="active18"></div>
+			<div class="active19"></div>
+			<div class="active20"></div>
+			<div class="active21"></div>
+			<div class="active22"></div>
+			<div class="active23"></div>
+			<div class="active24"></div>
+			<div class="active25"></div>
+			<div class="active26"></div>
+			<div class="active27"></div>
+			<div class="active28"></div>
+			<div class="active29"></div>
+			<div class="active30"></div>
+			<div class="active31"></div>
+			<div class="active32"></div>
+			<div class="active33"></div>
+			<div class="active34"></div>
+			<div class="active35"></div>
+			<div id="hhh">中奖了</div>
+			<div id="yin">知道了</div>
+		</div>
+		
+		
+		
+		
+	</body>
+	<script src="jquery.transit.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			$("#div").click(function(){
+				$("#box").css({"display":"block"})
+				func()
+			})
+		
+		function func(){
+			var animate = $(".active01");
+			animate.css({"display":"none"}).transition({complete:function(){
+				$(".active02").css({"display":"block"}).transition({complete:function(){
+					$(this).hide();
+					$(".active03").css({"display":"block"}).transition({complete:function(){
+						$(this).hide();
+						$(".active04").css({"display":"block"}).transition({complete:function(){
+							$(this).hide();
+							$(".active05").css({"display":"block"}).transition({complete:function(){
+								$(this).hide();
+								$(".active06").css({"display":"block"}).transition({complete:function(){
+									$(this).hide();
+									$(".active07").css({"display":"block"}).transition({complete:function(){
+										$(this).hide();
+										$(".active08").css({"display":"block"}).transition({complete:function(){
+											$(this).hide();
+											$(".active09").css({"display":"block"}).transition({complete:function(){
+												$(this).hide();
+												$(".active10").css({"display":"block"}).transition({complete:function(){
+													$(this).hide();
+													$(".active11").css({"display":"block"}).transition({complete:function(){
+														$(this).hide();
+														$(".active11").css({"display":"block"}).transition({complete:function(){
+															$(this).hide();
+															$(".active12").css({"display":"block"}).transition({complete:function(){
+																	$(this).hide();
+																$(".active13").css({"display":"block"}).transition({complete:function(){
+																	$(this).hide();
+																	$(".active13").css({"display":"block"}).transition({complete:function(){
+																		$(this).hide();
+																		$(".active14").css({"display":"block"}).transition({complete:function(){
+																			$(this).hide();
+																			$(".active15").css({"display":"block"}).transition({complete:function(){
+																				$(this).hide();
+																				$(".active16").css({"display":"block"}).transition({complete:function(){
+																					$(this).hide();
+																					$(".active17").css({"display":"block"}).transition({complete:function(){
+																						$(this).hide();
+																						$(".active18").css({"display":"block"}).transition({complete:function(){
+																							$(this).hide();
+																							$(".active19").css({"display":"block"}).transition({complete:function(){
+																								$(this).hide();
+																								$(".active20").css({"display":"block"}).transition({complete:function(){
+																									$(this).hide();
+																									$(".active21").css({"display":"block"}).transition({complete:function(){
+																										$(this).hide();
+																										$(".active22").css({"display":"block"}).transition({complete:function(){
+																											$(this).hide();
+																											$(".active23").css({"display":"block"}).transition({complete:function(){
+																												$(this).hide();
+																												$(".active24").css({"display":"block"}).transition({complete:function(){
+																													$(this).hide();
+																													$(".active25").css({"display":"block"}).transition({complete:function(){
+																														$(this).hide();
+																														$(".active26").css({"display":"block"}).transition({complete:function(){
+																															$(this).hide();
+																															$(".active27").css({"display":"block"}).transition({complete:function(){
+																																$(this).hide();
+																																$(".active28").css({"display":"block"}).transition({complete:function(){
+																																	$(this).hide();
+																																	$(".active29").css({"display":"block"}).transition({complete:function(){
+																																		$(this).hide();
+																																		$(".active30").css({"display":"block"}).transition({complete:function(){
+																																			$(this).hide();
+																																			$(".active31").css({"display":"block"}).transition({complete:function(){
+																																				$(this).hide();
+																																				$(".active32").css({"display":"block"}).transition({complete:function(){
+																																					$(this).hide();
+																																					$(".active33").css({"display":"block"}).transition({complete:function(){
+																																						$(this).hide();
+																																						$(".active34").css({"display":"block"}).transition({complete:function(){
+																																							$(this).hide();
+																																							$("#hhh").css({"display":"block"})
+																																							$("#yin").css({"display":"block"});
+																																							$("#yin").click(function(){
+																																								$("#box").css({"display":"none"});
+																																								location.reload();
+																																							})
+																																						}},200);
+																																					}},200);
+																																				}},200);
+																																			}},200);
+																																		}},200);
+																																	}},200);
+																																}},200);
+																															}},200);
+																														}},200);
+																													}},200);
+																												}},200);
+																											}},200);
+																										}},200);
+																									}},200);
+																								}},200);
+																							}},200);
+																						}},200);
+																					}},200);
+																				}},200);
+																			}},200);
+																		}},200);
+																	}},200);
+																}},200);
+															}},200);
+														}},200);
+													}},200);
+												}},200);
+											}},200);
+										}},200);
+									}},200);
+								}},200);
+							}},200);
+						}},200);
+					}},200);
+				}},200);
+			}},1200);
+		}
+			
+//		alert($("#ul li").length)
+		var aaa = $("#ul li")
+		for(let i=0; i<aaa.length; i++){
+//			alert(this)
+//			var _this = this;
+			aaa[i].onclick = function(){
+				alert(this.index)
+//				func()
+			}
+		}
+		
+	})
+	</script>
+</html>

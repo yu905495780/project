@@ -1,0 +1,251 @@
+@charset "utf-8";
+*{
+  margin: 0;padding: 0;
+  list-style: none;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+a{
+  text-decoration: none;
+}
+img{
+  vertical-align: middle;
+}
+body{
+  font-size: 20px;
+  background: #F7F9FF;
+}
+.header{
+  width:100%;
+  height:5rem;
+  .head{
+    font-family: "PingFang-SC-Medlum";
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:5rem;
+    background: #fff;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 1.8rem;
+    color: #000;
+  }
+}
+
+.content{
+  margin: 2rem 1rem;
+  background: #fff;
+  .con-1{
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    .con1-left{
+      margin-left: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      .portrait{
+        width:8rem;
+        height:8rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+      }
+      .con1-lc{
+        margin-top: 2.5rem;
+        p:nth-of-type(1){
+          font-size: 1.6rem;
+          color: #ff032d;
+          font-family: "PingFang-SC-Medlum";
+          margin-bottom: 0.5rem;
+        }
+        p:nth-of-type(2){
+          img{
+            margin-right: 0.5rem;
+          }
+        }
+      }
+
+    }
+
+    .con1-right {
+      font-size: 1.2rem;
+      color: #999;
+      font-family: "PingFang-SC-Medlum";
+      margin-top: 6rem;
+      margin-right: 2rem;
+    }
+  }
+  .txt{
+    padding: 1rem 1.8rem;
+    p{
+      color: #000;
+      font-family: "PingFang-SC-Medlum";
+      font-size: 1.6rem;
+    }
+  }
+
+  .ul-list{
+    padding: 0 2.5rem;
+    li{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      img{
+        width: 16.35rem;
+        height: 16.35rem;
+      }
+    }
+  }
+
+  .con-2{
+    padding: 0 1.5rem;
+    .con-2c{
+      padding: 1.5rem 0;
+      border-top:1px solid #DBDBDB;
+      display: flex;
+      justify-content: space-between;
+      color: #FF6512;
+      font-size: 1.5rem;
+      .con2-left{
+        margin-left: 1rem;
+        img,span{
+          margin-right: 0.5rem;
+        }
+      }
+      .con2-right{
+        span{
+          margin-right: 0.5rem;
+        }
+        img{
+          margin-right: 1.6rem;
+        }
+      }
+    }
+
+  }
+
+}
+
+.like{
+  margin: 2rem 1rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    img{
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+  }
+
+}
+
+.comment{
+  margin: 2rem 1rem 0;
+  background: #fff;
+  .comment-list{
+    padding: 1.5rem 0;
+    margin: 0 1.5rem;
+    border-bottom: 1px solid #DBDBDB;
+    display: flex;
+    justify-content: space-between;
+    .com-l{
+      display: flex;
+      justify-content: space-between;
+      img{
+        width:5rem;
+        height:5rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+      }
+      .reply{
+        p:nth-of-type(1){
+          font-size: 1.4rem;
+          color: #000;
+          margin-bottom: 0.6rem;
+          font-family: "PingFang-SC-Medlum";
+        }
+        p:nth-of-type(2){
+          font-size: 1.6rem;
+          font-family: "PingFang-SC-Medlum";
+        }
+
+
+      }
+    }
+    .com-r{
+      font-family: "PingFang-SC-Medlum";
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+  }
+}
+
+
+
+.footer{
+  width:100%;
+  height:8rem;
+  .foot{
+    width:100%;
+    padding: 1.5rem 0;
+    background: white;
+    position: fixed;
+    bottom:0;
+    left:0;
+    height:5rem;
+    display: flex;
+    justify-content:space-between;
+    .foot-l{
+      margin-left: 2rem;
+      display: flex;
+      justify-content: space-between;
+      img{
+        width:5rem;
+        height:5rem;
+        margin-right: 1rem;
+      }
+      .footleft{
+        p:nth-of-type(1){
+          margin-top: 0.6rem;
+          font-family: "PingFang-SC-Regular";
+          font-size: 1.6rem;
+          color: #292929;
+          line-height: 1.6rem;
+          margin-bottom: 1rem;
+        }
+        p:nth-of-type(2){
+          font-family: "PingFangSC-Regular";
+          font-size: 1.2rem;
+          color: #777777;
+          line-height: 1.2rem;
+        }
+      }
+    }
+    .foot-r{
+      font-family: "PingFangSC-Regular";
+      margin-right: 2rem;
+      margin-top: 0.75rem;
+      border-radius: 0.4rem;
+      width:8.5rem;
+      height:3.5rem;
+      background: #ff6512;
+      font-size: 1.4rem;
+      color: #fff;
+      text-align: center;
+      line-height: 3.5rem;
+
+    }
+
+  }
+}
+
+
+
+
+

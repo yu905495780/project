@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <title>公布运价政策</title>
+    <link rel="stylesheet" type="text/css" href="./style/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/common/ifp.common.min.css?v=201611281935">
+    <link rel="stylesheet" type="text/css" href="./style/ifp/ifpQuery.min.css?v=201611281935" />
+</head>
+<body ng-controller="ifgQueryCtrl">
+<div class="container">
+    <h3 ng-class="'hidden'">
+        页面加载中...
+    </h3>
+    <div class="ifpQueryContainer hidden" ng-class="'show'">
+
+        <div class="row condition">
+            <form role="form">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">政策序号</label>
+                            <input type="text" class="form-control" placeholder="请输入政策序号" ng-model="search.id" digital-only ng-trim="false">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class=" control-label">
+                                政策状态
+                            </label>
+                            <select type="text" class="form-control" ng-model="search.status">
+                                <option value="-1">全部</option>
+                                <option value="1">投放中</option>
+                                <option value="0">已挂起</option>
+                                <option value="2">已删除</option>
+                                <option value="3">已失效</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class=" control-label">
+                                行程类型
+                            </label>
+                            <select type="text" class="form-control" ng-model="search.travelType">
+                                <option value="-1">全部</option>
+                                <option value="1">单程</option>
+                                <option value="2">往返</option>
+                                <option value="0">单程&往返</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">开票航司</label>
+                            <input type="text" class="form-control  text-uppercase" placeholder="请输入开票航司" ng-model="search.airline" maxlength="2" english-digital ng-trim="false">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">出发地</label>
+                            <input type="text" class="form-control text-uppercase" placeholder="请输入出发地" ng-model="search.depCities" english-digital ng-trim="false">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">目的地</label>
+                            <input type="text" class="form-control  text-uppercase" placeholder="请输入目的地" ng-model="search.arrCities" english-digital ng-trim="false">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">文件编号</label>
+                            <input type="text" class="form-control" placeholder="请输入文件编号" ng-model="search.mainFilegroupcode" english-digital-dash-slash ng-trim="false">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">舱位</label>
+                            <input type="text" class="form-control" placeholder="请输入舱位" ng-model="search.cabinRestrict" english-comma ng-trim="false">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">外部政策ID</label>
+                            <input type="text" class="form-control" placeholder="请输入外部政策ID" ng-model="search.externalId">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <label class="control-label">公布转私有</label>
+                            <select type="text" class="form-control" ng-model="search.privateFlag">
+                                <option value="-1">全部</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="queryBtnGroup">
+                        <span class="searchReset">
+                            <button type="button" class="btn btn-primary queryBtn" ng-click="searchClick($ele)">搜索</button>
+                            <button type="button" class="btn btn-danger resetBtn" ng-click="resetClick($ele)">重置</button>
+                        </span>
+                    <span class="pull-right btn-group">
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="goClick('./ifgAdd.html?ctrl=ifgAdd')"><span class="glyphicon glyphicon-plus-sign"></span> 新增</button>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="importDialogConfig.show=true" id="importBtn"><span class="glyphicon glyphicon-import"></span> 导入</button>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="goClick('./ifgOpRecord.html')"><span class="glyphicon glyphicon-dashboard"></span>批量操作记录</button>
+                            <button type="button" class="btn btn-info btn-xs" ng-click="download()"><span class="glyphicon glyphicon-download"></span> 下载模版</button>
+                        </span>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <table class="table queryResult">
+
+                <thead>
+                <tr>
+                    <td></td>
+                    <td colspan="12">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="suspendSelectClick()">挂起</button>
+                        <button type="button" class="btn btn-sm" ng-click="resumeSelectClick()">解挂</button>
+                        <button type="button" class="btn btn-danger btn-sm" ng-click="deleteSelectClick()">删除</button>
+                        <button type="button" class="btn btn-info btn-sm editBtn" ng-click="editSelectClick()">编辑</button>
+                        <button type="button" class="btn btn-primary btn-sm exportBtn" ng-click="exportClick()">导出</button>
+                    </td>
+                </tr>
+                <tr class="resultTitle">
+                    <th><input type="checkbox" ng-checked="selectAll" ng-click="checkAllClick($event)" /></th>
+                    <th>政策序号</th>
+                    <th>开票航司</th>
+                    <th>出发地</th>
+                    <th>目的地</th>
+                    <th>去程旅行日期</th>
+                    <th>舱位</th>
+                    <th>行程类型</th>
+                    <th>代理费%</th>
+                    <th>返点%</th>
+                    <th>留钱</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="item in list">
+                    <td><input type="checkbox" ng-checked="item.checked" ng-click="item.checked = !item.checked;checkClick($event, item);" /></td>
+                    <td><a href="javascript:void(0)" ng-click="detailClick(item)">{{item.id}}</a></td>
+                    <td><div class="airline">{{item.airline}}</div></td>
+                    <td><div title="{{item.depCities}}" class="city">{{item.depCitiesShow}}</div></td>
+                    <td><div title="{{item.arrCities}}" class="city">{{item.arrCitiesShow}}</div></td>
+                    <td>{{item.goDateRestrict.replace(">"," 至 ")}}</td>
+                    <td ng-if="item.cabinRestrict=='ALL'">全部</td>
+                    <td ng-if="item.cabinRestrict!='ALL'">{{item.cabinRestrict}}</td>
+                    <td>{{ {"0":"单程&往返","1":"单程","2":"往返"}[item.travelTypeRestrict]}}</td>
+                    <td>{{item.agentFee}}</td>
+                    <td>{{item.saleRetention}}</td>
+                    <td>{{item.saleRebase}}</td>
+                    <td>{{item.gmtCreate}}</td>
+                    <td class='{{ { "0": "text-primary", "1": "text-success", "2": "text-danger", "3": "text-muted" }[item.status] }}'>{{ { "0": "已挂起", "1": "投放中", "2": "已删除", "3": "已失效" }[item.status] }}</td>
+                    <td>
+                        <a href="javascript:void(0)" ng-click="copyClick(item)">复制</a>
+                        <a href="javascript:void(0)" ng-click="deleteClick(item)" ng-if="item.status == 1 || item.status == 0">删除</a>
+                        <a href="javascript:void(0)" ng-click="editClick(item)" ng-if="item.status == 0 || item.status == 1">修改</a>
+                        <a href="javascript:void(0)" ng-click="suspendClick(item)" ng-if="item.status == 1">挂起</a>
+                        <a href="javascript:void(0)" ng-click="resumeClick(item)" ng-if="item.status == 0">投放</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot ng-if="pagination.show">
+                <tr>
+                    <td colspan="13" class="form-inline paginationCustom">
+                        <div class="pull-left pageHint form-group">
+                            <p class="form-control-static">共查询到<strong class="text-danger">{{pagination.total}}</strong>条数据　每页展示<strong class="text-danger">{{pagination.perPage}}</strong>条，共<strong class="text-danger">{{pagination.pages}}</strong>页</p>
+                        </div>
+                        <div class="pull-right">
+                            <ul uib-pagination total-items="pagination.total"
+                                ng-change="paginationChange()"
+                                items-per-page="pagination.perPage"
+                                ng-model="pagination.page"
+                                max-size="pagination.maxSize"
+                                class="pagination-sm pull-left"
+                                direction-links="false"
+                                next-batch-text="后10页"
+                                previous-batch-text="前10页"
+                                rotate="false"></ul>
+                            <span class="form-group paginationInput pull-left">
+                                        <input type="text" class="form-control input-sm text-center" value="{{pagination.page}}" digital-only ng-trim="false" ng-keyup="pageBlur($event)"> <label>页</label>
+                                    </span>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <script type="text/ng-template" id="ifgSelectedEdit.html">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="batchCloseClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="modal-title">批量修改</h4>
+            </div>
+            <div class="modal-body selectedEditDialog">
+                <form class="form-inline">
+                    <div class="row text-warning">批量修改只支持政策状态修改。注意：政策一旦删除将无法重新投放！</div>
+                    <div class="form-group">
+                            <span>
+                                将所有
+                                <select class="form-control input-sm" ng-model="stageChange.beforeState" ng-change="beforeStateChange()">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">投放中</option>
+                                    <option value="0">已挂起</option>
+                                </select>
+                            </span>
+                        <span>
+                                批量修改为
+                                <select class="form-control input-sm" ng-model="stageChange.afterState">
+                                    <option value="-1">请选择</option>
+                                    <option value="1" ng-if="stageChange.beforeState==0">投放中</option>
+                                    <option value="2" ng-if="stageChange.beforeState==0">已删除</option>
+                                    <option value="0" ng-if="stageChange.beforeState==1">已挂起</option>
+                                </select>
+                            </span>
+                        <div ng-if="!stageChange.valid" class="help-block bg-danger">{{stageChange.reason}}</div>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="batchOkClick()">提交</button>
+                    <button class="btn btn-danger" type="button" ng-click="batchCloseClick()">关闭</button>
+                </div>
+            </div>
+        </script>
+        <dialog align="top" ng-if="importDialogConfig.show" class="importDialog" for="importBtn" align="left" close="importDialogConfig.show=false">
+            <div dialog-title>{{importDialogConfig.title}}</div>
+            <div dialog-content>
+                <iframe ng-src="{{importDialogConfig.src}}" frameborder="0"></iframe>
+            </div>
+        </dialog>
+    </div>
+
+</div>
+<div class="modal fade in showLoading hidden" ng-class="{'hidden':!showLoading}">
+    <div class="modal-backdrop fade in"></div>
+    <section class="loading"></section>
+</div>
+
+<script type="text/ng-template" id="ifgDialog.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="dialogOkClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="dialog-modal-title">提示</h4>
+    </div>
+    <div class="modal-body" id="dialog-modal-body" ng-bind-html="dialogContent | toTrustIFG">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="dialogOkClick()">确定</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="ifgConfirm.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="confirmNoClick()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="confirm-modal-title">确认</h4>
+    </div>
+    <div class="modal-body" id="confirm-modal-body" ng-bind-html="confirmContent | toTrustIFG">
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="confirmOkClick()">是</button>
+        <button class="btn btn-primary" type="button" ng-click="confrimNoClick()">否</button>
+    </div>
+</script>
+
+<script src="./script/lib/require.js"></script>
+<script src="./policy/IFPUrlJs"></script>
+<script type="text/javascript">
+    requirejs(["script/main.js?v=201704241126"], function () {
+        require(["controller/ifg/ifgQueryCtrl"]);
+    });
+</script>
+</body>
+</html>

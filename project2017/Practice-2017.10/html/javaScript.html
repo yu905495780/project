@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+    <!--<style>
+        #div1{
+            position: relative;
+            width:300px;
+            height:300px;
+            background: paleturquoise;
+        }
+        #div2{
+            position: absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+            width:200px;
+            height:200px;
+            background: pink;
+        }
+        #div3{
+            position: absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: palegoldenrod;
+        }
+    </style>-->
+</head>
+<body>
+<!--<p>该案例使用了 addEventListener() 方法在按钮中添加点击事件。</p>
+<button id="myBtn">点我</button>
+<p id="demo"></p>
+
+<script>
+    document.getElementById("myBtn").addEventListener("click",displayDate)
+    function displayDate() {
+        document.getElementById("demo").innerHTML = Date()
+    }
+</script>-->
+
+<!--<p>实例使用 addEventListener() 方法在同一个按钮中添加多个事件。</p>
+<button id="myBtn">点我</button>
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("myBtn");
+    x.addEventListener("mouseover",myFunction);
+    x.addEventListener("click",mySecondFunction);
+    x.addEventListener("mouseout",myThirdFunction);
+    function myFunction() {
+        document.getElementById("demo").innerHTML += "Moused over!<br>"
+    }
+    function mySecondFunction() {
+        document.getElementById("demo").innerHTML += "Clickd!<br>"
+    }
+    function myThirdFunction() {
+        document.getElementById("demo").innerHTML += "Moused out!<br>"
+    }
+</script>-->
+
+<!--<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+
+<script>
+//    事件冒泡
+//    div1.addEventListener("click",function () {
+//        alert("你点击了div1")
+//    },false)
+//    div2.addEventListener("click",function () {
+//        alert("你点击了div2")
+//    },false)
+//    div3.addEventListener("click",function () {
+//        alert("你点击了div3")
+//    },false)
+
+//  事件捕获
+//    div1.addEventListener("click",function () {
+//        alert("你点击了div1")
+//    },true)
+//    div2.addEventListener("click",function () {
+//        alert("你点击了div2")
+//    },true)
+//    div3.addEventListener("click",function () {
+//        alert("你点击了div3")
+//    },true)
+</script>-->
+
+<script>
+    //var myFather = new person("john","Doe",50,"blue");
+    //var myMother = new person("Sally","Rally",48,"green")
+    //把属性添加到JavaScript对象：
+    //您可以通过为对象赋值，向已有对象添加新属性：
+    //假设 personObj 已存在 - 您可以为其添加这些属性：firstname lastname age 以及 eyecolor
+    //person.firstname = "John";
+    //person.lastname = "Doe";
+    //person.age = 30;
+    //person.eyecolor = "blue";
+    //x = person.firstname;
+    //在以上代码执行后，x的值将是：
+    //John
+
+    //把方法添加到 JavaScript 对象
+    //方法只不过是附加在对象的函数：
+    //在构造器函数内部定义对象的方法：
+    //function person(firstname,lastname,age,eyecolor){
+    //    this.firstname = firstname;
+    //    this.lastname = lastname;
+    //    this.age = age;
+    //    this.eyecolor = eyecolor;
+    //    this.changeName = changeName;
+    //    function changeName(name) {
+    //        this.lastname = name;
+    //    }
+    //}
+
+    //JavaScript for…in 循环
+    //JavaScript for…in 语句循环遍历对象的属性。
+    //for(var i in object){
+    //    code to be executed
+    //}
+
+    //javaScript Number对象
+    //javaScript 只有一种数字类型。
+    //可以使用也可以不适用小数点来书写数字
+    //javaScript数字可以使用也可以不使用小数点来书写：
+    //var pi = 3.14    使用小数点
+    //var x = 34       不使用小数点
+    //极大或极小的数字可通过科学（指数）计数法来写：
+    //var y = 123e5;    12300000
+    //var z = 123e-5;   0.00123
+    //所有JavaScript数字均为64位
+    //javaScript 不是类型语言。与许多其他编程语言不同,javascript 不定义不同类型的数字，比如整数、短、长、浮点等等。
+    //在JavaScript中，数字不分为整数类型和浮点型类型，所有的数字都是浮点型类型。JavaScript采用IEEE754标准定义的64位浮点格式表示数字，他能表示最大值为 +1.7976931348623157 * 10308，最小值为 -5*10-324
+    //精度
+    //整数（不使用小数点或指数计数法）最多为15位。
+    //小数的最大位数是17，但是浮点运算并不总是100%精确：
+    //var x = 0.2 + 0.1;    result will be 0.30000000000000004
+    //x = 99999999999999999999999+1000000000000000000000001
+    //console.log(9007199254740992 + 1 ==  9007199254740992)
+    //window.history对象在编写时可不使用window这个前缀
+    //为了保护用户隐私 对JavaScript访问该对象的方法做出了限制。
+    //一些方法;
+    //history.back()--与在浏览器点击后退按钮相同
+    //history.forwrad()--与在浏览器中点击向前按钮相同
+
+    //Window History Back
+    //history.back()方法加载历史列表中的前一个URL
+    //这与在浏览器中点击后退按钮时相同的：
+    //在页面上创建后退按钮：
+    //<input type='button' value='Back' onclick='goBack()'/>
+    //function goBack(){
+        //window.history.back()
+    //}
+
+    //Window History Forward
+    //history forward()方法加载历史列表中的下一个URL
+    //这与在浏览器中点击前进按钮是相同的
+    //<input type='button' value='Forward' onclick='goForward()'/>
+    //function goForward(){
+    //window.history.Forward()
+    //}
+
+    //window.navigator对象包含有关访问者浏览器的信息
+    //window.navigator对象在编写是可不使用window这个前缀
+
+    //警告
+    //来自navigator对象的信息具有误导性，不应该被用于检测浏览器版本，这是因为：
+    //1.navigator数据可被浏览器使用者更改
+    //2.一些浏览器对测试站点会识别错误
+    //3.浏览器无法报告晚于浏览器发布的新操作系统
+
+    //浏览器检测
+    //由于navigator可误导浏览器检测，使用对象检测可用来嗅探不同的浏览器
+    //由于不同的浏览器支持不同的对象，您可以使用对象来检测浏览器。例如，由于只有Opera支持属性“window.opera”,您可以据此识别出Opera
+    //例子：if(window.opera){…some action…}
+
+
+    /*var r = confirm("按下按钮");
+    if(r == true){
+//        x = "你按下了“确定”按钮";
+        alert("你按下了“确定”按钮");
+    }else{
+//        x = "你按下了“取消”按钮";
+        alert("你按下了“取消”按钮");
+    }*/
+
+    /*var person = prompt("请输入您的名字：")
+    if(person != null && person != ""){
+        alert("你好" + person + "!今天感觉如何？")
+    }else{
+        alert("内容不可为空！！！")
+    }*/
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿.bgViewContainer {
+  padding: 40px;
+}
+.bgViewContainer .condition label {
+  white-space: nowrap;
+  text-align: left;
+}
+.bgViewContainer .queryBtnGroup {
+  margin: 10px 0;
+}
+.bgViewContainer .queryResult {
+  font-size: 12px;
+}
+.bgViewContainer .paginationCustom .paginationInput {
+  margin-left: 10px;
+}
+.bgViewContainer .paginationCustom .paginationInput input {
+  width: 50px;
+}
+.bgViewContainer .paginationCustom .pagination {
+  margin: 0;
+}

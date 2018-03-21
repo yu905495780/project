@@ -1,0 +1,490 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+a {
+  text-decoration: none; }
+
+img {
+  vertical-align: middle; }
+
+body {
+  font-size: 0.2rem;
+  background-color: #F7F9FF; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+#one-touch {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow-y: auto; }
+  #one-touch .head {
+    width: 100%;
+    height: 0.73rem; }
+    #one-touch .head .header {
+      width: 100%;
+      height: 0.73rem;
+      display: flex;
+      justify-content: space-between;
+      line-height: 0.73rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 100;
+      background: #FED12A; }
+      #one-touch .head .header .Sinlist {
+        color: #333;
+        font-size: 0.26rem;
+        margin-left: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #one-touch .head .header .Prelist {
+        color: #333;
+        font-size: 0.26rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif; }
+      #one-touch .head .header .Onelist {
+        color: #333;
+        font-size: 0.31rem;
+        margin-right: 1.2rem;
+        font-family: "PingFang-SC-Medium", Arial, Helvetica, sans-serif;
+        position: relative; }
+        #one-touch .head .header .Onelist p {
+          position: absolute;
+          left: 50%;
+          margin-left: -0.18rem;
+          bottom: 0;
+          width: 0.36rem;
+          height: 0.05rem;
+          background-color: #fff; }
+      #one-touch .head .header .list {
+        width: 0.35rem;
+        height: auto; }
+        #one-touch .head .header .list img {
+          width: 100%;
+          height: auto; }
+  #one-touch #listData .olli {
+    padding: 0.45rem 0.26rem 0.25rem 0.33rem;
+    margin-top: 0.16rem;
+    background-color: #fff;
+    position: relative; }
+    #one-touch #listData .olli .personal {
+      display: flex;
+      position: relative; }
+      #one-touch #listData .olli .personal .berson-img {
+        position: relative;
+        width: 1.02rem;
+        height: 1.02rem;
+        margin-right: 0.12rem; }
+        #one-touch #listData .olli .personal .berson-img .head-portrait {
+          width: 1.02rem;
+          height: 1.02rem;
+          border-radius: 50%; }
+        #one-touch #listData .olli .personal .berson-img .head-portrait1 {
+          width: 1.02rem;
+          height: 1.02rem;
+          box-sizing: border-box;
+          border-radius: 50%;
+          border: 2px solid #FEDE3D;
+          position: absolute;
+          z-index: 2; }
+        #one-touch #listData .olli .personal .berson-img .crown {
+          width: 0.7rem;
+          height: 0.58rem;
+          position: absolute;
+          left: -0.17rem;
+          top: -0.3rem;
+          z-index: 0; }
+      #one-touch #listData .olli .personal .mid p:nth-of-type(1) {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem; }
+        #one-touch #listData .olli .personal .mid p:nth-of-type(1) .name {
+          font-size: 0.25rem;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-right: 0.18rem;
+          vertical-align: middle; }
+        #one-touch #listData .olli .personal .mid p:nth-of-type(1) .real-name img, #one-touch #listData .olli .personal .mid p:nth-of-type(1) .video img, #one-touch #listData .olli .personal .mid p:nth-of-type(1) .vehicle img {
+          width: auto;
+          height: 0.3rem;
+          margin-right: 0.13rem; }
+        #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex1 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #FDC5F1;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex1 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex1 .age {
+            font-size: 0.15rem; }
+        #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex2 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #b0e1ff;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex2 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #one-touch #listData .olli .personal .mid p:nth-of-type(1) .sex2 .age {
+            font-size: 0.15rem; }
+      #one-touch #listData .olli .personal .mid p:nth-of-type(2) {
+        font-size: 0.2rem;
+        color: #aaa;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+        #one-touch #listData .olli .personal .mid p:nth-of-type(2) .timer {
+          margin-right: 0.2rem; }
+      #one-touch #listData .olli .personal .check {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-family: "PingFang-SC-Medlum",Arial, Helvetica, sans-serif; }
+        #one-touch #listData .olli .personal .check p {
+          color: #FF6B5D;
+          font-size: 0.16rem; }
+          #one-touch #listData .olli .personal .check p span {
+            font-weight: 600;
+            font-size: 0.26rem; }
+    #one-touch #listData .olli .meet {
+      margin-top: 0.26rem;
+      position: relative; }
+      #one-touch #listData .olli .meet .cir {
+        width: 0.1rem;
+        height: 0.1rem;
+        background-color: #dbdbdb;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 50%;
+        margin-right: 0.17rem; }
+      #one-touch #listData .olli .meet .yue, #one-touch #listData .olli .meet .hour {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+        margin-bottom: 0.29rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis; }
+      #one-touch #listData .olli .meet .hour .date, #one-touch #listData .olli .meet .hour .time-slot {
+        margin-right: 0.21rem; }
+      #one-touch #listData .olli .meet .num {
+        font-size: 0.23rem;
+        color: #666;
+        font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif; }
+        #one-touch #listData .olli .meet .num .gender {
+          margin-right: 0.21rem; }
+    #one-touch #listData .olli .box {
+      position: absolute;
+      right: 0.35rem;
+      top: 0.65rem; }
+      #one-touch #listData .olli .box p:nth-of-type(1) {
+        text-align: right;
+        margin-bottom: 0.9rem;
+        font-size: 0.23rem;
+        color: #6f6f6f; }
+      #one-touch #listData .olli .box .img1 {
+        width: 1.03rem;
+        height: 1.03rem;
+        margin-right: 0.05rem; }
+        #one-touch #listData .olli .box .img1 img {
+          width: 1.03rem;
+          height: 1.03rem; }
+  #one-touch .addinv {
+    position: fixed;
+    right: 0.42rem;
+    bottom: 1.26rem;
+    width: 1.05rem;
+    height: 1.05rem; }
+  #one-touch .footer {
+    height: 0.7rem; }
+    #one-touch .footer .foot {
+      width: 5.1rem;
+      display: flex;
+      padding: 0.15rem 0.65rem 0.09rem;
+      justify-content: space-around;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      background-color: #fff;
+      box-shadow: 0 -1px 10px 0 #ccc; }
+      #one-touch .footer .foot .footli {
+        text-align: center; }
+        #one-touch .footer .foot .footli img {
+          height: 0.34rem; }
+        #one-touch .footer .foot .footli p {
+          font-size: 0.2rem;
+          color: #aaa;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+  #one-touch #wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 0.75rem;
+    bottom: 0.8rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px; }
+  #one-touch #scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    padding: 0; }
+  #one-touch #pullDown, #one-touch #pullUp {
+    width: 100%;
+    text-align: center;
+    color: #aaa; }
+  #one-touch #pullUp {
+    margin-top: 0.2rem; }
+
+#one-details {
+  position: absolute;
+  top: 0;
+  left: 0; }
+  #one-details .header {
+    width: 6.4rem;
+    height: 0.75rem; }
+    #one-details .header .head {
+      width: 5.88rem;
+      padding: 0 0.26rem;
+      height: 0.75rem;
+      line-height: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      border-bottom: 1px solid #eeeeee;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100; }
+      #one-details .header .head .hleft {
+        width: 0.2rem;
+        height: 0.31rem; }
+        #one-details .header .head .hleft img {
+          width: 100%;
+          height: auto; }
+      #one-details .header .head .mid {
+        font-size: 0.31rem;
+        font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+      #one-details .header .head .hright {
+        width: 0.35rem; }
+        #one-details .header .head .hright img {
+          width: 100%;
+          height: auto; }
+  #one-details .details .information {
+    padding: 0.44rem 0.38rem 0.34rem;
+    background: white;
+    display: flex;
+    justify-content: space-between; }
+    #one-details .details .information .deta-box {
+      display: flex; }
+      #one-details .details .information .deta-box .detal {
+        position: relative;
+        width: 0.82rem;
+        height: 0.82rem;
+        margin-right: 0.17rem; }
+        #one-details .details .information .deta-box .detal .head-portrait {
+          width: 0.82rem;
+          height: 0.82rem;
+          border-radius: 50%; }
+        #one-details .details .information .deta-box .detal .head-portrait1 {
+          width: 0.82rem;
+          height: 0.82rem;
+          box-sizing: border-box;
+          border-radius: 50%;
+          border: 2px solid #FEDE3D;
+          position: absolute;
+          z-index: 2; }
+        #one-details .details .information .deta-box .detal .crown {
+          width: 0.48rem;
+          height: 0.4rem;
+          position: absolute;
+          left: -0.05rem;
+          top: -0.18rem;
+          z-index: 0; }
+      #one-details .details .information .deta-box .detar p:nth-of-type(1) {
+        margin-top: 0.05rem;
+        margin-bottom: 0.15rem; }
+        #one-details .details .information .deta-box .detar p:nth-of-type(1) .name {
+          font-size: 0.25rem;
+          font-family: "PingFang-SC-Regular",Arial, Helvetica, sans-serif;
+          margin-right: 0.11rem;
+          vertical-align: middle; }
+        #one-details .details .information .deta-box .detar p:nth-of-type(1) .real-name img, #one-details .details .information .deta-box .detar p:nth-of-type(1) .video img, #one-details .details .information .deta-box .detar p:nth-of-type(1) .vehicle img {
+          width: auto;
+          height: 0.3rem;
+          margin-right: 0.13rem; }
+        #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex1 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #FDC5F1;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex1 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex1 .age {
+            font-size: 0.15rem; }
+        #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex2 {
+          display: inline-block;
+          padding: 0 0.07rem;
+          background-color: #b0e1ff;
+          border-radius: 0.05rem;
+          vertical-align: middle;
+          line-height: 0.26rem;
+          margin-right: 0.13rem;
+          color: #fff;
+          font-size: 0.14rem;
+          font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif; }
+          #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex2 img {
+            height: 0.22rem;
+            vertical-align: middle; }
+          #one-details .details .information .deta-box .detar p:nth-of-type(1) .sex2 .age {
+            font-size: 0.15rem; }
+      #one-details .details .information .deta-box .detar p:nth-of-type(2) {
+        font-size: 0.18rem;
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+        color: #aaa; }
+        #one-details .details .information .deta-box .detar p:nth-of-type(2) .timer {
+          margin-right: 0.29rem; }
+    #one-details .details .information .deta-price {
+      font-size: 0.3rem;
+      font-weight: 600;
+      font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+      color: #FF6B5D;
+      margin-top: 0.5rem; }
+  #one-details .details .deta-i {
+    display: block;
+    width: 100%;
+    background: white; }
+    #one-details .details .deta-i span {
+      display: block;
+      width: 95%;
+      height: 1px;
+      background: white;
+      border-bottom: 1px solid #eee;
+      margin: 0 auto; }
+  #one-details .details .deta-con {
+    padding: 0.56rem 0.53rem 1.17rem;
+    background-color: white;
+    position: relative;
+    box-shadow: 3px 2px 3px #ddd;
+      /*a{
+        .qiang-wrap{
+          width: 1.96rem;
+          height: 1.96rem;
+          border-radius: 50%;
+          background: rgba(254,209,42,0.5);
+          position: absolute;
+          left: 50%;
+          margin-left: -0.98rem;
+          .qiang-box{
+            font-size: 0.5rem;
+            color: #fff;
+            font-weight: 600;
+            background: #FED12A;
+            width: 1.36rem;
+            height: 1.36rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.36rem;
+            border: 0.15rem solid #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            span{
+
+            }
+          }
+        }
+      }*/ }
+    #one-details .details .deta-con .deta-type {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin-bottom: 0.62rem; }
+      #one-details .details .deta-con .deta-type .detypimg {
+        height: 0.42rem;
+        margin-bottom: 0.15rem; }
+      #one-details .details .deta-con .deta-type p:nth-of-type(2) {
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+        color: #666666;
+        font-size: 0.24rem; }
+    #one-details .details .deta-con .detaul .detali {
+      margin-bottom: 0.38rem; }
+      #one-details .details .deta-con .detaul .detali .icon {
+        margin-right: 0.3rem; }
+        #one-details .details .deta-con .detaul .detali .icon img {
+          height: 0.31rem; }
+      #one-details .details .deta-con .detaul .detali .title {
+        font-family: "PingFang-SC-Regular", Arial, Helvetica, sans-serif;
+        font-size: 0.27rem;
+        color: #666; }
+  #one-details .details .tip {
+    margin-top: 1.46rem;
+    text-align: center;
+    font-size: 0.2rem;
+    font-family: "PingFangSC-Regular", Arial, Helvetica, sans-serif;
+    color: #aaa;
+    margin-bottom: 0.5rem; }
+  #one-details .details .box-robbed p {
+    position: absolute;
+    top: 1.25rem;
+    right: 0.3rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.23rem;
+    color: #6f6f6f; }
+  #one-details .details .box-robbed a {
+    position: relative; }
+    #one-details .details .box-robbed a .qiang-wrap {
+      width: 1.96rem;
+      height: 1.96rem;
+      border-radius: 50%;
+      background: rgba(254, 209, 42, 0.5);
+      position: absolute;
+      bottom: 1.2rem;
+      left: 2.3rem; }
+      #one-details .details .box-robbed a .qiang-wrap .qiang-box {
+        font-size: 0.5rem;
+        color: #fff;
+        font-weight: 600;
+        background: #FED12A;
+        width: 1.36rem;
+        height: 1.36rem;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 1.36rem;
+        border: 0.15rem solid #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto; }
+
+/*# sourceMappingURL=One-touch-about.css.map */
